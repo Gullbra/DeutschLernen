@@ -1,0 +1,257 @@
+{
+  "verlassen": {
+    "verb": {
+      "translation": ["abandon", "exit", "quit", "desert"]
+    },
+    "adjective": {
+      "translation": ["abandoned", "deserted", "forlorn", "desolate"]
+    }
+  },
+  
+  "ausdrücken": {
+    "verb": {
+      "translation": ["express", "press out", "squeeze out", "verbalize"]
+    }
+  },
+
+  "häuflich": {
+    "adjective": {
+      "translation": ["frequent", "repeatedly"]
+    }
+  },
+
+  "empfehlen": {
+    "verb": {
+      "translation": ["recommend", "advise", "commend"]
+    }
+  },
+
+  "verabreden": {
+    "verb": {
+      "translation": ["arrange", "appoint", "agree upon", "make an appointment"]
+    }
+  },
+
+  "mal schauen": {
+    "phrase": {
+      "translation": ["let's see"]
+    }
+  },
+
+  "tatsächlich": {
+    "adverb": {
+      "translation": ["indeed", "in fact", "really", "objectively"]
+    },
+    "adjective": {
+      "translation": ["real", "true", "effective", "actual"]
+    }
+  },
+
+  "Stimmung": {
+    "noun": {
+      "article": "die",
+      "translation": ["humor", "mood", "atmosphere", "feeling", "spirit", "disposition", "temper"]
+    }
+  },
+
+  "Mischung": {
+    "noun": {
+      "article": "die",
+      "translation": ["mix", "mixture", "combination", "blend"]
+    }
+  },
+
+  "trauen": {
+    "verb": {
+      "translation": ["trust", "marry", "wed"]
+    }
+  },
+
+  "neidisch": {
+    "adjective": {
+      "translation": ["envious", "jealous", "grudging"]
+    },
+    "adverb": {
+      "translation": ["jealously"]
+    }
+  },
+
+  "sogar": {
+    "adverb": {
+      "translation": ["even"]
+    }
+  },
+
+  "Ausdruck": {
+    "noun": {
+      "article": "der",
+      "translation": ["expression", "term", "phrase"]
+    }
+  },
+
+  "fähig": {
+    "adjective": {
+      "translation": ["able", "competent", "proficient"]
+    },
+    "adverb": {
+      "translation": ["ably", "competently", "proficiently"]
+    }
+  },
+
+  "Müll": {
+    "noun": {
+      "article": "der",
+      "translation": ["garbage", "trash", "junk", "waste", "rubbish"]
+    }
+  },
+
+  "Miststück": {
+    "noun": {
+      "article": "das",
+      "translation": ["bitch", "bastard"]
+    }
+  },
+
+  "überhaupt": {
+    "adverb": {
+      "translation": ["at all", "anyhow", "anyway", "in general", "after all"]
+    }
+  },
+
+  "überfordern": {
+    "verb": {
+      "translation": ["overwhelm", "ask too much of"]
+    }
+  },
+
+  "wahrscheinlich": {
+    "adverb": {
+      "translation": ["probably", "presumably"]
+    },
+    "adjective": {
+      "translation": ["likely", "probable", "plausible"]
+    }
+  },
+
+  "Untershied": {
+    "noun": {
+      "article": "der",
+      "translation": ["diffrence", "distinction", "differential", "variation"]
+    }
+  },
+
+  "wütend": {
+    "adjective": {
+      "translation": ["angry", "furious"]
+    }
+  },
+
+  "böse": {
+    "noun": {
+      "article": "das",
+      "translation": ["evil"]
+    },
+    "adjective": {
+      "translation": ["evil", "angry", "bad", "nasty", "mad", "vicious"]
+    }
+  },
+
+  "legen": {
+    "verb": {
+      "translation": ["put", "set", "lay", "situate"]
+    }
+  },
+
+  "warnen": {
+    "verb": {
+      "translation": ["to warn", "warn", "alert", "alarm", "caution"]
+    }
+  },
+
+  "räumen": {
+    "verb": {
+      "translation": ["clear", "evacuate", "move"]
+    }
+  },
+
+  "anziehen": {
+    "verb": {
+      "translation": ["put on", "attract", "wear"]
+    }
+  },
+  
+  "ausziehen": {
+    "verb": {
+      "translation": ["get undressed", "move out", "take off"]
+    }
+  },
+
+  "umziehen": {
+    "verb": {
+      "translation": ["move house", "move"]
+    }
+  },
+
+  "ziehen": {
+    "verb": {
+      "translation": ["pull", "drag", "draw", "pull out"]
+    }
+  },
+
+  "überprüfen": {
+    "verb": {
+      "translation": ["check", "review", "verify", "inspect", "scrutinize"]
+    }
+  },
+
+  "Erfolge": {
+    "noun": {
+      "article": "die",
+      "translation": ["success", "achievement"]
+    }
+  },
+
+  "Beziehung": {
+    "noun": {
+      "article": "die",
+      "translation": ["relationship", "relation", "connection", "correlation", "contact"]
+    }
+  }, 
+
+  "Flügel": {
+    "noun": {
+      "article": "der",
+      "translation": ["wing", "blade", "piano", "sail"]
+    }
+  },
+
+  "wohl": {
+    "adverb": {
+      "translation": ["probably", "well", "perhaps", "surely", "perhaps", "no doubt"]
+    }
+  },
+
+  "scheinen": {
+    "verb": {
+      "translation": ["seem", "appear", "shine"]
+    }
+  },
+
+  "schauen": {
+    "verb": {
+      "translation": ["look", "behold", "glance"]
+    }
+  },
+
+  "bloß": {
+    "adverb": {
+      "translation": ["just", "merely", "purely", "only"]
+    }
+  },
+
+  "zeigen": {
+    "verb": {
+      "translation": ["show", "point", "demonstrate", "indicate", "display", "reveal", "present"]
+    }
+  }
+}
