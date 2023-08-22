@@ -1,12 +1,22 @@
 export interface IJsonData {
-  [key: string]: IVerbAdverbAdjective | INoun
+  [key: string]:{
+    noun?: INoun,
+    verb?: IVerb,
+    adverb?: IAdverbAdjectivePhrase,
+    adjective?: IAdverbAdjectivePhrase,
+    phrase?: IAdverbAdjectivePhrase
+  }
 }
 
-interface IVerbAdverbAdjective {
+export interface IAdverbAdjectivePhrase {
   translation: string[]
 }
 
-interface INoun {
+export interface INoun {
   article: string,
+  translation: string[]
+}
+
+export interface IVerb {
   translation: string[]
 }
