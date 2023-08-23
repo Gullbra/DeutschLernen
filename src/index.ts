@@ -47,30 +47,33 @@ const questionNoun = async (word: string, dataObject: INoun) => {
     console.log("No or invalid dataObject sent to questionNoun()"); return await shutdown()
   }
 
-  let correctAnweredMeaning: boolean;
-  let correctAnweredArticle: boolean
+  let correctAnswer: boolean = false
 
-  terminalInput = inputProcessor(await rl.question(`What does "${word}" mean?\n`));
-  correctAnweredMeaning = dataObject.translation.some(el => el.toLowerCase() === terminalInput)
+  const articleQuestion = async () => {
+    terminalInput = inputProcessor(await rl.question(`Which article corresponds to "${word}", meaning "${dataObject.translation.join(", ")}"?\n`));
+    correctAnswer = terminalInput === dataObject.article
 
-  if (!correctAnweredMeaning) {
-    console.log(`Not quite, the correct answer is ${
-      dataObject.translation.length === 1 
-        ? `"${dataObject.translation[1]}"`
-        : `one of "${dataObject.translation.join(', ')}"`
-    }`)
-    console.log(`Your answer: ${terminalInput[0].toUpperCase() + terminalInput.substring(1)}`)
+    correctAnswer
+      ? await rl.question(`Correct!\n`)
+      : await rl.question(`Not quite. Correct answer is "${dataObject.article}"\n`)
   }
 
-  terminalInput = inputProcessor(await rl.question(`And which article corresponds to "${word}"?\n`));
-  correctAnweredArticle = terminalInput === dataObject.article
+  const meaningQuestion = async () => {
+    terminalInput = inputProcessor(await rl.question(`What does "${dataObject.article} ${word}" mean"?\n`));
+    correctAnswer = (terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the ')
+      ? dataObject.translation.some(el => "the " + el === terminalInput)
+      : dataObject.translation.some(el => el === terminalInput)
 
-  if (!correctAnweredArticle) {
-    console.log(`Not quite, the correct answer is "${dataObject.article}"`)
-    console.log(`Your answer: ${terminalInput}`)
+    correctAnswer
+      ? await rl.question(`Correct!\n`)
+      : await rl.question(`Not quite. Correct answer is "${dataObject.translation.join(', ')}"\n`)    
   }
 
-  await handleResult(word, correctAnweredMeaning && correctAnweredArticle)
+  Math.round(Math.random()) === 0
+    ? await meaningQuestion()
+    : await articleQuestion()
+
+  await handleResult(word, correctAnswer)
 }
 
 const questionVerb = async () => { console.log('Verb'); await determineQuestion() }
@@ -109,18 +112,17 @@ const determineQuestion = async () => {
   }
 }
 
-const modeChoice = async () => {
-  const invalidInput = async () => {
-    console.log(`invalid input. Please type a number between 1 and ${workingKeys.length}`)
-    await modeChoice()
+const modeChoice = async (): Promise<void> => {
+  terminalInput = Number(inputProcessor(await rl.question(`How many questions do want? (type a number, max ${workingKeys.length})  `))); 
+
+  if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > workingKeys.length) {
+    await rl.question(`invalid input.`)
+    return await modeChoice()
   }
 
-  terminalInput = Number(inputProcessor(await rl.question(`How many questions do want? (type a number, max ${workingKeys.length}) \n`))); 
-
-  if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > workingKeys.length)
-    return await invalidInput()
-
   questionsToAnswer = terminalInput
+  await rl.question(`\n${questionsToAnswer} questions will be provided. Lass uns anfangen!\n`)
+
   await determineQuestion()
 }
 
