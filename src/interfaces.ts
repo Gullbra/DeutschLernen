@@ -7,7 +7,10 @@ export interface IGameState {
   workingKeys: string[],
   questionsToAnswer: number,
   workingQuestionNumber: number,
-  correctedAnswers: {[key: string]: boolean}[]
+  correctedAnswers: {
+    wordOrPhrase: string,
+    correctlyAnswered: boolean
+  }[]
 }
 
 export interface IJsonData {

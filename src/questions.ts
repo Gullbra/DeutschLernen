@@ -19,7 +19,7 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
   let terminalInput: string;
 
   const articleQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.rl.question(`Which article corresponds to "${word}", meaning "${dataObject.translation.join(", ")}"?\n`));
+    terminalInput = inputProcessor(await gameState.rl.question(`Which article corresponds to "${word}", meaning "${dataObject.translation.join(", ")}"?\nYour answer: `));
     correctAnswer = terminalInput === dataObject.article
 
     correctAnswer
@@ -28,7 +28,7 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
   }
 
   const meaningQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.rl.question(`What does "${dataObject.article} ${word}" mean"?\n`));
+    terminalInput = inputProcessor(await gameState.rl.question(`What does "${dataObject.article} ${word}" mean"?\nYour answer: `));
     correctAnswer = (terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the ')
       ? dataObject.translation.some(el => "the " + el === terminalInput)
       : dataObject.translation.some(el => el === terminalInput)
@@ -44,7 +44,6 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
 
   return { wordOrPhrase: word, correct: correctAnswer, error: false }
 }
-
 
 export const questionVerb = async (gameState: IGameState, word: string, dataObject: IVerb) => { 
   if (typeof word !== 'string' || word === '') {
@@ -63,7 +62,7 @@ export const questionVerb = async (gameState: IGameState, word: string, dataObje
   let terminalInput: string;
 
   const meaningQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.rl.question(`What does the werb "${word}" mean"?\n`));
+    terminalInput = inputProcessor(await gameState.rl.question(`What does the werb "${word}" mean"?\nYour answer: `));
     correctAnswer = (terminalInput.length > 3 && terminalInput.substring(0, 3) === 'to ')
       ? dataObject.translation.some(el => "to " + el === terminalInput)
       : dataObject.translation.some(el => el === terminalInput)
@@ -77,4 +76,8 @@ export const questionVerb = async (gameState: IGameState, word: string, dataObje
 
   return { wordOrPhrase: word, correct: correctAnswer, error: false } 
 }
-export const questionOther = async (gameSate: IGameState, word: string) => { console.log('Other'); return { wordOrPhrase: word, correct: false, error: false } }
+
+export const questionOther = async (gameSate: IGameState, word: string) => { 
+  console.log('Other'); 
+  return { wordOrPhrase: word, correct: false, error: false } 
+}

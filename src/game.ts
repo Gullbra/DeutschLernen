@@ -70,16 +70,15 @@ export class Game {
   async handleResult ({wordOrPhrase, correct, error}: {wordOrPhrase: string, correct: boolean, error: boolean}) {
     if (error) this.shutdown();
 
-    const answer = new Object() as {[key: string]: boolean}
-    answer[wordOrPhrase] = correct
-    this.gameState.correctedAnswers.push(answer)
+    this.gameState.correctedAnswers.push({wordOrPhrase, correctlyAnswered: correct})
 
-    console.log(answer)
     await this.determineQuestion()
   }
 
   async resultAndRestart (): Promise<void> {
-    let terminalInput = inputProcessor(await this.gameState.rl.question('More questions review (Y/N)?  '));
+    console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correctlyAnswered).length}/${this.gameState.correctedAnswers.length}`)
+
+    let terminalInput = inputProcessor(await this.gameState.rl.question('Review more questions (Y/N)?  '));
 
     if (terminalInput !== 'y' && terminalInput !== 'n') {
       console.log('Invalid input\n')

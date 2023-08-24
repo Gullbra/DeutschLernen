@@ -11,7 +11,10 @@ const gameState: IGameState = {
   workingKeys: [] as string[],
   questionsToAnswer: 0,
   workingQuestionNumber: 0,
-  correctedAnswers: [] as {[key: string]: boolean}[],
+  correctedAnswers: [] as {
+    wordOrPhrase: string,
+    correctlyAnswered: boolean
+  }[],
 }
 
 new Game(gameState).startUp()
