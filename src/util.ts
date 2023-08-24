@@ -1,0 +1,1 @@
+export const inputProcessor = (inputString: string): string => inputString.toLowerCase().trim()

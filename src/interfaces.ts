@@ -1,3 +1,15 @@
+import type { Interface as rlInterface} from 'node:readline/promises';
+
+export interface IGameState {
+  rl: rlInterface,
+  wordData: IJsonData,
+  workingData: IJsonData,
+  workingKeys: string[],
+  questionsToAnswer: number,
+  workingQuestionNumber: number,
+  correctedAnswers: {[key: string]: boolean}[]
+}
+
 export interface IJsonData {
   [key: string]:{
     noun?: INoun,
