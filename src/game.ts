@@ -5,15 +5,13 @@ import { inputProcessor } from "./util.ts";
 export class Game { 
   private gameState: IGameState
 
-  constructor (gameState: IGameState) { this.gameState = gameState }
-
-  async startUp () {
+  constructor (gameState: IGameState) { 
+    this.gameState = gameState
     this.gameState.workingData = this.gameState.wordData
     this.gameState.workingKeys = Object.keys(this.gameState.workingData)
-    this.gameState.questionsToAnswer = 0 
-    this.gameState.workingQuestionNumber = 0 
-    this.gameState.correctedAnswers = []
-  
+  }
+
+  async startUp () {  
     console.log("\n--------------------------")
     console.log("Deutch lernen, commandline")
     console.log("--------------------------\n")
@@ -41,9 +39,10 @@ export class Game {
     
     this.gameState.workingQuestionNumber += 1
   
-    const randomIndex = Math.ceil(Math.random()*this.gameState.workingKeys.length)
+    const randomIndex = Math.floor(Math.random()*this.gameState.workingKeys.length)
     const workingWordOrPhrase = this.gameState.workingKeys[randomIndex]
     const workingDataObject = this.gameState.workingData[workingWordOrPhrase]
+
     this.gameState.workingKeys.splice(randomIndex, 1)
     delete this.gameState.workingData[workingWordOrPhrase]
     
@@ -79,11 +78,20 @@ export class Game {
     await this.determineQuestion()
   }
 
-  async resultAndRestart () {
-    let terminalInput = inputProcessor(await this.gameState.rl.question('More questions review (Y)?  '));
-    console.log("\n")
+  async resultAndRestart (): Promise<void> {
+    let terminalInput = inputProcessor(await this.gameState.rl.question('More questions review (Y/N)?  '));
+
+    if (terminalInput !== 'y' && terminalInput !== 'n') {
+      console.log('Invalid input\n')
+      return await this.resultAndRestart()
+    }
+
+    this.gameState.questionsToAnswer = 0 
+    this.gameState.workingQuestionNumber = 0 
+    this.gameState.correctedAnswers = []
+
     terminalInput === "y"
-      ? await (async () => { console.log("restarting...\n"); await this.startUp() })()
+      ? await (async () => { console.log("restarting...\n"); await this.modeChoice() })()
       : await this.shutdown()
   }
 

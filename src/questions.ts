@@ -3,14 +3,16 @@ import { inputProcessor } from "./util.ts";
 
 export const questionNoun = async (gameState: IGameState, word: string, dataObject: INoun): Promise<{wordOrPhrase: string, correct: boolean, error: boolean}> => {
   if (typeof word !== 'string' || word === '') {
-    console.log("No or invalid word sent to questionNoun()"); return {wordOrPhrase: word, correct: false, error: true}
+    console.log("No or invalid word sent to questionNoun()"); 
+    return { wordOrPhrase: word, correct: false, error: true }
   }
   if (
     !dataObject || typeof dataObject !== 'object' || Array.isArray(dataObject) ||
     !dataObject.article || typeof dataObject.article !== 'string' || dataObject.article === '' || 
     !dataObject.translation || !Array.isArray(dataObject.translation) || dataObject.translation.length === 0
   ) {
-    console.log("No or invalid dataObject sent to questionNoun()"); return {wordOrPhrase: word, correct: false, error: true}
+    console.log("No or invalid dataObject sent to questionNoun()"); 
+    return { wordOrPhrase: word, correct: false, error: true }
   }
 
   let correctAnswer: boolean = false 
@@ -40,9 +42,9 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
     ? await meaningQuestion()
     : await articleQuestion()
 
-  return {wordOrPhrase: word, correct: correctAnswer, error: false}
+  return { wordOrPhrase: word, correct: correctAnswer, error: false }
 }
 
 
-export const questionVerb = async (gameSate: IGameState, word: string) => { console.log('Verb'); return {wordOrPhrase: word, correct: false, error: false} }
-export const questionOther = async (gameSate: IGameState, word: string) => { console.log('Other'); return {wordOrPhrase: word, correct: false, error: false} }
+export const questionVerb = async (gameSate: IGameState, word: string) => { console.log('Verb'); return { wordOrPhrase: word, correct: false, error: false } }
+export const questionOther = async (gameSate: IGameState, word: string) => { console.log('Other'); return { wordOrPhrase: word, correct: false, error: false } }
