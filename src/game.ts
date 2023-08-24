@@ -1,4 +1,4 @@
-import { IGameState, INoun, IVerb } from "./interfaces";
+import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces";
 import { questionNoun, questionOther, questionVerb } from "./questions.ts";
 import { inputProcessor } from "./util.ts";
 
@@ -57,9 +57,13 @@ export class Game {
         return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
   
       case 'adverb':
+        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adverb as IAdverbAdjectivePhrase));
+
       case 'adjective':
+        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
+
       case 'phrase':
-        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase));
+        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.phrase as IAdverbAdjectivePhrase));
     
       default:
         console.log("Error: unhandled word/phrase class!")
