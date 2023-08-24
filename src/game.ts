@@ -1,4 +1,4 @@
-import { IGameState, INoun } from "./interfaces";
+import { IGameState, INoun, IVerb } from "./interfaces";
 import { questionNoun, questionOther, questionVerb } from "./questions.ts";
 import { inputProcessor } from "./util.ts";
 
@@ -54,7 +54,7 @@ export class Game {
         return await this.handleResult(await questionNoun(this.gameState, workingWordOrPhrase, workingDataObject?.noun as INoun));
   
       case 'verb':
-        return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase));
+        return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
   
       case 'adverb':
       case 'adjective':
