@@ -82,6 +82,11 @@ export class Game {
   async resultAndRestart (): Promise<void> {
     console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correctlyAnswered).length}/${this.gameState.correctedAnswers.length}`)
 
+    if(this.gameState.workingKeys.length === 0) {
+      console.log(' \nAll words and phrases reviewed!')
+      return await this.shutdown()
+    }
+
     let terminalInput = inputProcessor(await this.gameState.rl.question('Review more questions (Y/N)?  '));
 
     if (terminalInput !== 'y' && terminalInput !== 'n') {
