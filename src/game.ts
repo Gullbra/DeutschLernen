@@ -1,4 +1,4 @@
-import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces";
+import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces.ts";
 import { questionNoun, questionOther, questionVerb } from "./questions.ts";
 import { inputProcessor } from "./util.ts";
 

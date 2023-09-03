@@ -1,4 +1,4 @@
-import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces";
+import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces.ts";
 import { inputProcessor } from "./util.ts";
 
 export const questionNoun = async (gameState: IGameState, word: string, dataObject: INoun): Promise<{wordOrPhrase: string, correct: boolean, error: boolean}> => {
