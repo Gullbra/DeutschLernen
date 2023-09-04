@@ -1,5 +1,3 @@
-
-
 interface IConjugation {
   conjugation: string,
   translation: string  
@@ -16,9 +14,11 @@ interface ITempora {
   future: {
     futur1: IConjugation,
     futur2: IConjugation,
+    imperativ: IConjugation
   },
+  
 }
-interface IOneD {
+interface IConjugations {
   ich: ITempora,
   du: ITempora,
   erSieEs: ITempora,
@@ -27,46 +27,33 @@ interface IOneD {
   Sie: ITempora,
 }
 
-interface IConjugations {
-  // ?
 
-  /**
-   * 1D: genus
-   * 2D: pronomen
-   * 3D: tempus
-   */
 
-  male: IOneD,
-  female: IOneD,
-  nuter: IOneD,
-  plural: IOneD,
-
+interface IWordclass {
+  class: string
 }
-
-
-
-
-interface INoun {
+interface INoun extends IWordclass {
   article: string,
   plural: string,
   translation: string[]
 }
-interface IVerb {
+interface IVerb extends IWordclass {
   translation: string[],
   regular: boolean,
   conjugations: IConjugations
 }
-interface IPreposition {
-  type: string //* [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] https://www.fluentin3months.com/german-prepositions/?expand_article=1
+interface IPreposition extends IWordclass {
+  caseType: string //* [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] https://www.fluentin3months.com/german-prepositions/?expand_article=1
   translation: string[]
 }
-interface IAdverbAdjective {
+interface IAdverbAdjective extends IWordclass {
   translation: string[]
 }
 
 
 interface IWord {
   word: string,
+  weight: number,
   classes: (INoun | IVerb | IPreposition | IAdverbAdjective)[]
 }
 interface IPhrase {
