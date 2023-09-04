@@ -1,8 +1,9 @@
-interface IConjugation {
+// * Verb conjugations: https://verben.org/sv/konjugering/geben
+export interface IConjugation {
   conjugation: string,
   translation: string  
 }
-interface ITempora {
+export interface ITempora {
   present: {
     presens: IConjugation,        
   },
@@ -15,10 +16,10 @@ interface ITempora {
     futur1: IConjugation,
     futur2: IConjugation,
     imperativ: IConjugation
-  },
-  
+    // TODO: understand and then complete the complex tepus (tempora) in german
+  }
 }
-interface IConjugations {
+export interface IConjugations {
   ich: ITempora,
   du: ITempora,
   erSieEs: ITempora,
@@ -27,39 +28,31 @@ interface IConjugations {
   Sie: ITempora,
 }
 
-
-
-interface IWordclass {
-  class: string
+export interface IWordclass {
+  class: string,
+  translation: string[]
 }
-interface INoun extends IWordclass {
+// * Noun endings: https://www.germanveryeasy.com/noun-declension
+export interface INoun extends IWordclass {
   article: string,
   plural: string,
-  translation: string[]
 }
-interface IVerb extends IWordclass {
-  translation: string[],
+// * Verbs that decide cases: https://www.fluentin3months.com/german-articles/
+export interface IVerb extends IWordclass {
   regular: boolean,
+  forcesCase: string, // [ 'Nominativ', 'Akustativ', 'Dativ', 'Genetiv' ] 
   conjugations: IConjugations
 }
-interface IPreposition extends IWordclass {
-  caseType: string //* [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] https://www.fluentin3months.com/german-prepositions/?expand_article=1
-  translation: string[]
+//* Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
+export interface IPreposition extends IWordclass {
+  forcesCase: string // [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] 
 }
-interface IAdverbAdjective extends IWordclass {
-  translation: string[]
-}
+export interface IAdverbAdjective extends IWordclass {}
 
 
-interface IWord {
+export interface IWord {
   word: string,
   weight: number,
   classes: (INoun | IVerb | IPreposition | IAdverbAdjective)[]
 }
-interface IPhrase {
-  // ?
-}
-
-
-// * Verbs that decide cases: https://www.fluentin3months.com/german-articles/
-// * https://www.germanveryeasy.com/noun-declension
+// TODO: export interface IPhrase {}
