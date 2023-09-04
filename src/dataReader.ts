@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from "path";
-import { IJsonData } from './interfaces.ts';
+//import { IJsonData } from './interfaces.ts';
 
-export const dataReader = async (): Promise<IJsonData> => fs.promises.readFile(path.join(process.cwd(), 'data', 'data.json')).then(data => JSON.parse(data.toString()))
+export const dataReader = async (fileName: string): Promise<any> => fs.promises.readFile(path.join(process.cwd(), 'data', fileName)).then(data => JSON.parse(data.toString()))
 
 // TODO: Escape capture
 // process.stdin.on('keypress', console.log);

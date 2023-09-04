@@ -1,3 +1,5 @@
+import type { Interface as rlInterface} from 'node:readline/promises';
+
 // * Verb conjugations: https://verben.org/sv/konjugering/geben
 export interface IConjugation {
   conjugation: string,
@@ -33,26 +35,40 @@ export interface IWordclass {
   translation: string[]
 }
 // * Noun endings: https://www.germanveryeasy.com/noun-declension
-export interface INoun extends IWordclass {
+export interface IClassNoun extends IWordclass {
   article: string,
   plural: string,
 }
 // * Verbs that decide cases: https://www.fluentin3months.com/german-articles/
-export interface IVerb extends IWordclass {
+export interface IClassVerb extends IWordclass {
   regular: boolean,
   forcesCase: string, // [ 'Nominativ', 'Akustativ', 'Dativ', 'Genetiv' ] 
   conjugations: IConjugations
 }
 //* Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
-export interface IPreposition extends IWordclass {
+export interface IClassPreposition extends IWordclass {
   forcesCase: string // [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] 
 }
-export interface IAdverbAdjective extends IWordclass {}
+export interface IClassAdverbAdjective extends IWordclass {}
 
 
 export interface IWord {
   word: string,
   weight: number,
-  classes: (INoun | IVerb | IPreposition | IAdverbAdjective)[]
+  classes: (IClassNoun | IClassVerb | IClassPreposition | IClassAdverbAdjective)[]
 }
 // TODO: export interface IPhrase {}
+
+export type TDataArray = IWord[]
+
+export interface INewGameState {
+  rl: rlInterface,
+  fullData: TDataArray,
+  currentData: TDataArray,
+  questionsToAnswer: number,
+  currentQuestionNumber: number,
+  correctedAnswers: {
+    dataObject: IWord,
+    correctlyAnswered: boolean
+  }[],
+}

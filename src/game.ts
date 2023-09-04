@@ -1,14 +1,16 @@
-import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces.ts";
-import { questionNoun, questionOther, questionVerb } from "./questions.ts";
+//import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces.ts";
+import { IClassNoun, INewGameState, IWord } from "./newInterfaces.ts";
+import { questionNoun, 
+  //questionOther, questionVerb 
+} from "./questions.ts";
 import { inputProcessor } from "./util.ts";
 
 export class Game { 
-  private gameState: IGameState
+  private gameState: INewGameState
 
-  constructor (gameState: IGameState) { 
+  constructor (gameState: INewGameState) { 
     this.gameState = gameState
-    this.gameState.workingData = this.gameState.wordData
-    this.gameState.workingKeys = Object.keys(this.gameState.workingData)
+    this.gameState.currentData = this.gameState.fullData.slice()
   }
 
   async startUp () {  
@@ -20,9 +22,9 @@ export class Game {
   }
 
   async modeChoice (): Promise<void> {
-    let terminalInput = Number(inputProcessor(await this.gameState.rl.question(`How many questions do want? (type a number, max ${this.gameState.workingKeys.length})  `))); 
+    let terminalInput = Number(inputProcessor(await this.gameState.rl.question(`How many questions do want? (type a number, max ${this.gameState.currentData.length})  `))); 
   
-    if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > this.gameState.workingKeys.length) {
+    if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > this.gameState.currentData.length) {
       await this.gameState.rl.question(`invalid input.`)
       return await this.modeChoice()
     }
@@ -34,36 +36,40 @@ export class Game {
   }
 
   async determineQuestion () {
-    if (this.gameState.workingQuestionNumber === this.gameState.questionsToAnswer)
+    if (this.gameState.currentQuestionNumber === this.gameState.questionsToAnswer)
       return await this.resultAndRestart()
     
-    this.gameState.workingQuestionNumber += 1
+    this.gameState.currentQuestionNumber += 1
   
-    const randomIndex = Math.floor(Math.random()*this.gameState.workingKeys.length)
-    const workingWordOrPhrase = this.gameState.workingKeys[randomIndex]
-    const workingDataObject = this.gameState.workingData[workingWordOrPhrase]
+    const randomIndex = Math.floor(Math.random()*this.gameState.currentData.length)
+    const currentDataObject = this.gameState.currentData[randomIndex]
 
-    this.gameState.workingKeys.splice(randomIndex, 1)
-    delete this.gameState.workingData[workingWordOrPhrase]
-    
-    const wordClasses = Object.keys(workingDataObject)
-    const selectedWordClass = wordClasses[Math.floor(Math.random()*wordClasses.length)]
+    if (currentDataObject.classes.length === 0) {
+      console.log(`Badly formated data: No word classes correspoding to word "${currentDataObject.word}"`)
+      return await this.shutdown()
+    } 
+
+    const selectedWordClass = currentDataObject.classes.length === 1
+      ? currentDataObject.classes[0]
+      : currentDataObject.classes[Math.floor(Math.random()*currentDataObject.classes.length)]
+
+    this.gameState.currentData.splice(randomIndex, 1)
   
-    switch (selectedWordClass) {
+    switch (selectedWordClass.class) {
       case 'noun':
-        return await this.handleResult(await questionNoun(this.gameState, workingWordOrPhrase, workingDataObject?.noun as INoun));
+        return await this.handleResult(currentDataObject, await questionNoun(this.gameState, currentDataObject.word, selectedWordClass as IClassNoun));
   
-      case 'verb':
-        return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
+      // case 'verb':
+      //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
   
-      case 'adverb':
-        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adverb as IAdverbAdjectivePhrase));
+      // case 'adverb':
+      //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adverb as IAdverbAdjectivePhrase));
 
-      case 'adjective':
-        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
+      // case 'adjective':
+      //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
 
-      case 'phrase':
-        return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.phrase as IAdverbAdjectivePhrase));
+      // case 'phrase':
+      //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.phrase as IAdverbAdjectivePhrase));
     
       default:
         console.log("Error: unhandled word/phrase class!")
@@ -71,10 +77,10 @@ export class Game {
     }
   }
 
-  async handleResult ({wordOrPhrase, correct, error}: {wordOrPhrase: string, correct: boolean, error: boolean}) {
+  async handleResult (dataObject: IWord, {correct, error}: {correct: boolean, error: boolean}) {
     if (error) this.shutdown();
 
-    this.gameState.correctedAnswers.push({wordOrPhrase, correctlyAnswered: correct})
+    this.gameState.correctedAnswers.push({ dataObject, correctlyAnswered: correct})
 
     await this.determineQuestion()
   }
@@ -82,7 +88,7 @@ export class Game {
   async resultAndRestart (): Promise<void> {
     console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correctlyAnswered).length}/${this.gameState.correctedAnswers.length}`)
 
-    if(this.gameState.workingKeys.length === 0) {
+    if(this.gameState.currentData.length === 0) {
       console.log(' \nAll words and phrases reviewed!')
       return await this.shutdown()
     }
@@ -95,8 +101,7 @@ export class Game {
     }
 
     this.gameState.questionsToAnswer = 0 
-    this.gameState.workingQuestionNumber = 0 
-    this.gameState.correctedAnswers = []
+    this.gameState.currentQuestionNumber = 0 
 
     terminalInput === "y"
       ? await (async () => { console.log("restarting...\n"); await this.modeChoice() })()
