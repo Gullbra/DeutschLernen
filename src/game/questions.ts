@@ -1,6 +1,5 @@
-//import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces.ts";
-import { IClassNoun, INewGameState } from "./newInterfaces.ts";
-import { inputProcessor } from "./util.ts";
+import { IClassNoun, INewGameState } from "../util/interfaces.ts";
+import { inputProcessor } from "../util/util.ts";
 
 export const questionNoun = async (gameState: INewGameState, word: string, dataObject: IClassNoun): Promise<{correct: boolean, error: boolean}> => {
   if ( typeof word !== 'string' || word === '' ) {

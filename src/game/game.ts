@@ -1,9 +1,8 @@
-//import { IAdverbAdjectivePhrase, IGameState, INoun, IVerb } from "./interfaces.ts";
-import { IClassNoun, INewGameState, IWord } from "./newInterfaces.ts";
+import { IClassNoun, INewGameState, IWord } from "../util/interfaces.ts";
 import { questionNoun, 
   //questionOther, questionVerb 
 } from "./questions.ts";
-import { inputProcessor } from "./util.ts";
+import { inputProcessor } from "../util/util.ts";
 
 export class Game { 
   private gameState: INewGameState

@@ -1,8 +1,8 @@
 //import { IJsonData, IGameState } from "./interfaces.ts"
 import * as readline from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
-import { Game } from "./game.ts";
-import { IWord, TDataArray, INewGameState } from "./newInterfaces.ts";
+import { Game } from "./game/game.ts";
+import { IWord, TDataArray, INewGameState } from "./util/interfaces.ts";
 const dataReader = (await import(process.env.MODE === "ts-node" ? './dataReader.ts' : './dataReader')).dataReader as (fileName: string) => Promise<any>
 
 // const gameState: IGameState = {

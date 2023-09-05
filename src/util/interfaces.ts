@@ -49,6 +49,8 @@ export interface IClassVerb extends IWordclass {
 export interface IClassPreposition extends IWordclass {
   forcesCase: string // [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] 
 }
+// * Some adjectives: https://mydailygerman.com/german-adjectives/
+// * Some adverbs: https://www.germanveryeasy.com/german-adverbs
 export interface IClassAdverbAdjective extends IWordclass {}
 
 

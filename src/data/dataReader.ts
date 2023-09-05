@@ -1,6 +1,5 @@
 import fs from 'fs'
 import path from "path";
-//import { IJsonData } from './interfaces.ts';
 
 export const dataReader = async (fileName: string): Promise<any> => fs.promises.readFile(path.join(process.cwd(), 'data', fileName)).then(data => JSON.parse(data.toString()))
 
