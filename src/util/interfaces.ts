@@ -45,7 +45,7 @@ export interface IClassVerb extends IWordclass {
   forcesCase: string, // [ 'Nominativ', 'Akustativ', 'Dativ', 'Genetiv' ] 
   conjugations: IConjugations
 }
-//* Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
+// * Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
 export interface IClassPreposition extends IWordclass {
   forcesCase: string // [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ] 
 }
