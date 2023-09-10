@@ -1,4 +1,4 @@
-import { IClassAdverbAdjective, IClassNoun, INewGameState, IWordclass } from "../util/interfaces.ts";
+import { IClassAdverbAdjective, IClassNoun, IClassPreposition, INewGameState, IWordclass } from "../util/interfaces.ts";
 import { inputProcessor } from "../util/util.ts";
 
 const questionInputGenericValidation = (word: string, dataObject: IWordclass): boolean => (
@@ -60,6 +60,20 @@ export const questionAdverb = async (gameState: INewGameState, word: string, dat
     : await gameState.rl.question(`Not quite. Correct answer is "${dataObject.translation.join(', ')}"\n`)   
 
   return { correct: correctAnswer, error: false }
+}
+
+export const questionPreposition = async (gameState: INewGameState, word: string, dataObject: IClassPreposition): Promise<{correct: boolean, error: boolean}> => {
+  if (questionInputGenericValidation(word, dataObject)) {
+    console.log(`No or invalid dataObject sent to question for word "${word}"`); 
+    return { correct: false, error: true }
+  }
+
+
+
+  
+  console.log('preposition: unimplemented')
+
+  return { correct: false, error: false }
 }
 
 // export const questionVerb = async (gameState: IGameState, word: string, dataObject: IVerb) => { 

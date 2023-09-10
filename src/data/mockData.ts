@@ -1,4 +1,4 @@
-import { IWord } from "../util/interfaces.ts";
+import { IClassPreposition, IWord } from "../util/interfaces.ts";
 
 export const mockDataNoun: IWord[] = [
   {
@@ -117,6 +117,148 @@ export const mockDataNoun: IWord[] = [
         "class": "noun",
         "article": "der",
         "translation": ["wing", "blade", "piano", "sail"]
+      }
+    ]
+  },
+
+  {
+    "word": "Blödsinn",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "translation": ["nonsense", "rubbige", "piano", "sail"]
+      }
+    ]
+  },
+
+  {
+    "word": "Sinn",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "translation": ["sence", "meaning", "signification", "feeling"]
+      }
+    ]
+  },
+
+  {
+    "word": "Fahndung",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "translation": ["manhunt", "search"]
+      }
+    ]
+  },
+
+  {
+    "word": "Beitrag",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "translation": ["contribution", "article", "fee", "input", "premium"]
+      }
+    ]
+  },
+
+  {
+    "word": "Empfänger",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "translation": ["recipient", "receiver"]
+      }
+    ]
+  },
+
+  {
+    "word": "Träger",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "translation": ["carrier", "support", "bearer", "holder", "wearer", "strap", "sponsor"]
+      }
+    ]
+  },
+
+  {
+    "word": "Berater",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "translation": ["advisor", "consultant", "aide", "counselor"]
+      }
+    ]
+  }
+]
+
+export const mockDataPrepositions: IWord[] = [
+  {
+    word: "bis",
+    weight: 100,
+    classes: [
+      {
+        class: "preposition",
+        translation: [
+          "until", "to", "up to", "till"
+        ],
+        forcesCase: "accusative",
+        commonUses: [
+          { example: "bis fünf Uhr", translation: "until five o'clock" },
+          { example: "bis ich geheiratet habe", translation: "until I got married" },
+          { example: "Bis die Kinder finanziell unabhängig sind", translation: "until the children are financially independent" }
+        ]
+      }
+    ]
+  },
+  {
+    word: "durch",
+    weight: 100,
+    classes: [
+      {
+        class: "preposition",
+        translation: [
+          "through", "by", "due to", "via", "by way of", "thru", "per"
+        ],
+        forcesCase: "accusative",
+        commonUses: [
+          { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
+          { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
+          { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" },
+          { example: "durch Beharrlichkeit kommt man ans Ziel", translation: "through persistence you reach your goal" }
+        ]
+      }
+    ]
+  },
+  {
+    word: "für",
+    weight: 100,
+    classes: [
+      {
+        class: "preposition",
+        translation: [
+          "through", "by", "due to", "via", "by way of", "thru", "per"
+        ],
+        forcesCase: "accusative",
+        commonUses: [
+          { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
+          { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
+          { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" }
+        ]
       }
     ]
   }
@@ -319,6 +461,17 @@ export const mockDataOtherWords: IWord[] = [
   // },
 
   // {
+  //   "word": "vorwarnen",
+  //   "weight": 100,
+  //   "classes": [
+  //     {
+  //       "class": "verb",
+  //       "translation": ["forewarn"]
+  //     }
+  //   ]
+  // },
+
+  // {
   //   "word": "räumen",
   //   "weight": 100,
   //   "classes": [
@@ -435,6 +588,17 @@ export const mockDataOtherWords: IWord[] = [
   //     {
   //       "class": "verb",
   //       "translation": ["show", "point", "demonstrate", "indicate", "display", "reveal", "present"]
+  //     }
+  //   ]
+  // },
+
+  // {
+  //   word: "unentschieden",
+  //   weight: 100,
+  //   classes: [
+  //     {
+  //       class: "adjective",
+  //       translation: ["draw", "undecided", "indecisive", "undetermined"]
   //     }
   //   ]
   // }

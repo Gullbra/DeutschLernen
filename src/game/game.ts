@@ -1,7 +1,8 @@
-import { IClassAdverbAdjective, IClassNoun, INewGameState, IWord } from "../util/interfaces.ts";
+import { IClassAdverbAdjective, IClassNoun, INewGameState, IWord, IClassPreposition } from "../util/interfaces.ts";
 import { 
   questionNoun, 
   questionAdverb,
+  questionPreposition,
   // questionOther,
   // questionVerb 
 } from "./questions.ts";
@@ -63,11 +64,13 @@ export class Game {
 
       case 'adverb':
         return await this.handleResult(currentDataObject, await questionAdverb(this.gameState, currentDataObject.word, selectedWordClass as IClassAdverbAdjective));
-  
+
+      case 'preposition':
+        return await this.handleResult(currentDataObject, await questionPreposition(this.gameState, currentDataObject.word, selectedWordClass as IClassPreposition));
+
       // case 'verb':
       //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
   
-
       // case 'adjective':
       //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
 
