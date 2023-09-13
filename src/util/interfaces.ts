@@ -48,7 +48,7 @@ export interface IClassVerb extends IWordclass {
 // * Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
 export interface IClassPreposition extends IWordclass {
   forcesCase: string, // [ 'akustativ', 'dativ', 'wechsel', 'genetiv' ]
-  commonUses: { example: string, translation:string }[]
+  commonUses: { example: string, translation: string }[]
 }
 // * Some adjectives: https://mydailygerman.com/german-adjectives/
 // * Some adverbs: https://www.germanveryeasy.com/german-adverbs

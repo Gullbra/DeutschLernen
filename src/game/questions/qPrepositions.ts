@@ -23,7 +23,7 @@ export const questionPreposition = async (gameState: IGameState, word: string, d
   }
 
   const caseQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`What case will a noun refered to by the ${dataObject.class} "${word}" have?\nYour answer: `))
+    terminalInput = inputProcessor(await gameState.lineReader.question(`What case(Akusativ, Dativ, Wechsel, or Genetiv) will a noun refered to by the ${dataObject.class} "${word}" have?\nYour answer: `))
 
     correctlyAnswered = terminalInput === dataObject.forcesCase
 

@@ -69,11 +69,11 @@ export class Game {
       case 'preposition':
         return await this.handleResult(currentDataObject, await questionPreposition(this.gameState, currentDataObject.word, selectedWordClass as IClassPreposition));
 
-      // case 'verb':
-      //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
-  
       // case 'adjective':
       //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
+      
+      // case 'verb':
+      //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
 
       // case 'phrase':
       //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.phrase as IAdverbAdjectivePhrase));
