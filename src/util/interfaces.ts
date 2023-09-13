@@ -47,7 +47,7 @@ export interface IClassVerb extends IWordclass {
 }
 // * Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
 export interface IClassPreposition extends IWordclass {
-  forcesCase: string, // [ 'Akustativ', 'Dativ', 'Wechsel', 'Genetiv' ]
+  forcesCase: string, // [ 'akustativ', 'dativ', 'wechsel', 'genetiv' ]
   commonUses: { example: string, translation:string }[]
 }
 // * Some adjectives: https://mydailygerman.com/german-adjectives/
@@ -64,9 +64,11 @@ export interface IWord {
 
 export type TDataArray = IWord[]
 
-export interface INewGameState {
-  rl: rlInterface,
+export interface IGameInput {
+  lineReader: rlInterface,
   fullData: TDataArray,
+}
+export interface IGameState extends IGameInput{
   currentData: TDataArray,
   questionsToAnswer: number,
   currentQuestionNumber: number,

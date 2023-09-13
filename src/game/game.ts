@@ -1,19 +1,20 @@
-import { IClassAdverbAdjective, IClassNoun, INewGameState, IWord, IClassPreposition } from "../util/interfaces.ts";
-import { 
-  questionNoun, 
-  questionAdverb,
-  questionPreposition,
-  // questionOther,
-  // questionVerb 
-} from "./questions.ts";
+import { IClassAdverbAdjective, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput } from "../util/interfaces.ts";
 import { inputProcessor } from "../util/util.ts";
+import { questionPreposition } from "./questions/qPrepositions.ts";
+import { questionNoun } from "./questions/qNouns.ts";
+import { questionAdverb } from "./questions/qAdverbs.ts";
 
 export class Game { 
-  private gameState: INewGameState
+  private gameState: IGameState
 
-  constructor (gameState: INewGameState) { 
-    this.gameState = gameState
-    this.gameState.currentData = this.gameState.fullData.slice()
+  constructor (input: IGameInput) { 
+    this.gameState = {
+      ...input,
+      currentData: input.fullData.slice(),
+      questionsToAnswer: 0,
+      currentQuestionNumber: 0,
+      correctedAnswers: [] as { dataObject: IWord, correctlyAnswered: boolean }[]
+    }
   }
 
   async startUp () {  
@@ -25,15 +26,15 @@ export class Game {
   }
 
   async modeChoice (): Promise<void> {
-    let terminalInput = Number(inputProcessor(await this.gameState.rl.question(`How many questions do want? (type a number, max ${this.gameState.currentData.length})  `))); 
+    let terminalInput = Number(inputProcessor(await this.gameState.lineReader.question(`How many questions do want? (type a number, max ${this.gameState.currentData.length})  `))); 
   
     if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > this.gameState.currentData.length) {
-      await this.gameState.rl.question(`invalid input.`)
+      await this.gameState.lineReader.question(`invalid input.`)
       return await this.modeChoice()
     }
   
     this.gameState.questionsToAnswer = terminalInput
-    await this.gameState.rl.question(`\n${this.gameState.questionsToAnswer} questions will be provided. Lass uns anfangen!\n`)
+    await this.gameState.lineReader.question(`\n${this.gameState.questionsToAnswer} questions will be provided. Lass uns anfangen!\n`)
   
     await this.determineQuestion()
   }
@@ -99,7 +100,7 @@ export class Game {
       return await this.shutdown()
     }
 
-    let terminalInput = inputProcessor(await this.gameState.rl.question('Review more questions (Y/N)?  '));
+    let terminalInput = inputProcessor(await this.gameState.lineReader.question('Review more questions (Y/N)?  '));
 
     if (terminalInput !== 'y' && terminalInput !== 'n') {
       console.log('Invalid input\n')
@@ -116,6 +117,6 @@ export class Game {
 
   async shutdown () {
     console.log("\nShutting down...")
-    this.gameState.rl.close()
+    this.gameState.lineReader.close()
   }
 }

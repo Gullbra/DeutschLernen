@@ -1,4 +1,4 @@
-import { IClassPreposition, IWord } from "../util/interfaces.ts";
+import { IWord } from "../util/interfaces.ts";
 
 export const mockDataNoun: IWord[] = [
   {
@@ -203,6 +203,18 @@ export const mockDataNoun: IWord[] = [
         "translation": ["advisor", "consultant", "aide", "counselor"]
       }
     ]
+  },
+
+  {
+    "word": "Ziel",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "translation": ["goal", "target", "objective", "aim", "destination", "end", "finishing line"]
+      }
+    ]
   }
 ]
 
@@ -216,7 +228,7 @@ export const mockDataPrepositions: IWord[] = [
         translation: [
           "until", "to", "up to", "till"
         ],
-        forcesCase: "accusative",
+        forcesCase: "akustativ",
         commonUses: [
           { example: "bis fünf Uhr", translation: "until five o'clock" },
           { example: "bis ich geheiratet habe", translation: "until I got married" },
@@ -234,7 +246,7 @@ export const mockDataPrepositions: IWord[] = [
         translation: [
           "through", "by", "due to", "via", "by way of", "thru", "per"
         ],
-        forcesCase: "accusative",
+        forcesCase: "akustativ",
         commonUses: [
           { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
           { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
@@ -251,9 +263,9 @@ export const mockDataPrepositions: IWord[] = [
       {
         class: "preposition",
         translation: [
-          "through", "by", "due to", "via", "by way of", "thru", "per"
+          "for", "in favor of", "considering", "in return for", "instead of", "in place of"
         ],
-        forcesCase: "accusative",
+        forcesCase: "akustativ",
         commonUses: [
           { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
           { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
@@ -328,7 +340,7 @@ export const mockDataOtherWords: IWord[] = [
     "classes": [
       {
         "class": "adverb",
-        "translation": ["indeed", "in fact", "really", "objectively"]
+        "translation": ["indeed", "in fact", "really", "objectively", "actually"]
       },
       // {
       //   "class": "adjective",
