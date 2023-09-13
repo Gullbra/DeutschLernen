@@ -5,6 +5,7 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
+    "start": "npm run dev",
     "dev": "cross-env MODE=ts-node ts-node --esm src/index.ts"
   },
   "repository": {

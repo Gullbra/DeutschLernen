@@ -45,7 +45,7 @@ export class Game {
     
     this.gameState.currentQuestionNumber += 1
   
-    const randomIndex = Math.floor(Math.random()*this.gameState.currentData.length)
+    const randomIndex = Math.round(Math.random()*(this.gameState.currentData.length - 1))
     const currentDataObject = this.gameState.currentData[randomIndex]
 
     if (currentDataObject.classes.length === 0) {
@@ -71,7 +71,7 @@ export class Game {
 
       // case 'adjective':
       //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
-      
+
       // case 'verb':
       //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
 
@@ -107,11 +107,12 @@ export class Game {
       return await this.resultAndRestart()
     }
 
-    this.gameState.questionsToAnswer = 0 
-    this.gameState.currentQuestionNumber = 0 
-
     terminalInput === "y"
-      ? await (async () => { console.log("restarting...\n"); await this.modeChoice() })()
+      ? await (async () => {
+          this.gameState.questionsToAnswer = this.gameState.currentQuestionNumber = 0 
+          console.log("restarting...\n"); 
+          await this.modeChoice() 
+        })()
       : await this.shutdown()
   }
 

@@ -128,7 +128,7 @@ export const mockDataNoun: IWord[] = [
       {
         "class": "noun",
         "article": "der",
-        "translation": ["nonsense", "rubbige", "piano", "sail"]
+        "translation": ["nonsense", "tomfoolery"]
       }
     ]
   },
@@ -140,7 +140,7 @@ export const mockDataNoun: IWord[] = [
       {
         "class": "noun",
         "article": "der",
-        "translation": ["sence", "meaning", "signification", "feeling"]
+        "translation": ["sense", "meaning", "signification", "feeling"]
       }
     ]
   },
@@ -228,7 +228,7 @@ export const mockDataPrepositions: IWord[] = [
         translation: [
           "until", "to", "up to", "till"
         ],
-        forcesCase: "akustativ",
+        forcesCase: "akusativ",
         commonUses: [
           { example: "bis fünf Uhr", translation: "until five o'clock" },
           { example: "bis ich heirate", translation: "until I get married" },
@@ -249,7 +249,7 @@ export const mockDataPrepositions: IWord[] = [
   //       translation: [
   //         "through", "by", "due to", "via", "by way of", "thru", "per"
   //       ],
-  //       forcesCase: "akustativ",
+  //       forcesCase: "akusativ",
   //       commonUses: [
   //         { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
   //         { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
@@ -268,7 +268,7 @@ export const mockDataPrepositions: IWord[] = [
   //       translation: [
   //         "for", "in favor of", "considering", "in return for", "instead of", "in place of"
   //       ],
-  //       forcesCase: "akustativ",
+  //       forcesCase: "akusativ",
   //       commonUses: [
   //       ]
   //     }

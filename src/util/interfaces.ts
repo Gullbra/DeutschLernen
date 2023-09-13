@@ -51,6 +51,7 @@ export interface IClassPreposition extends IWordclass {
   commonUses: { example: string, translation: string }[]
 }
 // * Some adjectives: https://mydailygerman.com/german-adjectives/
+// * "declining" of adjectives https://learn-german-easily.com/the-adjectives
 // * Some adverbs: https://www.germanveryeasy.com/german-adverbs
 export interface IClassAdverbAdjective extends IWordclass {}
 
