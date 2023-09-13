@@ -231,49 +231,49 @@ export const mockDataPrepositions: IWord[] = [
         forcesCase: "akustativ",
         commonUses: [
           { example: "bis fünf Uhr", translation: "until five o'clock" },
-          { example: "bis ich geheiratet habe", translation: "until I got married" },
-          { example: "Bis die Kinder finanziell unabhängig sind", translation: "until the children are financially independent" }
+          { example: "bis ich heirate", translation: "until I get married" },
+          { example: "bis zur Nacht", translation: "until the night" },
+          { example: "bis zum Hotel", translation: "up to the hotel"},
+          { example: "bis hierher und nicht weiter", translation: "up to here and no further"}
+          // { example: "Bis die Kinder finanziell unabhängig sind", translation: "until the children are financially independent" }
         ]
       }
     ]
   },
-  {
-    word: "durch",
-    weight: 100,
-    classes: [
-      {
-        class: "preposition",
-        translation: [
-          "through", "by", "due to", "via", "by way of", "thru", "per"
-        ],
-        forcesCase: "akustativ",
-        commonUses: [
-          { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
-          { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
-          { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" },
-          { example: "durch Beharrlichkeit kommt man ans Ziel", translation: "through persistence you reach your goal" }
-        ]
-      }
-    ]
-  },
-  {
-    word: "für",
-    weight: 100,
-    classes: [
-      {
-        class: "preposition",
-        translation: [
-          "for", "in favor of", "considering", "in return for", "instead of", "in place of"
-        ],
-        forcesCase: "akustativ",
-        commonUses: [
-          { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
-          { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
-          { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" }
-        ]
-      }
-    ]
-  }
+  // {
+  //   word: "durch",
+  //   weight: 100,
+  //   classes: [
+  //     {
+  //       class: "preposition",
+  //       translation: [
+  //         "through", "by", "due to", "via", "by way of", "thru", "per"
+  //       ],
+  //       forcesCase: "akustativ",
+  //       commonUses: [
+  //         { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
+  //         { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
+  //         { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" },
+  //         { example: "durch Beharrlichkeit kommt man ans Ziel", translation: "through persistence you reach your goal" }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   word: "für",
+  //   weight: 100,
+  //   classes: [
+  //     {
+  //       class: "preposition",
+  //       translation: [
+  //         "for", "in favor of", "considering", "in return for", "instead of", "in place of"
+  //       ],
+  //       forcesCase: "akustativ",
+  //       commonUses: [
+  //       ]
+  //     }
+  //   ]
+  // }
 ]
 
 export const mockDataOtherWords: IWord[] = [

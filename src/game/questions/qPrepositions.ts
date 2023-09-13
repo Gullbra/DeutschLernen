@@ -1,5 +1,5 @@
 import { IClassPreposition, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, questionInputGenericValidation, qResultMeaningUI } from "../../util/util.ts";
+import { inputProcessor, questionInputGenericValidation, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
 
 export const questionPreposition = async (gameState: IGameState, word: string, dataObject: IClassPreposition): Promise<{correct: boolean, error: boolean}> => {
   if (
@@ -15,19 +15,40 @@ export const questionPreposition = async (gameState: IGameState, word: string, d
   let terminalInput: string;
 
   const meaningQuestion = async () => {
-    terminalInput = inputProcessor(
-      await gameState
-        .lineReader
-        .question(`What does the ${dataObject.class} "${word}" mean"?\nYour answer: `)
-    );
+    terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${word}" mean"?\nYour answer: `));
+
     correctlyAnswered = dataObject.translation.some(el => el === terminalInput)
 
     await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation))
   }
 
-  await meaningQuestion()
+  const caseQuestion = async () => {
+    terminalInput = inputProcessor(await gameState.lineReader.question(`What case will a noun refered to by the ${dataObject.class} "${word}" have?\nYour answer: `))
 
-  console.log('preposition: WIP')
+    correctlyAnswered = terminalInput === dataObject.forcesCase
+
+    await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, dataObject.forcesCase))
+  }
+
+  const caseExercise = async () => {
+    const selectedUseCase = dataObject.commonUses[Math.round(Math.random()*(dataObject.commonUses.length - 1))]
+
+    terminalInput = inputProcessor(await gameState.lineReader.question(`Using the ${dataObject.class} "${word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
+
+    correctlyAnswered = terminalInput === selectedUseCase.example.toLowerCase()
+
+    await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, selectedUseCase.example))
+  }
+
+  const randomizeExerciseType = Math.round(Math.random() * 3)
+
+  if (randomizeExerciseType === 3) {
+    await meaningQuestion()
+  } else if (randomizeExerciseType === 2) {
+    await caseQuestion()
+  } else {
+    await caseExercise()
+  }
 
   return { correct: correctlyAnswered, error: false }
 }

@@ -7,8 +7,8 @@ import { mockDataNoun, mockDataOtherWords, mockDataPrepositions } from './data/m
 new Game({
   lineReader: createInterface({ input: stdin, output: stdout }),
   fullData: [ 
-     ...mockDataNoun, 
-     ...mockDataOtherWords,
-    // ...mockDataPrepositions 
+    // ...mockDataNoun, 
+    // ...mockDataOtherWords,
+     ...mockDataPrepositions 
   ],
 }).startUp()

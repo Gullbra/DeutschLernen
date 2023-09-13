@@ -24,6 +24,11 @@ export const qResultMeaningUI = (correctlyAnswered: boolean, answer: string, tra
     : `Not quite. Correct answer(s) is(are): ${lineUpTranslations(translation)}\n`
 }
 
+export const qResultSimpleUI = (correctlyAnswered: boolean, correctAnswer: string) => {
+  return correctlyAnswered
+    ? `Correct!\n`
+    : `Not quite. Correct answer is: ${correctAnswer}\n`
+}
 
 
 // TODO: add a handler for 'ss' = 'ß'
