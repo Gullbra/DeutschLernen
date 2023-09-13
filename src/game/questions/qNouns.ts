@@ -10,47 +10,48 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
     return { correct: false, error: true }
   }
 
-  let correctlyAnswered: boolean = false; let terminalInput: string;
+  let correctlyAnswered: boolean = false; 
+  let terminalInput: string;
 
-  const articleQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`Which article corresponds to "${word}", meaning: ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
-    correctlyAnswered = terminalInput === dataObject.article
-
-    correctlyAnswered
-      ? await gameState.lineReader.question(`Correct!\n`)
-      : await gameState.lineReader.question(`Not quite. Correct answer is "${dataObject.article}"\n`)
-  }
-
-  const meaningQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${dataObject.article} ${word}" mean?\nYour answer: `));
-    
-    if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the '))
-      terminalInput = 'the ' + terminalInput;
-
-    correctlyAnswered = dataObject.translation.some(el => "the " + el === terminalInput)
-
-    await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation.map(el => 'the ' + el)))
-  }
-
-  const pluralQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`What is the plural form of the ${dataObject.class} "${dataObject.article} ${word}", meaning ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
-
-    if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'die '))
-      terminalInput = 'die ' + terminalInput;
-
-    correctlyAnswered = 'die ' + dataObject.plural.toLowerCase() === terminalInput    
-
-    await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + dataObject.plural))
+  const questions = {
+    articleQuestion: async () => {
+      terminalInput = inputProcessor(await gameState.lineReader.question(`Which article corresponds to "${word}", meaning: ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
+      correctlyAnswered = terminalInput === dataObject.article
+  
+      correctlyAnswered
+        ? await gameState.lineReader.question(`Correct!\n`)
+        : await gameState.lineReader.question(`Not quite. Correct answer is "${dataObject.article}"\n`)
+    },
+    meaningQuestion: async () => {
+      terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${dataObject.article} ${word}" mean?\nYour answer: `));
+      
+      if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the '))
+        terminalInput = 'the ' + terminalInput;
+  
+      correctlyAnswered = dataObject.translation.some(el => "the " + el === terminalInput)
+  
+      await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation.map(el => 'the ' + el)))
+    },
+    pluralQuestion: async () => {
+      terminalInput = inputProcessor(await gameState.lineReader.question(`What is the plural form of the ${dataObject.class} "${dataObject.article} ${word}", meaning ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
+  
+      if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'die '))
+        terminalInput = 'die ' + terminalInput;
+  
+      correctlyAnswered = 'die ' + dataObject.plural.toLowerCase() === terminalInput    
+  
+      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + dataObject.plural))
+    },
   }
 
   if (dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0) {
-    await pluralQuestion()
+    await questions.pluralQuestion()
     return { correct: correctlyAnswered, error: false }
   }
 
   Math.round(Math.random()) === 0
-    ? await meaningQuestion()
-    : await articleQuestion()
+    ? await questions.meaningQuestion()
+    : await questions.articleQuestion()
 
   return { correct: correctlyAnswered, error: false }
 }

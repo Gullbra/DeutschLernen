@@ -14,40 +14,40 @@ export const questionPreposition = async (gameState: IGameState, word: string, d
   let correctlyAnswered: boolean = false 
   let terminalInput: string;
 
-  const meaningQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${word}" mean"?\nYour answer: `));
-
-    correctlyAnswered = dataObject.translation.some(el => el === terminalInput)
-
-    await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation))
-  }
-
-  const caseQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`What case(Akusativ, Dativ, Wechsel, or Genetiv) will a noun refered to by the ${dataObject.class} "${word}" have?\nYour answer: `))
-
-    correctlyAnswered = terminalInput === dataObject.forcesCase
-
-    await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, dataObject.forcesCase))
-  }
-
-  const caseExercise = async () => {
-    const selectedUseCase = randomizeArrayElement(dataObject.commonUses)
-
-    terminalInput = inputProcessor(await gameState.lineReader.question(`Using the ${dataObject.class} "${word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
-
-    correctlyAnswered = terminalInput === selectedUseCase.example.toLowerCase()
-
-    await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, selectedUseCase.example))
+  const questions = {
+    meaningQuestion: async () => {
+      terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${word}" mean"?\nYour answer: `));
+  
+      correctlyAnswered = dataObject.translation.some(el => el === terminalInput)
+  
+      await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation))
+    },
+    caseQuestion: async () => {
+      terminalInput = inputProcessor(await gameState.lineReader.question(`What case(Akusativ, Dativ, Wechsel, or Genetiv) will a noun refered to by the ${dataObject.class} "${word}" have?\nYour answer: `))
+  
+      correctlyAnswered = terminalInput === dataObject.forcesCase
+  
+      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, dataObject.forcesCase))
+    },
+    caseExercise: async () => {
+      const selectedUseCase = randomizeArrayElement(dataObject.commonUses)
+  
+      terminalInput = inputProcessor(await gameState.lineReader.question(`Using the ${dataObject.class} "${word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
+  
+      correctlyAnswered = terminalInput === selectedUseCase.example.toLowerCase()
+  
+      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, selectedUseCase.example))
+    }
   }
 
   const randomizeExerciseType = Math.round(Math.random() * 3)
 
   if (randomizeExerciseType === 3) {
-    await meaningQuestion()
+    await questions.meaningQuestion()
   } else if (randomizeExerciseType === 2) {
-    await caseQuestion()
+    await questions.caseQuestion()
   } else {
-    await caseExercise()
+    await questions.caseExercise()
   }
 
   return { correct: correctlyAnswered, error: false }
