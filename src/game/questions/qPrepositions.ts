@@ -1,5 +1,5 @@
 import { IClassPreposition, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, questionInputGenericValidation, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
+import { inputProcessor, questionInputGenericValidation, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
 
 export const questionPreposition = async (gameState: IGameState, word: string, dataObject: IClassPreposition): Promise<{correct: boolean, error: boolean}> => {
   if (
@@ -31,7 +31,7 @@ export const questionPreposition = async (gameState: IGameState, word: string, d
   }
 
   const caseExercise = async () => {
-    const selectedUseCase = dataObject.commonUses[Math.round(Math.random()*(dataObject.commonUses.length - 1))]
+    const selectedUseCase = randomizeArrayElement(dataObject.commonUses)
 
     terminalInput = inputProcessor(await gameState.lineReader.question(`Using the ${dataObject.class} "${word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
 

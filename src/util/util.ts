@@ -4,6 +4,10 @@ export const inputProcessor = (inputString: string): string => inputString.toLow
 
 export const capitalize = (word: string): string =>  word[0].toUpperCase() + word.substring(1).toLowerCase()
 
+export const randomizeArrayIndex = <T,>(arr: T[]): number => arr.length === 1 ? 0 : Math.round(Math.random()*(arr.length - 1))
+
+export const randomizeArrayElement = <T,>(arr: T[]): T => arr.length === 1 ? arr[0] : arr[randomizeArrayIndex(arr)]
+
 export const questionInputGenericValidation = (word: string, dataObject: IWordclass): boolean => (
   typeof word !== 'string' || word === '' ||
   !dataObject || typeof dataObject !== 'object' || Array.isArray(dataObject) ||

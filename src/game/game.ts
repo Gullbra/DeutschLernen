@@ -1,5 +1,5 @@
 import { IClassAdverbAdjective, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput } from "../util/interfaces.ts";
-import { inputProcessor } from "../util/util.ts";
+import { inputProcessor, randomizeArrayElement, randomizeArrayIndex } from "../util/util.ts";
 import { questionPreposition } from "./questions/qPrepositions.ts";
 import { questionNoun } from "./questions/qNouns.ts";
 import { questionAdverb } from "./questions/qAdverbs.ts";
@@ -43,9 +43,14 @@ export class Game {
     if (this.gameState.currentQuestionNumber === this.gameState.questionsToAnswer)
       return await this.resultAndRestart()
     
+    if (this.gameState.currentData.length === 0) {
+      console.log('No data found!\n')
+      return await this.shutdown()
+    }
+    
     this.gameState.currentQuestionNumber += 1
   
-    const randomIndex = Math.round(Math.random()*(this.gameState.currentData.length - 1))
+    const randomIndex = randomizeArrayIndex(this.gameState.currentData)
     const currentDataObject = this.gameState.currentData[randomIndex]
 
     if (currentDataObject.classes.length === 0) {
@@ -53,10 +58,7 @@ export class Game {
       return await this.shutdown()
     } 
 
-    const selectedWordClass = currentDataObject.classes.length === 1
-      ? currentDataObject.classes[0]
-      : currentDataObject.classes[Math.floor(Math.random()*currentDataObject.classes.length)]
-
+    const selectedWordClass = randomizeArrayElement(currentDataObject.classes)
     this.gameState.currentData.splice(randomIndex, 1)
   
     switch (selectedWordClass.class) {

@@ -16,7 +16,7 @@ export const questionAdjective = async (gameState: IGameState, word: string, dat
 }
 
 /* //* Adjective declining matrix:
-  bestämdform (der, das, die)
+  bestämdform (der/den/dem/des, das/das/dem/des, die/die/der/der)
     nominativ (-e/-e/-e):
       der: der kleine heiße Kaffee
       das: das kleine warme Sandwich
@@ -37,7 +37,7 @@ export const questionAdjective = async (gameState: IGameState, word: string, dat
       das: (das Licht) des großen weißen Elements
       die: (das Licht) der großen weißen Sonne
 
-  obestämd
+  obestämd (ein/einen/einem/eines, ein/ein/einem/eines, eine/eine/einer/einer)
     nominativ (-er/-es/-e)
       der: ein kleiner heißer Kaffee
       das: ein kleines warmes Sandwich
