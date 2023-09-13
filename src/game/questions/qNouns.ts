@@ -1,5 +1,5 @@
 import { IClassNoun, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, questionInputGenericValidation, lineUpTranslations, qResultMeaningUI } from "../../util/util.ts";
+import { inputProcessor, questionInputGenericValidation, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
 
 export const questionNoun = async (gameState: IGameState, word: string, dataObject: IClassNoun): Promise<{correct: boolean, error: boolean}> => {
   if (
@@ -22,7 +22,7 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
   }
 
   const meaningQuestion = async () => {
-    terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${dataObject.article} ${word}" mean"?\nYour answer: `));
+    terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${dataObject.article} ${word}" mean?\nYour answer: `));
     
     if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the '))
       terminalInput = 'the ' + terminalInput;
@@ -30,6 +30,22 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
     correctlyAnswered = dataObject.translation.some(el => "the " + el === terminalInput)
 
     await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation.map(el => 'the ' + el)))
+  }
+
+  const pluralQuestion = async () => {
+    terminalInput = inputProcessor(await gameState.lineReader.question(`What is the plural form of the ${dataObject.class} "${dataObject.article} ${word}", meaning ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
+
+    if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'die '))
+      terminalInput = 'die ' + terminalInput;
+
+    correctlyAnswered = 'die ' + dataObject.plural.toLowerCase() === terminalInput    
+
+    await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + dataObject.plural))
+  }
+
+  if (dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0) {
+    await pluralQuestion()
+    return { correct: correctlyAnswered, error: false }
   }
 
   Math.round(Math.random()) === 0

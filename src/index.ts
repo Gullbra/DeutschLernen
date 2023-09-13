@@ -8,7 +8,7 @@ new Game({
   lineReader: createInterface({ input: stdin, output: stdout }),
   fullData: [ 
     ...mockDataNoun, 
-    ...mockDataOtherWords,
-    ...mockDataPrepositions 
+    // ...mockDataOtherWords,
+    // ...mockDataPrepositions 
   ],
 }).startUp()

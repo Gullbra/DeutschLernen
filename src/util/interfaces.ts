@@ -35,6 +35,8 @@ export interface IWordclass {
   translation: string[]
 }
 // * Noun endings: https://www.germanveryeasy.com/noun-declension
+// * Noun sex - neuters https://www.colanguage.com/german-neuter-nouns-list
+// * Noun sex - https://www.colanguage.com/gender-german-nouns
 export interface IClassNoun extends IWordclass {
   article: string,
   plural: string,

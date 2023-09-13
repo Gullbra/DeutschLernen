@@ -7,6 +7,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Stimmungen",
         "article": "die",
         "translation": ["humor", "mood", "atmosphere", "feeling", "spirit", "disposition", "temper"]
       }
@@ -19,6 +20,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Mischungen",
         "article": "die",
         "translation": ["mix", "mixture", "combination", "blend"]
       }
@@ -31,6 +33,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Ausdrücke",
         "article": "der",
         "translation": ["expression", "term", "phrase"]
       }
@@ -43,6 +46,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "no plural",
         "article": "der",
         "translation": ["garbage", "trash", "junk", "waste", "rubbish"]
       }
@@ -55,6 +59,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Miststücke",
         "article": "das",
         "translation": ["bitch", "bastard"]
       }
@@ -67,6 +72,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Unterschiede",
         "article": "der",
         "translation": ["diffrence", "distinction", "differential", "variation"]
       }
@@ -79,6 +85,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "no plural",
         "article": "das",
         "translation": ["evil"]
       }
@@ -86,12 +93,13 @@ export const mockDataNoun: IWord[] = [
   },
 
   {
-    "word": "Erfolge",
+    "word": "Erfolg",
     "weight": 100,
     "classes": [
       {
         "class": "noun",
-        "article": "die",
+        "plural": "Erfolge",
+        "article": "der",
         "translation": ["success", "achievement"]
       }
     ]
@@ -103,6 +111,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Beziehungen",
         "article": "die",
         "translation": ["relationship", "relation", "connection", "correlation", "contact"]
       }
@@ -115,6 +124,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Flügel",
         "article": "der",
         "translation": ["wing", "blade", "piano", "sail"]
       }
@@ -127,6 +137,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "no plural",
         "article": "der",
         "translation": ["nonsense", "tomfoolery"]
       }
@@ -139,6 +150,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Sinne",
         "article": "der",
         "translation": ["sense", "meaning", "signification", "feeling"]
       }
@@ -151,6 +163,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Fahndungen",
         "article": "die",
         "translation": ["manhunt", "search"]
       }
@@ -163,6 +176,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Beiträge",
         "article": "der",
         "translation": ["contribution", "article", "fee", "input", "premium"]
       }
@@ -175,6 +189,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Empfänger",
         "article": "der",
         "translation": ["recipient", "receiver"]
       }
@@ -187,6 +202,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Träger",
         "article": "der",
         "translation": ["carrier", "support", "bearer", "holder", "wearer", "strap", "sponsor"]
       }
@@ -199,6 +215,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Berater",
         "article": "der",
         "translation": ["advisor", "consultant", "aide", "counselor"]
       }
@@ -211,6 +228,7 @@ export const mockDataNoun: IWord[] = [
     "classes": [
       {
         "class": "noun",
+        "plural": "Ziele",
         "article": "das",
         "translation": ["goal", "target", "objective", "aim", "destination", "end", "finishing line"]
       }
