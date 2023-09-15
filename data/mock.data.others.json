@@ -1,0 +1,117 @@
+[
+  {
+    "word": "tatsächlich",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "indeed",
+          "in fact",
+          "really",
+          "objectively",
+          "actually"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "neidisch",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "jealously"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "sogar",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "fähig",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "ably",
+          "competently",
+          "proficiently"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "wahrscheinlich",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "probably",
+          "presumably"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "wohl",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "probably",
+          "well",
+          "perhaps",
+          "surely",
+          "perhaps",
+          "no doubt"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "bloß",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "just",
+          "merely",
+          "purely",
+          "only"
+        ]
+      }
+    ]
+  }
+]

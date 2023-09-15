@@ -1,0 +1,40 @@
+[
+  {
+    "word": "bis",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "preposition",
+        "translation": [
+          "until",
+          "to",
+          "up to",
+          "till"
+        ],
+        "forcesCase": "akusativ",
+        "commonUses": [
+          {
+            "example": "bis fünf Uhr",
+            "translation": "until five o'clock"
+          },
+          {
+            "example": "bis ich heirate",
+            "translation": "until I get married"
+          },
+          {
+            "example": "bis zur Nacht",
+            "translation": "until the night"
+          },
+          {
+            "example": "bis zum Hotel",
+            "translation": "up to the hotel"
+          },
+          {
+            "example": "bis hierher und nicht weiter",
+            "translation": "up to here and no further"
+          }
+        ]
+      }
+    ]
+  }
+]

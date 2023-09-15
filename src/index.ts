@@ -1,14 +1,9 @@
 import { createInterface } from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
-import { Game } from "./game/game.ts";
-import { mockDataNoun, mockDataOtherWords, mockDataPrepositions } from './data/mockData.ts';
-// const dataReader = (await import(process.env.MODE === "ts-node" ? './dataReader.ts' : './dataReader')).dataReader as (fileName: string) => Promise<any>
+import { Game } from "./game/game.ts";;
+import { DataHandler } from './data/dataHandler.ts';
 
 new Game({
   lineReader: createInterface({ input: stdin, output: stdout }),
-  fullData: [ 
-    ...mockDataNoun, 
-    // ...mockDataOtherWords,
-    // ...mockDataPrepositions 
-  ],
+  fullData: await new DataHandler().getData(),
 }).startUp()
