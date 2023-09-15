@@ -29,9 +29,11 @@ The hard thing is to get an intuitiv feeling for the gender of words. There are 
 
 ## Big Matrix
 
-<!-- ### Masculine (der/den/dem/des)
+<!-- 
+### Masculine (der/den/dem/des)
 ### Neuter (das/das/dem/des)
-### Feminine (die/die/der/der) -->
+### Feminine (die/die/der/der) 
+-->
 
 
 ## links

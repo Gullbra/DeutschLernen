@@ -1,0 +1,1 @@
+https://langster.org/en/blog/german-adverbs-a-guide-for-beginners/

@@ -16,11 +16,10 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
   const questions = {
     articleQuestion: async () => {
       terminalInput = inputProcessor(await gameState.lineReader.question(`Which article corresponds to "${word}", meaning: ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
+
       correctlyAnswered = terminalInput === dataObject.article
   
-      correctlyAnswered
-        ? await gameState.lineReader.question(`Correct!\n`)
-        : await gameState.lineReader.question(`Not quite. Correct answer is "${dataObject.article}"\n`)
+      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, dataObject.article))
     },
     meaningQuestion: async () => {
       terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${dataObject.article} ${word}" mean?\nYour answer: `));
