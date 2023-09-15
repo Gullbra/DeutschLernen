@@ -1,263 +1,6 @@
 import { IWord } from "../util/interfaces.ts";
 
-export const mockDataNoun: IWord[] = [
-  {
-    "word": "Stimmung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Stimmungen",
-        "article": "die",
-        "translation": ["humor", "mood", "atmosphere", "feeling", "spirit", "disposition", "temper"]
-      }
-    ]
-  },
-
-  {
-    "word": "Mischung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Mischungen",
-        "article": "die",
-        "translation": ["mix", "mixture", "combination", "blend"]
-      }
-    ]
-  },
-
-  {
-    "word": "Ausdruck",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ausdrücke",
-        "article": "der",
-        "translation": ["expression", "term", "phrase"]
-      }
-    ]
-  },
-
-  {
-    "word": "Müll",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": ["garbage", "trash", "junk", "waste", "rubbish"]
-      }
-    ]
-  },
-
-  {
-    "word": "Miststück",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Miststücke",
-        "article": "das",
-        "translation": ["bitch", "bastard"]
-      }
-    ]
-  },
-
-  {
-    "word": "Untershied",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Unterschiede",
-        "article": "der",
-        "translation": ["diffrence", "distinction", "differential", "variation"]
-      }
-    ]
-  },
-
-  {
-    "word": "Böse",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "das",
-        "translation": ["evil"]
-      }
-    ]
-  },
-
-  {
-    "word": "Erfolg",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Erfolge",
-        "article": "der",
-        "translation": ["success", "achievement"]
-      }
-    ]
-  },
-
-  {
-    "word": "Beziehung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Beziehungen",
-        "article": "die",
-        "translation": ["relationship", "relation", "connection", "correlation", "contact"]
-      }
-    ]
-  }, 
-
-  {
-    "word": "Flügel",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Flügel",
-        "article": "der",
-        "translation": ["wing", "blade", "piano", "sail"]
-      }
-    ]
-  },
-
-  {
-    "word": "Blödsinn",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": ["nonsense", "tomfoolery"]
-      }
-    ]
-  },
-
-  {
-    "word": "Sinn",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Sinne",
-        "article": "der",
-        "translation": ["sense", "meaning", "signification", "feeling"]
-      }
-    ]
-  },
-
-  {
-    "word": "Fahndung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Fahndungen",
-        "article": "die",
-        "translation": ["manhunt", "search"]
-      }
-    ]
-  },
-
-  {
-    "word": "Beitrag",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Beiträge",
-        "article": "der",
-        "translation": ["contribution", "article", "fee", "input", "premium"]
-      }
-    ]
-  },
-
-  {
-    "word": "Empfänger",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Empfänger",
-        "article": "der",
-        "translation": ["recipient", "receiver"]
-      }
-    ]
-  },
-
-  {
-    "word": "Träger",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Träger",
-        "article": "der",
-        "translation": ["carrier", "support", "bearer", "holder", "wearer", "strap", "sponsor"]
-      }
-    ]
-  },
-
-  {
-    "word": "Berater",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Berater",
-        "article": "der",
-        "translation": ["advisor", "consultant", "aide", "counselor"]
-      }
-    ]
-  },
-
-  {
-    "word": "Ziel",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ziele",
-        "article": "das",
-        "translation": ["goal", "target", "objective", "aim", "destination", "end", "finishing line"]
-      }
-    ]
-  }
-]
-
 export const mockDataPrepositions: IWord[] = [
-  {
-    word: "bis",
-    weight: 100,
-    classes: [
-      {
-        class: "preposition",
-        translation: [
-          "until", "to", "up to", "till"
-        ],
-        forcesCase: "akusativ",
-        commonUses: [
-          { example: "bis fünf Uhr", translation: "until five o'clock" },
-          { example: "bis ich heirate", translation: "until I get married" },
-          { example: "bis zur Nacht", translation: "until the night" },
-          { example: "bis zum Hotel", translation: "up to the hotel"},
-          { example: "bis hierher und nicht weiter", translation: "up to here and no further"}
-          // { example: "Bis die Kinder finanziell unabhängig sind", translation: "until the children are financially independent" }
-        ]
-      }
-    ]
-  },
   // {
   //   word: "durch",
   //   weight: 100,
@@ -382,18 +125,6 @@ export const mockDataOtherWords: IWord[] = [
     ]
   },
 
-  
-  {
-    "word": "sogar",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": ["even"]
-      }
-    ]
-  },
-
   {
     "word": "fähig",
     "weight": 100,
@@ -405,17 +136,6 @@ export const mockDataOtherWords: IWord[] = [
       {
         "class": "adverb",
         "translation": ["ably", "competently", "proficiently"]
-      }
-    ]
-  },
-
-  {
-    "word": "überhaupt",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": ["at all", "anyhow", "anyway", "in general", "after all"]
       }
     ]
   },
@@ -567,17 +287,6 @@ export const mockDataOtherWords: IWord[] = [
   //   ]
   // },
 
-  {
-    "word": "wohl",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": ["probably", "well", "perhaps", "surely", "perhaps", "no doubt"]
-      }
-    ]
-  },
-
   // {
   //   "word": "scheinen",
   //   "weight": 100,
@@ -599,17 +308,6 @@ export const mockDataOtherWords: IWord[] = [
   //     }
   //   ]
   // },
-
-  {
-    "word": "bloß",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": ["just", "merely", "purely", "only"]
-      }
-    ]
-  },
 
   // {
   //   "word": "zeigen",

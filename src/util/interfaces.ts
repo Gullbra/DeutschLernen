@@ -78,3 +78,8 @@ export interface IGameState extends IGameInput{
     correctlyAnswered: boolean
   }[],
 }
+
+export interface IDataStorageMethods {
+  retrieve: (inclusiveFilters?: string[]) => Promise<TDataArray>,
+  save: (originalData: TDataArray, toBeChanged: TDataArray) => Promise<void>
+}

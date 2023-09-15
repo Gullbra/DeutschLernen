@@ -1,3 +1,15 @@
+import { IDataStorageMethods, TDataArray } from "../../util/interfaces.ts"
+
+export class AcebaseMethods implements IDataStorageMethods {
+  async retrieve (inclusiveFilters?: string[] | undefined): Promise<TDataArray> {
+    console.log('Not implemented!')
+    return [] as TDataArray
+  }
+  async save (originalData: TDataArray, toBeChanged: TDataArray): Promise<void> {
+    console.log('Not implemented!')
+  }
+}
+
 //import { AceBase } from "../node_modules/acebase/dist/types/index";
 
 // const { AceBase } = require('acebase')
