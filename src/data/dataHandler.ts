@@ -45,12 +45,18 @@ export class DataHandler {
       return dataOthers.push(wordObject)
     }
 
+    let indexInChangedData: number
     originalDataArr.forEach(originalDataObj => {
-      const changedDataObj = toBeChangedArr.find((toBeChangedDataObj) => toBeChangedDataObj.word === originalDataObj.word)
+      const changedDataObj = toBeChangedArr.find((toBeChangedDataObj, index) => {
+        indexInChangedData = index
+        return toBeChangedDataObj.word === originalDataObj.word
+      })
 
-      changedDataObj
-        ? classSorting(changedDataObj)
-        : classSorting(originalDataObj)
+      if (changedDataObj) {
+        toBeChangedArr.splice(indexInChangedData, 1)
+        return classSorting(changedDataObj)
+      }
+      return classSorting(originalDataObj)
     })
 
     await Promise.all([
