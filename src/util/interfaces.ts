@@ -84,8 +84,6 @@ export interface IDataStorageMethods {
 }
 
 export interface IDataSaveObject {
-  nouns?: IWord[], 
-  prepositions?: IWord[], 
-  others?: IWord[], 
-  processed?: Set<string>
+  data: Map<string, TDataArray>,
+  processed: Set<string>
 }
