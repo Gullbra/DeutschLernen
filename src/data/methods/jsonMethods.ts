@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from "path";
-import { IDataStorageMethods, IWord, TDataArray } from "../../util/interfaces.ts"
+import { IDataStorageMethods, IDataSaveObject, TDataArray } from "../../util/interfaces.ts"
 
 export class JSONMethods implements IDataStorageMethods {
   async retrieve (inclusiveFilters?: string[]): Promise<TDataArray> {
@@ -18,68 +18,52 @@ export class JSONMethods implements IDataStorageMethods {
   }
 
   async save (originalDataArr: TDataArray, toBeChangedArr: TDataArray): Promise<void> {
-    const toSaveObject = this.dataSpliting(toBeChangedArr)
-
-    const filesToStoreIn = new Set<string>()
-    if (toSaveObject.nouns.length > 0)
-      filesToStoreIn.add('nouns')
-    if (toSaveObject.prepositions.length > 0)
-      filesToStoreIn.add('prepositions')
-    if (toSaveObject.others.length > 0)
-      filesToStoreIn.add('others')
-
-    originalDataArr.forEach(dataObj => {
-      if(toSaveObject.processed.has(dataObj.word))
-        return
-
-      if (dataObj.classes.find(classObj => classObj.class === 'noun')) {
-        if (filesToStoreIn.has('nouns'))
-          return toSaveObject.nouns.push(dataObj)
-        return
-      }
-      
-      if (dataObj.classes.find(classObj => classObj.class === 'preposition')) {
-        if (filesToStoreIn.has('prepositions'))
-          return toSaveObject.prepositions.push(dataObj)
-        return
-      }
-
-      if (filesToStoreIn.has('others'))
-        return toSaveObject.others.push(dataObj)
-      return      
-    })
-
-    const promiseArray = []
-    if (filesToStoreIn.has('nouns'))
-      promiseArray.push(this.jsonWriter('nouns', toSaveObject.nouns))
-    if (filesToStoreIn.has('prepositions'))
-      promiseArray.push(this.jsonWriter('prepositions', toSaveObject.prepositions))
-    if (filesToStoreIn.has('others'))
-      promiseArray.push(this.jsonWriter('others', toSaveObject.others))
-
-    await Promise.all(promiseArray).catch(err => console.log(`Error in write to JSON: ${err.message}`)).then(() => console.log('Successfull write to JSON!'))
-  }
-
-  private dataSpliting (dataArr: TDataArray): {nouns: IWord[], prepositions: IWord[], others: IWord[], processed: Set<string>} {
-    const returnObj: {nouns: IWord[], prepositions: IWord[], others: IWord[], processed: Set<string>} = {
-      processed: new Set<string> (),
+    let toSaveObject = {
+      processed: new Set(), 
       nouns: [],
       prepositions: [],
       others: []
-    }
+    } as IDataSaveObject
 
+    toSaveObject = this.dataSpliting(toSaveObject, toBeChangedArr)
+
+    if (toSaveObject.nouns?.length === 0)
+      delete toSaveObject.nouns
+    if (toSaveObject.prepositions?.length === 0)
+      delete toSaveObject.prepositions
+    if (toSaveObject.others?.length === 0)
+      delete toSaveObject.others
+
+    toSaveObject = this.dataSpliting(toSaveObject, originalDataArr)
+
+    delete toSaveObject.processed
+
+    await Promise.all(Object.entries(toSaveObject).map(arr => this.jsonWriter(arr[0], arr[1])))
+      .catch(err => console.log(`Error in write to JSON: ${err.message}`))
+      .then(() => console.log('Successfull write to JSON!'))
+  }
+
+  private dataSpliting (toSaveObject: IDataSaveObject, dataArr: TDataArray): IDataSaveObject {
     dataArr.forEach (dataObj => {
-      if (dataObj.classes.find(classObj => classObj.class === 'noun'))
-        return returnObj.nouns.push(dataObj)
+      if(toSaveObject.processed) {
+        if(toSaveObject.processed.has(dataObj.word))
+          return
+  
+        toSaveObject.processed.add(dataObj.word)
+      }
 
-      if (dataObj.classes.find(classObj => classObj.class === 'preposition'))
-        return returnObj.prepositions.push(dataObj)
+      if (toSaveObject.nouns && dataObj.classes.find(classObj => classObj.class === 'noun'))
+        return toSaveObject.nouns.push(dataObj)
 
-      returnObj.processed.add(dataObj.word)
-      return returnObj.others.push(dataObj)
+      if (toSaveObject.prepositions && dataObj.classes.find(classObj => classObj.class === 'preposition'))
+        return toSaveObject.prepositions.push(dataObj)
+
+      if (toSaveObject.others)
+        return toSaveObject.others.push(dataObj)
+      return
     })
 
-    return returnObj
+    return toSaveObject
   }
 
   private filterValidation (inclusiveFilters: string[]): string[] {

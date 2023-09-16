@@ -55,7 +55,6 @@ export interface IClassPreposition extends IWordclass {
 // * Some adverbs: https://www.germanveryeasy.com/german-adverbs
 export interface IClassAdverbAdjective extends IWordclass {}
 
-
 export interface IWord {
   word: string,
   weight: number,
@@ -82,4 +81,11 @@ export interface IGameState extends IGameInput{
 export interface IDataStorageMethods {
   retrieve: (inclusiveFilters?: string[]) => Promise<TDataArray>,
   save: (originalData: TDataArray, toBeChanged: TDataArray) => Promise<void>
+}
+
+export interface IDataSaveObject {
+  nouns?: IWord[], 
+  prepositions?: IWord[], 
+  others?: IWord[], 
+  processed?: Set<string>
 }
