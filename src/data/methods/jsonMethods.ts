@@ -57,12 +57,13 @@ export class JSONMethods implements IDataStorageMethods {
       toSaveObject.processed.add(dataObj.word)
       
       toSaveObject.data.forEach((classDataArr, className) => {
-        if (dataObj.classes.find(classObj => classObj.class === className))
-          return classDataArr.push(dataObj)
+        if (
+          dataObj.classes.find(classObj => classObj.class === className) ||
+          (className === 'other' && dataObj.classes.some(classObj => this.hardCodedValues.classesInOtherFile.includes(classObj.class)))
+        ) {
+          return classDataArr.push(dataObj)          
+        }
       })
-
-      if (toSaveObject.data.has('other'))
-        return (toSaveObject.data.get('other') as TDataArray).push(dataObj)
 
       return
     })

@@ -4,7 +4,7 @@ import { inputProcessor, questionInputGenericValidation, qResultMeaningUI, qResu
 export const questionPreposition = async (gameState: IGameState, word: string, dataObject: IClassPreposition): Promise<{correct: boolean, error: boolean}> => {
   if (
     questionInputGenericValidation(word, dataObject) ||
-    !dataObject.forcesCase || !['akustativ', 'dativ', 'wechsel', 'genetiv'].includes(dataObject.forcesCase) ||
+    !dataObject.forcesCase || !['akusativ', 'dativ', 'wechsel', 'genetiv'].includes(dataObject.forcesCase) ||
     !dataObject.commonUses || !Array.isArray(dataObject.commonUses) || dataObject.commonUses.length === 0
   ) {
     console.log(`No or invalid dataObject sent to question for word "${word}"`); 

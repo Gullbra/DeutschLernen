@@ -1,4 +1,4 @@
-import { IClassAdverbAdjective, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput } from "../util/interfaces.ts";
+import { IClassAdverbAdjective, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput, TDataArray } from "../util/interfaces.ts";
 import { inputProcessor, randomizeArrayElement, randomizeArrayIndex } from "../util/util.ts";
 import { questionPreposition } from "./questions/qPrepositions.ts";
 import { questionNoun } from "./questions/qNouns.ts";
@@ -6,18 +6,33 @@ import { questionAdverb } from "./questions/qAdverbs.ts";
 
 export class Game { 
   private gameState: IGameState
+  private inclusiveFilters?: string[]
 
-  constructor (input: IGameInput) { 
+  constructor (input: IGameInput, inclusiveFilters?: string[]) { 
     this.gameState = {
       ...input,
-      currentData: input.fullData.slice(),
+      fullData: [],
+      currentData: [],
       questionsToAnswer: 0,
       currentQuestionNumber: 0,
+      currentTotalWeight: 0,
       correctedAnswers: [] as { dataObject: IWord, correctlyAnswered: boolean }[]
     }
+    this.inclusiveFilters = inclusiveFilters
   }
 
-  async startUp () {  
+  async startUp () { 
+    await this.gameState.dataHandler.getData(this.inclusiveFilters)
+      .then(data => {
+        this.gameState = {
+          ...this.gameState,
+          fullData: data,
+          currentData: data.slice(),
+          currentTotalWeight: data.reduce((sum, dataObj) => sum + dataObj.weight, 0)
+        }
+      })
+      .catch(err => console.log(err))
+
     console.log("\n--------------------------")
     console.log("Deutch lernen, commandline")
     console.log("--------------------------\n")
@@ -26,6 +41,11 @@ export class Game {
   }
 
   async modeChoice (): Promise<void> {
+    if (this.gameState.currentData.length === 0) {
+      console.log('No data found\n')
+      return await this.shutdown()
+    }
+
     let terminalInput = Number(inputProcessor(await this.gameState.lineReader.question(`How many questions do want? (type a number, max ${this.gameState.currentData.length})  `))); 
   
     if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > this.gameState.currentData.length) {
@@ -48,28 +68,42 @@ export class Game {
       return await this.shutdown()
     }
     
-    this.gameState.currentQuestionNumber += 1
-  
-    const randomIndex = randomizeArrayIndex(this.gameState.currentData)
-    const currentDataObject = this.gameState.currentData[randomIndex]
+    const selectionNumber = Math.round(Math.random() * this.gameState.currentTotalWeight)
+    const [selectedDataobject, selectedIndex] = (() => {
+      for (let i = 0, sum = 0; i <= this.gameState.currentTotalWeight; i++) {
+        sum += this.gameState.currentData[i].weight
 
-    if (currentDataObject.classes.length === 0) {
-      console.log(`Badly formated data: No word classes correspoding to word "${currentDataObject.word}"`)
+        if(sum >= selectionNumber)
+          return [this.gameState.currentData[i], i]
+      }
+      return [{} as IWord, -1]
+    })()
+
+    if (selectedIndex === -1) {
+      console.log('Error in question choice based on weight')
+      return await this.shutdown()
+    }
+
+    if (selectedDataobject.classes.length === 0) {
+      console.log(`Badly formated data: No word classes correspoding to word "${selectedDataobject.word}"`)
       return await this.shutdown()
     } 
 
-    const selectedWordClass = randomizeArrayElement(currentDataObject.classes)
-    this.gameState.currentData.splice(randomIndex, 1)
+    const selectedWordClass = randomizeArrayElement(selectedDataobject.classes)
+
+    this.gameState.currentQuestionNumber += 1
+    this.gameState.currentData.splice(selectedIndex, 1)
+    this.gameState.currentTotalWeight -= selectedDataobject.weight
   
     switch (selectedWordClass.class) {
       case 'noun':
-        return await this.handleResult(currentDataObject, await questionNoun(this.gameState, currentDataObject.word, selectedWordClass as IClassNoun));
+        return await this.handleResult(selectedDataobject, await questionNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun));
 
       case 'adverb':
-        return await this.handleResult(currentDataObject, await questionAdverb(this.gameState, currentDataObject.word, selectedWordClass as IClassAdverbAdjective));
+        return await this.handleResult(selectedDataobject, await questionAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverbAdjective));
 
       case 'preposition':
-        return await this.handleResult(currentDataObject, await questionPreposition(this.gameState, currentDataObject.word, selectedWordClass as IClassPreposition));
+        return await this.handleResult(selectedDataobject, await questionPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition));
 
       // case 'adjective':
       //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
@@ -89,9 +123,18 @@ export class Game {
   async handleResult (dataObject: IWord, {correct, error}: {correct: boolean, error: boolean}) {
     if (error) this.shutdown();
 
+    dataObject.weight = this.weightHandler(dataObject.weight, correct)
+
     this.gameState.correctedAnswers.push({ dataObject, correctlyAnswered: correct})
 
     await this.determineQuestion()
+  }
+
+  weightHandler (startingWeight: number, correct: boolean): number {
+    if (correct) {
+      return Math.max(20, Math.round(startingWeight * 0.75))
+    }
+    return startingWeight + 50
   }
 
   async resultAndRestart (): Promise<void> {
@@ -115,7 +158,18 @@ export class Game {
           console.log("restarting...\n"); 
           await this.modeChoice() 
         })()
-      : await this.shutdown()
+      : await (async () => {
+          await this.handleSave()
+          await this.shutdown()
+        })() 
+  }
+
+  async handleSave () {
+    console.log('Saving...')
+    return await this.gameState.dataHandler.saveData(
+      this.gameState.fullData,
+      this.gameState.correctedAnswers.map(obj => obj.dataObject)
+    )
   }
 
   async shutdown () {

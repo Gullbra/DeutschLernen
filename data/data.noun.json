@@ -1,7 +1,7 @@
 [
   {
     "word": "Stimmung",
-    "weight": 100,
+    "weight": 56,
     "classes": [
       {
         "class": "noun",
@@ -15,6 +15,91 @@
           "spirit",
           "disposition",
           "temper"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Empfänger",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Empfänger",
+        "article": "der",
+        "translation": [
+          "recipient",
+          "receiver"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Erfolg",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Erfolge",
+        "article": "der",
+        "translation": [
+          "success",
+          "achievement"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Fahndung",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Fahndungen",
+        "article": "die",
+        "translation": [
+          "manhunt",
+          "search"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Träger",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Träger",
+        "article": "der",
+        "translation": [
+          "carrier",
+          "support",
+          "bearer",
+          "holder",
+          "wearer",
+          "strap",
+          "sponsor"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Ziel",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Ziele",
+        "article": "das",
+        "translation": [
+          "goal",
+          "target",
+          "objective",
+          "aim",
+          "destination",
+          "end",
+          "finishing line"
         ]
       }
     ]
@@ -117,21 +202,6 @@
     ]
   },
   {
-    "word": "Erfolg",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Erfolge",
-        "article": "der",
-        "translation": [
-          "success",
-          "achievement"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Beziehung",
     "weight": 100,
     "classes": [
@@ -199,21 +269,6 @@
     ]
   },
   {
-    "word": "Fahndung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Fahndungen",
-        "article": "die",
-        "translation": [
-          "manhunt",
-          "search"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Beitrag",
     "weight": 100,
     "classes": [
@@ -232,41 +287,6 @@
     ]
   },
   {
-    "word": "Empfänger",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Empfänger",
-        "article": "der",
-        "translation": [
-          "recipient",
-          "receiver"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Träger",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Träger",
-        "article": "der",
-        "translation": [
-          "carrier",
-          "support",
-          "bearer",
-          "holder",
-          "wearer",
-          "strap",
-          "sponsor"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Berater",
     "weight": 100,
     "classes": [
@@ -279,26 +299,6 @@
           "consultant",
           "aide",
           "counselor"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Ziel",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ziele",
-        "article": "das",
-        "translation": [
-          "goal",
-          "target",
-          "objective",
-          "aim",
-          "destination",
-          "end",
-          "finishing line"
         ]
       }
     ]

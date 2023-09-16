@@ -5,7 +5,7 @@ import { DataHandler } from './data/dataHandler.ts';
 
 new Game({
   lineReader: createInterface({ input: stdin, output: stdout }),
-  fullData: await new DataHandler().getData(),
+  dataHandler: new DataHandler()
 }).startUp()
 
 // * For testing dataHandler:

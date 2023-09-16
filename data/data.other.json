@@ -1,5 +1,47 @@
 [
   {
+    "word": "fähig",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "ably",
+          "competently",
+          "proficiently"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "sogar",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ]
+      }
+    ]
+  },
+  {
     "word": "tatsächlich",
     "weight": 100,
     "classes": [
@@ -23,48 +65,6 @@
         "class": "adverb",
         "translation": [
           "jealously"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "sogar",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "even"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "fähig",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "ably",
-          "competently",
-          "proficiently"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "überhaupt",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "at all",
-          "anyhow",
-          "anyway",
-          "in general",
-          "after all"
         ]
       }
     ]

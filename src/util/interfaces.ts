@@ -1,4 +1,5 @@
 import type { Interface as rlInterface} from 'node:readline/promises';
+import { DataHandler } from '../data/dataHandler.ts';
 
 // * Verb conjugations: https://verben.org/sv/konjugering/geben
 export interface IConjugation {
@@ -66,12 +67,14 @@ export type TDataArray = IWord[]
 
 export interface IGameInput {
   lineReader: rlInterface,
-  fullData: TDataArray,
+  dataHandler: DataHandler
 }
 export interface IGameState extends IGameInput{
+  fullData: TDataArray,
   currentData: TDataArray,
   questionsToAnswer: number,
   currentQuestionNumber: number,
+  currentTotalWeight: number,
   correctedAnswers: {
     dataObject: IWord,
     correctlyAnswered: boolean
@@ -86,4 +89,10 @@ export interface IDataStorageMethods {
 export interface IDataSaveObject {
   data: Map<string, TDataArray>,
   processed: Set<string>
+}
+
+export interface IDataHandler {
+  getData (inclusiveFilters?: string): Promise<TDataArray>,
+  saveData (originalData: TDataArray, toBeChanged: TDataArray): Promise<void>,
+  applyInclusiveFilters (inclusiveFilters: string[], data: TDataArray): TDataArray
 }
