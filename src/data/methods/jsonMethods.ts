@@ -29,20 +29,22 @@ export class JSONMethods implements IDataStorageMethods {
     return (await Promise.all(filesToRetriveFrom.map(name => this.jsonReader(name)))).flat()    
   }
 
-  async save (originalDataArr: TDataArray, toBeChangedArr: TDataArray): Promise<void> {
+  async save (toBeChangedArr: TDataArray): Promise<void> {
     let toSaveObject = {
       processed: new Set(),
       data: new Map(this.hardCodedValues.seperateFileClasses.map(className => [ className, [] ]))
     } as IDataSaveObject
     
     toSaveObject = this.dataSpliting(toSaveObject, toBeChangedArr)
+    const toRetrievePromises: Promise<TDataArray>[] = []
 
-    this.hardCodedValues.seperateFileClasses.forEach(className =>{
+    this.hardCodedValues.seperateFileClasses.forEach((className) => {
       if (toSaveObject.data.get(className)?.length === 0) 
-        toSaveObject.data.delete(className)
+        return toSaveObject.data.delete(className)
+      return toRetrievePromises.push(this.jsonReader(className))
     })
 
-    toSaveObject = this.dataSpliting(toSaveObject, originalDataArr)
+    toSaveObject = this.dataSpliting(toSaveObject, ((await Promise.all(toRetrievePromises)).flat()))
 
     await Promise.all(Array.from(toSaveObject.data).map(arr => this.jsonWriter(arr[0], arr[1])))
       .catch(err => console.log(`Error in write to JSON: ${err.message}`))

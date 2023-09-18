@@ -1,47 +1,5 @@
 [
   {
-    "word": "fähig",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "ably",
-          "competently",
-          "proficiently"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "sogar",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "even"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "überhaupt",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "at all",
-          "anyhow",
-          "anyway",
-          "in general",
-          "after all"
-        ]
-      }
-    ]
-  },
-  {
     "word": "tatsächlich",
     "weight": 100,
     "classes": [
@@ -53,6 +11,27 @@
           "really",
           "objectively",
           "actually"
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "tatsächlicher",
+          "translation": "more objectively"
+        },
+        "superlative": {
+          "word": "am tatsächlichsten",
+          "translation": "most objectively"
+        },
+        "testPhrases": [
+          {
+            "dividedPhrase": [
+              "Er spricht",
+              "."
+            ],
+            "translation": [
+              "He speaks",
+              "."
+            ]
+          }
         ]
       }
     ]
@@ -65,6 +44,72 @@
         "class": "adverb",
         "translation": [
           "jealously"
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "neidischer",
+          "translation": "more jealously"
+        },
+        "superlative": {
+          "word": "am neidischsten",
+          "translation": "most jealously"
+        },
+        "testPhrases": [
+          {
+            "dividedPhrase": [
+              "Er spricht",
+              "."
+            ],
+            "translation": [
+              "He speaks",
+              "."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "word": "fähig",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "ably",
+          "competently",
+          "proficiently"
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "fähiger",
+          "translation": "more capable"
+        },
+        "superlative": {
+          "word": "am fähigsten",
+          "translation": "most capable"
+        },
+        "testPhrases": [
+          {
+            "dividedPhrase": [
+              "Unter allen meinen Kollegen bin ich",
+              ",komplexe Probleme zu lösen."
+            ],
+            "translation": [
+              "Among all my colleagues, I am the",
+              "of solving complex problems."
+            ]
+          },
+          {
+            "dividedPhrase": [
+              "Sie ist",
+              "."
+            ],
+            "translation": [
+              "She is",
+              "."
+            ]
+          }
         ]
       }
     ]
@@ -78,23 +123,27 @@
         "translation": [
           "probably",
           "presumably"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "wohl",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "probably",
-          "well",
-          "perhaps",
-          "surely",
-          "perhaps",
-          "no doubt"
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "wahrscheinlicher",
+          "translation": "more probably"
+        },
+        "superlative": {
+          "word": "am wahrscheinlicher",
+          "translation": "most probably"
+        },
+        "testPhrases": [
+          {
+            "dividedPhrase": [
+              "Es ist",
+              "dass sie Eis mag"
+            ],
+            "translation": [
+              "it is",
+              "that she likes ice cream"
+            ]
+          }
         ]
       }
     ]
@@ -110,7 +159,92 @@
           "merely",
           "purely",
           "only"
-        ]
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": ""
+        },
+        "superlative": {
+          "word": "",
+          "translation": ""
+        },
+        "testPhrases": []
+      }
+    ]
+  },
+  {
+    "word": "wohl",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "probably",
+          "well",
+          "perhaps",
+          "surely",
+          "perhaps",
+          "no doubt"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": ""
+        },
+        "superlative": {
+          "word": "",
+          "translation": ""
+        },
+        "testPhrases": []
+      }
+    ]
+  },
+  {
+    "word": "sogar",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": ""
+        },
+        "superlative": {
+          "word": "",
+          "translation": ""
+        },
+        "testPhrases": []
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": ""
+        },
+        "superlative": {
+          "word": "",
+          "translation": ""
+        },
+        "testPhrases": []
       }
     ]
   }

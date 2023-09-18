@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
-    "dev": "cross-env MODE=ts-node ts-node --esm src/index.ts"
+    "dev": "cross-env MODE=ts-node ts-node --esm src/index.ts",
+    "sound-test": "node src/textToSpeech/playSound.cjs"
   },
   "repository": {
     "type": "git",

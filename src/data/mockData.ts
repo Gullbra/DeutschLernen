@@ -1,4 +1,4 @@
-import { IWord } from "../util/interfaces.ts";
+import { IClassAdjective, IClassNoun, IWord } from "../util/interfaces.ts";
 
 export const mockDataPrepositions: IWord[] = [
   // {
@@ -68,7 +68,18 @@ export const mockDataOtherWords: IWord[] = [
   //   "classes": [
   //     {
   //       "class": "adjective",
-  //       "translation": ["often", "frequent", "repeatedly"]
+  //       "translation": ["often", "frequent", "repeatedly"],
+  //       comparative: {
+  //         word: "häuflicher",
+  //         translation: "more often"
+  //       },
+  //       superlative: {
+  //         word: "am häufligsten",
+  //         translation: "most often"
+  //       },
+  //       testPhrases: [
+
+  //       ]
   //     }
   //   ]
   // },
@@ -101,7 +112,22 @@ export const mockDataOtherWords: IWord[] = [
     "classes": [
       {
         "class": "adverb",
-        "translation": ["indeed", "in fact", "really", "objectively", "actually"]
+        "translation": ["indeed", "in fact", "really", "objectively", "actually"],
+        absoluteAdverb: false,
+        comparative: {
+          word: "tatsächlicher",
+          translation: "more objectively"
+        },
+        superlative: {
+          word: "am tatsächlichsten",
+          translation: "most objectively"
+        },
+        testPhrases: [
+          {
+            dividedPhrase: ["Er spricht", "."],
+            translation: ["He speaks", "."]
+          }
+        ]
       },
       // {
       //   "class": "adjective",
@@ -120,7 +146,22 @@ export const mockDataOtherWords: IWord[] = [
       // },
       {
         "class": "adverb",
-        "translation": ["jealously"]
+        "translation": ["jealously"],
+        absoluteAdverb: false,
+        comparative: {
+          word: "neidischer",
+          translation: "more jealously"
+        },
+        superlative: {
+          word: "am neidischsten",
+          translation: "most jealously"
+        },
+        testPhrases: [
+          {
+            dividedPhrase: ["Er spricht","."],
+            translation: ["He speaks", "."]
+          }
+        ]
       }
     ]
   },
@@ -131,12 +172,31 @@ export const mockDataOtherWords: IWord[] = [
     "classes": [
       // {
       //   "class": "adjective",
-      //   "translation": ["able", "competent", "proficient"]
+      //   "translation": ["capable", "able", "competent", "proficient"]
       // },
       {
         "class": "adverb",
-        "translation": ["ably", "competently", "proficiently"]
-      }
+        "translation": ["ably", "competently", "proficiently"],
+        absoluteAdverb: false,
+        comparative: {
+          word: "fähiger",
+          translation: "more capable"
+        },
+        superlative: {
+          word: "am fähigsten",
+          translation: "most capable"
+        },
+        testPhrases: [
+          {
+            dividedPhrase: ["Unter allen meinen Kollegen bin ich",",komplexe Probleme zu lösen."],
+            translation: ["Among all my colleagues, I am the", "of solving complex problems."]
+          },
+          {
+            dividedPhrase: ["Sie ist","."],
+            translation: ["She is", "."]
+          }
+        ]
+      },
     ]
   },
 
@@ -157,7 +217,22 @@ export const mockDataOtherWords: IWord[] = [
     "classes": [
       {
         "class": "adverb",
-        "translation": ["probably", "presumably"]
+        "translation": ["probably", "presumably"],
+        absoluteAdverb: false,
+        comparative: {
+          word: "wahrscheinlicher",
+          translation: "more probably"
+        },
+        superlative: {
+          word: "am wahrscheinlicher",
+          translation: "most probably"
+        },
+        testPhrases: [
+          {
+            dividedPhrase: ["Es ist", "dass sie Eis mag"],
+            translation: ["it is", "that she likes ice cream"]
+          }
+        ]
       },
       // {
       //   "class": "adjective",
@@ -166,16 +241,31 @@ export const mockDataOtherWords: IWord[] = [
     ]
   },
 
-  // {
-  //   "word": "wütend",
-  //   "weight": 100,
-  //   "classes": [
-  //     {
-  //       "class": "adjective",
-  //       "translation": ["angry", "furious"]
-  //     }
-  //   ]
-  // },
+  {
+    "word": "wütend",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adjective",
+        "translation": ["angry", "furious"],
+        absoluteAdverb: false,
+        comparative: {
+          word: "wütender",
+          translation: "angrier"
+        },
+        superlative: {
+          word: "am wütendsten",
+          translation: "the angriest"
+        },
+        testPhrases: [
+          {
+            dividedPhrase: ["Ich bin",""],
+            translation: ["I'm",""]
+          }
+        ]
+      }
+    ]
+  },
 
   // {
   //   "word": "böse",
@@ -329,5 +419,85 @@ export const mockDataOtherWords: IWord[] = [
   //       translation: ["draw", "undecided", "indecisive", "undetermined"]
   //     }
   //   ]
-  // }
+  // },
+
+  {
+    "word": "bloß",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "just",
+          "merely",
+          "purely",
+          "only"
+        ],
+        absoluteAdverb: true,
+        comparative: {word:'', translation: ''},
+        superlative: {word: '', translation: ''},
+        testPhrases: []
+      },
+    ]
+  },
+  {
+    "word": "wohl",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "probably",
+          "well",
+          "perhaps",
+          "surely",
+          "perhaps",
+          "no doubt"
+        ],
+        absoluteAdverb: true,
+        comparative: {word:'', translation: ''},
+        superlative: {word: '', translation: ''},
+        testPhrases: []
+      }
+    ]
+  },
+  {
+    "word": "sogar",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ],
+        absoluteAdverb: true,
+        comparative: {word:'', translation: ''},
+        superlative: {word: '', translation: ''},
+        testPhrases: []
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ],
+        absoluteAdverb: true,
+        comparative: {word:'', translation: ''},
+        superlative: {word: '', translation: ''},
+        testPhrases: []
+      }
+    ]
+  },
+]
+
+export const mockDataNouns: { word: string, weight: number, classes: IClassNoun[] }[] = [
 ]
