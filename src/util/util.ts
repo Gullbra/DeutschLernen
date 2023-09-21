@@ -8,12 +8,6 @@ export const randomizeArrayIndex = <T,>(arr: T[]): number => arr.length === 1 ? 
 
 export const randomizeArrayElement = <T,>(arr: T[]): T => arr.length === 1 ? arr[0] : arr[randomizeArrayIndex(arr)]
 
-export const questionInputGenericValidation = (word: string, dataObject: IWordclass): boolean => (
-  typeof word !== 'string' || word === '' ||
-  !dataObject || typeof dataObject !== 'object' || Array.isArray(dataObject) ||
-  !dataObject.translation || !Array.isArray(dataObject.translation) || dataObject.translation.length === 0
-)
-
 export const lineUpTranslations = (translations: string[]): string => {
   return translations.length > 1
     ? translations.slice(0, -1).map(translation => `"${translation}"`).join(', ') + " and " + `"${translations.slice(-1)}"`

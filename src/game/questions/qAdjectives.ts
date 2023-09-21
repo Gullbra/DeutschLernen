@@ -1,8 +1,9 @@
+import { validationWordClassGeneric } from "../../util/dataValidations.ts";
 import { IClassAdjective, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, questionInputGenericValidation, qResultMeaningUI } from "../../util/util.ts";
+import { inputProcessor, qResultMeaningUI } from "../../util/util.ts";
 
 export const questionAdjective = async (gameState: IGameState, word: string, dataObject: IClassAdjective): Promise<{correct: boolean, error: boolean}> => {
-  if (questionInputGenericValidation(word, dataObject)) {
+  if (validationWordClassGeneric(word, dataObject)) {
     console.log(`No or invalid dataObject sent to question for word "${word}"`); 
     return { correct: false, error: true }
   }
