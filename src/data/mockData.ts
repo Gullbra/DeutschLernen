@@ -1,42 +1,5 @@
 import { IClassAdjective, IClassNoun, IWord } from "../util/interfaces.ts";
 
-export const mockDataPrepositions: IWord[] = [
-  // {
-  //   word: "durch",
-  //   weight: 100,
-  //   classes: [
-  //     {
-  //       class: "preposition",
-  //       translation: [
-  //         "through", "by", "due to", "via", "by way of", "thru", "per"
-  //       ],
-  //       forcesCase: "akusativ",
-  //       commonUses: [
-  //         { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
-  //         { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
-  //         { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" },
-  //         { example: "durch Beharrlichkeit kommt man ans Ziel", translation: "through persistence you reach your goal" }
-  //       ]
-  //     }
-  //   ]
-  // },
-  // {
-  //   word: "für",
-  //   weight: 100,
-  //   classes: [
-  //     {
-  //       class: "preposition",
-  //       translation: [
-  //         "for", "in favor of", "considering", "in return for", "instead of", "in place of"
-  //       ],
-  //       forcesCase: "akusativ",
-  //       commonUses: [
-  //       ]
-  //     }
-  //   ]
-  // }
-]
-
 export const mockDataOtherWords: IWord[] = [
   // {
   //   "word": "verlassen",
@@ -113,21 +76,9 @@ export const mockDataOtherWords: IWord[] = [
       {
         "class": "adverb",
         "translation": ["indeed", "in fact", "really", "objectively", "actually"],
-        absoluteAdverb: false,
-        comparative: {
-          word: "tatsächlicher",
-          translation: "more objectively"
-        },
-        superlative: {
-          word: "am tatsächlichsten",
-          translation: "most objectively"
-        },
-        testPhrases: [
-          {
-            dividedPhrase: ["Er spricht", "."],
-            translation: ["He speaks", "."]
-          }
-        ]
+        absoluteAdverb: true,
+        comparative: {word:'', translation: '', useInPhrase: []},
+        superlative: {word: '', translation: '', useInPhrase: []},
       },
       // {
       //   "class": "adjective",
@@ -150,18 +101,28 @@ export const mockDataOtherWords: IWord[] = [
         absoluteAdverb: false,
         comparative: {
           word: "neidischer",
-          translation: "more jealously"
-        },
+          translation: "more jealously",
+          useInPhrase: [
+            {
+              phrase: "Er ist neidischer als ich",
+              translation: "He is more envious than I am"
+            },
+            {
+              phrase: "Er schaute neidischer auf das neue Auto",
+              translation: "He looked more enviously at the new car"
+            }
+          ]
+        }, 
         superlative: {
           word: "am neidischsten",
-          translation: "most jealously"
+          translation: "most jealously",
+          useInPhrase: [
+            {
+              phrase: "Er ist am neidischsten in unsere Gruppe",
+              translation: "He is the most envious in our group"
+            }
+          ]
         },
-        testPhrases: [
-          {
-            dividedPhrase: ["Er spricht","."],
-            translation: ["He speaks", "."]
-          }
-        ]
       }
     ]
   },
@@ -180,22 +141,28 @@ export const mockDataOtherWords: IWord[] = [
         absoluteAdverb: false,
         comparative: {
           word: "fähiger",
-          translation: "more capable"
+          translation: "more capable",
+          useInPhrase: [
+            {
+              phrase: "Sie arbeitet fähiger als ihre Kollegen",
+              translation: "She works more capably than her colleagues"
+            },
+            {
+              phrase: "Er spricht fähiger Deutsch als ich",
+              translation: "He speaks more capably German than I do"
+            }
+          ]
         },
         superlative: {
           word: "am fähigsten",
-          translation: "most capable"
+          translation: "most capable",
+          useInPhrase: [
+            {
+              phrase: "Sie arbeitet am fähigsten",
+              translation: "She works the most competently"
+            },
+          ]
         },
-        testPhrases: [
-          {
-            dividedPhrase: ["Unter allen meinen Kollegen bin ich",",komplexe Probleme zu lösen."],
-            translation: ["Among all my colleagues, I am the", "of solving complex problems."]
-          },
-          {
-            dividedPhrase: ["Sie ist","."],
-            translation: ["She is", "."]
-          }
-        ]
       },
     ]
   },
@@ -221,18 +188,32 @@ export const mockDataOtherWords: IWord[] = [
         absoluteAdverb: false,
         comparative: {
           word: "wahrscheinlicher",
-          translation: "more probably"
+          translation: "more probably",
+          useInPhrase: [
+            {
+              phrase: "Es ist wahrscheinlicher, dass er morgen kommt",
+              translation: "It is more likely that he will come tomorrow"
+            },
+            {
+              phrase: "Sie wird wahrscheinlicher gewinnen als die anderen",
+              translation: "She will win more likely than the others"
+            }
+          ]
         },
         superlative: {
-          word: "am wahrscheinlicher",
-          translation: "most probably"
+          word: "am wahrscheinlichsten",
+          translation: "most probably",
+          useInPhrase: [
+            {
+              phrase: "Er ist am wahrscheinlichsten der Beste in seinem Fach",
+              translation: "He is most likely the best in his field"
+            },
+            {
+              phrase: "Das ist am wahrscheinlichsten die beste Lösung",
+              translation: "That is most likely the best solution"
+            }
+          ]
         },
-        testPhrases: [
-          {
-            dividedPhrase: ["Es ist", "dass sie Eis mag"],
-            translation: ["it is", "that she likes ice cream"]
-          }
-        ]
       },
       // {
       //   "class": "adjective",
@@ -251,18 +232,24 @@ export const mockDataOtherWords: IWord[] = [
         absoluteAdverb: false,
         comparative: {
           word: "wütender",
-          translation: "angrier"
+          translation: "angrier",
+          useInPhrase: [
+            {
+              phrase: "sie schrie immer wütender",
+              translation: "she screamed more and more angrily"
+            }
+          ]
         },
         superlative: {
           word: "am wütendsten",
-          translation: "the angriest"
+          translation: "the angriest",
+          useInPhrase: [
+            {
+              phrase: "sie schrie Tom am wütendsten an",
+              translation: "she shouted most angrily at Tom"
+            }
+          ]
         },
-        testPhrases: [
-          {
-            dividedPhrase: ["Ich bin",""],
-            translation: ["I'm",""]
-          }
-        ]
       }
     ]
   },
@@ -434,9 +421,8 @@ export const mockDataOtherWords: IWord[] = [
           "only"
         ],
         absoluteAdverb: true,
-        comparative: {word:'', translation: ''},
-        superlative: {word: '', translation: ''},
-        testPhrases: []
+        comparative: {word:'', translation: '', useInPhrase: []},
+        superlative: {word: '', translation: '', useInPhrase: []},
       },
     ]
   },
@@ -455,9 +441,8 @@ export const mockDataOtherWords: IWord[] = [
           "no doubt"
         ],
         absoluteAdverb: true,
-        comparative: {word:'', translation: ''},
-        superlative: {word: '', translation: ''},
-        testPhrases: []
+        comparative: {word:'', translation: '', useInPhrase: []},
+        superlative: {word: '', translation: '', useInPhrase: []},
       }
     ]
   },
@@ -471,9 +456,8 @@ export const mockDataOtherWords: IWord[] = [
           "even"
         ],
         absoluteAdverb: true,
-        comparative: {word:'', translation: ''},
-        superlative: {word: '', translation: ''},
-        testPhrases: []
+        comparative: {word:'', translation: '', useInPhrase: []},
+        superlative: {word: '', translation: '', useInPhrase: []},
       }
     ]
   },
@@ -491,12 +475,48 @@ export const mockDataOtherWords: IWord[] = [
           "after all"
         ],
         absoluteAdverb: true,
-        comparative: {word:'', translation: ''},
-        superlative: {word: '', translation: ''},
-        testPhrases: []
+        comparative: {word:'', translation: '', useInPhrase: []},
+        superlative: {word: '', translation: '', useInPhrase: []},
       }
     ]
   },
+]
+
+export const mockDataPrepositions: IWord[] = [
+  // {
+  //   word: "durch",
+  //   weight: 100,
+  //   classes: [
+  //     {
+  //       class: "preposition",
+  //       translation: [
+  //         "through", "by", "due to", "via", "by way of", "thru", "per"
+  //       ],
+  //       forcesCase: "akusativ",
+  //       commonUses: [
+  //         { example: "der Einbrecher stieg durch das Fenster", translation: "the burglar climbed through the window" },
+  //         { example: "wir rennen durch die Straßen", translation: "we run through the streets" },
+  //         { example: "die Fabrik wurde durch einen Brand vernichtet", translation: "the factory was destroyed by fire" },
+  //         { example: "durch Beharrlichkeit kommt man ans Ziel", translation: "through persistence you reach your goal" }
+  //       ]
+  //     }
+  //   ]
+  // },
+  // {
+  //   word: "für",
+  //   weight: 100,
+  //   classes: [
+  //     {
+  //       class: "preposition",
+  //       translation: [
+  //         "for", "in favor of", "considering", "in return for", "instead of", "in place of"
+  //       ],
+  //       forcesCase: "akusativ",
+  //       commonUses: [
+  //       ]
+  //     }
+  //   ]
+  // }
 ]
 
 export const mockDataNouns: { word: string, weight: number, classes: IClassNoun[] }[] = [

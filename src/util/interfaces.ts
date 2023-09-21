@@ -19,19 +19,17 @@ export interface IClassNoun extends IWordclass {
 // * https://langster.org/en/blog/german-adverbs-a-guide-for-beginners/
 // * https://grammar.collinsdictionary.com/german-easy-learning/what-are-the-irregular-german-comparative-and-superlative-adverbs
 // * https://grammar.collinsdictionary.com/german-easy-learning/what-are-superlative-adverbs-in-german
-export interface IComparativeAndSuperlative {
-  comparative: {
-    word: string,
+export interface IDegreeOfComparisonObject {
+  word: string,
+  translation: string,
+  useInPhrase: {
+    phrase: string,
     translation: string
-  },
-  superlative: {
-    word: string,
-    translation: string
-  },
-  testPhrases: { // * Phrases divaded in two
-    dividedPhrase: string[],
-    translation: string[]
   } []
+}
+export interface IComparativeAndSuperlative {
+  comparative: IDegreeOfComparisonObject,
+  superlative: IDegreeOfComparisonObject,
 }
 
 export interface IClassAdverb extends IWordclass, IComparativeAndSuperlative {

@@ -1,5 +1,148 @@
 [
   {
+    "word": "Flocke",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Flocken",
+        "translation": [
+          "flake",
+          "scale",
+          "ball of lint"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gemüse",
+    "weight": 113,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "no plural",
+        "translation": [
+          "vegetables",
+          "vegetable"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Fresse",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Fressen",
+        "translation": [
+          "mouth",
+          "face",
+          "mug"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Waschmaschine",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Waschmaschinen",
+        "translation": [
+          "washing machine",
+          "washer"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Nachricht",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Nachrichten",
+        "translation": [
+          "news",
+          "message",
+          "information"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Bohne",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Bohnen",
+        "translation": [
+          "bean"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Blödsinn",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "der",
+        "translation": [
+          "nonsense",
+          "tomfoolery"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Abschluss",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Abschlüsse",
+        "translation": [
+          "conclusion",
+          "diploma",
+          "close",
+          "completion",
+          "degree",
+          "end"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Reißverschluss",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Reißverschlüsse",
+        "translation": [
+          "zip",
+          "zipper",
+          "zip fastener",
+          "fiend"
+        ]
+      }
+    ]
+  },
+  {
     "word": "Mischung",
     "weight": 75,
     "classes": [
@@ -47,21 +190,6 @@
     ]
   },
   {
-    "word": "Gemüse",
-    "weight": 150,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "no plural",
-        "translation": [
-          "vegetables",
-          "vegetable"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Mitglied",
     "weight": 150,
     "classes": [
@@ -72,25 +200,6 @@
         "translation": [
           "member",
           "fellow"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Abschluss",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Abschlüsse",
-        "translation": [
-          "conclusion",
-          "diploma",
-          "close",
-          "completion",
-          "degree",
-          "end"
         ]
       }
     ]
@@ -110,22 +219,6 @@
           "closure",
           "finish",
           "ending"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Nachricht",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Nachrichten",
-        "translation": [
-          "news",
-          "message",
-          "information"
         ]
       }
     ]
@@ -173,36 +266,6 @@
         "translation": [
           "oat",
           "oats"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Flocke",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Flocken",
-        "translation": [
-          "flake",
-          "scale",
-          "ball of lint"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Bohne",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Bohnen",
-        "translation": [
-          "bean"
         ]
       }
     ]
@@ -257,22 +320,6 @@
     ]
   },
   {
-    "word": "Fresse",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Fressen",
-        "translation": [
-          "mouth",
-          "face",
-          "mug"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Schiff",
     "weight": 100,
     "classes": [
@@ -284,21 +331,6 @@
           "ship",
           "vessel",
           "boat"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Waschmaschine",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Waschmaschinen",
-        "translation": [
-          "washing machine",
-          "washer"
         ]
       }
     ]
@@ -335,23 +367,6 @@
           "demon",
           "fiend",
           "deuce"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Reißverschluss",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Reißverschlüsse",
-        "translation": [
-          "zip",
-          "zipper",
-          "zip fastener",
-          "fiend"
         ]
       }
     ]
@@ -573,21 +588,6 @@
           "blade",
           "piano",
           "sail"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Blödsinn",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": [
-          "nonsense",
-          "tomfoolery"
         ]
       }
     ]

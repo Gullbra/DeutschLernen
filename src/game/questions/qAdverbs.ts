@@ -1,22 +1,23 @@
-import { IClassAdverb, IGameState } from "../../util/interfaces.ts";
+import { IClassAdverb, IDegreeOfComparisonObject, IGameState } from "../../util/interfaces.ts";
 import { inputProcessor, questionInputGenericValidation, qResultMeaningUI, randomizeArrayElement, qResultSimpleUI } from "../../util/util.ts";
 
 const adverbObjectValidation = (word: string, dataObject:IClassAdverb) => {
-  if (!(dataObject.comparative && dataObject.comparative.word && dataObject.comparative.translation)){
+  if (
+    !(dataObject.comparative && dataObject.comparative.word && dataObject.comparative.translation 
+    && dataObject.comparative.useInPhrase && Array.isArray(dataObject.comparative.useInPhrase) && dataObject.comparative.useInPhrase.length > 0)
+  ){
     console.log(`Invalid "comparative" for adverb ${word}`); return false;
   }
-  if (!(dataObject.superlative && dataObject.superlative.word && dataObject.superlative.translation)){
+  if (
+    !(dataObject.superlative && dataObject.superlative.word && dataObject.superlative.translation 
+    && dataObject.superlative.useInPhrase && Array.isArray(dataObject.superlative.useInPhrase) && dataObject.superlative.useInPhrase.length > 0)
+  ){
     console.log(`Invalid "superlative" for adverb ${word}`); return false;
-  }
-  if (!(dataObject.testPhrases && Array.isArray(dataObject.testPhrases) && dataObject.testPhrases.length > 0)){
-    console.log(`Invalid "testPhrases" for adverb ${word}`); return false;
   }
   return true
 }
-
-const comparativeSuperlativeValidation = (selectedPhrase: {dividedPhrase: string[], translation: string[]}): boolean => (
-  Array.isArray(selectedPhrase.dividedPhrase) && Array.isArray(selectedPhrase.translation) &&
-  selectedPhrase.dividedPhrase.length === 2 && selectedPhrase.translation.length === 2
+const validationDegreeOfComparisionObject = (degreeOfComparision: IDegreeOfComparisonObject): boolean => (
+  Boolean(degreeOfComparision.word) && Boolean(degreeOfComparision.translation) && degreeOfComparision.useInPhrase && Array.isArray(degreeOfComparision.useInPhrase) && degreeOfComparision.useInPhrase.length > 0
 )
 
 export const questionAdverb = async (gameState: IGameState, word: string, dataObject: IClassAdverb): Promise<{correct: boolean, error: boolean}> => {
@@ -25,7 +26,7 @@ export const questionAdverb = async (gameState: IGameState, word: string, dataOb
     return { correct: false, error: true }
   }
 
-  let terminalInput: string, correctlyAnswered: boolean = false
+  let terminalInput: string, correctlyAnswered: boolean = false;
 
   const questions = {
     meaningQuestion: async () => {
@@ -35,27 +36,23 @@ export const questionAdverb = async (gameState: IGameState, word: string, dataOb
     
       await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation))
     },
-    comparativeAndSuperlativeQuestion: async (comparative: boolean) => {
-      const selectedPhrase = randomizeArrayElement(dataObject.testPhrases)
-      const selectedWordTranslation = comparative
-        ? dataObject.comparative
-        : dataObject.superlative
-      const constructedQuestion =  `${selectedPhrase.translation[0]} ${selectedWordTranslation.translation} ${selectedPhrase.translation[1]}`
-      const constructedAnswer =  `${selectedPhrase.dividedPhrase[0]} ${selectedWordTranslation.word} ${selectedPhrase.dividedPhrase[1]}`
 
-      if (!comparativeSuperlativeValidation(selectedPhrase))
-        throw new Error(`Unvalid dataobject for adjective ${word}`)
+    comparativeAndSuperlativeQuestion: async (degreeOfComparision: IDegreeOfComparisonObject) => {
+      if (!validationDegreeOfComparisionObject(degreeOfComparision))
+        throw new Error(`Unvalid degree of comparision dataobject for adjective ${word}`)
+
+      const selectedPhrase = randomizeArrayElement(degreeOfComparision.useInPhrase)
+      const blankedPhrase = selectedPhrase.phrase.replace(degreeOfComparision.word, '_'.repeat(degreeOfComparision.word.length))
 
       terminalInput = inputProcessor(await gameState.lineReader.question(
-        `Using the ${dataObject.class} "${word}", write the phrase "${constructedQuestion}" in german.\nYour answer: `
+        `Using the ${dataObject.class} "${word}", complete the phrase;\n\n\t"${blankedPhrase}",\n\nso that it means: "${selectedPhrase.translation}".\nYour answer: `
       ))
 
-      correctlyAnswered = terminalInput === constructedAnswer.toLowerCase()
+      correctlyAnswered = (terminalInput === degreeOfComparision.word.toLowerCase() || terminalInput === selectedPhrase.phrase.toLowerCase())
 
-      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `"${constructedAnswer}"`))
+      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `"${selectedPhrase.phrase}"`))
     },
   }
-
 
   if(!dataObject.absoluteAdverb) {
     const randomizeExerciseType = Math.round(Math.random() * 3)
@@ -64,9 +61,9 @@ export const questionAdverb = async (gameState: IGameState, word: string, dataOb
       if (randomizeExerciseType === 3) {
         await questions.meaningQuestion()
       } else if (randomizeExerciseType === 2) {
-        await questions.comparativeAndSuperlativeQuestion(true)
+        await questions.comparativeAndSuperlativeQuestion(dataObject.comparative)
       } else {
-        await questions.comparativeAndSuperlativeQuestion(false)
+        await questions.comparativeAndSuperlativeQuestion(dataObject.superlative)
       }
     } catch (err) {
       console.log(`Error at ${word}: ` + (err as {message: string}).message)
@@ -75,22 +72,5 @@ export const questionAdverb = async (gameState: IGameState, word: string, dataOb
     await questions.meaningQuestion()
   }
 
-
   return { correct: correctlyAnswered, error: false }
-}
-
-class questionConstructorAdverb {
-  private gameState: IGameState;
-  private word: string;
-  private dataObject: IClassAdverb;
-
-  constructor (gameState: IGameState, word: string, dataObject: IClassAdverb) {
-    this.gameState = gameState
-    this.word = word
-    this.dataObject = dataObject
-  }
-
-  async getQuestion () {
-
-  }
 }
