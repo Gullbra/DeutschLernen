@@ -5,7 +5,7 @@ export class AcebaseMethods implements IDataStorageMethods {
     console.log('Not implemented!')
     return [] as TDataArray
   }
-  async save (originalData: TDataArray, toBeChanged: TDataArray): Promise<void> {
+  async save (toBeChanged: TDataArray): Promise<void> {
     console.log('Not implemented!')
   }
 }

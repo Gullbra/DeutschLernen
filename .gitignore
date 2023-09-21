@@ -3,6 +3,7 @@ node_modules
 dist
 
 .vscode
+data/sound
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

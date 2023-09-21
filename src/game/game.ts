@@ -1,8 +1,9 @@
-import { IClassAdverbAdjective, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput, TDataArray } from "../util/interfaces.ts";
+import { IClassAdverb, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput, TDataArray, IClassAdjective } from "../util/interfaces.ts";
 import { inputProcessor, randomizeArrayElement, randomizeArrayIndex } from "../util/util.ts";
 import { questionPreposition } from "./questions/qPrepositions.ts";
 import { questionNoun } from "./questions/qNouns.ts";
 import { questionAdverb } from "./questions/qAdverbs.ts";
+import { questionAdjective } from "./questions/qAdjectives.ts";
 
 export class Game { 
   private gameState: IGameState
@@ -100,13 +101,13 @@ export class Game {
         return await this.handleResult(selectedDataobject, await questionNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun));
 
       case 'adverb':
-        return await this.handleResult(selectedDataobject, await questionAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverbAdjective));
+        return await this.handleResult(selectedDataobject, await questionAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb));
 
       case 'preposition':
         return await this.handleResult(selectedDataobject, await questionPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition));
 
-      // case 'adjective':
-      //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.adjective as IAdverbAdjectivePhrase));
+      case 'adjective':
+        return await this.handleResult(selectedDataobject, await questionAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective));
 
       // case 'verb':
       //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
@@ -141,7 +142,8 @@ export class Game {
     console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correctlyAnswered).length}/${this.gameState.correctedAnswers.length}`)
 
     if(this.gameState.currentData.length === 0) {
-      console.log(' \nAll words and phrases reviewed!')
+      console.log('\nAll words and phrases reviewed!')
+      await this.handleSave()
       return await this.shutdown()
     }
 
@@ -167,7 +169,6 @@ export class Game {
   async handleSave () {
     console.log('Saving...')
     return await this.gameState.dataHandler.saveData(
-      this.gameState.fullData,
       this.gameState.correctedAnswers.map(obj => obj.dataObject)
     )
   }

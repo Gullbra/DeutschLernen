@@ -1,5 +1,42 @@
 [
   {
+    "word": "neidisch",
+    "weight": 125,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "jealously"
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "neidischer",
+          "translation": "more jealously",
+          "useInPhrase": [
+            {
+              "phrase": "Er ist neidischer als ich",
+              "translation": "He is more envious than I am"
+            },
+            {
+              "phrase": "Er schaute neidischer auf das neue Auto",
+              "translation": "He looked more enviously at the new car"
+            }
+          ]
+        },
+        "superlative": {
+          "word": "am neidischsten",
+          "translation": "most jealously",
+          "useInPhrase": [
+            {
+              "phrase": "Er ist am neidischsten in unsere Gruppe",
+              "translation": "He is the most envious in our group"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
     "word": "fähig",
     "weight": 75,
     "classes": [
@@ -9,41 +46,38 @@
           "ably",
           "competently",
           "proficiently"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "sogar",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "even"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "überhaupt",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "at all",
-          "anyhow",
-          "anyway",
-          "in general",
-          "after all"
-        ]
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "fähiger",
+          "translation": "more capable",
+          "useInPhrase": [
+            {
+              "phrase": "Sie arbeitet fähiger als ihre Kollegen",
+              "translation": "She works more capably than her colleagues"
+            },
+            {
+              "phrase": "Er spricht fähiger Deutsch als ich",
+              "translation": "He speaks more capably German than I do"
+            }
+          ]
+        },
+        "superlative": {
+          "word": "am fähigsten",
+          "translation": "most capable",
+          "useInPhrase": [
+            {
+              "phrase": "Sie arbeitet am fähigsten",
+              "translation": "She works the most competently"
+            }
+          ]
+        }
       }
     ]
   },
   {
     "word": "tatsächlich",
-    "weight": 100,
+    "weight": 75,
     "classes": [
       {
         "class": "adverb",
@@ -53,38 +87,66 @@
           "really",
           "objectively",
           "actually"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "neidisch",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "jealously"
-        ]
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
       }
     ]
   },
   {
     "word": "wahrscheinlich",
-    "weight": 100,
+    "weight": 75,
     "classes": [
       {
         "class": "adverb",
         "translation": [
           "probably",
           "presumably"
-        ]
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "wahrscheinlicher",
+          "translation": "more probably",
+          "useInPhrase": [
+            {
+              "phrase": "Es ist wahrscheinlicher, dass er morgen kommt",
+              "translation": "It is more likely that he will come tomorrow"
+            },
+            {
+              "phrase": "Sie wird wahrscheinlicher gewinnen als die anderen",
+              "translation": "She will win more likely than the others"
+            }
+          ]
+        },
+        "superlative": {
+          "word": "am wahrscheinlichsten",
+          "translation": "most probably",
+          "useInPhrase": [
+            {
+              "phrase": "Er ist am wahrscheinlichsten der Beste in seinem Fach",
+              "translation": "He is most likely the best in his field"
+            },
+            {
+              "phrase": "Das ist am wahrscheinlichsten die beste Lösung",
+              "translation": "That is most likely the best solution"
+            }
+          ]
+        }
       }
     ]
   },
   {
     "word": "wohl",
-    "weight": 100,
+    "weight": 56,
     "classes": [
       {
         "class": "adverb",
@@ -95,13 +157,24 @@
           "surely",
           "perhaps",
           "no doubt"
-        ]
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
       }
     ]
   },
   {
     "word": "bloß",
-    "weight": 100,
+    "weight": 75,
     "classes": [
       {
         "class": "adverb",
@@ -110,7 +183,68 @@
           "merely",
           "purely",
           "only"
-        ]
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "sogar",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
       }
     ]
   }

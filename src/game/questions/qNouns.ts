@@ -10,8 +10,7 @@ export const questionNoun = async (gameState: IGameState, word: string, dataObje
     return { correct: false, error: true }
   }
 
-  let correctlyAnswered: boolean = false; 
-  let terminalInput: string;
+  let terminalInput: string, correctlyAnswered: boolean = false
 
   const questions = {
     articleQuestion: async () => {

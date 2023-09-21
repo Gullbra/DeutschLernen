@@ -12,13 +12,13 @@ export class DataHandler {
   }
 
   async getData (inclusiveFilters?: string[]): Promise<TDataArray> {
-    return inclusiveFilters 
+    return inclusiveFilters && inclusiveFilters.length > 0
       ? this.applyInclusiveFilters(inclusiveFilters, await this.dataStorageMethods.retrieve(inclusiveFilters))
       : this.dataStorageMethods.retrieve()
   }
 
-  async saveData (originalData: TDataArray, toBeChanged: TDataArray) {
-    return this.dataStorageMethods.save(originalData, toBeChanged)
+  async saveData (toBeChanged: TDataArray) {
+    return this.dataStorageMethods.save(toBeChanged)
   }
 
   applyInclusiveFilters (inclusiveFilters: string[], data: TDataArray): TDataArray {

@@ -7,6 +7,20 @@ Just a little thing to help me expand my german vocabulary.
 The combination of youtube-lessons, watching german-language content and Doulingo has helped me understand german pretty quickly. But there are some medium-common words I find myself repeatedly looking up. I want a simple way to target-practise these words. 
 
 ## Progress:
+### 0.1.1
+<hr>
+
+#### done:
+* Storing and retrieving data from JSON files - I will not start using a database until I feel happy enough about the data structures.
+* Working weight system.
+* Data formats have changed a lot, and are heavily dependent on word classes (noun, adverb etc)
+* Question construction for nouns, adverbs and prepositions.
+
+#### next on backlog:
+* Add question construction for adjectives
+* Improve question construction for prepositions
+* (maybe) add a simple temporary interface for adding new data, to facilitate development
+
 ### 0.1.0
 <hr>
 

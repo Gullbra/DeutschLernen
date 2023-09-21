@@ -11,8 +11,7 @@ export const questionPreposition = async (gameState: IGameState, word: string, d
     return { correct: false, error: true }
   }
 
-  let correctlyAnswered: boolean = false 
-  let terminalInput: string;
+  let terminalInput: string, correctlyAnswered: boolean = false
 
   const questions = {
     meaningQuestion: async () => {
