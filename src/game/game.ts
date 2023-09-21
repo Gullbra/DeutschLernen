@@ -1,9 +1,9 @@
 import { IClassAdverb, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput, TDataArray, IClassAdjective } from "../util/interfaces.ts";
 import { inputProcessor, randomizeArrayElement, randomizeArrayIndex } from "../util/util.ts";
-import { questionPreposition } from "./questions/qPrepositions.ts";
+import { QWordClassPreposition } from "./questions/qPrepositions.ts";
 import { QWordClassNoun } from "./questions/qNouns.ts";
-import { questionAdverb } from "./questions/qAdverbs.ts";
-import { questionAdjective } from "./questions/qAdjectives.ts";
+import { QWordClassAdverb } from "./questions/qAdverbs.ts";
+import { QWordClassAdjective } from "./questions/qAdjectives.ts";
 
 export class Game { 
   private gameState: IGameState
@@ -101,13 +101,13 @@ export class Game {
         return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQuestion());
 
       case 'adverb':
-        return await this.handleResult(selectedDataobject, await questionAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb));
+        return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQuestion());
 
       case 'preposition':
-        return await this.handleResult(selectedDataobject, await questionPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition));
+        return await this.handleResult(selectedDataobject, await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQuestion());
 
       case 'adjective':
-        return await this.handleResult(selectedDataobject, await questionAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective));
+        return await this.handleResult(selectedDataobject, await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQuestion());
 
       // case 'verb':
       //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));

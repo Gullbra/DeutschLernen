@@ -1,39 +1,43 @@
 import { validationWordClassGeneric } from "../../util/dataValidations.ts";
 import { IClassAdjective, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, qResultMeaningUI } from "../../util/util.ts";
+import { QDegreeOfComparision } from "./parentClasses.ts";
 
-export const questionAdjective = async (gameState: IGameState, word: string, dataObject: IClassAdjective): Promise<{correct: boolean, error: boolean}> => {
-  if (validationWordClassGeneric(word, dataObject)) {
-    console.log(`No or invalid dataObject sent to question for word "${word}"`); 
-    return { correct: false, error: true }
+
+export class QWordClassAdjective extends QDegreeOfComparision {
+  protected dataObject: IClassAdjective;
+
+  constructor (gameState: IGameState, word: string, dataObject: IClassAdjective) {
+    super(gameState, word, dataObject)
+    this.dataObject = dataObject
   }
-
-  let terminalInput: string, correctlyAnswered: boolean = false;
-
-  const questions: {[keys: string]: () => void} = {
-    meaningQuestion: async () => {
-      terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${word}" mean"?\nYour answer: `));
   
-      correctlyAnswered = dataObject.translation.some(el => el === terminalInput)
-  
-      await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation))
-    },
-    declensionQuestion: async () => {
+  async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
+    // if (validationWordClassGeneric(this.word, this.dataObject) && validationWordClassAdverb(this.word, this.dataObject)) {
+    //   console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
+    //   return { correct: false, error: true }
+    // }
 
-      
-      /**
-       * nominativ
-       * akusativ
-       * dativ
-       * genitiv
-       */
-    }
+    // if(!this.dataObject.absoluteAdverb && Math.round(Math.random() * 2) > 0) {
+    //   try {
+    //     return {
+    //       correct: Math.round(Math.random()) === 0
+    //         ? await this.questionDegreeOfComparision(this.dataObject.comparative)
+    //         : await this.questionDegreeOfComparision(this.dataObject.superlative),
+    //       error: false
+    //     }
+    //   } catch (err) {
+    //     console.log(`Error at ${this.word}: ` + (err as {message: string}).message)
+    //     return { correct: false, error: true }
+    //   }
+    // } 
+    
+    return { correct: await this.questionMeaning(), error: false }
   }
-
-
-
-
-  return { correct: false, error: false }
 }
 
 
+/*
+const dummyFunc = (gameState: IGameState, word: string, dataObject: IClassAdverb) => {
+  const TestObject = new QWordClassAdverb (gameState, word, dataObject).getQuestion()
+}
+*/

@@ -1,55 +1,60 @@
 import { validationWordClassGeneric, validationWordClassPreposition } from "../../util/dataValidations.ts";
 import { IClassPreposition, IGameState } from "../../util/interfaces.ts";
 import { inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { QParentClass } from "./parentClasses.ts";
 
-export const questionPreposition = async (gameState: IGameState, word: string, dataObject: IClassPreposition): Promise<{correct: boolean, error: boolean}> => {
-  if (validationWordClassGeneric(word, dataObject) || validationWordClassPreposition(dataObject)) {
-    console.log(`No or invalid dataObject sent to question for word "${word}"`); 
-    return { correct: false, error: true }
+export class QWordClassPreposition extends QParentClass {
+  protected dataObject: IClassPreposition;
+
+  constructor (gameState: IGameState, word: string, dataObject: IClassPreposition) {
+    super(gameState, word, dataObject)
+    this.dataObject = dataObject
+  }
+  
+  async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
+    if (validationWordClassGeneric(this.word, this.dataObject) || validationWordClassPreposition(this.dataObject)) {
+      console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
+      return { correct: false, error: true }
+    }
+
+    const correct = await (async () => {
+      const randomizeExerciseType = Math.round(Math.random() * 3)
+  
+      if (randomizeExerciseType === 3) {
+        return await this.questionMeaning()
+      } else if (randomizeExerciseType === 2) {
+        return await this.questionCase()
+      } else {
+        return await this.questionExerciseCase()
+      }
+    }) ()
+  
+    return { correct, error: false }
   }
 
-  let terminalInput: string, correct: boolean, error = false
+  private async questionCase () {
+    const terminalInput = inputProcessor(await this.gameState.lineReader.question(`What case(Akusativ, Dativ, Wechsel, or Genetiv) will a noun refered to by the ${this.dataObject.class} "${this.word}" have?\nYour answer: `))
 
-  const questions = {
-    meaningQuestion: async (): Promise<boolean> => {
-      let terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${word}" mean"?\nYour answer: `));
-    
-      const correctlyAnswered = dataObject.translation.some(el => el === terminalInput)
-    
-      await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation))
-      return correctlyAnswered
-    },
-    questionCase: async () => {
-      terminalInput = inputProcessor(await gameState.lineReader.question(`What case(Akusativ, Dativ, Wechsel, or Genetiv) will a noun refered to by the ${dataObject.class} "${word}" have?\nYour answer: `))
-  
-      const correctlyAnswered = terminalInput === dataObject.forcesCase
-  
-      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, dataObject.forcesCase))
-      return correctlyAnswered
-    },
-    questionExerciseCase: async (): Promise<boolean> => {
-      const selectedUseCase = randomizeArrayElement(dataObject.commonUses)
-  
-      terminalInput = inputProcessor(await gameState.lineReader.question(`Using the ${dataObject.class} "${word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
-  
-      const correctlyAnswered = terminalInput === selectedUseCase.example.toLowerCase()
-  
-      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, selectedUseCase.example))
-      return correctlyAnswered
-    }
+    const correctlyAnswered = terminalInput === this.dataObject.forcesCase
+
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, this.dataObject.forcesCase))
+    return correctlyAnswered
   }
 
-  correct = await (async () => {
-    const randomizeExerciseType = Math.round(Math.random() * 3)
+  private async questionExerciseCase (): Promise<boolean> {
+    const selectedUseCase = randomizeArrayElement(this.dataObject.commonUses)
 
-    if (randomizeExerciseType === 3) {
-      return await questions.meaningQuestion()
-    } else if (randomizeExerciseType === 2) {
-      return await questions.questionCase()
-    } else {
-      return await questions.questionExerciseCase()
-    }
-  }) ()
+    const terminalInput = inputProcessor(await this.gameState.lineReader.question(`Using the ${this.dataObject.class} "${this.word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
 
-  return { correct, error }
+    const correctlyAnswered = terminalInput === selectedUseCase.example.toLowerCase()
+
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, selectedUseCase.example))
+    return correctlyAnswered
+  }
 }
+
+/*
+const dummyFunc = (gameState: IGameState, word: string, dataObject: IClassPreposition) => {
+  const TestObject = new QWordClassAdverb (gameState, word, dataObject).getQuestion()
+}
+*/

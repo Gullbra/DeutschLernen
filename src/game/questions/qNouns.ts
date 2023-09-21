@@ -1,7 +1,7 @@
 import { validationWordClassGeneric, validationWordClassNoun } from "../../util/dataValidations.ts";
 import { IClassNoun, IGameState, IWordclass } from "../../util/interfaces.ts";
 import { inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
-import { QParentClass } from "./parentClass.ts";
+import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassNoun extends QParentClass {
   protected dataObject: IClassNoun;
