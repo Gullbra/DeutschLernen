@@ -1,7 +1,7 @@
 import { IClassAdverb, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput, TDataArray, IClassAdjective } from "../util/interfaces.ts";
 import { inputProcessor, randomizeArrayElement, randomizeArrayIndex } from "../util/util.ts";
 import { questionPreposition } from "./questions/qPrepositions.ts";
-import { questionNoun } from "./questions/qNouns.ts";
+import { QWordClassNoun } from "./questions/qNouns.ts";
 import { questionAdverb } from "./questions/qAdverbs.ts";
 import { questionAdjective } from "./questions/qAdjectives.ts";
 
@@ -98,7 +98,7 @@ export class Game {
   
     switch (selectedWordClass.class) {
       case 'noun':
-        return await this.handleResult(selectedDataobject, await questionNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun));
+        return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQuestion());
 
       case 'adverb':
         return await this.handleResult(selectedDataobject, await questionAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb));

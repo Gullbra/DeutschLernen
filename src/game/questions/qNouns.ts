@@ -1,56 +1,64 @@
 import { validationWordClassGeneric, validationWordClassNoun } from "../../util/dataValidations.ts";
-import { IClassNoun, IGameState } from "../../util/interfaces.ts";
+import { IClassNoun, IGameState, IWordclass } from "../../util/interfaces.ts";
 import { inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
+import { QParentClass } from "./parentClass.ts";
 
-export const questionNoun = async (gameState: IGameState, word: string, dataObject: IClassNoun): Promise<{correct: boolean, error: boolean}> => {
-  if (validationWordClassGeneric(word, dataObject) || validationWordClassNoun(dataObject)) {
-    console.log(`No or invalid dataObject sent to question for word "${word}"`); 
-    return { correct: false, error: true }
+export class QWordClassNoun extends QParentClass {
+  protected dataObject: IClassNoun;
+
+  constructor (gameState: IGameState, word: string, dataObject: IClassNoun) {
+    super(gameState, word, dataObject)
+    this.dataObject = dataObject
+  }
+  
+  async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
+    if (validationWordClassGeneric(this.word, this.dataObject) || validationWordClassNoun(this.dataObject)) {
+      console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
+      return { correct: false, error: true }
+    }
+
+    if (this.dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0) {
+      return { correct: await this.questionPlural(), error: false }
+    }
+  
+    return { 
+      correct: Math.round(Math.random()) === 0
+        ? await this.questionMeaning()
+        : await this.questionArticle(), 
+      error: false
+    }
   }
 
-  let terminalInput: string, correct: boolean
+  protected override async questionMeaning (): Promise<boolean> {
+    let terminalInput = inputProcessor(await this.gameState.lineReader.question(`What does the ${this.dataObject.class} "${this.dataObject.article} ${this.word}" mean?\nYour answer: `));
+    
+    if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the '))
+      terminalInput = 'the ' + terminalInput;
 
-  const questions = {
-    questionArticle: async (): Promise<boolean> => {
-      terminalInput = inputProcessor(await gameState.lineReader.question(`Which article corresponds to "${word}", meaning: ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
+    const correctlyAnswered = this.dataObject.translation.some(el => "the " + el === terminalInput)
 
-      const correctlyAnswered = terminalInput === dataObject.article
-  
-      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, dataObject.article))
-      return correctlyAnswered
-    },
-    questionMeaning: async (): Promise<boolean> => {
-      terminalInput = inputProcessor(await gameState.lineReader.question(`What does the ${dataObject.class} "${dataObject.article} ${word}" mean?\nYour answer: `));
-      
-      if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the '))
-        terminalInput = 'the ' + terminalInput;
-  
-      const correctlyAnswered = dataObject.translation.some(el => "the " + el === terminalInput)
-  
-      await gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, dataObject.translation.map(el => 'the ' + el)))
-      return correctlyAnswered
-    },
-    questionPlural: async (): Promise<boolean> => {
-      terminalInput = inputProcessor(await gameState.lineReader.question(`What is the plural form of the ${dataObject.class} "${dataObject.article} ${word}", meaning ${lineUpTranslations(dataObject.translation)}?\nYour answer: `));
-  
-      if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'die '))
-        terminalInput = 'die ' + terminalInput;
-  
-      const correctlyAnswered = 'die ' + dataObject.plural.toLowerCase() === terminalInput    
-  
-      await gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + dataObject.plural))
-      return correctlyAnswered
-    },
+    await this.gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, this.dataObject.translation.map(el => 'the ' + el)))
+    return correctlyAnswered
   }
 
-  if (dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0) {
-    return { correct: await questions.questionPlural(), error: false }
+  private async questionArticle (): Promise<boolean> {
+    let terminalInput = inputProcessor(await this.gameState.lineReader.question(`Which article corresponds to "${this.word}", meaning: ${lineUpTranslations(this.dataObject.translation)}?\nYour answer: `));
+
+    const correctlyAnswered = terminalInput === this.dataObject.article
+
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, this.dataObject.article))
+    return correctlyAnswered
   }
 
-  return { 
-    correct: Math.round(Math.random()) === 0
-      ? await questions.questionMeaning()
-      : await questions.questionArticle(), 
-    error: false
+  private async questionPlural (): Promise<boolean> {
+    let terminalInput = inputProcessor(await this.gameState.lineReader.question(`What is the plural form of the ${this.dataObject.class} "${this.dataObject.article} ${this.word}", meaning ${lineUpTranslations(this.dataObject.translation)}?\nYour answer: `));
+
+    if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'die '))
+      terminalInput = 'die ' + terminalInput;
+
+    const correctlyAnswered = 'die ' + this.dataObject.plural.toLowerCase() === terminalInput    
+
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + this.dataObject.plural))
+    return correctlyAnswered
   }
 }

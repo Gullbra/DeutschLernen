@@ -7,7 +7,7 @@ import { mockDataNouns, mockDataOtherWords } from './data/mockData.ts';
 new Game({
   lineReader: createInterface({ input: stdin, output: stdout }),
   dataHandler: new DataHandler()
-}, []).startUp()
+}, ['noun']).startUp()
 
 // * For testing dataHandler:
 // const testHandler = new DataHandler()

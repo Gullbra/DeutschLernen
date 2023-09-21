@@ -1,5 +1,85 @@
 [
   {
+    "word": "Waschmaschine",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Waschmaschinen",
+        "translation": [
+          "washing machine",
+          "washer"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Böse",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "das",
+        "translation": [
+          "evil"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Ziel",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Ziele",
+        "article": "das",
+        "translation": [
+          "goal",
+          "target",
+          "objective",
+          "aim",
+          "destination",
+          "end",
+          "finishing line"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Miststück",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Miststücke",
+        "article": "das",
+        "translation": [
+          "bitch",
+          "bastard"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Schnauze",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Schnauzen",
+        "translation": [
+          "snout",
+          "muzzle",
+          "spout"
+        ]
+      }
+    ]
+  },
+  {
     "word": "Flocke",
     "weight": 75,
     "classes": [
@@ -42,21 +122,6 @@
           "mouth",
           "face",
           "mug"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Waschmaschine",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Waschmaschinen",
-        "translation": [
-          "washing machine",
-          "washer"
         ]
       }
     ]
@@ -372,22 +437,6 @@
     ]
   },
   {
-    "word": "Schnauze",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Schnauzen",
-        "translation": [
-          "snout",
-          "muzzle",
-          "spout"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Möwe",
     "weight": 100,
     "classes": [
@@ -458,26 +507,6 @@
     ]
   },
   {
-    "word": "Ziel",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ziele",
-        "article": "das",
-        "translation": [
-          "goal",
-          "target",
-          "objective",
-          "aim",
-          "destination",
-          "end",
-          "finishing line"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Ausdruck",
     "weight": 100,
     "classes": [
@@ -512,21 +541,6 @@
     ]
   },
   {
-    "word": "Miststück",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Miststücke",
-        "article": "das",
-        "translation": [
-          "bitch",
-          "bastard"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Untershied",
     "weight": 100,
     "classes": [
@@ -539,20 +553,6 @@
           "distinction",
           "differential",
           "variation"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Böse",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "das",
-        "translation": [
-          "evil"
         ]
       }
     ]
