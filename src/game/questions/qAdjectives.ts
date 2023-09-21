@@ -1,4 +1,4 @@
-import { validationWordClassGeneric } from "../../util/dataValidations.ts";
+import { validationWordClassAdjective } from "../../util/dataValidations.ts";
 import { IClassAdjective, IGameState } from "../../util/interfaces.ts";
 import { QDegreeOfComparision } from "./parentClasses.ts";
 
@@ -12,10 +12,10 @@ export class QWordClassAdjective extends QDegreeOfComparision {
   }
   
   async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
-    // if (validationWordClassGeneric(this.word, this.dataObject) && validationWordClassAdverb(this.word, this.dataObject)) {
-    //   console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
-    //   return { correct: false, error: true }
-    // }
+    if (!validationWordClassAdjective(this.word, this.dataObject)) {
+      console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
+      return { correct: false, error: true }
+    }
 
     // if(!this.dataObject.absoluteAdverb && Math.round(Math.random() * 2) > 0) {
     //   try {

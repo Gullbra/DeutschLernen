@@ -1,6 +1,6 @@
-import { validationWordClassGeneric, validationWordClassPreposition } from "../../util/dataValidations.ts";
+import { validationWordClassPreposition } from "../../util/dataValidations.ts";
 import { IClassPreposition, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassPreposition extends QParentClass {
@@ -12,7 +12,7 @@ export class QWordClassPreposition extends QParentClass {
   }
   
   async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
-    if (validationWordClassGeneric(this.word, this.dataObject) || validationWordClassPreposition(this.dataObject)) {
+    if (!validationWordClassPreposition(this.word, this.dataObject)) {
       console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
       return { correct: false, error: true }
     }
@@ -52,9 +52,3 @@ export class QWordClassPreposition extends QParentClass {
     return correctlyAnswered
   }
 }
-
-/*
-const dummyFunc = (gameState: IGameState, word: string, dataObject: IClassPreposition) => {
-  const TestObject = new QWordClassAdverb (gameState, word, dataObject).getQuestion()
-}
-*/

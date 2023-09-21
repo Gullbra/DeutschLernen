@@ -1,5 +1,5 @@
-import { validationWordClassGeneric, validationWordClassNoun } from "../../util/dataValidations.ts";
-import { IClassNoun, IGameState, IWordclass } from "../../util/interfaces.ts";
+import { validationWordClassNoun } from "../../util/dataValidations.ts";
+import { IClassNoun, IGameState } from "../../util/interfaces.ts";
 import { inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
 import { QParentClass } from "./parentClasses.ts";
 
@@ -12,7 +12,7 @@ export class QWordClassNoun extends QParentClass {
   }
   
   async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
-    if (validationWordClassGeneric(this.word, this.dataObject) || validationWordClassNoun(this.dataObject)) {
+    if (!validationWordClassNoun(this.word, this.dataObject)) {
       console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
       return { correct: false, error: true }
     }

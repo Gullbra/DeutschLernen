@@ -1,5 +1,5 @@
 import { IClassAdverb, IGameState } from "../../util/interfaces.ts";
-import { validationWordClassAdverb, validationWordClassGeneric } from "../../util/dataValidations.ts";
+import { validationWordClassAdverb } from "../../util/dataValidations.ts";
 import { QDegreeOfComparision } from "./parentClasses.ts";
 
 export class QWordClassAdverb extends QDegreeOfComparision {
@@ -11,7 +11,7 @@ export class QWordClassAdverb extends QDegreeOfComparision {
   }
   
   async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
-    if (validationWordClassGeneric(this.word, this.dataObject) && validationWordClassAdverb(this.word, this.dataObject)) {
+    if (!validationWordClassAdverb(this.word, this.dataObject)) {
       console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
       return { correct: false, error: true }
     }
