@@ -33,16 +33,31 @@ export const mockDataOtherWords: IWord[] = [
   //       "class": "adjective",
   //       "translation": ["often", "frequent", "repeatedly"],
   //       comparative: {
-  //         word: "häuflicher",
-  //         translation: "more often"
-  //       },
+  //         word: 'häuflicher', 
+  //         translation: 'more often', 
+  //         useInPhrase: [
+  //           {
+  //             phrase: "ich gehe häuflicher zum Arzt als dich",
+  //             translation: "I'm going more more often to the doctor than you"
+  //           }
+  //         ]},
   //       superlative: {
-  //         word: "am häufligsten",
-  //         translation: "most often"
+  //         word: 'am häufligsten', 
+  //         translation: 'most often', 
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Unter meinen Kollegen bin ich derjenige, der am häufigsten zum Arzt geht",
+  //             translation: "Among my colleagues, I'm the one who most frequently goes to the doctor"
+  //           }
+  //         ]
   //       },
-  //       testPhrases: [
+  //       declension: {
+  //         definite: {
+  //           nominativ: {
 
-  //       ]
+  //           }
+  //         }
+  //       }
   //     }
   //   ]
   // },
@@ -260,7 +275,14 @@ export const mockDataOtherWords: IWord[] = [
   //   "classes": [
   //     {
   //       "class": "adjective",
-  //       "translation": ["evil", "angry", "bad", "nasty", "mad", "vicious"]
+  //       "translation": ["evil", "angry", "bad", "nasty", "mad", "vicious"],
+  //       declension: {
+  //         definite: {
+  //           nominativ: {
+  //             exercisePhrase: "{asticle} {translation} {noun}"
+  //           }
+  //         }
+  //       }
   //     }
   //   ]
   // },

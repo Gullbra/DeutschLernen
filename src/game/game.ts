@@ -17,7 +17,7 @@ export class Game {
       questionsToAnswer: 0,
       currentQuestionNumber: 0,
       currentTotalWeight: 0,
-      correctedAnswers: [] as { dataObject: IWord, correctlyAnswered: boolean }[]
+      correctedAnswers: [] as { dataObject: IWord, correct: boolean }[]
     }
     this.inclusiveFilters = inclusiveFilters
   }
@@ -126,7 +126,7 @@ export class Game {
 
     dataObject.weight = this.weightHandler(dataObject.weight, correct)
 
-    this.gameState.correctedAnswers.push({ dataObject, correctlyAnswered: correct})
+    this.gameState.correctedAnswers.push({ dataObject, correct })
 
     await this.determineQuestion()
   }
@@ -139,7 +139,7 @@ export class Game {
   }
 
   async resultAndRestart (): Promise<void> {
-    console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correctlyAnswered).length}/${this.gameState.correctedAnswers.length}`)
+    console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correct).length}/${this.gameState.correctedAnswers.length}`)
 
     if(this.gameState.currentData.length === 0) {
       console.log('\nAll words and phrases reviewed!')

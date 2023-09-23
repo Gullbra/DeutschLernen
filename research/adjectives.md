@@ -7,44 +7,60 @@
 
 ## Adjective declining matrix:
 
-    bestämdform (der/den/dem/des, das/das/dem/des, die/die/der/der)
-      nominativ (-e/-e/-e):
-        der: der kleine heiße Kaffee
-        das: das kleine warme Sandwich
-        die: die kleine heiße Schokolade
+    bestämdform (der/den/dem/des, das/das/dem/des, die/die/der/der, die/die/den/der)
+      nominativ (-e/-e/-e/-en):
+        masculine:  der kleine heiße Kaffee
+        neuter:     das kleine warme Sandwich
+        feminine:   die kleine heiße Schokolade
+        plural:     die kleinen heißen Schokoladen
 
-      akusativ (-en/-e/-e)
-        der: (ich mag) den kleinen heißen kaffee
-        das: (ich mag) das kleine warme Sandwich
-        die: (ich mag) die kleine heiße Schokolade
-      
-      dativ (-en/-en/-en)
-        der: (Ich gebe den Ball) dem kleinen glücklichen Mann
-        das: (Ich gebe den Ball) dem kleinen glücklichen Kind
-        die: (Ich gebe den Ball) der kleinen glücklichen Frau 
-      
-      Genetiv (-en/-en/-en)
-        der: (das Licht) des großen weißen Mondes
-        das: (das Licht) des großen weißen Elements
-        die: (das Licht) der großen weißen Sonne
+      akusativ  (-en/-e/-e/-en)
+        masculine:  (ich mag) den kleinen heißen kaffee
+        neuter:     (ich mag) das kleine warme Sandwich
+        feminine:   (ich mag) die kleine heiße Schokolade
+        plural:     (ich mag) die kleinen heißen Schokolade
 
-    obestämd (ein/einen/einem/eines, ein/ein/einem/eines, eine/eine/einer/einer)
-      nominativ (-er/-es/-e)
-        der: ein kleiner heißer Kaffee
-        das: ein kleines warmes Sandwich
-        die: eine kleine heiße Schokolade
+      dativ     (-en/-en/-en/-en)
+        masculine:  (Ich gebe den Ball) dem kleinen glücklichen Mann
+        neuter:     (Ich gebe den Ball) dem kleinen glücklichen Kind
+        feminine:   (Ich gebe den Ball) der kleinen glücklichen Frau 
+        plural:     (Ich gebe den Ball) den kleinen glücklichen Kindern
 
-      akusativ (-en/-es/-e)
-        der: (ich nehme) einen kleinen heißen kaffee
-        das: (ich nehme) ein kleines warmes Sandwich
-        die: (ich nehme) eine kleine heiße Schokolade
+      Genetiv   (-en/-en/-en/-en)
+        masculine:  (das Licht) des großen weißen Mondes
+        neuter:     (das Licht) des großen weißen Elements
+        feminine:   (das Licht) der großen weißen Sonne
+        plural:     (das Licht) der großen weißen Elemente
 
-      dativ (-en/-en/-en)
-        der: (Ich gebe den Ball) einem kleinen glücklichen Mann
-        das: (Ich gebe den Ball) einem kleinen glücklichen Kind
-        die: (Ich gebe den Ball) einer kleinen glücklichen Frau 
+    obestämd (ein/einen/einem/eines, ein/ein/einem/eines, eine/eine/einer/einer, viele/viele/vielen/vieler)
+      nominativ  (-er/-es/-e/-e)
+        masculine:  ein kleiner heißer Kaffee
+        neuter:     ein kleines warmes Sandwich
+        feminine:   eine kleine heiße Schokolade
+        plural:     viele kleine warme Sandwiches
 
-      Genetiv (-en/-en/-en)
-        der: (das Licht) eines großen weißen Mondes
-        das: (das Licht) eines großen weißen Elements
-        die: (das Licht) einer großen weißen Sonne
+      akusativ   (-en/-es/-e/-e)
+        masculine:  (ich nehme) einen kleinen heißen kaffee
+        neuter:     (ich nehme) ein kleines warmes Sandwich
+        feminine:   (ich nehme) eine kleine heiße Schokolade
+        plural:     (Ich nehme) viele kleine heiße Schokoladen
+
+      dativ      (-en/-en/-en/-en)
+        masculine:  (Ich gebe den Ball) einem kleinen glücklichen Mann
+        neuter:     (Ich gebe den Ball) einem kleinen glücklichen Kind
+        feminine:   (Ich gebe den Ball) einer kleinen glücklichen Frau 
+        plural:     (Ich gebe den Ball) vielen glücklichen kleinen Männern
+
+      Genetiv    (-en/-en/-en/-er)
+        masculine:  (das Licht) eines großen weißen Mondes
+        neuter:     (das Licht) eines großen weißen Elements
+        feminine:   (das Licht) einer großen weißen Sonne
+        plural:     (das Licht) vieler großer weißer Sonnen
+
+
+function:
+
+        No: (nounNom) => phrase
+        Ak: (noun/pronNom?, verb?, nounAk) => phrase
+        da: (noun/pronNom?, verb?, nounAK?, nounDat) => phrase
+        Ge: (noun/pronNom?, verb?, nounAk?, nounDat?, nounGen) => phrase

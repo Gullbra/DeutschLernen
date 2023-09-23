@@ -1,4 +1,3 @@
-import { validationDegreeOfComparisionObject } from "../../util/dataValidations.ts";
 import { IDegreeOfComparisonObject, IGameState, IWordclass } from "../../util/interfaces.ts";
 import { inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
 
@@ -23,10 +22,11 @@ export abstract class QParentClass {
 
 export abstract class QDegreeOfComparision extends QParentClass {
   protected async questionDegreeOfComparision (degreeOfComparision: IDegreeOfComparisonObject): Promise<boolean> {
-    if (!validationDegreeOfComparisionObject(degreeOfComparision))
-      throw new Error(`Unvalid degree of comparision dataobject for adjective ${this.word}`)
-
     const selectedPhrase = randomizeArrayElement(degreeOfComparision.useInPhrase)
+
+    if (typeof selectedPhrase.phrase !== 'string' || typeof selectedPhrase.translation !== 'string')
+      throw new Error(`Unvalid degree of comparision dataobject:\n${selectedPhrase}\nfor adjective ${this.word}`)
+
     const blankedPhrase = selectedPhrase.phrase.replace(degreeOfComparision.word, '_'.repeat(degreeOfComparision.word.length))
 
     const terminalInput = inputProcessor(await this.gameState.lineReader.question(

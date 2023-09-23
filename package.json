@@ -7,7 +7,9 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env MODE=ts-node ts-node --esm src/index.ts",
-    "sound-test": "node src/textToSpeech/playSound.cjs"
+    "test": "npm run testing-with-mocha",
+    "testing-with-mocha": "mocha -r chai/register-expect src/tests/*.test.ts",
+    "testing-with-jest": "jest src"
   },
   "repository": {
     "type": "git",
@@ -22,7 +24,14 @@
   "homepage": "https://github.com/Gullbra/DeutschLernen#readme",
   "dependencies": {
     "acebase": "^1.29.4",
-    "cross-env": "^7.0.3",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.6",
+    "@types/mocha": "^10.0.1",
+    "chai": "^4.3.8",
+    "mocha": "^10.2.0",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }

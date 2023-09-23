@@ -44,22 +44,30 @@ export interface IClassAdverb extends IWordclass, IComparativeAndSuperlative {
 
 // * Some adjectives: https://mydailygerman.com/german-adjectives/
 // * "declining" of adjectives https://learn-german-easily.com/the-adjectives
+export interface IAdjectiveDeclensionOnCase {
+  exercisePhrase: string,
+  translation: string
+  nouns: { gender: string, noun: string, translation: string } []
+}
+export interface IAdjectiveDeclensionOnForm {
+  nominativ: IAdjectiveDeclensionOnCase,
+  akusativ: IAdjectiveDeclensionOnCase,
+  dativ: IAdjectiveDeclensionOnCase,
+  genetiv: IAdjectiveDeclensionOnCase,
+}
 export interface IClassAdjective extends IWordclass, IComparativeAndSuperlative {
-  exampleNouns: {
-    masculine: {
-      singular: string,
-      plural: string
-    },
-    neuter: {
-      singular: string,
-      plural: string
-    },
-    femimine: {
-      singular: string,
-      plural: string
-    }
+  declension: {
+    definite: IAdjectiveDeclensionOnForm,
+    indefinite: IAdjectiveDeclensionOnForm,
   }
 }
+/**
+  Nom: (nounNom) => phrase
+  Ak: (noun/pronNom?, verb?, nounAk) => phrase
+  dative: (noun/pronNom?, verb?, nounAK?, nounDat) => phrase
+  Genetiv: (noun/pronNom?, verb?, nounAk?, nounDat, nounGen) => phrase
+ */
+
 
 
 // * Preposition mechanic: https://www.fluentin3months.com/german-prepositions/?expand_article=1
@@ -128,7 +136,7 @@ export interface IGameState extends IGameInput{
   correctedAnswers: {
     dataObject: IWord,
     // dataObject: IWord | IPhrase,
-    correctlyAnswered: boolean
+    correct: boolean
   }[],
 }
 
