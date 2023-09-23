@@ -4,16 +4,13 @@ import { inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../ut
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassPreposition extends QParentClass {
-  protected dataObject: IClassPreposition;
-
-  constructor (gameState: IGameState, word: string, dataObject: IClassPreposition) {
+  constructor (gameState: IGameState, word: string, protected dataObject: IClassPreposition) {
     super(gameState, word, dataObject)
-    this.dataObject = dataObject
   }
   
   async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
     if (!validationWordClassPreposition(this.word, this.dataObject)) {
-      console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
+      console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
       return { correct: false, error: true }
     }
 

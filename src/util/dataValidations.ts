@@ -23,7 +23,7 @@ const validationDegreesOfComparision = (dataObject: IComparativeAndSuperlative):
   validationDegreeOfComparision(dataObject.superlative)
 )
 
-export const validationWordClassNoun = (word: string, dataObject: IClassNoun): boolean => !(
+export const validationWordClassNoun = (word: string, dataObject: IClassNoun): boolean => (
   ['der', 'das', 'die'].includes(dataObject.article) &&
   typeof dataObject.plural === 'string' &&
   validationWordClassGeneric(word, dataObject)
@@ -37,7 +37,7 @@ export const validationWordClassPreposition = (word: string, dataObject: IClassP
 
 export const validationWordClassAdverb = (word: string, dataObject: IClassAdverb) => (
   [true, false].includes(dataObject.absoluteAdverb) && 
-  validationDegreesOfComparision(dataObject) && 
+  (dataObject.absoluteAdverb || validationDegreesOfComparision(dataObject)) && 
   validationWordClassGeneric(word, dataObject)
 )
 

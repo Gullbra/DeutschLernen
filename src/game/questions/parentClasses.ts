@@ -2,11 +2,7 @@ import { IDegreeOfComparisonObject, IGameState, IWordclass } from "../../util/in
 import { inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
 
 export abstract class QParentClass {
-  protected gameState: IGameState
-  protected word: string
-  protected dataObject: IWordclass
-
-  constructor (gameState: IGameState, word: string, dataObject: IWordclass) {this.gameState = gameState; this.word = word; this.dataObject = dataObject;}
+  constructor (protected gameState: IGameState, protected word: string, protected dataObject: IWordclass) {}
 
   abstract getQuestion(): Promise<{correct: boolean, error: boolean}>
 

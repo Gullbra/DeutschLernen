@@ -96,6 +96,8 @@ export class Game {
     this.gameState.currentData.splice(selectedIndex, 1)
     this.gameState.currentTotalWeight -= selectedDataobject.weight
   
+    console.log(`${this.gameState.currentQuestionNumber}) ------------------------------------------`)
+
     switch (selectedWordClass.class) {
       case 'noun':
         return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQuestion());
@@ -122,7 +124,11 @@ export class Game {
   }
 
   async handleResult (dataObject: IWord, {correct, error}: {correct: boolean, error: boolean}) {
-    if (error) this.shutdown();
+    if (error) {
+      if (this.gameState.correctedAnswers.length > 0)
+        await this.handleSave()
+      return await this.shutdown();
+    }
 
     dataObject.weight = this.weightHandler(dataObject.weight, correct)
 
@@ -135,7 +141,7 @@ export class Game {
     if (correct) {
       return Math.max(20, Math.round(startingWeight * 0.75))
     }
-    return startingWeight + 50
+    return startingWeight + 100
   }
 
   async resultAndRestart (): Promise<void> {

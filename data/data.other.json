@@ -1,44 +1,7 @@
 [
   {
-    "word": "neidisch",
-    "weight": 125,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "jealously"
-        ],
-        "absoluteAdverb": false,
-        "comparative": {
-          "word": "neidischer",
-          "translation": "more jealously",
-          "useInPhrase": [
-            {
-              "phrase": "Er ist neidischer als ich",
-              "translation": "He is more envious than I am"
-            },
-            {
-              "phrase": "Er schaute neidischer auf das neue Auto",
-              "translation": "He looked more enviously at the new car"
-            }
-          ]
-        },
-        "superlative": {
-          "word": "am neidischsten",
-          "translation": "most jealously",
-          "useInPhrase": [
-            {
-              "phrase": "Er ist am neidischsten in unsere Gruppe",
-              "translation": "He is the most envious in our group"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
     "word": "fähig",
-    "weight": 75,
+    "weight": 32,
     "classes": [
       {
         "class": "adverb",
@@ -76,35 +39,45 @@
     ]
   },
   {
-    "word": "tatsächlich",
-    "weight": 75,
+    "word": "neidisch",
+    "weight": 74,
     "classes": [
       {
         "class": "adverb",
         "translation": [
-          "indeed",
-          "in fact",
-          "really",
-          "objectively",
-          "actually"
+          "jealously"
         ],
-        "absoluteAdverb": true,
+        "absoluteAdverb": false,
         "comparative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
+          "word": "neidischer",
+          "translation": "more jealously",
+          "useInPhrase": [
+            {
+              "phrase": "Er ist neidischer als ich",
+              "translation": "He is more envious than I am"
+            },
+            {
+              "phrase": "Er schaute neidischer auf das neue Auto",
+              "translation": "He looked more enviously at the new car"
+            }
+          ]
         },
         "superlative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
+          "word": "am neidischsten",
+          "translation": "most jealously",
+          "useInPhrase": [
+            {
+              "phrase": "Er ist am neidischsten in unsere Gruppe",
+              "translation": "He is the most envious in our group"
+            }
+          ]
         }
       }
     ]
   },
   {
     "word": "wahrscheinlich",
-    "weight": 75,
+    "weight": 106,
     "classes": [
       {
         "class": "adverb",
@@ -145,8 +118,61 @@
     ]
   },
   {
+    "word": "bloß",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "just",
+          "merely",
+          "purely",
+          "only"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "tatsächlich",
+    "weight": 80,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "indeed",
+          "in fact",
+          "really",
+          "objectively",
+          "actually"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
     "word": "wohl",
-    "weight": 56,
+    "weight": 42,
     "classes": [
       {
         "class": "adverb",
@@ -173,34 +199,8 @@
     ]
   },
   {
-    "word": "bloß",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "just",
-          "merely",
-          "purely",
-          "only"
-        ],
-        "absoluteAdverb": true,
-        "comparative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        },
-        "superlative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        }
-      }
-    ]
-  },
-  {
     "word": "überhaupt",
-    "weight": 56,
+    "weight": 42,
     "classes": [
       {
         "class": "adverb",
@@ -227,7 +227,7 @@
   },
   {
     "word": "sogar",
-    "weight": 42,
+    "weight": 24,
     "classes": [
       {
         "class": "adverb",

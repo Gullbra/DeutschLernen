@@ -3,16 +3,13 @@ import { validationWordClassAdverb } from "../../util/dataValidations.ts";
 import { QDegreeOfComparision } from "./parentClasses.ts";
 
 export class QWordClassAdverb extends QDegreeOfComparision {
-  protected dataObject: IClassAdverb;
-
-  constructor (gameState: IGameState, word: string, dataObject: IClassAdverb) {
+  constructor (gameState: IGameState, word: string, protected dataObject: IClassAdverb) {
     super(gameState, word, dataObject)
-    this.dataObject = dataObject
   }
   
   async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
     if (!validationWordClassAdverb(this.word, this.dataObject)) {
-      console.log(`No or invalid dataObject sent to question for word "${this.word}"`); 
+      console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
       return { correct: false, error: true }
     }
 
