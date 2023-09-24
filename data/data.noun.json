@@ -1,23 +1,39 @@
 [
   {
-    "word": "Schiff",
-    "weight": 75,
+    "word": "Mischung",
+    "weight": 24,
     "classes": [
       {
         "class": "noun",
-        "article": "das",
-        "plural": "Schiffe",
+        "plural": "Mischungen",
+        "article": "die",
         "translation": [
-          "ship",
-          "vessel",
-          "boat"
+          "mix",
+          "mixture",
+          "combination",
+          "blend"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Waschmaschine",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Waschmaschinen",
+        "translation": [
+          "washing machine",
+          "washer"
         ]
       }
     ]
   },
   {
     "word": "Träger",
-    "weight": 56,
+    "weight": 42,
     "classes": [
       {
         "class": "noun",
@@ -31,6 +47,180 @@
           "wearer",
           "strap",
           "sponsor"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Tüte",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Tüten",
+        "article": "die",
+        "translation": [
+          "bag"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Tatsache",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Tatsachen",
+        "article": "die",
+        "translation": [
+          "fact"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Hoffnung",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Hoffnungen",
+        "article": "die",
+        "translation": [
+          "hope"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Begrüßung",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Begrüßungen",
+        "article": "die",
+        "translation": [
+          "greeting",
+          "welcome",
+          "salutation",
+          "welcoming"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Wand",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Wände",
+        "article": "die",
+        "translation": [
+          "wall"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Reißverschluss",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Reißverschlüsse",
+        "translation": [
+          "zip",
+          "zipper",
+          "zip fastener",
+          "fiend"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Teufel",
+    "weight": 350,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Teufel",
+        "translation": [
+          "devil",
+          "heck",
+          "demon",
+          "fiend",
+          "deuce"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Ausdruck",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Ausdrücke",
+        "article": "der",
+        "translation": [
+          "expression",
+          "term",
+          "phrase"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Benachrichtigung",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Benachrichtigungen",
+        "article": "die",
+        "translation": [
+          "notice",
+          "notification",
+          "advice note"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Müll",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "der",
+        "translation": [
+          "garbage",
+          "trash",
+          "junk",
+          "waste",
+          "rubbish"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Schiff",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Schiffe",
+        "translation": [
+          "ship",
+          "vessel",
+          "boat"
         ]
       }
     ]
@@ -67,24 +257,6 @@
           "information",
           "memo",
           "memorandum"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Teufel",
-    "weight": 250,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Teufel",
-        "translation": [
-          "devil",
-          "heck",
-          "demon",
-          "fiend",
-          "deuce"
         ]
       }
     ]
@@ -142,20 +314,6 @@
     ]
   },
   {
-    "word": "Tüte",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Tüten",
-        "article": "die",
-        "translation": [
-          "bag"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Schlagzeile",
     "weight": 100,
     "classes": [
@@ -165,22 +323,6 @@
         "article": "die",
         "translation": [
           "headline"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Benachrichtigung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Benachrichtigungen",
-        "article": "die",
-        "translation": [
-          "notice",
-          "notification",
-          "advice note"
         ]
       }
     ]
@@ -219,34 +361,6 @@
         "translation": [
           "defence",
           "defense"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Hoffnung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Hoffnungen",
-        "article": "die",
-        "translation": [
-          "hope"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Tatsache",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Tatsachen",
-        "article": "die",
-        "translation": [
-          "fact"
         ]
       }
     ]
@@ -296,37 +410,6 @@
           "clothes",
           "stuff",
           "gear"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Wand",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Wände",
-        "article": "die",
-        "translation": [
-          "wall"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Begrüßung",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Begrüßungen",
-        "article": "die",
-        "translation": [
-          "greeting",
-          "welcome",
-          "salutation",
-          "welcoming"
         ]
       }
     ]
@@ -405,23 +488,6 @@
     ]
   },
   {
-    "word": "Mischung",
-    "weight": 32,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Mischungen",
-        "article": "die",
-        "translation": [
-          "mix",
-          "mixture",
-          "combination",
-          "blend"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Hafer",
     "weight": 75,
     "classes": [
@@ -432,23 +498,6 @@
         "translation": [
           "oat",
           "oats"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Reißverschluss",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Reißverschlüsse",
-        "translation": [
-          "zip",
-          "zipper",
-          "zip fastener",
-          "fiend"
         ]
       }
     ]
@@ -467,24 +516,6 @@
           "connection",
           "correlation",
           "contact"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Müll",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": [
-          "garbage",
-          "trash",
-          "junk",
-          "waste",
-          "rubbish"
         ]
       }
     ]
@@ -656,21 +687,6 @@
           "territory",
           "region",
           "zone"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Waschmaschine",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Waschmaschinen",
-        "translation": [
-          "washing machine",
-          "washer"
         ]
       }
     ]
@@ -897,22 +913,6 @@
         "translation": [
           "success",
           "achievement"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Ausdruck",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ausdrücke",
-        "article": "der",
-        "translation": [
-          "expression",
-          "term",
-          "phrase"
         ]
       }
     ]

@@ -2,9 +2,21 @@ import { IDegreeOfComparisonObject, IGameState, IWordclass } from "../../util/in
 import { inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
 
 export abstract class QParentClass {
-  constructor (protected gameState: IGameState, protected word: string, protected dataObject: IWordclass) {}
+  constructor (protected gameState: IGameState, protected word: string, protected dataObject: IWordclass, protected dataIsValid: boolean) {}
 
-  abstract getQuestion(): Promise<{correct: boolean, error: boolean}>
+  async getQnA(): Promise<{correct: boolean, error: boolean}> {
+    if (!this.dataIsValid) {
+      console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
+      return { error: true, correct: false}
+    }
+
+    return { 
+      correct: await this.selectQuestion(), 
+      error: false 
+    }
+  }
+
+  protected abstract selectQuestion (): Promise<boolean>
 
   protected async questionMeaning (): Promise<boolean> {
     const terminalInput = inputProcessor(await this.gameState.lineReader.question(`What does the ${this.dataObject.class} "${this.word}" mean"?\nYour answer: `));

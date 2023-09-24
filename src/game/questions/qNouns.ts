@@ -1,29 +1,20 @@
-import { validationWordClassNoun } from "../../util/dataValidations.ts";
+import { isValidWordClassNoun } from "../../util/dataValidations.ts";
 import { IClassNoun, IGameState } from "../../util/interfaces.ts";
 import { inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassNoun extends QParentClass {
   constructor (gameState: IGameState, word: string, protected dataObject: IClassNoun) {
-    super(gameState, word, dataObject)
+    super(gameState, word, dataObject, isValidWordClassNoun(word, dataObject))
   }
 
-  async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
-    if (!validationWordClassNoun(this.word, this.dataObject)) {
-      console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
-      return { correct: false, error: true }
-    }
-
-    if (this.dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0) {
-      return { correct: await this.questionPlural(), error: false }
-    }
+  protected selectQuestion(): Promise<boolean> {
+    if (this.dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0)
+      return this.questionPlural()
   
-    return { 
-      correct: Math.round(Math.random()) === 0
-        ? await this.questionMeaning()
-        : await this.questionArticle(), 
-      error: false
-    }
+    return Math.round(Math.random()) === 0
+      ? this.questionMeaning()
+      : this.questionArticle()
   }
 
   protected override async questionMeaning (): Promise<boolean> {

@@ -1,18 +1,14 @@
-import { validationWordClassAdjective } from "../../util/dataValidations.ts";
+import { isValidWordClassAdjective } from "../../util/dataValidations.ts";
 import { IClassAdjective, IGameState } from "../../util/interfaces.ts";
 import { QDegreeOfComparision } from "./parentClasses.ts";
 
 
 export class QWordClassAdjective extends QDegreeOfComparision {
   constructor (gameState: IGameState, word: string, protected dataObject: IClassAdjective) {
-    super(gameState, word, dataObject)
+    super(gameState, word, dataObject, isValidWordClassAdjective(word, dataObject))
   }
   
-  async getQuestion(): Promise<{ correct: boolean; error: boolean; }> {
-    if (!validationWordClassAdjective(this.word, this.dataObject)) {
-      console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
-      return { correct: false, error: true }
-    }
+  selectQuestion(): Promise<boolean> {
 
     // if(!this.dataObject.absoluteAdverb && Math.round(Math.random() * 2) > 0) {
     //   try {
@@ -28,7 +24,7 @@ export class QWordClassAdjective extends QDegreeOfComparision {
     //   }
     // } 
     
-    return { correct: await this.questionMeaning(), error: false }
+    return this.questionMeaning()
   }
 
   
@@ -37,6 +33,6 @@ export class QWordClassAdjective extends QDegreeOfComparision {
 
 /*
 const dummyFunc = (gameState: IGameState, word: string, dataObject: IClassAdverb) => {
-  const TestObject = new QWordClassAdverb (gameState, word, dataObject).getQuestion()
+  const TestObject = new QWordClassAdverb (gameState, word, dataObject).getQnA()
 }
 */

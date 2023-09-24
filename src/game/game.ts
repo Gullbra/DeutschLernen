@@ -96,20 +96,20 @@ export class Game {
     this.gameState.currentData.splice(selectedIndex, 1)
     this.gameState.currentTotalWeight -= selectedDataobject.weight
   
-    console.log(`${this.gameState.currentQuestionNumber}) ------------------------------------------`)
+    console.log(`${this.gameState.currentQuestionNumber})`)
 
     switch (selectedWordClass.class) {
       case 'noun':
-        return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQuestion());
+        return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQnA());
 
       case 'adverb':
-        return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQuestion());
+        return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA());
 
       case 'preposition':
-        return await this.handleResult(selectedDataobject, await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQuestion());
+        return await this.handleResult(selectedDataobject, await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQnA());
 
       case 'adjective':
-        return await this.handleResult(selectedDataobject, await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQuestion());
+        return await this.handleResult(selectedDataobject, await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQnA());
 
       // case 'verb':
       //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
@@ -139,7 +139,7 @@ export class Game {
 
   weightHandler (startingWeight: number, correct: boolean): number {
     if (correct) {
-      return Math.max(20, Math.round(startingWeight * 0.75))
+      return Math.max(10, Math.round(startingWeight * 0.75))
     }
     return startingWeight + 100
   }
