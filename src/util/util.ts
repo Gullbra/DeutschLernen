@@ -29,6 +29,11 @@ export const qResultSimpleUI = (correctlyAnswered: boolean, correctAnswer: strin
 }
 
 
-// TODO: add a handler for 'ss' = 'ß'
+// * Callback for misspalling handeling, or something else. Will remove if unused.
+export const comparerß = (actual: string, expected: string, callBack?: (actual: string, expected: string) => boolean): boolean => {
+  const [ modActual, modExpected ] = [actual, expected].map((str) => str.split(/ß|ss/).join(''))
+
+  return callBack ? callBack(modActual, modExpected) : modActual === modExpected
+}
 
 // TODO: add a handler for misspelling

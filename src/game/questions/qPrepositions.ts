@@ -1,6 +1,6 @@
 import { isValidWordClassPreposition } from "../../util/dataValidations.ts";
 import { IClassPreposition, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { comparerß, inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassPreposition extends QParentClass {
@@ -36,7 +36,7 @@ export class QWordClassPreposition extends QParentClass {
 
     const terminalInput = inputProcessor(await this.gameState.lineReader.question(`Using the ${this.dataObject.class} "${this.word}", write "${selectedUseCase.translation}" in german.\nYour answer: `))
 
-    const correctlyAnswered = terminalInput === selectedUseCase.example.toLowerCase()
+    const correctlyAnswered = comparerß(terminalInput, selectedUseCase.example.toLowerCase())
 
     await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, selectedUseCase.example))
     return correctlyAnswered

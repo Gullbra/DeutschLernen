@@ -1,6 +1,6 @@
 import { isValidWordClassNoun } from "../../util/dataValidations.ts";
 import { IClassNoun, IGameState } from "../../util/interfaces.ts";
-import { inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
+import { comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassNoun extends QParentClass {
@@ -23,7 +23,7 @@ export class QWordClassNoun extends QParentClass {
     if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'the '))
       terminalInput = 'the ' + terminalInput;
 
-    const correctlyAnswered = this.dataObject.translation.some(el => "the " + el === terminalInput)
+    const correctlyAnswered = this.dataObject.translation.some(el => comparerß(terminalInput, "the " + el))
 
     await this.gameState.lineReader.question(qResultMeaningUI(correctlyAnswered, terminalInput, this.dataObject.translation.map(el => 'the ' + el)))
     return correctlyAnswered
@@ -44,7 +44,7 @@ export class QWordClassNoun extends QParentClass {
     if(!(terminalInput.length > 4 && terminalInput.substring(0, 4) === 'die '))
       terminalInput = 'die ' + terminalInput;
 
-    const correctlyAnswered = 'die ' + this.dataObject.plural.toLowerCase() === terminalInput    
+    const correctlyAnswered = comparerß(terminalInput, 'die ' + this.dataObject.plural.toLowerCase())   
 
     await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + this.dataObject.plural))
     return correctlyAnswered
