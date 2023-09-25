@@ -5,8 +5,11 @@
   "main": "index.ts",
   "type": "module",
   "scripts": {
-    "start": "npm run dev",
-    "dev": "cross-env MODE=ts-node ts-node --esm src/index.ts",
+    "start": "npm run dev-no-save",  
+        
+    "dev": "cross-env ENV_SAVING=will_save ts-node --esm src/index.ts",
+    "dev-no-save": "cross-env ENV_SAVING=no_save ts-node --esm src/index.ts",
+
     "test": "npm run testing-with-mocha",
     "testing-with-mocha": "mocha -r chai/register-expect src/tests/*.test.ts",
     "testing-with-jest": "jest src"

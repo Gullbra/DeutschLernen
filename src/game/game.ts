@@ -38,7 +38,7 @@ export class Game {
     console.log("Deutch lernen, commandline")
     console.log("--------------------------\n")
   
-    await this.modeChoice()
+    await this.modeChoice().catch(async (err) => { console.log(err.message); await this.shutdown() })
   }
 
   async modeChoice (): Promise<void> {
@@ -173,6 +173,9 @@ export class Game {
   }
 
   async handleSave () {
+    if(process.env.ENV_SAVING === 'no_save') 
+      return console.log("No data saved due to \"ENV_SAVING='no_save'\"")
+
     console.log('Saving...')
     return await this.gameState.dataHandler.saveData(
       this.gameState.correctedAnswers.map(obj => obj.dataObject)
