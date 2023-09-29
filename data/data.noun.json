@@ -1,5 +1,119 @@
 [
   {
+    "word": "Hafermilch",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "no plural",
+        "translation": [
+          "oat milk"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Miststück",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Miststücke",
+        "article": "das",
+        "translation": [
+          "bitch",
+          "bastard"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Möwe",
+    "weight": 85,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Möwen",
+        "translation": [
+          "gull",
+          "seagull"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Schild",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schilder",
+        "article": "das",
+        "translation": [
+          "sign",
+          "shield",
+          "plate",
+          "label",
+          "placard",
+          "badge",
+          "plaque",
+          "signpost",
+          "license plate",
+          "marker",
+          "numberplate"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Böse",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "das",
+        "translation": [
+          "evil"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Berater",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Berater",
+        "article": "der",
+        "translation": [
+          "advisor",
+          "consultant",
+          "aide",
+          "counselor"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gemüse",
+    "weight": 85,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "no plural",
+        "translation": [
+          "vegetables",
+          "vegetable"
+        ]
+      }
+    ]
+  },
+  {
     "word": "Mischung",
     "weight": 24,
     "classes": [
@@ -415,30 +529,6 @@
     ]
   },
   {
-    "word": "Schild",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schilder",
-        "article": "das",
-        "translation": [
-          "sign",
-          "shield",
-          "plate",
-          "label",
-          "placard",
-          "badge",
-          "plaque",
-          "signpost",
-          "license plate",
-          "marker",
-          "numberplate"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Baustelle",
     "weight": 100,
     "classes": [
@@ -451,38 +541,6 @@
           "building site",
           "roadworks",
           "construction zone"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Berater",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Berater",
-        "article": "der",
-        "translation": [
-          "advisor",
-          "consultant",
-          "aide",
-          "counselor"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Möwe",
-    "weight": 113,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Möwen",
-        "translation": [
-          "gull",
-          "seagull"
         ]
       }
     ]
@@ -757,35 +815,6 @@
     ]
   },
   {
-    "word": "Böse",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "das",
-        "translation": [
-          "evil"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Miststück",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Miststücke",
-        "article": "das",
-        "translation": [
-          "bitch",
-          "bastard"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Flocke",
     "weight": 75,
     "classes": [
@@ -797,21 +826,6 @@
           "flake",
           "scale",
           "ball of lint"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Gemüse",
-    "weight": 113,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "no plural",
-        "translation": [
-          "vegetables",
-          "vegetable"
         ]
       }
     ]
@@ -864,20 +878,6 @@
           "hazard",
           "threat",
           "peril"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Hafermilch",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "no plural",
-        "translation": [
-          "oat milk"
         ]
       }
     ]

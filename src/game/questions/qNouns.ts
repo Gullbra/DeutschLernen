@@ -1,6 +1,7 @@
 import { isValidWordClassNoun } from "../../util/dataValidations.ts";
 import { IClassNoun, IGameState } from "../../util/interfaces.ts";
-import { comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
+import { comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { IConvertedNoun, NounCaseConverter } from "../gramarHandlers/nounCaseConverter.ts";
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassNoun extends QParentClass {
@@ -9,6 +10,8 @@ export class QWordClassNoun extends QParentClass {
   }
 
   protected selectQuestion(): Promise<boolean> {
+    return this.questionCase()
+
     if (this.dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0)
       return this.questionPlural()
   
@@ -47,6 +50,35 @@ export class QWordClassNoun extends QParentClass {
     const correctlyAnswered = comparerß(terminalInput, 'die ' + this.dataObject.plural.toLowerCase())   
 
     await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, 'die ' + this.dataObject.plural))
+    return correctlyAnswered
+  }
+
+  private async questionCase (): Promise<boolean> {
+    // throw Error("Not implemented!")
+
+    //const usePlural = this.dataObject.plural !== 'no plural' && Math.round(Math.random()) === 0
+    const usePlural = false
+
+    const conversionObj = new NounCaseConverter(this.dataObject.article, usePlural ? this.dataObject.plural : this.word, usePlural, true)
+    const selectedCase = randomizeArrayElement([
+      'akusativ', 
+      'dativ', 
+      //'genetiv'
+    ])
+
+    const caseConverted: IConvertedNoun = conversionObj.convertToCase(selectedCase)
+
+    // ! Construct a "question phrase" with prepositions based on the randomized case
+
+    let terminalInput = inputProcessor(
+      await this.gameState.lineReader.question(
+        `What's the ${selectedCase} form of ${this.dataObject.class}'s "${usePlural ? this.dataObject.plural : this.word }"?\nYour answer: `
+      )
+    );
+
+    const correctlyAnswered = comparerß(terminalInput, `${caseConverted.article} ${caseConverted.noun.toLowerCase()}`)   
+
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `${caseConverted.article} ${caseConverted.noun}`))
     return correctlyAnswered
   }
 }

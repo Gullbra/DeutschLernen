@@ -10,9 +10,13 @@ export interface IWordclass {
   translation: string[]
 }
 
+
+export interface INounDeclension {}
+
 export interface IClassNoun extends IWordclass {
   article: string,
   plural: string,
+  declension?: INounDeclension
 }
 
 // * Some adverbs: https://www.germanveryeasy.com/german-adverbs
@@ -47,7 +51,7 @@ export interface IClassAdverb extends IWordclass, IComparativeAndSuperlative {
 export interface IAdjectiveDeclensionOnCase {
   exercisePhrase: string,
   translation: string
-  nouns: { gender: string, noun: string, translation: string } []
+  suportNouns: { gender: string, noun: string, translation: string } []
 }
 export interface IAdjectiveDeclensionOnForm {
   nominativ: IAdjectiveDeclensionOnCase,
@@ -56,7 +60,8 @@ export interface IAdjectiveDeclensionOnForm {
   genetiv: IAdjectiveDeclensionOnCase,
 }
 export interface IClassAdjective extends IWordclass, IComparativeAndSuperlative {
-  declension: {
+  hasRegularDeclension: boolean
+  declension?: {
     definite: IAdjectiveDeclensionOnForm,
     indefinite: IAdjectiveDeclensionOnForm,
   }

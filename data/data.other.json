@@ -1,7 +1,34 @@
 [
   {
+    "word": "tatsächlich",
+    "weight": 60,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "indeed",
+          "in fact",
+          "really",
+          "objectively",
+          "actually"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
     "word": "fähig",
-    "weight": 24,
+    "weight": 18,
     "classes": [
       {
         "class": "adverb",
@@ -34,6 +61,33 @@
               "translation": "She works the most competently"
             }
           ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 142,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
         }
       }
     ]
@@ -144,33 +198,6 @@
     ]
   },
   {
-    "word": "tatsächlich",
-    "weight": 80,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "indeed",
-          "in fact",
-          "really",
-          "objectively",
-          "actually"
-        ],
-        "absoluteAdverb": true,
-        "comparative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        },
-        "superlative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        }
-      }
-    ]
-  },
-  {
     "word": "wohl",
     "weight": 42,
     "classes": [
@@ -183,33 +210,6 @@
           "surely",
           "perhaps",
           "no doubt"
-        ],
-        "absoluteAdverb": true,
-        "comparative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        },
-        "superlative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        }
-      }
-    ]
-  },
-  {
-    "word": "überhaupt",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "at all",
-          "anyhow",
-          "anyway",
-          "in general",
-          "after all"
         ],
         "absoluteAdverb": true,
         "comparative": {

@@ -11,8 +11,8 @@ new Game(
   }, 
   [
     'noun', 
-    'preposition',
-    'adverb',
+    //'preposition',
+    //'adverb',
     // 'adjective'
   ]
 ).startUp()
