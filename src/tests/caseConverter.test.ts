@@ -2,13 +2,6 @@ import { NounCaseConverter, IConvertedNoun } from '../game/gramarHandlers/nounCa
 import { expect } from 'chai';
 
 describe ("NounCaseConverter() tests:", () => {
-  const mockObjectsGeneral = [
-    new NounCaseConverter('der', 'Kühlschrank', false, true),
-    new NounCaseConverter('das', 'Kopfkissen', false, true),
-    new NounCaseConverter('die', 'Bett', false, true),
-    new NounCaseConverter('die', 'Bücher', true, true),
-  ]
-
   describe("Validation testing:", () => {
     const testObject = new NounCaseConverter('der', "Mann", false, true)
 
@@ -32,12 +25,19 @@ describe ("NounCaseConverter() tests:", () => {
   })
 
   describe("IO tests:", () => {
+    const mockObjectsGeneral = [
+      new NounCaseConverter('der', 'Kühlschrank', false, true),
+      new NounCaseConverter('das', 'Kopfkissen', false, true),
+      new NounCaseConverter('die', 'Bett', false, true),
+      new NounCaseConverter('die', 'Bücher', true, true),
+    ]
+
     describe("Should convert correctly to akusativ", () => {
       const expectedArr: IConvertedNoun[] = [
-        {article: 'den', noun: 'Kühlschrank'},
-        {article: 'das', noun: 'Kopfkissen'},
-        {article: 'die', noun: 'Bett'},
-        {article: 'die', noun: 'Bücher'},
+        {defArticle: 'den', indefArticle: 'einen', noun: 'Kühlschrank'},
+        {defArticle: 'das', indefArticle: 'ein', noun: 'Kopfkissen'},
+        {defArticle: 'die', indefArticle: 'eine', noun: 'Bett'},
+        {defArticle: 'die', indefArticle: 'viele', noun: 'Bücher'},
       ]
 
       mockObjectsGeneral.forEach((mock, index) =>{
@@ -50,9 +50,9 @@ describe ("NounCaseConverter() tests:", () => {
     describe("Should convert correctly to dativ", () => {
       describe("Should handle forms without declension", () => {
         const expectedArr: IConvertedNoun[] = [
-          {article: 'dem', noun: 'Kühlschrank'},
-          {article: 'dem', noun: 'Kopfkissen'},
-          {article: 'der', noun: 'Bett'},
+          {defArticle: 'dem', indefArticle: 'einem', noun: 'Kühlschrank'},
+          {defArticle: 'dem', indefArticle: 'einem', noun: 'Kopfkissen'},
+          {defArticle: 'der', indefArticle: 'einer', noun: 'Bett'},
         ]
           
         mockObjectsGeneral.slice(0, 3).forEach((mock, index) =>{
@@ -71,10 +71,10 @@ describe ("NounCaseConverter() tests:", () => {
           new NounCaseConverter('die', 'Autos', true, true),
         ]
         const expectedArr: IConvertedNoun[] = [
-          {article: 'den', noun: 'Zahlen'},
-          {article: 'den', noun: 'Leuten'},
-          {article: 'den', noun: 'Mauern'},
-          {article: 'den', noun: 'Autos'},
+          {defArticle: 'den', indefArticle: 'vielen', noun: 'Zahlen'},
+          {defArticle: 'den', indefArticle: 'vielen', noun: 'Leuten'},
+          {defArticle: 'den', indefArticle: 'vielen', noun: 'Mauern'},
+          {defArticle: 'den', indefArticle: 'vielen', noun: 'Autos'},
         ]
           
         inputArr.forEach((mock, index) =>{
@@ -88,15 +88,17 @@ describe ("NounCaseConverter() tests:", () => {
     describe("Should convert correctly to genetiv", () => {
       describe("Should correctly convert articles to genetiv", () => {
         const expectedArr: IConvertedNoun[] = [
-          {article: 'des', noun: ''},
-          {article: 'des', noun: ''},
-          {article: 'der', noun: ''},
-          {article: 'der', noun: ''},
+          {defArticle: 'des', indefArticle: 'eines', noun: ''},
+          {defArticle: 'des', indefArticle: 'eines', noun: ''},
+          {defArticle: 'der', indefArticle: 'einer', noun: ''},
+          {defArticle: 'der', indefArticle: 'vieler', noun: ''},
         ]
           
         mockObjectsGeneral.forEach((mock, index) =>{
           it(`${mock.nounNominativ}`, () => {
-            expect(mock.convertToCase('genetiv').article).to.equal(expectedArr[index].article)
+            const testObj = mock.convertToCase('genetiv')
+            expect(testObj.defArticle).to.eql(expectedArr[index].defArticle)
+            expect(testObj.indefArticle).to.eql(expectedArr[index].indefArticle)
           })
         })
       })
@@ -119,14 +121,15 @@ describe ("NounCaseConverter() tests:", () => {
 
         const inputArr: NounCaseConverter[] = [
           new NounCaseConverter('der', 'Opa', false, true),
+          new NounCaseConverter('der', 'Platz', false, true),
+          new NounCaseConverter('die', 'Tür', false, true),
         ]
         const expectedArr: (string | IConvertedNoun)[][] = [
-          ['masculine declension, adding of (-s)', {article: 'des', noun: 'Opas'}],
-          ['monosyllabic feminine declension, adding of (-es or -s)', {article: 'des', noun: 'Jahres'}],
-          //['masculine declension, adding of (-es)', {article: 'des', noun: 'Jahres'}],
+          ['masculine/neuter declension, adding of (-s)', {defArticle: 'des', indefArticle: 'eines', noun: 'Opas'}],
+          ['masculine/neuter declension, ending in "s", "ß", "x" or "z", adding of (-es)', {defArticle: 'des', indefArticle: 'eines', noun: 'Platzes'}],
+          //['monosyllabic masculine/neuter declension, adding of (-es or -s)', {defArticle: 'des', indefArticle: , noun: 'Jahres'}],
           // ! Maybe let conversion-function return array to handle Jahres and Jahrs both beeing correct
-          ['masculine declension, adding of (-es)', {article: 'des', noun: 'Jahres'}],
-          ['feminine declension',  {article: 'der', noun: 'Beziehungen'}],
+          ['feminine declension - no declension',  {defArticle: 'der', indefArticle: 'einer', noun: 'Tür'}],
         ]
           
         inputArr.forEach((mock, index) =>{

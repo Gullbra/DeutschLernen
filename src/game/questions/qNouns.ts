@@ -76,9 +76,9 @@ export class QWordClassNoun extends QParentClass {
       )
     );
 
-    const correctlyAnswered = comparerß(terminalInput, `${caseConverted.article} ${caseConverted.noun.toLowerCase()}`)   
+    const correctlyAnswered = comparerß(terminalInput, `${caseConverted.defArticle} ${caseConverted.noun.toLowerCase()}`)   
 
-    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `${caseConverted.article} ${caseConverted.noun}`))
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `${caseConverted.defArticle} ${caseConverted.noun}`))
     return correctlyAnswered
   }
 }
