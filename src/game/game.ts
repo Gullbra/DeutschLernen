@@ -23,7 +23,7 @@ export class Game {
   }
 
   async startUp () { 
-    await this.gameState.dataHandler.getData(this.inclusiveFilters)
+    await this.gameState.dataHandler.getGameData(this.inclusiveFilters)
       .then(data => {
         this.gameState = {
           ...this.gameState,
@@ -177,7 +177,7 @@ export class Game {
       return console.log("No data saved due to \"ENV_SAVING='no_save'\"")
 
     console.log('Saving...')
-    return await this.gameState.dataHandler.saveData(
+    return await this.gameState.dataHandler.saveGameData(
       this.gameState.correctedAnswers.map(obj => obj.dataObject)
     )
   }

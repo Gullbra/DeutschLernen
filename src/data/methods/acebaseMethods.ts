@@ -1,11 +1,14 @@
 import { IDataStorageMethods, TDataArray } from "../../util/interfaces.ts"
 
 export class AcebaseMethods implements IDataStorageMethods {
+  async insert(newData: TDataArray): Promise<void> {
+    throw new Error("Method not implemented.")
+  }
   async retrieve (inclusiveFilters?: string[] | undefined): Promise<TDataArray> {
     console.log('Not implemented!')
     return [] as TDataArray
   }
-  async save (toBeChanged: TDataArray): Promise<void> {
+  async update (toBeChanged: TDataArray): Promise<void> {
     console.log('Not implemented!')
   }
 }

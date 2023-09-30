@@ -1,6 +1,12 @@
 import fs from 'fs'
 import path from "path";
-import { IDataStorageMethods, IDataSaveObject, TDataArray } from "../../util/interfaces.ts"
+import { IDataStorageMethods, IDataSaveObject, TDataArray, IClassNoun, IClassPreposition, IClassAdverb, IClassAdjective, IWord } from "../../util/interfaces.ts"
+import { isValidWordClassAdjective, isValidWordClassAdverb, isValidWordClassNoun, isValidWordClassPreposition } from '../../util/dataValidations.ts';
+
+// export interface IDataInsertObject {
+//   data: Map<string, TDataArray>,
+//   processed: Map<string, number>
+// }
 
 export class JSONMethods implements IDataStorageMethods {
   private hardCodedValues = {
@@ -18,7 +24,7 @@ export class JSONMethods implements IDataStorageMethods {
   async retrieve (inclusiveFilters?: string[]): Promise<TDataArray> {
     let filesToRetriveFrom: string[] = []
 
-    if (inclusiveFilters) {
+    if (inclusiveFilters && Array.isArray(inclusiveFilters) && inclusiveFilters.length > 0) {
       filesToRetriveFrom = this.filterValidation(inclusiveFilters)
     }
 
@@ -29,7 +35,32 @@ export class JSONMethods implements IDataStorageMethods {
     return (await Promise.all(filesToRetriveFrom.map(name => this.jsonReader(name)))).flat()    
   }
 
-  async save (toBeChangedArr: TDataArray): Promise<void> {
+  async insert (newData: TDataArray): Promise<void> {
+    let toSaveObject: IDataSaveObject = {
+      processed: new Set(),
+      data: new Map(this.hardCodedValues.seperateFileClasses.map(className => [ className, [] ]))
+    }
+    
+    toSaveObject = this.dataSpliting(toSaveObject, newData, this.validateInsertion)
+    const toRetrievePromises: Promise<TDataArray>[] = []
+
+    this.hardCodedValues.seperateFileClasses.forEach((className) => {
+      if (toSaveObject.data.get(className)?.length === 0) 
+        return toSaveObject.data.delete(className)
+      return toRetrievePromises.push(this.jsonReader(className))
+    })
+    
+    toSaveObject = this.dataSpliting(toSaveObject, ((await Promise.all(toRetrievePromises)).flat()), (dataObj: IWord) => {
+      if(toSaveObject.processed.has(dataObj.word))
+        throw Error(`Already existing dataobject for "${dataObj.word}" existing in database."`)
+    })
+
+    await Promise.all(Array.from(toSaveObject.data).map(arr => this.jsonWriter(arr[0], arr[1])))
+      .catch(err => console.log(`Error in write to JSON: ${err.message}`))
+      .then(() => console.log('Successfull write to JSON!'))
+  }
+
+  async update (toBeChangedArr: TDataArray): Promise<void> {
     let toSaveObject = {
       processed: new Set(),
       data: new Map(this.hardCodedValues.seperateFileClasses.map(className => [ className, [] ]))
@@ -51,8 +82,11 @@ export class JSONMethods implements IDataStorageMethods {
       .then(() => console.log('Successfull write to JSON!'))
   }
 
-  private dataSpliting (toSaveObject: IDataSaveObject, dataArr: TDataArray): IDataSaveObject {
+  private dataSpliting (toSaveObject: IDataSaveObject, dataArr: TDataArray, extraFunc?: (test: IWord) => void): IDataSaveObject {
     dataArr.forEach (dataObj => {
+      if(extraFunc) 
+        extraFunc(dataObj)
+
       if(toSaveObject.processed.has(dataObj.word)) 
         return
 
@@ -85,6 +119,35 @@ export class JSONMethods implements IDataStorageMethods {
       returnArr.push('other')
 
     return returnArr
+  }
+
+  private validateInsertion (dataObj: IWord) {
+    if (dataObj.weight !== 100) 
+      throw Error(`Invalid starting weight for for entry "${dataObj.word}"`)
+
+    dataObj.classes.forEach(classObj => {
+      switch (classObj.class) {
+        case 'noun':
+          if (!isValidWordClassNoun(dataObj.word, classObj as IClassNoun))
+            throw Error(`Invalid object for entry "${dataObj.word}"`)
+          break     
+        case 'preposition':
+          if (!isValidWordClassPreposition(dataObj.word, classObj as IClassPreposition))
+            throw Error(`Invalid object for entry "${dataObj.word}"`)
+          break
+        case 'adverb':
+          if (!isValidWordClassAdverb(dataObj.word, classObj as IClassAdverb))
+            throw Error(`Invalid object for entry "${dataObj.word}"`)
+          break
+        case 'adjective':
+          if (!isValidWordClassAdjective(dataObj.word, classObj as IClassAdjective))
+            throw Error(`Invalid object for entry "${dataObj.word}"`)
+          break
+      
+        default:
+          throw Error(`Invalid class "${classObj.class}" for entry "${dataObj.word}"`)
+      }
+    })
   }
 
   private jsonReader = async (fileName: string): Promise<TDataArray> => fs.promises.readFile(path.join(process.cwd(), 'data', `data.${fileName}.json`)).then(data => JSON.parse(data.toString()))

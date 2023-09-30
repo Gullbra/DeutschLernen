@@ -11,14 +11,22 @@ export class DataHandler {
       : new JSONMethods()
   }
 
-  async getData (inclusiveFilters?: string[]): Promise<TDataArray> {
-    return inclusiveFilters && inclusiveFilters.length > 0
-      ? this.applyInclusiveFilters(inclusiveFilters, await this.dataStorageMethods.retrieve(inclusiveFilters))
-      : this.dataStorageMethods.retrieve()
+  async getGameData (inclusiveFilters?: string[]): Promise<TDataArray> {
+    return this.dataStorageMethods.retrieve(inclusiveFilters)
+      .then(data => (
+        inclusiveFilters && inclusiveFilters.length > 0
+          ? this.applyInclusiveFilters(inclusiveFilters, data)
+          : data
+      ))
+      .catch(err => { console.log(`Error in data retrieval: ${err.message}. No data retrieved.`); return [] })    
   }
 
-  async saveData (toBeChanged: TDataArray) {
-    return this.dataStorageMethods.save(toBeChanged)
+  async saveGameData (toBeChanged: TDataArray) {
+    return this.dataStorageMethods.update(toBeChanged).catch(err => console.log(`Error when updating data: ${err.message}. No data updated.`))
+  }
+
+  async insertNewData (newData: TDataArray) {
+    return this.dataStorageMethods.insert(newData).catch(err => console.log(`Error in data insertion: ${err.message}. No data inserted.`))
   }
 
   applyInclusiveFilters (inclusiveFilters: string[], data: TDataArray): TDataArray {

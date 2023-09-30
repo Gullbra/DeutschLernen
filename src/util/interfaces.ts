@@ -146,8 +146,9 @@ export interface IGameState extends IGameInput{
 }
 
 export interface IDataStorageMethods {
-  retrieve: (inclusiveFilters?: string[]) => Promise<TDataArray>,
-  save: (toBeChanged: TDataArray) => Promise<void>
+  retrieve (inclusiveFilters?: string[]): Promise<TDataArray>,
+  update (toBeChanged: TDataArray): Promise<void>,
+  insert (newData: TDataArray): Promise<void>
 }
 
 export interface IDataSaveObject {
@@ -156,7 +157,7 @@ export interface IDataSaveObject {
 }
 
 export interface IDataHandler {
-  getData (inclusiveFilters?: string): Promise<TDataArray>,
-  saveData (originalData: TDataArray, toBeChanged: TDataArray): Promise<void>,
+  getGameData (inclusiveFilters?: string): Promise<TDataArray>,
+  saveGameData (originalData: TDataArray, toBeChanged: TDataArray): Promise<void>,
   applyInclusiveFilters (inclusiveFilters: string[], data: TDataArray): TDataArray
 }

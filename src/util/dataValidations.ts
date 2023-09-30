@@ -24,21 +24,23 @@ const isValidDegreesOfComparision = (dataObject: IComparativeAndSuperlative): bo
 )
 
 export const isValidWordClassNoun = (word: string, dataObject: IClassNoun): boolean => (
+  isValidWordClassGeneric(word, dataObject) &&
+  /[A-ZÄÖÜ]/.test(word[0]) && word.substring(1).toLocaleLowerCase() === word.substring(1) &&
+  (dataObject.plural === 'no plural' || (/[A-ZÄÖÜ]/.test(dataObject.plural[0]) && dataObject.plural.substring(1).toLocaleLowerCase() === word.substring(1))) &&
   ['der', 'das', 'die'].includes(dataObject.article) &&
-  typeof dataObject.plural === 'string' &&
-  isValidWordClassGeneric(word, dataObject)
+  typeof dataObject.plural === 'string'
 )
 
 export const isValidWordClassPreposition = (word: string, dataObject: IClassPreposition): boolean => (
+  isValidWordClassGeneric(word, dataObject) &&
   ['akusativ', 'dativ', 'wechsel', 'genetiv'].includes(dataObject.forcesCase) &&
-  Array.isArray(dataObject.commonUses) && dataObject.commonUses.length > 0 && 
-  isValidWordClassGeneric(word, dataObject)
+  Array.isArray(dataObject.commonUses) && dataObject.commonUses.length > 0
 )
 
 export const isValidWordClassAdverb = (word: string, dataObject: IClassAdverb) => (
+  isValidWordClassGeneric(word, dataObject) &&
   [true, false].includes(dataObject.absoluteAdverb) && 
-  (dataObject.absoluteAdverb || isValidDegreesOfComparision(dataObject)) && 
-  isValidWordClassGeneric(word, dataObject)
+  (dataObject.absoluteAdverb || isValidDegreesOfComparision(dataObject))
 )
 
 export const isValidWordClassAdjective = (word: string, dataObject: IClassAdjective): boolean => {
