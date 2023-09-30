@@ -4,9 +4,7 @@ interface IDefArticleAndNoun { defArticle: string, noun: string }
 export interface IConvertedNoun extends IDefArticleAndNoun { indefArticle: string }
 
 export class NounCaseConverter {
-  constructor (private article: string, public nounNominativ: string, private plural: boolean, private regularDeclension: boolean, private declensionObj?: INounDeclension) {
-    console.log("WIP - add akusativ and dativ -n declension. (e.g. Affe => Affen)")
-  }
+  constructor (private article: string, public nounNominativ: string, private plural: boolean, private declensionObj?: INounDeclension) {}
   
   convertToCase(toCase: string): IConvertedNoun {
     switch (toCase.toLowerCase()) {
@@ -32,6 +30,13 @@ export class NounCaseConverter {
     } else if (this.article === 'der') {
       returnObj.defArticle = 'den'
     }
+
+    if(this.declensionObj && !this.plural) {
+      if(this.declensionObj.nGeneral || this.declensionObj.nsGenitiv)
+        returnObj.noun += 'n'
+      if(this.declensionObj.enGeneral)
+        returnObj.noun += 'en'
+    }
   
     return returnObj
   }
@@ -41,12 +46,15 @@ export class NounCaseConverter {
       defArticle: this.article,
       noun: this.nounNominativ
     }
+
+    if(this.declensionObj && !this.plural) {
+      if(this.declensionObj.nGeneral || this.declensionObj.nsGenitiv)
+        returnObj.noun += 'n'
+      if(this.declensionObj.enGeneral)
+        returnObj.noun += 'en'
+    }
   
-    if (this.plural) {
-      // throw new Error ("NounCaseConverter: Dativ plural declension not implemented")
-      if (!this.regularDeclension)
-        throw new Error ("NounCaseConverter: irregular declension handling not implemented")
-      
+    if (this.plural) {      
       if (!['s', 'ß', 'n'].includes(this.nounNominativ[this.nounNominativ.length-1])) {
         returnObj.noun += 'n'
       } 
@@ -69,19 +77,27 @@ export class NounCaseConverter {
       noun: this.nounNominativ,
     }
   
-    if (this.plural) {
-      returnObj.defArticle = 'der'
+    if(this.declensionObj && !this.plural) {
+      if(this.declensionObj.nsGenitiv)
+        returnObj.noun += 'ns'        
+      if(this.declensionObj.sesGenetiv)
+        returnObj.noun += 'ses'        
+      if(this.declensionObj.nGeneral)
+        returnObj.noun += 'n'
+      if(this.declensionObj.enGeneral)
+        returnObj.noun += 'en'
     } else if (['der', 'das'].includes(this.article)) {
-      // throw new Error ("NounCaseConverter: Genetiv plural declension not implemented")
-      if (!this.regularDeclension)
-        throw new Error ("NounCaseConverter: irregular declension handling not implemented")
-      returnObj.defArticle = 'des'
-  
       if (['s', 'ß', 'x', 'z'].includes(this.nounNominativ[this.nounNominativ.length-1])) {
         returnObj.noun += 'es'
       } else {
         returnObj.noun += 's'
       }
+    }
+
+    if (this.plural) {
+      returnObj.defArticle = 'der'
+    } else if (['der', 'das'].includes(this.article)) {
+      returnObj.defArticle = 'des'
     } else if (this.article === 'die') {
       returnObj.defArticle = 'der'
     }
@@ -122,7 +138,7 @@ export class NounCaseConverter {
         }
 
       default:
-        throw Error('bad input, somehow, to: NounCaseConverter: setIndefinateArticle')
+        throw new Error('bad input, somehow, to: NounCaseConverter: setIndefinateArticle')
     }
   }
 }

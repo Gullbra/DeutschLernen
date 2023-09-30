@@ -10,13 +10,18 @@ export interface IWordclass {
   translation: string[]
 }
 
-
-export interface INounDeclension {}
+// * constructed from this: https://www.germanveryeasy.com/noun-declension#n-deklination
+export interface INounDeclension {
+  nGeneral?: boolean,
+  enGeneral?: boolean,
+  nsGenitiv?: boolean,
+  sesGenetiv?: boolean
+}
 
 export interface IClassNoun extends IWordclass {
   article: string,
   plural: string,
-  declension?: INounDeclension
+  specialDeclensions?: INounDeclension
 }
 
 // * Some adverbs: https://www.germanveryeasy.com/german-adverbs

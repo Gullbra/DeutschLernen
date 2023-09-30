@@ -3,7 +3,7 @@ import { expect } from 'chai';
 
 describe ("NounCaseConverter() tests:", () => {
   describe("Validation testing:", () => {
-    const testObject = new NounCaseConverter('der', "Mann", false, true)
+    const testObject = new NounCaseConverter('der', "Mann", false)
 
     it("should not accept bad cases", () => {
       try {
@@ -12,24 +12,14 @@ describe ("NounCaseConverter() tests:", () => {
         expect(true).to.equal(false)
       }
     })
-
-    describe("should, for now, throw error when conversion requires unimplemented declension", () => {
-      // it("genetiv, masculine, neuter and plural", () => {
-      //   try {
-      //     expect(() => testObject.convertToCase('genetiv')).to.throw()
-      //   } catch (err) {
-      //     expect(true).to.equal(false)
-      //   }
-      // })
-    })
   })
 
   describe("IO tests:", () => {
     const mockObjectsGeneral = [
-      new NounCaseConverter('der', 'Kühlschrank', false, true),
-      new NounCaseConverter('das', 'Kopfkissen', false, true),
-      new NounCaseConverter('die', 'Bett', false, true),
-      new NounCaseConverter('die', 'Bücher', true, true),
+      new NounCaseConverter('der', 'Kühlschrank', false),
+      new NounCaseConverter('das', 'Kopfkissen', false),
+      new NounCaseConverter('die', 'Bett', false),
+      new NounCaseConverter('die', 'Bücher', true),
     ]
 
     describe("Should convert correctly to akusativ", () => {
@@ -65,10 +55,10 @@ describe ("NounCaseConverter() tests:", () => {
       // https://www.gymglish.com/en/wunderbla/german-grammar/plural-endings-in-the-dative
       describe("Should handle dativ plural with correct declension", () => {
         const inputArr: NounCaseConverter[] = [
-          new NounCaseConverter('die', 'Zahlen', true, true),
-          new NounCaseConverter('die', 'Leute', true, true),
-          new NounCaseConverter('die', 'Mauern', true, true),
-          new NounCaseConverter('die', 'Autos', true, true),
+          new NounCaseConverter('die', 'Zahlen', true),
+          new NounCaseConverter('die', 'Leute', true),
+          new NounCaseConverter('die', 'Mauern', true),
+          new NounCaseConverter('die', 'Autos', true),
         ]
         const expectedArr: IConvertedNoun[] = [
           {defArticle: 'den', indefArticle: 'vielen', noun: 'Zahlen'},
@@ -120,9 +110,9 @@ describe ("NounCaseConverter() tests:", () => {
         */
 
         const inputArr: NounCaseConverter[] = [
-          new NounCaseConverter('der', 'Opa', false, true),
-          new NounCaseConverter('der', 'Platz', false, true),
-          new NounCaseConverter('die', 'Tür', false, true),
+          new NounCaseConverter('der', 'Opa', false),
+          new NounCaseConverter('der', 'Platz', false),
+          new NounCaseConverter('die', 'Tür', false),
         ]
         const expectedArr: (string | IConvertedNoun)[][] = [
           ['masculine/neuter declension, adding of (-s)', {defArticle: 'des', indefArticle: 'eines', noun: 'Opas'}],
@@ -133,9 +123,68 @@ describe ("NounCaseConverter() tests:", () => {
         ]
           
         inputArr.forEach((mock, index) =>{
-          it(`${mock.nounNominativ}`, () => {
-            expect(mock.convertToCase('genetiv').noun).to.eql(expectedArr[index])
+          it(`${expectedArr[index][0]}`, () => {
+            expect(mock.convertToCase('genetiv')).to.eql(expectedArr[index][1])
           })
+        })
+      })
+    })
+
+    describe("Should handle special declensions", () => {
+      describe("-n declension", () => {
+        const testCase = new NounCaseConverter('der', 'Kollege', false, {nGeneral: true})
+                //const testCase = new NounCaseConverter('der', 'Name', false, true, {})
+
+        const runsArr: (string | IConvertedNoun)[][] = [
+          ['akusativ', {defArticle: 'den', indefArticle: 'einen', noun: 'Kollegen'}],
+          ['dativ', {defArticle: 'dem', indefArticle: 'einem', noun: 'Kollegen'}],
+          ['genetiv', {defArticle: 'des', indefArticle: 'eines', noun: 'Kollegen'}],
+        ]
+
+        runsArr.forEach(run => {
+          it(`${run[0]}`, () => {
+            expect(testCase.convertToCase(run[0] as string)).to.eql(run[1] as IConvertedNoun)
+          })
+        })
+      })
+
+      describe("-ns declension", () => {
+        const testCase = new NounCaseConverter('der', 'Name', false, {nsGenitiv: true})
+
+        const runsArr: (string | IConvertedNoun)[][] = [
+          ['akusativ', {defArticle: 'den', indefArticle: 'einen', noun: 'Namen'}],
+          ['dativ', {defArticle: 'dem', indefArticle: 'einem', noun: 'Namen'}],
+          ['genetiv', {defArticle: 'des', indefArticle: 'eines', noun: 'Namens'}],
+        ]
+
+        runsArr.forEach(run => {
+          it(`${run[0]}`, () => {
+            expect(testCase.convertToCase(run[0] as string)).to.eql(run[1] as IConvertedNoun)
+          })
+        })
+      })
+
+      describe("-en declension", () => {
+        const testCase = new NounCaseConverter('der', 'Soldat', false, {enGeneral: true})
+
+        const runsArr: (string | IConvertedNoun)[][] = [
+          ['akusativ', {defArticle: 'den', indefArticle: 'einen', noun: 'Soldaten'}],
+          ['dativ', {defArticle: 'dem', indefArticle: 'einem', noun: 'Soldaten'}],
+          ['genetiv', {defArticle: 'des', indefArticle: 'eines', noun: 'Soldaten'}],
+        ]
+
+        runsArr.forEach(run => {
+          it(`${run[0]}`, () => {
+            expect(testCase.convertToCase(run[0] as string)).to.eql(run[1] as IConvertedNoun)
+          })
+        })
+      })
+
+      describe("-sus declension", () => {
+        it(`genetiv`, () => {
+          expect(
+            new NounCaseConverter('der', 'Bus', false, {sesGenetiv: true}).convertToCase('genetiv')
+          ).to.eql({defArticle: 'des', indefArticle: 'eines', noun: 'Busses'} as IConvertedNoun)
         })
       })
     })
