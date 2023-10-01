@@ -89,17 +89,15 @@ export class QWordClassNoun extends QParentClass {
 
     let terminalInput = inputProcessor(await this.gameState.lineReader.question(questionFull));
     
-    const correctlyAnswered = comparerß(terminalInput, expectedPhrase, (actual, expected) => 
-      comparerContractions(actual, expected, (actual, expected) => {
-        const [ modActual, modExpected ] = [actual, expected].map((str) => {
-          return str
-            .split(', ...').join('')
-            .split(`${selectedPreposition}`).join('').trim()
-        })
-
-        return modActual === modExpected.toLowerCase()
+    const correctlyAnswered = comparerContractions(terminalInput, expectedPhrase.toLowerCase(), (actual, expected) => {
+      const [ modActual, modExpected ] = [actual, expected].map((str) => {
+        return str
+          .split(', ...').join('')
+          .split(`${selectedPreposition}`).join('').trim()
       })
-    )   
+
+      return comparerß(modActual, modExpected)
+    })   
     
     await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `"${expectedPhrase}"`))
     return correctlyAnswered

@@ -1,5 +1,357 @@
 [
   {
+    "word": "Lager",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Lager",
+        "translation": [
+          "camp",
+          "warehouse",
+          "store",
+          "bed",
+          "storeroom",
+          "lair"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Rede",
+    "weight": 175,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Reden",
+        "article": "die",
+        "translation": [
+          "talk",
+          "speech",
+          "address",
+          "rumor",
+          "rumour"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Stimmung",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Stimmungen",
+        "article": "die",
+        "translation": [
+          "humor",
+          "mood",
+          "atmosphere",
+          "feeling",
+          "spirit",
+          "disposition",
+          "temper"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Benachrichtigung",
+    "weight": 98,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Benachrichtigungen",
+        "article": "die",
+        "translation": [
+          "notice",
+          "notification",
+          "advice note"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Miststück",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Miststücke",
+        "article": "das",
+        "translation": [
+          "bitch",
+          "bastard"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gebiet",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Gebieten",
+        "translation": [
+          "area",
+          "field",
+          "territory",
+          "region",
+          "zone"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Hafermilch",
+    "weight": 225,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "no plural",
+        "translation": [
+          "oat milk"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Schild",
+    "weight": 206,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schilder",
+        "article": "das",
+        "translation": [
+          "sign",
+          "shield",
+          "plate",
+          "label",
+          "placard",
+          "badge",
+          "plaque",
+          "signpost",
+          "license plate",
+          "marker",
+          "numberplate"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Bereich",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Bereiche",
+        "article": "der",
+        "translation": [
+          "area",
+          "region",
+          "field",
+          "sector",
+          "zone",
+          "sphere",
+          "realm",
+          "department",
+          "territory",
+          "province"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gefahr",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Gefahren",
+        "translation": [
+          "danger",
+          "risk",
+          "hazard",
+          "threat",
+          "peril"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Wohlstand",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "no plural",
+        "translation": [
+          "prosperity",
+          "affluence",
+          "fortune"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Verteidigung",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Verteidigungen",
+        "article": "die",
+        "translation": [
+          "defence",
+          "defense"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Beitrag",
+    "weight": 206,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Beiträge",
+        "article": "der",
+        "translation": [
+          "contribution",
+          "article",
+          "fee",
+          "input",
+          "premium"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gremium",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Gremien",
+        "article": "das",
+        "translation": [
+          "committee",
+          "body",
+          "panel",
+          "board"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Abschluss",
+    "weight": 36,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Abschlüsse",
+        "translation": [
+          "conclusion",
+          "diploma",
+          "close",
+          "completion",
+          "degree",
+          "end"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Untershied",
+    "weight": 169,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Unterschiede",
+        "article": "der",
+        "translation": [
+          "diffrence",
+          "distinction",
+          "differential",
+          "variation"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Anlass",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Anlässe",
+        "translation": [
+          "occasion",
+          "reason",
+          "cause"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Tasche",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Taschen",
+        "translation": [
+          "bag",
+          "pocket",
+          "case",
+          "pouch",
+          "purse"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Land",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Länder",
+        "translation": [
+          "land",
+          "state",
+          "ground",
+          "country"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Obst",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "no plural",
+        "translation": [
+          "fruit"
+        ]
+      }
+    ]
+  },
+  {
     "word": "Abenteuer",
     "weight": 100,
     "classes": [
@@ -45,55 +397,6 @@
     ]
   },
   {
-    "word": "Wohlstand",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "no plural",
-        "translation": [
-          "prosperity",
-          "affluence",
-          "fortune"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Anlass",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Anlässe",
-        "translation": [
-          "occasion",
-          "reason",
-          "cause"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Land",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Länder",
-        "translation": [
-          "land",
-          "state",
-          "ground",
-          "country"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Ampel",
     "weight": 100,
     "classes": [
@@ -105,25 +408,6 @@
           "traffic light",
           "light",
           "hanging lamp"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Lager",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Lager",
-        "translation": [
-          "camp",
-          "warehouse",
-          "store",
-          "bed",
-          "storeroom",
-          "lair"
         ]
       }
     ]
@@ -143,20 +427,6 @@
           "blaze",
           "shooting",
           "mettle"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Obst",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "no plural",
-        "translation": [
-          "fruit"
         ]
       }
     ]
@@ -210,25 +480,6 @@
     ]
   },
   {
-    "word": "Abschluss",
-    "weight": 48,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Abschlüsse",
-        "translation": [
-          "conclusion",
-          "diploma",
-          "close",
-          "completion",
-          "degree",
-          "end"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Mitglied",
     "weight": 213,
     "classes": [
@@ -239,30 +490,6 @@
         "translation": [
           "member",
           "fellow"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Schild",
-    "weight": 275,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schilder",
-        "article": "das",
-        "translation": [
-          "sign",
-          "shield",
-          "plate",
-          "label",
-          "placard",
-          "badge",
-          "plaque",
-          "signpost",
-          "license plate",
-          "marker",
-          "numberplate"
         ]
       }
     ]
@@ -326,39 +553,6 @@
           "destination",
           "end",
           "finishing line"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Verteidigung",
-    "weight": 200,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Verteidigungen",
-        "article": "die",
-        "translation": [
-          "defence",
-          "defense"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Beitrag",
-    "weight": 175,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Beiträge",
-        "article": "der",
-        "translation": [
-          "contribution",
-          "article",
-          "fee",
-          "input",
-          "premium"
         ]
       }
     ]
@@ -460,20 +654,6 @@
     ]
   },
   {
-    "word": "Hafermilch",
-    "weight": 400,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "no plural",
-        "translation": [
-          "oat milk"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Begrüßung",
     "weight": 56,
     "classes": [
@@ -486,47 +666,6 @@
           "welcome",
           "salutation",
           "welcoming"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Bereich",
-    "weight": 200,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Bereiche",
-        "article": "der",
-        "translation": [
-          "area",
-          "region",
-          "field",
-          "sector",
-          "zone",
-          "sphere",
-          "realm",
-          "department",
-          "territory",
-          "province"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Gefahr",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Gefahren",
-        "translation": [
-          "danger",
-          "risk",
-          "hazard",
-          "threat",
-          "peril"
         ]
       }
     ]
@@ -545,23 +684,6 @@
           "demon",
           "fiend",
           "deuce"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Untershied",
-    "weight": 225,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Unterschiede",
-        "article": "der",
-        "translation": [
-          "diffrence",
-          "distinction",
-          "differential",
-          "variation"
         ]
       }
     ]
@@ -602,24 +724,6 @@
     ]
   },
   {
-    "word": "Rede",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Reden",
-        "article": "die",
-        "translation": [
-          "talk",
-          "speech",
-          "address",
-          "rumor",
-          "rumour"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Flocke",
     "weight": 56,
     "classes": [
@@ -631,39 +735,6 @@
           "flake",
           "scale",
           "ball of lint"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Gebiet",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Gebieten",
-        "translation": [
-          "area",
-          "field",
-          "territory",
-          "region",
-          "zone"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Miststück",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Miststücke",
-        "article": "das",
-        "translation": [
-          "bitch",
-          "bastard"
         ]
       }
     ]
@@ -797,22 +868,6 @@
     ]
   },
   {
-    "word": "Benachrichtigung",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Benachrichtigungen",
-        "article": "die",
-        "translation": [
-          "notice",
-          "notification",
-          "advice note"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Müll",
     "weight": 42,
     "classes": [
@@ -863,23 +918,6 @@
           "information",
           "memo",
           "memorandum"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Gremium",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Gremien",
-        "article": "das",
-        "translation": [
-          "committee",
-          "body",
-          "panel",
-          "board"
         ]
       }
     ]
@@ -960,24 +998,6 @@
           "connection",
           "correlation",
           "contact"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Tasche",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Taschen",
-        "translation": [
-          "bag",
-          "pocket",
-          "case",
-          "pouch",
-          "purse"
         ]
       }
     ]
@@ -1088,26 +1108,6 @@
         "translation": [
           "nonsense",
           "tomfoolery"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Stimmung",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Stimmungen",
-        "article": "die",
-        "translation": [
-          "humor",
-          "mood",
-          "atmosphere",
-          "feeling",
-          "spirit",
-          "disposition",
-          "temper"
         ]
       }
     ]

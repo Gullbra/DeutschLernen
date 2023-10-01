@@ -28,7 +28,9 @@ export const qResultMeaningUI = (correctlyAnswered: boolean, answer: string, tra
     ? translation.length === 1 
       ? `Correct!\n` 
       : `Correct! More translations: ${lineUpTranslations(translation.filter(el => el !== answer))}\n`
-    : `Not quite. Correct answer(s) is(are): ${lineUpTranslations(translation)}\n`
+    : translation.length > 1
+      ? `Not quite. Correct answers are: ${lineUpTranslations(translation)}\n`
+      : `Not quite. Correct answer is: ${lineUpTranslations(translation)}\n`
 }
 
 export const qResultSimpleUI = (correctlyAnswered: boolean, correctAnswer: string): string => {
