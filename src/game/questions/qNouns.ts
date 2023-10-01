@@ -1,6 +1,6 @@
 import { isValidWordClassNoun } from "../../util/dataValidations.ts";
 import { IClassNoun, IGameState } from "../../util/interfaces.ts";
-import { comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { comparerContractions, comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement, randomizeInt } from "../../util/util.ts";
 import { IConvertedNoun, NounCaseConverter } from "../gramarHandlers/nounCaseConverter.ts";
 import { QParentClass } from "./parentClasses.ts";
 
@@ -10,14 +10,14 @@ export class QWordClassNoun extends QParentClass {
   }
 
   protected selectQuestion(): Promise<boolean> {
-    return this.questionCase()
+    const randomInt = randomizeInt(this.dataObject.plural !== 'no plural' ? 3 : 2)
 
-    if (this.dataObject.plural !== 'no plural' && Math.round(Math.random()*2) === 0)
-      return this.questionPlural()
-  
-    return Math.round(Math.random()) === 0
-      ? this.questionMeaning()
-      : this.questionArticle()
+    switch (randomInt) {
+      case 3: return this.questionPlural()
+      case 2: return this.questionCase()
+      case 1: return this.questionArticle()
+      default: return this.questionMeaning()
+    }
   }
 
   protected override async questionMeaning (): Promise<boolean> {
@@ -54,31 +54,54 @@ export class QWordClassNoun extends QParentClass {
   }
 
   private async questionCase (): Promise<boolean> {
-    // throw Error("Not implemented!")
+    const caseArray = [
+      {case: "akusativ", prepositions: ['bis', 'für', 'ohne', 'gegen', 'um']},
+      {case: "dativ", prepositions: ['mit', 'nach', 'zu', 'außer', 'bei']},
+      {case: "genetiv", prepositions: ['wegen', 'statt', 'trotz']},
+    ]
 
-    //const usePlural = this.dataObject.plural !== 'no plural' && Math.round(Math.random()) === 0
-    const usePlural = false
+    const selectedCase = randomizeArrayElement(caseArray)
+    const selectedPreposition = randomizeArrayElement(selectedCase.prepositions)
+    const usePlural = this.dataObject.plural !== 'no plural' && !!randomizeInt(1)
+    const useDefinite = !!randomizeInt(1)
 
-    const conversionObj = new NounCaseConverter(this.dataObject.article, usePlural ? this.dataObject.plural : this.word, usePlural, true)
-    const selectedCase = randomizeArrayElement([
-      'akusativ', 
-      'dativ', 
-      //'genetiv'
-    ])
+    const nounObjNominativ: IConvertedNoun = {
+      defArticle: usePlural ? 'die' : this.dataObject.article,
+      indefArticle: usePlural ? 'viele' : (this.dataObject.article === 'die' ? 'eine' : 'ein'),
+      noun: usePlural ? this.dataObject.plural : this.word
+    }
+    const nounObjConverted = new NounCaseConverter(
+      this.dataObject.article, 
+      usePlural ? this.dataObject.plural : this.word, 
+      usePlural,
+      this.dataObject.specialDeclensions
+    ).convertToCase(selectedCase.case)
 
-    const caseConverted: IConvertedNoun = conversionObj.convertToCase(selectedCase)
+    const [ questionPhrase, expectedPhrase ] = [ (str: string) => '_'.repeat(str.length), (str: string) => str ].map(fn => {
+      return `${selectedPreposition} ${fn(nounObjConverted[useDefinite ? 'defArticle' : 'indefArticle'])} ${fn(nounObjConverted.noun)}, ...`
+    })
 
-    // ! Construct a "question phrase" with prepositions based on the randomized case
+    const questionFull = [
+      `Use the ${selectedCase.case} case of "${nounObjNominativ[useDefinite ? 'defArticle' : 'indefArticle']} ${nounObjNominativ.noun}" to finish the sentence:`,
+      `"${questionPhrase}"`,
+      `Your answer: `,
+    ].join('\n\n')
 
-    let terminalInput = inputProcessor(
-      await this.gameState.lineReader.question(
-        `What's the ${selectedCase} form of ${this.dataObject.class}'s "${usePlural ? this.dataObject.plural : this.word }"?\nYour answer: `
-      )
-    );
+    let terminalInput = inputProcessor(await this.gameState.lineReader.question(questionFull));
+    
+    const correctlyAnswered = comparerß(terminalInput, expectedPhrase, (actual, expected) => 
+      comparerContractions(actual, expected, (actual, expected) => {
+        const [ modActual, modExpected ] = [actual, expected].map((str) => {
+          return str
+            .split(', ...').join('')
+            .split(`${selectedPreposition}`).join('').trim()
+        })
 
-    const correctlyAnswered = comparerß(terminalInput, `${caseConverted.defArticle} ${caseConverted.noun.toLowerCase()}`)   
-
-    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `${caseConverted.defArticle} ${caseConverted.noun}`))
+        return modActual === modExpected.toLowerCase()
+      })
+    )   
+    
+    await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `"${expectedPhrase}"`))
     return correctlyAnswered
   }
 }
