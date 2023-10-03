@@ -542,4 +542,16 @@ export const mockDataPrepositions: IWord[] = [
 ]
 
 export const mockDataNouns: { word: string, weight: number, classes: IClassNoun[] }[] = [
+  // {
+  //   word: 'Abenteuer',
+  //   weight: 100,
+  //   classes: [{
+  //     class: 'noun',
+  //     article: 'das',
+  //     plural: 'Abenteuer',
+  //     translation: [
+  //       'adventure',
+  //     ]
+  //   }]
+  // },
 ]

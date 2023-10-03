@@ -1,5 +1,176 @@
 [
   {
+    "word": "Miststück",
+    "weight": 142,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Miststücke",
+        "article": "das",
+        "translation": [
+          "bitch",
+          "bastard"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Sinn",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Sinne",
+        "article": "der",
+        "translation": [
+          "sense",
+          "meaning",
+          "signification",
+          "feeling"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Ausdruck",
+    "weight": 175,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Ausdrücke",
+        "article": "der",
+        "translation": [
+          "expression",
+          "term",
+          "phrase"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Blödsinn",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "der",
+        "translation": [
+          "nonsense",
+          "tomfoolery"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Wohlstand",
+    "weight": 113,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "no plural",
+        "translation": [
+          "prosperity",
+          "affluence",
+          "fortune"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Bereich",
+    "weight": 250,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Bereiche",
+        "article": "der",
+        "translation": [
+          "area",
+          "region",
+          "field",
+          "sector",
+          "zone",
+          "sphere",
+          "realm",
+          "department",
+          "territory",
+          "province"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Schluss",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Schlüsse",
+        "translation": [
+          "endling",
+          "conclusion",
+          "closing",
+          "closure",
+          "finish",
+          "ending"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gefahr",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Gefahren",
+        "translation": [
+          "danger",
+          "risk",
+          "hazard",
+          "threat",
+          "peril"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Tatsache",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Tatsachen",
+        "article": "die",
+        "translation": [
+          "fact"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Teufel",
+    "weight": 148,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Teufel",
+        "translation": [
+          "devil",
+          "heck",
+          "demon",
+          "fiend",
+          "deuce"
+        ]
+      }
+    ]
+  },
+  {
     "word": "Lager",
     "weight": 200,
     "classes": [
@@ -73,21 +244,6 @@
     ]
   },
   {
-    "word": "Miststück",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Miststücke",
-        "article": "das",
-        "translation": [
-          "bitch",
-          "bastard"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Gebiet",
     "weight": 42,
     "classes": [
@@ -139,63 +295,6 @@
           "license plate",
           "marker",
           "numberplate"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Bereich",
-    "weight": 150,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Bereiche",
-        "article": "der",
-        "translation": [
-          "area",
-          "region",
-          "field",
-          "sector",
-          "zone",
-          "sphere",
-          "realm",
-          "department",
-          "territory",
-          "province"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Gefahr",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Gefahren",
-        "translation": [
-          "danger",
-          "risk",
-          "hazard",
-          "threat",
-          "peril"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Wohlstand",
-    "weight": 150,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "no plural",
-        "translation": [
-          "prosperity",
-          "affluence",
-          "fortune"
         ]
       }
     ]
@@ -620,25 +719,6 @@
     ]
   },
   {
-    "word": "Schluss",
-    "weight": 200,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Schlüsse",
-        "translation": [
-          "endling",
-          "conclusion",
-          "closing",
-          "closure",
-          "finish",
-          "ending"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Schlagabtausch",
     "weight": 75,
     "classes": [
@@ -666,24 +746,6 @@
           "welcome",
           "salutation",
           "welcoming"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Teufel",
-    "weight": 197,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Teufel",
-        "translation": [
-          "devil",
-          "heck",
-          "demon",
-          "fiend",
-          "deuce"
         ]
       }
     ]
@@ -821,20 +883,6 @@
     ]
   },
   {
-    "word": "Tatsache",
-    "weight": 200,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Tatsachen",
-        "article": "die",
-        "translation": [
-          "fact"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Reißverschluss",
     "weight": 42,
     "classes": [
@@ -847,22 +895,6 @@
           "zipper",
           "zip fastener",
           "fiend"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Ausdruck",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ausdrücke",
-        "article": "der",
-        "translation": [
-          "expression",
-          "term",
-          "phrase"
         ]
       }
     ]
@@ -1098,21 +1130,6 @@
     ]
   },
   {
-    "word": "Blödsinn",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": [
-          "nonsense",
-          "tomfoolery"
-        ]
-      }
-    ]
-  },
-  {
     "word": "Erfolg",
     "weight": 75,
     "classes": [
@@ -1123,23 +1140,6 @@
         "translation": [
           "success",
           "achievement"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Sinn",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Sinne",
-        "article": "der",
-        "translation": [
-          "sense",
-          "meaning",
-          "signification",
-          "feeling"
         ]
       }
     ]
