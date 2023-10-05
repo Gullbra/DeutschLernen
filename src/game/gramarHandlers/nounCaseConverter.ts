@@ -86,7 +86,7 @@ export class NounCaseConverter {
         returnObj.noun += 'n'
       if(this.declensionObj.enGeneral)
         returnObj.noun += 'en'
-    } else if (['der', 'das'].includes(this.article)) {
+    } else if (!this.plural && ['der', 'das'].includes(this.article)) {
       if (['s', 'ß', 'x', 'z'].includes(this.nounNominativ[this.nounNominativ.length-1])) {
         returnObj.noun += 'es'
       } else {

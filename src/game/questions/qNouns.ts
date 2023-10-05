@@ -11,7 +11,7 @@ export class QWordClassNoun extends QParentClass {
 
   protected selectQuestion(): Promise<boolean> {
     const randomInt = randomizeInt(this.dataObject.plural !== 'no plural' ? 3 : 2)
-
+    return this.questionCase()
     switch (randomInt) {
       case 3: return this.questionPlural()
       case 2: return this.questionCase()
@@ -89,14 +89,20 @@ export class QWordClassNoun extends QParentClass {
 
     let terminalInput = inputProcessor(await this.gameState.lineReader.question(questionFull));
     
-    const correctlyAnswered = comparerContractions(terminalInput, expectedPhrase.toLowerCase(), (actual, expected) => {
-      const [ modActual, modExpected ] = [actual, expected].map((str) => {
-        return str
-          .split(', ...').join('')
-          .split(`${selectedPreposition}`).join('').trim()
-      })
+    if (['der','das','die','den','dem'].includes(terminalInput.substring(0,3))) {
+      terminalInput = [selectedPreposition, terminalInput].join(' ')
+    }
 
-      return comparerß(modActual, modExpected)
+    const correctlyAnswered = comparerContractions(terminalInput, expectedPhrase.toLowerCase(), (actual, expected) => {
+      return comparerß(actual, expected, (actual, expected) => {
+        const [ modActual, modExpected ] = [actual, expected].map((str) => {
+          return str
+            .split(', ...').join('')
+            .split(selectedPreposition.split('ß').join('ss')).join('').trim()
+        })
+        
+        return modActual === modExpected
+      })
     })   
     
     await this.gameState.lineReader.question(qResultSimpleUI(correctlyAnswered, `"${expectedPhrase}"`))
