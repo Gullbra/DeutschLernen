@@ -4,6 +4,9 @@ import { QDegreeOfComparision } from "./parentClasses.ts";
 
 
 export class QWordClassAdjective extends QDegreeOfComparision {
+  protected newSelectQuestion(): { typeOfQuestion: string; correct: Promise<boolean>; } {
+    throw new Error("Method not implemented.");
+  }
   constructor (gameState: IGameState, word: string, protected dataObject: IClassAdjective) {
     super(gameState, word, dataObject, isValidWordClassAdjective(word, dataObject))
   }

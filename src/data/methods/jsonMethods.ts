@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from "path";
-import { IDataStorageMethods, IDataSaveObject, TDataArray, IClassNoun, IClassPreposition, IClassAdverb, IClassAdjective, IWord } from "../../util/interfaces.ts"
+import { IDataStorageMethods, IDataSaveObject, TDataArray, IClassNoun, IClassPreposition, IClassAdverb, IClassAdjective, IWord, IRawUserProfile } from "../../util/interfaces.ts"
 import { isValidWordClassAdjective, isValidWordClassAdverb, isValidWordClassNoun, isValidWordClassPreposition } from '../../util/dataValidations.ts';
 
 // export interface IDataInsertObject {
@@ -21,7 +21,7 @@ export class JSONMethods implements IDataStorageMethods {
     ]
   }
 
-  async retrieve (inclusiveFilters?: string[]): Promise<TDataArray> {
+  async retrieveData (inclusiveFilters?: string[]): Promise<TDataArray> {
     let filesToRetriveFrom: string[] = []
 
     if (inclusiveFilters && Array.isArray(inclusiveFilters) && inclusiveFilters.length > 0) {
@@ -32,10 +32,10 @@ export class JSONMethods implements IDataStorageMethods {
       filesToRetriveFrom = this.hardCodedValues.seperateFileClasses.map(className => className)
     }
 
-    return (await Promise.all(filesToRetriveFrom.map(name => this.jsonReader(name)))).flat()    
+    return (await Promise.all(filesToRetriveFrom.map(name => this.jsonReader(name)))).flat() as TDataArray    
   }
 
-  async insert (newData: TDataArray): Promise<void> {
+  async insertData (newData: TDataArray): Promise<void> {
     let toSaveObject: IDataSaveObject = {
       processed: new Set(),
       data: new Map(this.hardCodedValues.seperateFileClasses.map(className => [ className, [] ]))
@@ -47,7 +47,7 @@ export class JSONMethods implements IDataStorageMethods {
     this.hardCodedValues.seperateFileClasses.forEach((className) => {
       if (toSaveObject.data.get(className)?.length === 0) 
         return toSaveObject.data.delete(className)
-      return toRetrievePromises.push(this.jsonReader(className))
+      return toRetrievePromises.push(this.jsonReader(className) as Promise<TDataArray>)
     })
     
     toSaveObject = this.dataSpliting(toSaveObject, ((await Promise.all(toRetrievePromises)).flat()), (dataObj: IWord) => {
@@ -60,7 +60,7 @@ export class JSONMethods implements IDataStorageMethods {
       .then(() => console.log('Successfull write to JSON!'))
   }
 
-  async update (toBeChangedArr: TDataArray): Promise<void> {
+  async updateData (toBeChangedArr: TDataArray): Promise<void> {
     let toSaveObject = {
       processed: new Set(),
       data: new Map(this.hardCodedValues.seperateFileClasses.map(className => [ className, [] ]))
@@ -72,7 +72,7 @@ export class JSONMethods implements IDataStorageMethods {
     this.hardCodedValues.seperateFileClasses.forEach((className) => {
       if (toSaveObject.data.get(className)?.length === 0) 
         return toSaveObject.data.delete(className)
-      return toRetrievePromises.push(this.jsonReader(className))
+      return toRetrievePromises.push(this.jsonReader(className) as Promise<TDataArray>)
     })
 
     toSaveObject = this.dataSpliting(toSaveObject, ((await Promise.all(toRetrievePromises)).flat()))
@@ -150,7 +150,14 @@ export class JSONMethods implements IDataStorageMethods {
     })
   }
 
-  private jsonReader = async (fileName: string): Promise<TDataArray> => fs.promises.readFile(path.join(process.cwd(), 'data', `data.${fileName}.json`)).then(data => JSON.parse(data.toString()))
+  async retrieveUser(): Promise<IRawUserProfile> {
+    return this.jsonReader("userprofile") as Promise<IRawUserProfile>
+  }
+  async updateUser(updatedUser: IRawUserProfile): Promise<void> {
+    return this.jsonWriter("userprofile", updatedUser)
+  }
 
-  private jsonWriter = async (fileName: string, data: TDataArray): Promise<void> => fs.promises.writeFile(path.join(process.cwd(), 'data', `data.${fileName}.json`), JSON.stringify(data, null, 2))
+  private jsonReader = async (fileName: string): Promise<(TDataArray | IRawUserProfile)> => fs.promises.readFile(path.join(process.cwd(), 'data', `data.${fileName}.json`)).then(data => JSON.parse(data.toString()))
+
+  private jsonWriter = async (fileName: string, data: (TDataArray | IRawUserProfile)): Promise<void> => fs.promises.writeFile(path.join(process.cwd(), 'data', `data.${fileName}.json`), JSON.stringify(data, null, 2))
 }

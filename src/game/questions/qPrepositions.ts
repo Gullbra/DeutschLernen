@@ -4,6 +4,9 @@ import { comparerß, inputProcessor, qResultSimpleUI, randomizeArrayElement } fr
 import { QParentClass } from "./parentClasses.ts";
 
 export class QWordClassPreposition extends QParentClass {
+  protected newSelectQuestion(): { typeOfQuestion: string; correct: Promise<boolean>; } {
+    throw new Error("Method not implemented.");
+  }
   constructor (gameState: IGameState, word: string, protected dataObject: IClassPreposition) {
     super(gameState, word, dataObject, isValidWordClassPreposition(word, dataObject))
   }

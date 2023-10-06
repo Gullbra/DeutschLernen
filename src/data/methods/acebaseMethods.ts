@@ -1,14 +1,20 @@
-import { IDataStorageMethods, TDataArray } from "../../util/interfaces.ts"
+import { IDataStorageMethods, IRawUserProfile, TDataArray } from "../../util/interfaces.ts"
 
 export class AcebaseMethods implements IDataStorageMethods {
-  async insert(newData: TDataArray): Promise<void> {
+  retrieveUser(): Promise<IRawUserProfile> {
     throw new Error("Method not implemented.")
   }
-  async retrieve (inclusiveFilters?: string[] | undefined): Promise<TDataArray> {
+  updateUser(updatedUser: IRawUserProfile): Promise<void> {
+    throw new Error("Method not implemented.")
+  }
+  async insertData(newData: TDataArray): Promise<void> {
+    throw new Error("Method not implemented.")
+  }
+  async retrieveData (inclusiveFilters?: string[] | undefined): Promise<TDataArray> {
     console.log('Not implemented!')
     return [] as TDataArray
   }
-  async update (toBeChanged: TDataArray): Promise<void> {
+  async updateData (toBeChanged: TDataArray): Promise<void> {
     console.log('Not implemented!')
   }
 }

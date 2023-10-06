@@ -1,5 +1,5 @@
 import { IDegreeOfComparisonObject, IGameState, IWordclass } from "../../util/interfaces.ts";
-import { comparerß, inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { comparerß, inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement, randomizeInt } from "../../util/util.ts";
 
 export abstract class QParentClass {
   constructor (protected gameState: IGameState, protected word: string, protected dataObject: IWordclass, protected dataIsValid: boolean) {}
@@ -15,6 +15,41 @@ export abstract class QParentClass {
       error: false 
     }
   }
+
+  async newGetQnA(): Promise<{correct: boolean, error: boolean, typeOfQuestion: string}> {
+    if (!this.dataIsValid) {
+      console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
+      return { error: true, correct: false, typeOfQuestion: ''}
+    }
+
+    const { correct, typeOfQuestion } = this.newSelectQuestion()
+    return {
+      correct: await correct,
+      typeOfQuestion,
+      error: false 
+    }
+  }
+
+  protected selectTypeOfQuestion () {
+    const [ focusKey, focusWeights ] = [ 
+      Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.keys() as IterableIterator<string>), 
+      Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.values() as IterableIterator<number>)
+    ]
+
+    return (() => {
+      const randomInt = randomizeInt(focusWeights.reduce((sum, curr) => sum + curr), 0)
+
+      for (let i = 0, sum = 0; i < focusWeights.length-2; i++) {
+        sum += focusWeights[i]
+        if (sum <= randomInt) {
+          return focusKey[i]
+        }
+      }
+      return focusKey[focusKey.length-1]
+    }) ()
+  }
+
+  protected abstract newSelectQuestion(): {typeOfQuestion: string, correct: Promise<boolean>}
 
   protected abstract selectQuestion (): Promise<boolean>
 

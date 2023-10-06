@@ -9,9 +9,28 @@ export class QWordClassNoun extends QParentClass {
     super(gameState, word, dataObject, isValidWordClassNoun(word, dataObject))
   }
 
+  protected newSelectQuestion(): {typeOfQuestion: string, correct: Promise<boolean>} {
+    if (!this.gameState.userProfile.has('noun'))
+      throw new Error(`Invalid userprofile: no entry for wordClass "${this.dataObject.class}"`)
+
+    const typeOfQuestion = this.selectTypeOfQuestion()
+
+    return {
+      typeOfQuestion,
+      correct: (() => {
+        switch (typeOfQuestion) {
+          case 'plural': return this.questionPlural()
+          case 'case': return this.questionCase()
+          case 'article': return this.questionArticle()
+          case 'meaning': return this.questionMeaning()
+          default: throw new Error(`invalid userfocus "${typeOfQuestion}" to QWordClassNoun.selectQuestion`)
+        }
+      })()
+    }
+  }
+
   protected selectQuestion(): Promise<boolean> {
     const randomInt = randomizeInt(this.dataObject.plural !== 'no plural' ? 3 : 2)
-    return this.questionCase()
     switch (randomInt) {
       case 3: return this.questionPlural()
       case 2: return this.questionCase()

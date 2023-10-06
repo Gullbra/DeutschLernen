@@ -131,7 +131,10 @@ export interface IWord {
 export interface IPhrase {}
 
 export type TDataArray = IWord[]
-// export type TDataArray = (IWord IPhrase)[]
+// export type TDataArray = (IWord | IPhrase)[]
+
+export interface IRawUserProfile {[key: string]: {[key: string]: number}}
+export type TUserProfile = Map<string, Map<string, number>>
 
 export interface IGameInput {
   lineReader: rlInterface,
@@ -140,6 +143,7 @@ export interface IGameInput {
 export interface IGameState extends IGameInput{
   fullData: TDataArray,
   currentData: TDataArray,
+  userProfile: TUserProfile,
   questionsToAnswer: number,
   currentQuestionNumber: number,
   currentTotalWeight: number,
@@ -151,9 +155,11 @@ export interface IGameState extends IGameInput{
 }
 
 export interface IDataStorageMethods {
-  retrieve (inclusiveFilters?: string[]): Promise<TDataArray>,
-  update (toBeChanged: TDataArray): Promise<void>,
-  insert (newData: TDataArray): Promise<void>
+  retrieveData (inclusiveFilters?: string[]): Promise<TDataArray>,
+  updateData (toBeChanged: TDataArray): Promise<void>,
+  insertData (newData: TDataArray): Promise<void>,
+  retrieveUser (): Promise<IRawUserProfile>,
+  updateUser (updatedUser: IRawUserProfile): Promise<void>
 }
 
 export interface IDataSaveObject {
