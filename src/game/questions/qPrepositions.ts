@@ -1,17 +1,15 @@
 import { isValidWordClassPreposition } from "../../util/dataValidations.ts";
-import { IClassPreposition, IGameState } from "../../util/interfaces.ts";
+import { IGameState } from "../../interfaces/dataStructures.ts";
+import { IClassPreposition } from "../../interfaces/wordsPhrasesGrammar.ts";
 import { comparerß, inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
-import { QParentClass } from "./parentClasses.ts";
+import { QParentClass } from "./aParentClass.ts";
 
 export class QWordClassPreposition extends QParentClass {
-  protected newSelectQuestion(): { typeOfQuestion: string; correct: Promise<boolean>; } {
-    throw new Error("Method not implemented.");
-  }
   constructor (gameState: IGameState, word: string, protected dataObject: IClassPreposition) {
     super(gameState, word, dataObject, isValidWordClassPreposition(word, dataObject))
   }
 
-  protected selectQuestion(): Promise<boolean> {
+  protected selectQuestionAnon(): Promise<boolean> {
     return (() => {
       const randomizeExerciseType = Math.round(Math.random() * 3)
   
@@ -23,6 +21,9 @@ export class QWordClassPreposition extends QParentClass {
         return this.questionExerciseCase()
       }
     }) ()
+  }
+  protected selectQuestionUser(): { typeOfQuestion: string; correct: Promise<boolean>; } {
+    throw new Error("Method not implemented.");
   }
   
   private async questionCase () {

@@ -1,4 +1,4 @@
-import { IDataStorageMethods, IRawUserProfile, TDataArray } from "../../util/interfaces.ts"
+import { IDataStorageMethods, IRawUserProfile, TDataArray } from "../../interfaces/dataStructures.ts"
 
 export class AcebaseMethods implements IDataStorageMethods {
   retrieveUser(): Promise<IRawUserProfile> {

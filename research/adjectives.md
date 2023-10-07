@@ -64,3 +64,8 @@ function:
         Ak: (noun/pronNom?, verb?, nounAk) => phrase
         da: (noun/pronNom?, verb?, nounAK?, nounDat) => phrase
         Ge: (noun/pronNom?, verb?, nounAk?, nounDat?, nounGen) => phrase
+
+
+# links
+// * Some adjectives: https://mydailygerman.com/german-adjectives/
+// * "declining" of adjectives https://learn-german-easily.com/the-adjectives

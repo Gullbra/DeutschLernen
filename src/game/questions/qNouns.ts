@@ -1,35 +1,49 @@
 import { isValidWordClassNoun } from "../../util/dataValidations.ts";
-import { IClassNoun, IGameState } from "../../util/interfaces.ts";
+import { IClassNoun } from "../../interfaces/wordsPhrasesGrammar.ts";
+import { IGameState } from "../../interfaces/dataStructures.ts";
 import { comparerContractions, comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement, randomizeInt } from "../../util/util.ts";
 import { IConvertedNoun, NounCaseConverter } from "../gramarHandlers/nounCaseConverter.ts";
-import { QParentClass } from "./parentClasses.ts";
+import { QParentClass } from "./aParentClass.ts";
 
 export class QWordClassNoun extends QParentClass {
   constructor (gameState: IGameState, word: string, protected dataObject: IClassNoun) {
     super(gameState, word, dataObject, isValidWordClassNoun(word, dataObject))
   }
 
-  protected newSelectQuestion(): {typeOfQuestion: string, correct: Promise<boolean>} {
-    if (!this.gameState.userProfile.has('noun'))
+  protected selectQuestionUser(): {typeOfQuestion: string, correct: Promise<boolean>} {
+    if (!this.gameState?.userProfile?.has('noun'))
       throw new Error(`Invalid userprofile: no entry for wordClass "${this.dataObject.class}"`)
 
-    const typeOfQuestion = this.selectTypeOfQuestion()
+    const [ questionTypes, questionWeights ] = [ 
+      Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.keys() as IterableIterator<string>), 
+      Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.values() as IterableIterator<number>)
+    ]
+
+    if (this.dataObject.plural === 'no plural') {
+      const index = questionTypes.findIndex(qType => qType === 'plural')
+      questionTypes.splice(index, 1)
+      questionWeights.splice(index, 1)
+    }
+
+    const typeOfQuestion = this.getTypeOfQuestionByUserWeight (questionTypes, questionWeights)
+
+    const correct = (() => {
+      switch (typeOfQuestion) {
+        case 'plural': return this.questionPlural()
+        case 'case': return this.questionCase()
+        case 'article': return this.questionArticle()
+        case 'meaning': return this.questionMeaning()
+        default: throw new Error(`invalid userfocus "${typeOfQuestion}" to QWordClassNoun.selectQuestion`)
+      }
+    })()
 
     return {
       typeOfQuestion,
-      correct: (() => {
-        switch (typeOfQuestion) {
-          case 'plural': return this.questionPlural()
-          case 'case': return this.questionCase()
-          case 'article': return this.questionArticle()
-          case 'meaning': return this.questionMeaning()
-          default: throw new Error(`invalid userfocus "${typeOfQuestion}" to QWordClassNoun.selectQuestion`)
-        }
-      })()
+      correct
     }
   }
 
-  protected selectQuestion(): Promise<boolean> {
+  protected selectQuestionAnon(): Promise<boolean> {
     const randomInt = randomizeInt(this.dataObject.plural !== 'no plural' ? 3 : 2)
     switch (randomInt) {
       case 3: return this.questionPlural()

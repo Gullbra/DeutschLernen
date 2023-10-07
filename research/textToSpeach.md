@@ -1,4 +1,9 @@
 
+# Allmänt
+speach to text: https://yourdailygerman.com/german-cases-chart-intuitive
+
+test Azure or google in web
+
 ###  text2speech:
 
 https://www.geeksforgeeks.org/how-to-convert-text-to-speech-in-node-js/

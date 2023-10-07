@@ -35,6 +35,9 @@ The hard thing is to get an intuitiv feeling for the gender of words. There are 
 ### Feminine (die/die/der/der) 
 -->
 
+## Declension
+* constructed from this: https://www.germanveryeasy.com/noun-declension#n-deklination
+
 
 ## links
 

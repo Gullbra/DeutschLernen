@@ -1,6 +1,7 @@
 import fs from 'fs'
 import path from "path";
-import { IDataStorageMethods, IDataSaveObject, TDataArray, IClassNoun, IClassPreposition, IClassAdverb, IClassAdjective, IWord, IRawUserProfile } from "../../util/interfaces.ts"
+import { IDataStorageMethods, IDataSaveObject, TDataArray, IRawUserProfile } from "../../interfaces/dataStructures.ts"
+import { IClassNoun, IClassPreposition, IClassAdverb, IClassAdjective, IWord } from "../../interfaces/wordsPhrasesGrammar.ts"
 import { isValidWordClassAdjective, isValidWordClassAdverb, isValidWordClassNoun, isValidWordClassPreposition } from '../../util/dataValidations.ts';
 
 // export interface IDataInsertObject {

@@ -1,4 +1,4 @@
-import { IClassAdjective, IClassAdverb, IClassNoun, IClassPreposition, IComparativeAndSuperlative, IDegreeOfComparisonObject, IWordclass } from "./interfaces.ts";
+import { IClassAdjective, IClassAdverb, IClassNoun, IClassPreposition, IComparativeAndSuperlative, IDegreeOfComparisonObject, IWordclass }  from "../interfaces/wordsPhrasesGrammar.ts"
 
 // * Should return true if data is valid
 

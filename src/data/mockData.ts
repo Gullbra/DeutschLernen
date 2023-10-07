@@ -1,4 +1,4 @@
-import { IClassAdjective, IClassNoun, IWord } from "../util/interfaces.ts";
+import { IClassAdjective, IClassNoun, IWord } from "../interfaces/wordsPhrasesGrammar.ts";
 
 export const mockDataOtherWords: IWord[] = [
   // {

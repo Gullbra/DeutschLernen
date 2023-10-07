@@ -1,17 +1,15 @@
 import { isValidWordClassAdjective } from "../../util/dataValidations.ts";
-import { IClassAdjective, IGameState } from "../../util/interfaces.ts";
-import { QDegreeOfComparision } from "./parentClasses.ts";
+import { IClassAdjective } from "../../interfaces/wordsPhrasesGrammar.ts";
+import { IGameState } from "../../interfaces/dataStructures.ts";
+import { QDegreeOfComparision } from "./aDegreesOfComparision.ts";
 
 
 export class QWordClassAdjective extends QDegreeOfComparision {
-  protected newSelectQuestion(): { typeOfQuestion: string; correct: Promise<boolean>; } {
-    throw new Error("Method not implemented.");
-  }
   constructor (gameState: IGameState, word: string, protected dataObject: IClassAdjective) {
     super(gameState, word, dataObject, isValidWordClassAdjective(word, dataObject))
   }
   
-  selectQuestion(): Promise<boolean> {
+  selectQuestionAnon(): Promise<boolean> {
 
     // if(!this.dataObject.absoluteAdverb && Math.round(Math.random() * 2) > 0) {
     //   try {
@@ -30,6 +28,9 @@ export class QWordClassAdjective extends QDegreeOfComparision {
     return this.questionMeaning()
   }
 
+  protected selectQuestionUser(): { typeOfQuestion: string; correct: Promise<boolean>; } {
+    throw new Error("Method not implemented.");
+  }
   
   
 }

@@ -1,4 +1,4 @@
-import { TDataArray, IDataStorageMethods, TUserProfile, IRawUserProfile } from '../util/interfaces.ts';
+import { TDataArray, IDataStorageMethods, TUserProfile, IRawUserProfile } from '../interfaces/dataStructures.ts';
 import { AcebaseMethods } from './methods/acebaseMethods.ts';
 import { JSONMethods } from './methods/jsonMethods.ts';
 

@@ -5,3 +5,9 @@ https://grammar.collinsdictionary.com/german-easy-learning/what-are-the-irregula
 https://grammar.collinsdictionary.com/german-easy-learning/what-are-superlative-adverbs-in-german#google_vignette
 
 https://language-easy.org/german/grammar/adjectives/superlative/
+
+
+// * Some adverbs: https://www.germanveryeasy.com/german-adverbs
+// * https://langster.org/en/blog/german-adverbs-a-guide-for-beginners/
+// * https://grammar.collinsdictionary.com/german-easy-learning/what-are-the-irregular-german-comparative-and-superlative-adverbs
+// * https://grammar.collinsdictionary.com/german-easy-learning/what-are-superlative-adverbs-in-german

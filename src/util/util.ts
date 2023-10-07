@@ -1,4 +1,4 @@
-import { IWordclass } from "./interfaces.ts"
+import { IWordclass } from "../interfaces/wordsPhrasesGrammar.ts"
 
 export const inputProcessor = (inputString: string): string => inputString.toLowerCase().trim()
 

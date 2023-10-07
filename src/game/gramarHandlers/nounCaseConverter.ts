@@ -1,4 +1,4 @@
-import { INounDeclension } from "../../util/interfaces.ts"
+import { INounDeclension } from "../../interfaces/wordsPhrasesGrammar.ts"
 
 interface IDefArticleAndNoun { defArticle: string, noun: string }
 export interface IConvertedNoun extends IDefArticleAndNoun { indefArticle: string }

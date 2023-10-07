@@ -1,20 +1,24 @@
-import { IClassAdverb, IClassNoun, IGameState, IWord, IClassPreposition, IGameInput, TDataArray, IClassAdjective, IRawUserProfile, TUserProfile } from "../util/interfaces.ts";
-import { inputProcessor, randomizeArrayElement, randomizeArrayIndex } from "../util/util.ts";
-import { QWordClassPreposition } from "./questions/qPrepositions.ts";
+import { createInterface } from 'node:readline/promises';
+import { stdin, stdout } from 'node:process';
+import { DataHandler } from './../data/dataHandler.ts';
+import { IGameState } from "../interfaces/dataStructures.ts";
+import { IClassAdverb, IClassNoun, IWord, IClassPreposition, IClassAdjective } from "../interfaces/wordsPhrasesGrammar.ts";
+import { inputProcessor, randomizeArrayElement, randomizeInt } from "../util/util.ts";
 import { QWordClassNoun } from "./questions/qNouns.ts";
-import { QWordClassAdverb } from "./questions/qAdverbs.ts";
-import { QWordClassAdjective } from "./questions/qAdjectives.ts";
+// import { QWordClassPreposition } from "./questions/qPrepositions.ts";
+// import { QWordClassAdverb } from "./questions/qAdverbs.ts";
+// import { QWordClassAdjective } from "./questions/qAdjectives.ts";
 
 export class Game { 
   private gameState: IGameState
   private inclusiveFilters?: string[]
 
-  constructor (input: IGameInput, inclusiveFilters?: string[]) { 
+  constructor (inclusiveFilters?: string[]) { 
     this.gameState = {
-      ...input,
+      dataHandler: new DataHandler(),
+      lineReader: createInterface({ input: stdin, output: stdout }),
       fullData: [],
       currentData: [],
-      userProfile: new Map(),
       questionsToAnswer: 0,
       currentQuestionNumber: 0,
       currentTotalWeight: 0,
@@ -24,28 +28,46 @@ export class Game {
   }
 
   async startUp () {
-    await Promise.all([
-      this.gameState.dataHandler.getGameData(this.inclusiveFilters),
-      this.gameState.dataHandler.getUserProfile()
-    ]).then(data => {
-        this.gameState = {
-          ...this.gameState,
-          fullData: data[0],
-          currentData: data[0].slice(),
-          userProfile: data[1],
-          currentTotalWeight: data[0].reduce((sum, dataObj) => sum + dataObj.weight, 0)
-        }
-      })
-      .catch(async (err) => {console.log(err); return await this.shutdown()})
-
     console.log("\n--------------------------")
     console.log("Deutch lernen, commandline")
     console.log("--------------------------\n")
   
-    await this.modeChoice().catch(async (err) => { console.log(err.message); await this.shutdown() })
+    await this.setupSettings().catch(async (err) => { console.log(err.message); await this.shutdown() })
   }
 
-  private async modeChoice (): Promise<void> {
+  private async setupSettings (): Promise<void> {
+    let terminalInput = inputProcessor(await this.gameState.lineReader.question(`Do you want to load a user profile? (y/n)  `)) 
+  
+    if (!['n', 'y'].includes(terminalInput)) {
+      await this.gameState.lineReader.question(`invalid input`)
+      return await this.setupSettings()
+    }
+    const loadUser = terminalInput === 'y'
+  
+    await this.setupGameState({ loadUser })
+  }
+
+  private async setupGameState (optionObj?: any) {
+    const promiseArray: Promise<any>[] = [
+      this.gameState.dataHandler.getGameData(this.inclusiveFilters)
+        .then(data => {
+          this.gameState.fullData = data
+          this.gameState.currentData = data.slice()
+          this.gameState.currentTotalWeight = data.reduce((sum, dataObj) => sum + dataObj.weight, 0)
+        })
+    ]
+
+    if (!!optionObj?.loadUser) {
+      const loadUserProfile = this.gameState.dataHandler.getUserProfile()
+        .then(data => this.gameState.userProfile = data)
+      promiseArray.push(loadUserProfile)
+    }
+
+    await Promise.all(promiseArray)
+    return await this.chooseNrOfQuestions()
+  }
+
+  private async chooseNrOfQuestions (): Promise<void> {
     if (this.gameState.currentData.length === 0) {
       console.log('No data found\n')
       return await this.shutdown()
@@ -55,7 +77,7 @@ export class Game {
   
     if (isNaN(terminalInput) || terminalInput <= 0 || terminalInput > this.gameState.currentData.length) {
       await this.gameState.lineReader.question(`invalid input.`)
-      return await this.modeChoice()
+      return await this.chooseNrOfQuestions()
     }
   
     this.gameState.questionsToAnswer = terminalInput
@@ -73,7 +95,7 @@ export class Game {
       return await this.shutdown()
     }
     
-    const selectionNumber = Math.round(Math.random() * this.gameState.currentTotalWeight)
+    const selectionNumber = randomizeInt(this.gameState.currentTotalWeight)
     const [selectedDataobject, selectedIndex] = (() => {
       for (let i = 0, sum = 0; i <= this.gameState.currentTotalWeight; i++) {
         sum += this.gameState.currentData[i].weight
@@ -104,7 +126,7 @@ export class Game {
 
     switch (selectedWordClass.class) {
       case 'noun':
-        return await this.handleResult(selectedDataobject, selectedWordClass.class, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).newGetQnA());
+        return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQnA());
 
       // case 'adverb':
       //   return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA());
@@ -127,17 +149,19 @@ export class Game {
     }
   }
 
-  private async handleResult (dataObject: IWord, wClass: string, {correct, error, typeOfQuestion}: {correct: boolean, error: boolean, typeOfQuestion: string}) {
+  private async handleResult (dataObject: IWord, {correct, error, wClass, typeOfQuestion}: {correct: boolean, error: boolean, wClass?: string, typeOfQuestion?: string}) {
     if (error) {
       if (this.gameState.correctedAnswers.length > 0)
         await this.handleSave()
       return await this.shutdown();
     }
 
-    this.updateUserProfile(wClass, typeOfQuestion, correct)
-    dataObject.weight = this.weightHandler(dataObject.weight, correct)
+    if(!!this.gameState.userProfile && wClass && typeOfQuestion)
+      this.updateUserProfile(wClass, typeOfQuestion, correct)
 
+    dataObject.weight = this.weightHandler(dataObject.weight, correct)
     this.gameState.correctedAnswers.push({ dataObject, correct })
+
     await this.determineQuestion()
   }
 
@@ -149,7 +173,7 @@ export class Game {
   }
 
   private updateUserProfile (wordClass: string, typeOfQuestion: string, correct: boolean) {
-    if (!this.gameState.userProfile.has(wordClass) || !this.gameState.userProfile.get(wordClass)?.has(typeOfQuestion))
+    if (!this.gameState?.userProfile?.has(wordClass) || !this.gameState.userProfile.get(wordClass)?.has(typeOfQuestion))
       throw new Error (`No userprofile entry for "${wordClass}" "${typeOfQuestion}"`)
 
     const newWeight = correct
@@ -179,7 +203,7 @@ export class Game {
       ? await (async () => {
           this.gameState.questionsToAnswer = this.gameState.currentQuestionNumber = 0 
           console.log("restarting...\n"); 
-          await this.modeChoice() 
+          await this.chooseNrOfQuestions() 
         })()
       : await (async () => {
           await this.handleSave()
@@ -190,13 +214,16 @@ export class Game {
   private async handleSave () {
     if(process.env.ENV_SAVING === 'no_save') 
       return console.log("No data saved due to \"ENV_SAVING='no_save'\"")
-
+    
     console.log('Saving...')
-    await Promise.all([
+    const promiseArray = [
       this.gameState.dataHandler.saveGameData(this.gameState.correctedAnswers.map(obj => obj.dataObject)),
-      this.gameState.dataHandler.saveUserProfile(this.gameState.userProfile)
-    ])
-    return
+    ]
+    
+    if (!!this.gameState.userProfile)
+      promiseArray.push(this.gameState.dataHandler.saveUserProfile(this.gameState.userProfile))
+
+    return await Promise.all(promiseArray)
   }
 
   private async shutdown () {
