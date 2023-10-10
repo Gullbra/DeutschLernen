@@ -5,8 +5,8 @@ import { mockDataNouns, mockDataOtherWords } from './data/mockData.ts';
 
 new Game(
   [
-    'noun', 
-    //'adverb',
+    //'noun', 
+    'adverb',
     //'preposition',
     // 'adjective'
   ]

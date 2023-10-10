@@ -9,7 +9,7 @@ export abstract class QParentClass {
     return !!this.gameState.userProfile ? this.getQnAUser() : this.getQnAAnon()
   }
 
-  async getQnAAnon(): Promise<{correct: boolean, error: boolean}> {
+  protected async getQnAAnon(): Promise<{correct: boolean, error: boolean}> {
     if (!this.dataIsValid) {
       console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
       return { error: true, correct: false}
@@ -21,14 +21,15 @@ export abstract class QParentClass {
     }
   }
 
-  async getQnAUser(): Promise<{correct: boolean, error: boolean, typeOfQuestion: string}> {
+  protected async getQnAUser(): Promise<{correct: boolean, error: boolean, typeOfQuestion: string, wClass: string}> {
     if (!this.dataIsValid) {
       console.log(`No or invalid ${this.dataObject.class}-dataObject sent to question for word "${this.word}"`); 
-      return { error: true, correct: false, typeOfQuestion: ''}
+      return { error: true, correct: false, typeOfQuestion: '', wClass: this.dataObject.class }
     }
 
     const { correct, typeOfQuestion } = this.selectQuestionUser()
     return {
+      wClass: this.dataObject.class,
       correct: await correct,
       typeOfQuestion,
       error: false 

@@ -5,8 +5,8 @@ import { IGameState } from "../interfaces/dataStructures.ts";
 import { IClassAdverb, IClassNoun, IWord, IClassPreposition, IClassAdjective } from "../interfaces/wordsPhrasesGrammar.ts";
 import { inputProcessor, randomizeArrayElement, randomizeInt } from "../util/util.ts";
 import { QWordClassNoun } from "./questions/qNouns.ts";
+import { QWordClassAdverb } from "./questions/qAdverbs.ts";
 // import { QWordClassPreposition } from "./questions/qPrepositions.ts";
-// import { QWordClassAdverb } from "./questions/qAdverbs.ts";
 // import { QWordClassAdjective } from "./questions/qAdjectives.ts";
 
 export class Game { 
@@ -128,8 +128,8 @@ export class Game {
       case 'noun':
         return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQnA());
 
-      // case 'adverb':
-      //   return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA());
+      case 'adverb':
+        return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA());
 
       // case 'preposition':
       //   return await this.handleResult(selectedDataobject, await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQnA());
@@ -178,7 +178,7 @@ export class Game {
 
     const newWeight = correct
       ? Math.max(50, Math.round((this.gameState.userProfile.get(wordClass)?.get(typeOfQuestion) as number) * 0.9))
-      : Math.max(50, (this.gameState.userProfile.get(wordClass)?.get(typeOfQuestion) as number) + 25)
+      : Math.max(50, (this.gameState.userProfile.get(wordClass)?.get(typeOfQuestion) as number) + 50)
 
     this.gameState.userProfile.get(wordClass)?.set(typeOfQuestion, newWeight)
   }
