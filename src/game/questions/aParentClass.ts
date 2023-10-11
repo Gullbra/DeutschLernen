@@ -39,12 +39,19 @@ export abstract class QParentClass {
   protected abstract selectQuestionUser (): {typeOfQuestion: string, correct: Promise<boolean>}
   protected abstract selectQuestionAnon (): Promise<boolean>
 
-  protected getTypeOfQuestionByUserWeight (questionTypes: string[], questionWeights: number[]): string {
-    const randomInt = randomizeInt(questionWeights.reduce((sum, curr) => sum + curr), 0)
+  protected getTypeOfQuestionByUserWeight (inputQuestionTypes?: string[], inputQuestionWeights?: number[]): string {
+    const [ questionTypes, questionWeights ] = (!!inputQuestionTypes && !!inputQuestionWeights)
+      ? [inputQuestionTypes, inputQuestionWeights]
+      : [ 
+          Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.keys() as IterableIterator<string>), 
+          Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.values() as IterableIterator<number>)
+        ]
 
-    for (let i = 0, sum = 0; i < questionWeights.length-2; i++) {
+    const randomInt = randomizeInt(questionWeights.reduce((sum, curr) => sum + curr, 0))
+
+    for (let i = 0, sum = 0; i < questionWeights.length-1; i++) {
       sum += questionWeights[i]
-      if (sum <= randomInt) {
+      if (sum >= randomInt) {
         return questionTypes[i]
       }
     }

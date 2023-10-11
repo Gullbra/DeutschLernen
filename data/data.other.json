@@ -1,7 +1,98 @@
 [
   {
+    "word": "sogar",
+    "weight": 18,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
+    "word": "wahrscheinlich",
+    "weight": 206,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "probably",
+          "presumably"
+        ],
+        "absoluteAdverb": false,
+        "comparative": {
+          "word": "wahrscheinlicher",
+          "translation": "more probably",
+          "useInPhrase": [
+            {
+              "phrase": "Es ist wahrscheinlicher, dass er morgen kommt",
+              "translation": "It is more likely that he will come tomorrow"
+            },
+            {
+              "phrase": "Sie wird wahrscheinlicher gewinnen als die anderen",
+              "translation": "She will win more likely than the others"
+            }
+          ]
+        },
+        "superlative": {
+          "word": "am wahrscheinlichsten",
+          "translation": "most probably",
+          "useInPhrase": [
+            {
+              "phrase": "Er ist am wahrscheinlichsten der Beste in seinem Fach",
+              "translation": "He is most likely the best in his field"
+            },
+            {
+              "phrase": "Das ist am wahrscheinlichsten die beste Lösung",
+              "translation": "That is most likely the best solution"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "word": "bloß",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "just",
+          "merely",
+          "purely",
+          "only"
+        ],
+        "absoluteAdverb": true,
+        "comparative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        },
+        "superlative": {
+          "word": "",
+          "translation": "",
+          "useInPhrase": []
+        }
+      }
+    ]
+  },
+  {
     "word": "tatsächlich",
-    "weight": 60,
+    "weight": 45,
     "classes": [
       {
         "class": "adverb",
@@ -130,74 +221,6 @@
     ]
   },
   {
-    "word": "wahrscheinlich",
-    "weight": 106,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "probably",
-          "presumably"
-        ],
-        "absoluteAdverb": false,
-        "comparative": {
-          "word": "wahrscheinlicher",
-          "translation": "more probably",
-          "useInPhrase": [
-            {
-              "phrase": "Es ist wahrscheinlicher, dass er morgen kommt",
-              "translation": "It is more likely that he will come tomorrow"
-            },
-            {
-              "phrase": "Sie wird wahrscheinlicher gewinnen als die anderen",
-              "translation": "She will win more likely than the others"
-            }
-          ]
-        },
-        "superlative": {
-          "word": "am wahrscheinlichsten",
-          "translation": "most probably",
-          "useInPhrase": [
-            {
-              "phrase": "Er ist am wahrscheinlichsten der Beste in seinem Fach",
-              "translation": "He is most likely the best in his field"
-            },
-            {
-              "phrase": "Das ist am wahrscheinlichsten die beste Lösung",
-              "translation": "That is most likely the best solution"
-            }
-          ]
-        }
-      }
-    ]
-  },
-  {
-    "word": "bloß",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "just",
-          "merely",
-          "purely",
-          "only"
-        ],
-        "absoluteAdverb": true,
-        "comparative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        },
-        "superlative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        }
-      }
-    ]
-  },
-  {
     "word": "wohl",
     "weight": 42,
     "classes": [
@@ -210,29 +233,6 @@
           "surely",
           "perhaps",
           "no doubt"
-        ],
-        "absoluteAdverb": true,
-        "comparative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        },
-        "superlative": {
-          "word": "",
-          "translation": "",
-          "useInPhrase": []
-        }
-      }
-    ]
-  },
-  {
-    "word": "sogar",
-    "weight": 24,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "even"
         ],
         "absoluteAdverb": true,
         "comparative": {

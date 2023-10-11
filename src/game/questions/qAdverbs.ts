@@ -26,12 +26,7 @@ export class QWordClassAdverb extends QDegreeOfComparision {
       }
     }
 
-    const [ questionTypes, questionWeights ] = [ 
-      Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.keys() as IterableIterator<string>), 
-      Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.values() as IterableIterator<number>)
-    ]
-
-    const typeOfQuestion = this.getTypeOfQuestionByUserWeight (questionTypes, questionWeights)
+    const typeOfQuestion = this.getTypeOfQuestionByUserWeight ()
 
     const correct = (() => {
       switch (typeOfQuestion) {
