@@ -11,6 +11,7 @@ export class DataHandler {
       : new JSONMethods()
   }
 
+
   async getGameData (inclusiveFilters?: string[]): Promise<TDataArray> {
     return this.dataStorageMethods.retrieveData(inclusiveFilters)
       .then(data => (
@@ -45,7 +46,6 @@ export class DataHandler {
 
     return returnObject
   }
-
   private constructUserProfile (rawData: IRawUserProfile): TUserProfile {
     const outerMap: TUserProfile = new Map()
 
@@ -59,6 +59,7 @@ export class DataHandler {
     return outerMap
   }
 
+  
   applyInclusiveFilters (inclusiveFilters: string[], data: TDataArray): TDataArray {
     return data.reduce((prev, current) => { 
       const currentClasses = current.classes.filter(classObj => inclusiveFilters.includes(classObj.class))

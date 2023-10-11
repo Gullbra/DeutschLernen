@@ -1,6 +1,6 @@
 import { IClassAdjective, IClassNoun, IWord } from "../interfaces/wordsPhrasesGrammar.ts";
 
-export const mockDataOtherWords: IWord[] = [
+const mockDataOtherWords: IWord[] = [
   // {
   //   "word": "verlassen",
   //   "weight": 100,
@@ -504,7 +504,7 @@ export const mockDataOtherWords: IWord[] = [
   },
 ]
 
-export const mockDataPrepositions: IWord[] = [
+const mockDataPrepositions: IWord[] = [
   // {
   //   word: "durch",
   //   weight: 100,
@@ -541,7 +541,7 @@ export const mockDataPrepositions: IWord[] = [
   // }
 ]
 
-export const mockDataNouns: { word: string, weight: number, classes: IClassNoun[] }[] = [
+const mockDataNouns: { word: string, weight: number, classes: IClassNoun[] }[] = [
   // {
   //   word: 'Abenteuer',
   //   weight: 100,
@@ -554,4 +554,10 @@ export const mockDataNouns: { word: string, weight: number, classes: IClassNoun[
   //     ]
   //   }]
   // },
+]
+
+export const dataToBeAdded = [
+  //...mockDataOtherWords,
+  ...mockDataPrepositions,
+  ...mockDataNouns
 ]

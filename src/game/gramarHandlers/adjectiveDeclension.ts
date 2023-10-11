@@ -1,35 +1,58 @@
-
-export interface IDeclinedAdective {
-
-}
-
 export class AdjectiveDecliner {
   constructor (private adjective: string) {}
 
-  declineAdjective (nounCase: string, nounArticle: string, nounIsPlural: boolean, articleIsDefinite: boolean): IDeclinedAdective {
-
-    // articleIsDefinite
+  declineAdjective (
+    nounCase: string, 
+    nounGender: string, 
+    nounIsPlural: boolean, 
+    nounArticleIsDefinite: boolean
+  ): string {
     switch (nounCase) {
-      case 'nominativ': return this.declineNominativ(nounArticle, nounIsPlural, articleIsDefinite)
-      case 'akusativ': return this.declineAkusativ(nounArticle, nounIsPlural, articleIsDefinite)
-      case 'dativ': return this.declineDativ(nounArticle, nounIsPlural, articleIsDefinite)
-      case 'genetiv': return this.declineGenetiv(nounArticle, nounIsPlural, articleIsDefinite)
-    
-      default:
-        throw new Error('invalid case to AdjectiveConverter');
+      case 'nominativ': return this.handleNominativ(nounGender, nounIsPlural, nounArticleIsDefinite)
+      case 'akusativ': return this.handleAkusativ(nounGender, nounIsPlural, nounArticleIsDefinite)
+      case 'dativ': return this.handleDativ(nounGender, nounIsPlural, nounArticleIsDefinite)
+      case 'genetiv': return this.handleGenetiv(nounGender, nounIsPlural, nounArticleIsDefinite)
+      default: throw new Error('invalid case to AdjectiveConverter');
     }
   }
   
-  declineNominativ(nounArticle: string, nounIsPlural: boolean, articleIsDefinite: boolean): IDeclinedAdective {
-    throw new Error("Method not implemented.");
+  private handleNominativ(nounGender: string, nounIsPlural: boolean, nounArticleIsDefinite: boolean): string {
+    if (nounIsPlural)
+      return nounArticleIsDefinite ? this.declineWithEn() : this.declineWithE()
+
+    switch (nounGender) {
+      case 'masculine': return nounArticleIsDefinite ? this.declineWithE() : this.declineWithEr()
+      case 'neuter': return nounArticleIsDefinite ? this.declineWithE() : this.declineWithEs()
+      case 'feminine': return this.declineWithE()
+      default: throw new Error('invalid gender to AdjectiveConverter');
+    }
   }
-  declineAkusativ (nounArticle: string, nounIsPlural: boolean, articleIsDefinite: boolean): IDeclinedAdective {
-    return {}
+
+  private handleAkusativ (nounGender: string, nounIsPlural: boolean, nounArticleIsDefinite: boolean): string {
+    if (nounIsPlural)
+      return nounArticleIsDefinite ? this.declineWithEn() : this.declineWithE()
+
+    switch (nounGender) {
+      case 'masculine': return this.declineWithEn()
+      case 'neuter': return nounArticleIsDefinite ? this.declineWithE() : this.declineWithEs()
+      case 'feminine': return this.declineWithE()
+      default: throw new Error('invalid gender to AdjectiveConverter');
+    }
   }
-  declineDativ (nounArticle: string, nounIsPlural: boolean, articleIsDefinite: boolean): IDeclinedAdective {
-    return {}
+
+  private handleDativ (nounGender: string, nounIsPlural: boolean, nounArticleIsDefinite: boolean): string {
+    return this.declineWithEn()
   }
-  declineGenetiv (nounArticle: string, nounIsPlural: boolean, articleIsDefinite: boolean): IDeclinedAdective {
-    return {}
+
+  private handleGenetiv (nounGender: string, nounIsPlural: boolean, nounArticleIsDefinite: boolean): string {
+    if (nounIsPlural)
+      return nounArticleIsDefinite ? this.declineWithEn() : this.declineWithEr()
+    return this.declineWithEn()
   }
+
+
+  private declineWithE(): string { return this.adjective + 'e' }
+  private declineWithEn(): string { return this.adjective + 'en' }
+  private declineWithEr(): string { return this.adjective + 'er' }
+  private declineWithEs(): string { return this.adjective + 'es' }
 }

@@ -7,6 +7,7 @@
   "scripts": {
     "start": "npm run dev-will-save",  
     "dev": "npm run dev-no-save",
+    "add-new-data": "cross-env ADD_DATA=add_data ts-node --esm src/index.ts",
 
     "dev-will-save": "cross-env ENV_SAVING=will_save ts-node --esm src/index.ts",
     "dev-no-save": "cross-env ENV_SAVING=no_save ts-node --esm src/index.ts",

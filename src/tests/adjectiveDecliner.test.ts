@@ -2,77 +2,133 @@ import { AdjectiveDecliner } from "../game/gramarHandlers/adjectiveDeclension.ts
 import { expect } from 'chai';
 
 
-describe.only('Should decline adjectives based on the nouns they describe,', () => {
-  describe('if the noun is in definite(der, das, die) form,', () => {
-    describe('the adjective should be declined with -en,', () => {
-      it('when the noun is in plural.', () => { 
-        throw new Error('not implemented!') 
+describe.only('Should decline adjectives based on the nouns they describe;', () => {
+  const obj = new AdjectiveDecliner('warm')
+
+
+  describe.only('if the described noun is in definite(der, das, die) form, ', () => {
+    describe('and in Nominativ, ', () => {
+      it ("and in singular form, the adjective should be declined with -e ", () => {
+        expect(obj.declineAdjective('nominativ', 'masculine', false, true)).to.equal('warme')
+        expect(obj.declineAdjective('nominativ', 'neuter', false, true)).to.equal('warme')
+        expect(obj.declineAdjective('nominativ', 'feminine', false, true)).to.equal('warme')
       })
-      it('when the noun is masculine akusativ.', () => { throw new Error('not implemented!') })
-      it('when the noun is dativ or genetiv.', () => { throw new Error('not implemented!') })
+
+      it ("and in plural form, the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('nominativ', 'masculine', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('nominativ', 'neuter', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('nominativ', 'feminine', true, true)).to.equal('warmen')
+      })
     })
-    describe('the adjective should be declined with -e,', () => {
-      it('when not one of the above.', () => { throw new Error('not implemented!') })
+
+
+    describe.only('and in Akusative, ', () => {
+      it ("and it's gender is masculine, the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('akusativ', 'masculine', false, true)).to.equal('warmen')
+      })
+
+      it ("and it's gender is either neuter or feminine, the adjective should be declined with -e ", () => {
+        expect(obj.declineAdjective('akusativ', 'neuter', false, true)).to.equal('warme')
+        expect(obj.declineAdjective('akusativ', 'feminine', false, true)).to.equal('warme')
+      })
+
+      it ("and in plural form, the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('akusativ', 'masculine', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('akusativ', 'neuter', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('akusativ', 'feminine', true, true)).to.equal('warmen')
+      })
+    })
+
+
+    describe.only('and in Dativ, ', () => {
+      it ("the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('dativ', 'masculine', false, true)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'neuter', false, true)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'feminine', false, true)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'masculine', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'neuter', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'feminine', true, true)).to.equal('warmen')
+      })
+    })
+
+
+    describe.only('and in Genetiv, ', () => {
+      it ("the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('genetiv', 'masculine', false, true)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'neuter', false, true)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'feminine', false, true)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'masculine', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'neuter', true, true)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'feminine', true, true)).to.equal('warmen')
+      })
     })
   })
-  describe('if the noun is in indefinite(ein, eine, -) form,', () => {
-    // describe('in the akusative case,', () => {
-    //   it('adjektives should decline with (-er) .', () => { throw new Error('not implemented!') })
 
-    // })
+
+
+  describe.only('if the described noun is in indefinite(ein, eine, -) form,', () => {
+    describe.only('and in Nominativ, ', () => {
+      it ("and it's gender is masculine, the adjective should be declined with -er ", () => {
+        expect(obj.declineAdjective('nominativ', 'masculine', false, false)).to.equal('warmer')
+      })
+      it ("and it's gender is neuter, the adjective should be declined with -es ", () => {
+        expect(obj.declineAdjective('nominativ', 'neuter', false, false)).to.equal('warmes')
+      })
+      it ("and it's gender is feminine, the adjective should be declined with -e ", () => {
+        expect(obj.declineAdjective('nominativ', 'feminine', false, false)).to.equal('warme')
+      })
+
+      it ("and in plural form, the adjective should be declined with -e ", () => {
+        expect(obj.declineAdjective('nominativ', 'masculine', true, false)).to.equal('warme')
+        expect(obj.declineAdjective('nominativ', 'neuter', true, false)).to.equal('warme')
+        expect(obj.declineAdjective('nominativ', 'feminine', true, false)).to.equal('warme')
+      })
+    })
+
+
+    describe.only('and in Akusativ, ', () => {
+      it ("and it's gender is masculine, the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('akusativ', 'masculine', false, false)).to.equal('warmen')
+      })
+      it ("and it's gender is neuter, the adjective should be declined with -es ", () => {
+        expect(obj.declineAdjective('akusativ', 'neuter', false, false)).to.equal('warmes')
+      })
+      it ("and it's gender is feminine, the adjective should be declined with -e ", () => {
+        expect(obj.declineAdjective('akusativ', 'feminine', false, false)).to.equal('warme')
+      })
+
+      it ("and in plural form, the adjective should be declined with -e ", () => {
+        expect(obj.declineAdjective('akusativ', 'masculine', true, false)).to.equal('warme')
+        expect(obj.declineAdjective('akusativ', 'neuter', true, false)).to.equal('warme')
+        expect(obj.declineAdjective('akusativ', 'feminine', true, false)).to.equal('warme')
+      })
+    })
+
+
+    describe.only('and in Dativ, ', () => {
+      it ("the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('dativ', 'masculine', false, false)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'neuter', false, false)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'feminine', false, false)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'masculine', true, false)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'neuter', true, false)).to.equal('warmen')
+        expect(obj.declineAdjective('dativ', 'feminine', true, false)).to.equal('warmen')
+      })
+    })
+
+
+    describe.only('and in Genetiv, ', () => {
+      it ("and in singular form, the adjective should be declined with -en ", () => {
+        expect(obj.declineAdjective('genetiv', 'masculine', false, false)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'neuter', false, false)).to.equal('warmen')
+        expect(obj.declineAdjective('genetiv', 'feminine', false, false)).to.equal('warmen')
+      })
+
+      it ("and in plural form, the adjective should be declined with -er ", () => {
+        expect(obj.declineAdjective('genetiv', 'masculine', true, false)).to.equal('warmer')
+        expect(obj.declineAdjective('genetiv', 'neuter', true, false)).to.equal('warmer')
+        expect(obj.declineAdjective('genetiv', 'feminine', true, false)).to.equal('warmer')
+      })
+    })
   })
 })
-
-/*
-    bestämdform (der/den/dem/des, das/das/dem/des, die/die/der/der, die/die/den/der)
-      nominativ (-e/-e/-e/-en):
-        masculine:  der kleine heiße Kaffee
-        neuter:     das kleine warme Sandwich
-        feminine:   die kleine heiße Schokolade
-        plural:     die kleinen heißen Schokoladen
-
-      akusativ  (-en/-e/-e/-en)
-        masculine:  (ich mag) den kleinen heißen kaffee
-        neuter:     (ich mag) das kleine warme Sandwich
-        feminine:   (ich mag) die kleine heiße Schokolade
-        plural:     (ich mag) die kleinen heißen Schokolade
-
-      dativ     (-en/-en/-en/-en)
-        masculine:  (Ich gebe den Ball) dem kleinen glücklichen Mann
-        neuter:     (Ich gebe den Ball) dem kleinen glücklichen Kind
-        feminine:   (Ich gebe den Ball) der kleinen glücklichen Frau 
-        plural:     (Ich gebe den Ball) den kleinen glücklichen Kindern
-
-      Genetiv   (-en/-en/-en/-en)
-        masculine:  (das Licht) des großen weißen Mondes
-        neuter:     (das Licht) des großen weißen Elements
-        feminine:   (das Licht) der großen weißen Sonne
-        plural:     (das Licht) der großen weißen Elemente
-*/ 
-
-/*
-    obestämd (ein/einen/einem/eines, ein/ein/einem/eines, eine/eine/einer/einer, viele/viele/vielen/vieler)
-      nominativ  (-er/-es/-e/-e)
-        masculine:  ein kleiner heißer Kaffee
-        neuter:     ein kleines warmes Sandwich
-        feminine:   eine kleine heiße Schokolade
-        plural:     viele kleine warme Sandwiches
-
-      akusativ   (-en/-es/-e/-e)
-        masculine:  (ich nehme) einen kleinen heißen kaffee
-        neuter:     (ich nehme) ein kleines warmes Sandwich
-        feminine:   (ich nehme) eine kleine heiße Schokolade
-        plural:     (Ich nehme) viele kleine heiße Schokoladen
-
-      dativ      (-en/-en/-en/-en)
-        masculine:  (Ich gebe den Ball) einem kleinen glücklichen Mann
-        neuter:     (Ich gebe den Ball) einem kleinen glücklichen Kind
-        feminine:   (Ich gebe den Ball) einer kleinen glücklichen Frau 
-        plural:     (Ich gebe den Ball) vielen glücklichen kleinen Männern
-
-      Genetiv    (-en/-en/-en/-er)
-        masculine:  (das Licht) eines großen weißen Mondes
-        neuter:     (das Licht) eines großen weißen Elements
-        feminine:   (das Licht) einer großen weißen Sonne
-        plural:     (das Licht) vieler großer weißer Sonnen
-*/
