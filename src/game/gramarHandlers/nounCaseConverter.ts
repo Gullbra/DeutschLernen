@@ -86,8 +86,13 @@ export class NounCaseConverter {
         returnObj.noun += 'n'
       if(this.declensionObj.enGeneral)
         returnObj.noun += 'en'
-    } else if (!this.plural && ['der', 'das'].includes(this.article)) {
-      if (['s', 'ß', 'x', 'z'].includes(this.nounNominativ[this.nounNominativ.length-1])) {
+      if(this.declensionObj.esGenetivForced)
+        returnObj.noun += 'es'
+    } else if(!this.plural && ['der', 'das'].includes(this.article)) {
+      if (
+        ['s', 'ß', 'x', 'z'].includes(this.nounNominativ[this.nounNominativ.length-1]) || 
+        returnObj.noun.split(/(au|äu|ie|ei)/i).map(part => part.split(/[aeiouü]/i)).flat().length === 2
+      ) {
         returnObj.noun += 'es'
       } else {
         returnObj.noun += 's'

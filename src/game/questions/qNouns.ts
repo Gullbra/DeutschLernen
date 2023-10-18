@@ -1,7 +1,8 @@
 import { isValidWordClassNoun } from "../../util/dataValidations.ts";
 import { IClassNoun } from "../../interfaces/wordsPhrasesGrammar.ts";
 import { IGameState } from "../../interfaces/dataStructures.ts";
-import { comparerContractions, comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement, randomizeInt } from "../../util/util.ts";
+import { comparerContractions, comparerß, inputProcessor, lineUpTranslations, qResultMeaningUI, qResultSimpleUI } from "../../util/util.ts";
+import { randomizeArrayElement, randomizeInt } from "../../util/personalLibrary.ts"
 import { IConvertedNoun, NounCaseConverter } from "../gramarHandlers/nounCaseConverter.ts";
 import { QParentClass } from "./aParentClass.ts";
 

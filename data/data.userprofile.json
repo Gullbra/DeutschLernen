@@ -1,12 +1,12 @@
 {
   "noun": {
     "meaning": 50,
-    "article": 90,
-    "plural": 100,
-    "case": 77
+    "article": 206,
+    "plural": 182,
+    "case": 143
   },
   "adverb": {
-    "meaning": 123,
+    "meaning": 111,
     "degreesOfComparisionComperativ": 100,
     "degreesOfComparisionSuperlativ": 100
   }

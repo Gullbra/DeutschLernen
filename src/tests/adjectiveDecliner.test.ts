@@ -2,11 +2,11 @@ import { AdjectiveDecliner } from "../game/gramarHandlers/adjectiveDeclension.ts
 import { expect } from 'chai';
 
 
-describe.only('Should decline adjectives based on the nouns they describe;', () => {
+describe('Should decline adjectives based on the nouns they describe;', () => {
   const obj = new AdjectiveDecliner('warm')
 
 
-  describe.only('if the described noun is in definite(der, das, die) form, ', () => {
+  describe('if the described noun is in definite(der, das, die) form, ', () => {
     describe('and in Nominativ, ', () => {
       it ("and in singular form, the adjective should be declined with -e ", () => {
         expect(obj.declineAdjective('nominativ', 'masculine', false, true)).to.equal('warme')
@@ -22,7 +22,7 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
     })
 
 
-    describe.only('and in Akusative, ', () => {
+    describe('and in Akusative, ', () => {
       it ("and it's gender is masculine, the adjective should be declined with -en ", () => {
         expect(obj.declineAdjective('akusativ', 'masculine', false, true)).to.equal('warmen')
       })
@@ -40,7 +40,7 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
     })
 
 
-    describe.only('and in Dativ, ', () => {
+    describe('and in Dativ, ', () => {
       it ("the adjective should be declined with -en ", () => {
         expect(obj.declineAdjective('dativ', 'masculine', false, true)).to.equal('warmen')
         expect(obj.declineAdjective('dativ', 'neuter', false, true)).to.equal('warmen')
@@ -52,7 +52,7 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
     })
 
 
-    describe.only('and in Genetiv, ', () => {
+    describe('and in Genetiv, ', () => {
       it ("the adjective should be declined with -en ", () => {
         expect(obj.declineAdjective('genetiv', 'masculine', false, true)).to.equal('warmen')
         expect(obj.declineAdjective('genetiv', 'neuter', false, true)).to.equal('warmen')
@@ -66,8 +66,8 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
 
 
 
-  describe.only('if the described noun is in indefinite(ein, eine, -) form,', () => {
-    describe.only('and in Nominativ, ', () => {
+  describe('if the described noun is in indefinite(ein, eine, -) form,', () => {
+    describe('and in Nominativ, ', () => {
       it ("and it's gender is masculine, the adjective should be declined with -er ", () => {
         expect(obj.declineAdjective('nominativ', 'masculine', false, false)).to.equal('warmer')
       })
@@ -86,7 +86,7 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
     })
 
 
-    describe.only('and in Akusativ, ', () => {
+    describe('and in Akusativ, ', () => {
       it ("and it's gender is masculine, the adjective should be declined with -en ", () => {
         expect(obj.declineAdjective('akusativ', 'masculine', false, false)).to.equal('warmen')
       })
@@ -105,7 +105,7 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
     })
 
 
-    describe.only('and in Dativ, ', () => {
+    describe('and in Dativ, ', () => {
       it ("the adjective should be declined with -en ", () => {
         expect(obj.declineAdjective('dativ', 'masculine', false, false)).to.equal('warmen')
         expect(obj.declineAdjective('dativ', 'neuter', false, false)).to.equal('warmen')
@@ -117,7 +117,7 @@ describe.only('Should decline adjectives based on the nouns they describe;', () 
     })
 
 
-    describe.only('and in Genetiv, ', () => {
+    describe('and in Genetiv, ', () => {
       it ("and in singular form, the adjective should be declined with -en ", () => {
         expect(obj.declineAdjective('genetiv', 'masculine', false, false)).to.equal('warmen')
         expect(obj.declineAdjective('genetiv', 'neuter', false, false)).to.equal('warmen')

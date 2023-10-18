@@ -1,6 +1,6 @@
-import { IClassAdjective, IClassNoun, IWord } from "../interfaces/wordsPhrasesGrammar.ts";
+import { IClassAdjective, IClassAdverb, IClassNoun, IClassPreposition, IClassVerb } from "../interfaces/wordsPhrasesGrammar.ts";
 
-const mockDataOtherWords: IWord[] = [
+const mockDataOtherWords: { word: string, weight: number, classes: (IClassAdjective | IClassAdverb | IClassVerb)[] }[] = [
   // {
   //   "word": "verlassen",
   //   "weight": 100,
@@ -51,12 +51,8 @@ const mockDataOtherWords: IWord[] = [
   //           }
   //         ]
   //       },
-  //       declension: {
-  //         definite: {
-  //           nominativ: {
+  //       supportNouns: {
 
-  //           }
-  //         }
   //       }
   //     }
   //   ]
@@ -84,103 +80,103 @@ const mockDataOtherWords: IWord[] = [
   //   ]
   // },
 
-  {
-    "word": "tatsächlich",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": ["indeed", "in fact", "really", "objectively", "actually"],
-        absoluteAdverb: true,
-        comparative: {word:'', translation: '', useInPhrase: []},
-        superlative: {word: '', translation: '', useInPhrase: []},
-      },
-      // {
-      //   "class": "adjective",
-      //   "translation": ["real", "true", "effective", "actual"]
-      // }
-    ]
-  },
+  // {
+  //   "word": "tatsächlich",
+  //   "weight": 100,
+  //   "classes": [
+  //     {
+  //       "class": "adverb",
+  //       "translation": ["indeed", "in fact", "really", "objectively", "actually"],
+  //       absoluteAdverb: true,
+  //       comparative: {word:'', translation: '', useInPhrase: []},
+  //       superlative: {word: '', translation: '', useInPhrase: []},
+  //     },
+  //     // {
+  //     //   "class": "adjective",
+  //     //   "translation": ["real", "true", "effective", "actual"]
+  //     // }
+  //   ]
+  // },
 
-  {
-    "word": "neidisch",
-    "weight": 100,
-    "classes": [
-      // {
-      //  "class": "adjective",
-      //   "translation": ["envious", "jealous", "grudging"]
-      // },
-      {
-        "class": "adverb",
-        "translation": ["jealously"],
-        absoluteAdverb: false,
-        comparative: {
-          word: "neidischer",
-          translation: "more jealously",
-          useInPhrase: [
-            {
-              phrase: "Er ist neidischer als ich",
-              translation: "He is more envious than I am"
-            },
-            {
-              phrase: "Er schaute neidischer auf das neue Auto",
-              translation: "He looked more enviously at the new car"
-            }
-          ]
-        }, 
-        superlative: {
-          word: "am neidischsten",
-          translation: "most jealously",
-          useInPhrase: [
-            {
-              phrase: "Er ist am neidischsten in unsere Gruppe",
-              translation: "He is the most envious in our group"
-            }
-          ]
-        },
-      }
-    ]
-  },
+  // {
+  //   "word": "neidisch",
+  //   "weight": 100,
+  //   "classes": [
+  //     // {
+  //     //  "class": "adjective",
+  //     //   "translation": ["envious", "jealous", "grudging"]
+  //     // },
+  //     {
+  //       "class": "adverb",
+  //       "translation": ["jealously"],
+  //       absoluteAdverb: false,
+  //       comparative: {
+  //         word: "neidischer",
+  //         translation: "more jealously",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Er ist neidischer als ich",
+  //             translation: "He is more envious than I am"
+  //           },
+  //           {
+  //             phrase: "Er schaute neidischer auf das neue Auto",
+  //             translation: "He looked more enviously at the new car"
+  //           }
+  //         ]
+  //       }, 
+  //       superlative: {
+  //         word: "am neidischsten",
+  //         translation: "most jealously",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Er ist am neidischsten in unsere Gruppe",
+  //             translation: "He is the most envious in our group"
+  //           }
+  //         ]
+  //       },
+  //     }
+  //   ]
+  // },
 
-  {
-    "word": "fähig",
-    "weight": 100,
-    "classes": [
-      // {
-      //   "class": "adjective",
-      //   "translation": ["capable", "able", "competent", "proficient"]
-      // },
-      {
-        "class": "adverb",
-        "translation": ["ably", "competently", "proficiently"],
-        absoluteAdverb: false,
-        comparative: {
-          word: "fähiger",
-          translation: "more capable",
-          useInPhrase: [
-            {
-              phrase: "Sie arbeitet fähiger als ihre Kollegen",
-              translation: "She works more capably than her colleagues"
-            },
-            {
-              phrase: "Er spricht fähiger Deutsch als ich",
-              translation: "He speaks more capably German than I do"
-            }
-          ]
-        },
-        superlative: {
-          word: "am fähigsten",
-          translation: "most capable",
-          useInPhrase: [
-            {
-              phrase: "Sie arbeitet am fähigsten",
-              translation: "She works the most competently"
-            },
-          ]
-        },
-      },
-    ]
-  },
+  // {
+  //   "word": "fähig",
+  //   "weight": 100,
+  //   "classes": [
+  //     // {
+  //     //   "class": "adjective",
+  //     //   "translation": ["capable", "able", "competent", "proficient"]
+  //     // },
+  //     {
+  //       "class": "adverb",
+  //       "translation": ["ably", "competently", "proficiently"],
+  //       absoluteAdverb: false,
+  //       comparative: {
+  //         word: "fähiger",
+  //         translation: "more capable",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Sie arbeitet fähiger als ihre Kollegen",
+  //             translation: "She works more capably than her colleagues"
+  //           },
+  //           {
+  //             phrase: "Er spricht fähiger Deutsch als ich",
+  //             translation: "He speaks more capably German than I do"
+  //           }
+  //         ]
+  //       },
+  //       superlative: {
+  //         word: "am fähigsten",
+  //         translation: "most capable",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Sie arbeitet am fähigsten",
+  //             translation: "She works the most competently"
+  //           },
+  //         ]
+  //       },
+  //     },
+  //   ]
+  // },
 
   // {
   //   "word": "überfordern",
@@ -193,81 +189,83 @@ const mockDataOtherWords: IWord[] = [
   //   ]
   // },
 
-  {
-    "word": "wahrscheinlich",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": ["probably", "presumably"],
-        absoluteAdverb: false,
-        comparative: {
-          word: "wahrscheinlicher",
-          translation: "more probably",
-          useInPhrase: [
-            {
-              phrase: "Es ist wahrscheinlicher, dass er morgen kommt",
-              translation: "It is more likely that he will come tomorrow"
-            },
-            {
-              phrase: "Sie wird wahrscheinlicher gewinnen als die anderen",
-              translation: "She will win more likely than the others"
-            }
-          ]
-        },
-        superlative: {
-          word: "am wahrscheinlichsten",
-          translation: "most probably",
-          useInPhrase: [
-            {
-              phrase: "Er ist am wahrscheinlichsten der Beste in seinem Fach",
-              translation: "He is most likely the best in his field"
-            },
-            {
-              phrase: "Das ist am wahrscheinlichsten die beste Lösung",
-              translation: "That is most likely the best solution"
-            }
-          ]
-        },
-      },
-      // {
-      //   "class": "adjective",
-      //   "translation": ["likely", "probable", "plausible"]
-      // }
-    ]
-  },
+  // {
+  //   "word": "wahrscheinlich",
+  //   "weight": 100,
+  //   "classes": [
+  //     {
+  //       "class": "adverb",
+  //       "translation": ["probably", "presumably"],
+  //       absoluteAdverb: false,
+  //       comparative: {
+  //         word: "wahrscheinlicher",
+  //         translation: "more probably",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Es ist wahrscheinlicher, dass er morgen kommt",
+  //             translation: "It is more likely that he will come tomorrow"
+  //           },
+  //           {
+  //             phrase: "Sie wird wahrscheinlicher gewinnen als die anderen",
+  //             translation: "She will win more likely than the others"
+  //           }
+  //         ]
+  //       },
+  //       superlative: {
+  //         word: "am wahrscheinlichsten",
+  //         translation: "most probably",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "Er ist am wahrscheinlichsten der Beste in seinem Fach",
+  //             translation: "He is most likely the best in his field"
+  //           },
+  //           {
+  //             phrase: "Das ist am wahrscheinlichsten die beste Lösung",
+  //             translation: "That is most likely the best solution"
+  //           }
+  //         ]
+  //       },
+  //     },
+  //     // {
+  //     //   "class": "adjective",
+  //     //   "translation": ["likely", "probable", "plausible"]
+  //     // }
+  //   ]
+  // },
 
-  {
-    "word": "wütend",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adjective",
-        "translation": ["angry", "furious"],
-        absoluteAdverb: false,
-        comparative: {
-          word: "wütender",
-          translation: "angrier",
-          useInPhrase: [
-            {
-              phrase: "sie schrie immer wütender",
-              translation: "she screamed more and more angrily"
-            }
-          ]
-        },
-        superlative: {
-          word: "am wütendsten",
-          translation: "the angriest",
-          useInPhrase: [
-            {
-              phrase: "sie schrie Tom am wütendsten an",
-              translation: "she shouted most angrily at Tom"
-            }
-          ]
-        },
-      }
-    ]
-  },
+  // {
+  //   "word": "wütend",
+  //   "weight": 100,
+  //   "classes": [
+  //     {
+  //       "class": "adjective",
+  //       "translation": ["angry", "furious"],
+  //       comparative: {
+  //         word: "wütender",
+  //         translation: "angrier",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "sie schrie immer wütender",
+  //             translation: "she screamed more and more angrily"
+  //           }
+  //         ]
+  //       },
+  //       superlative: {
+  //         word: "am wütendsten",
+  //         translation: "the angriest",
+  //         useInPhrase: [
+  //           {
+  //             phrase: "sie schrie Tom am wütendsten an",
+  //             translation: "she shouted most angrily at Tom"
+  //           }
+  //         ]
+  //       },
+  //       supportNouns: [
+  //         { article: 'der', noun: 'Lehrer', plural: 'Lehrer'}
+  //       ]
+  //     }
+  //   ]
+  // },
 
   // {
   //   "word": "böse",
@@ -429,82 +427,9 @@ const mockDataOtherWords: IWord[] = [
   //     }
   //   ]
   // },
-
-  {
-    "word": "bloß",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "just",
-          "merely",
-          "purely",
-          "only"
-        ],
-        absoluteAdverb: true,
-        comparative: {word:'', translation: '', useInPhrase: []},
-        superlative: {word: '', translation: '', useInPhrase: []},
-      },
-    ]
-  },
-  {
-    "word": "wohl",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "probably",
-          "well",
-          "perhaps",
-          "surely",
-          "perhaps",
-          "no doubt"
-        ],
-        absoluteAdverb: true,
-        comparative: {word:'', translation: '', useInPhrase: []},
-        superlative: {word: '', translation: '', useInPhrase: []},
-      }
-    ]
-  },
-  {
-    "word": "sogar",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "even"
-        ],
-        absoluteAdverb: true,
-        comparative: {word:'', translation: '', useInPhrase: []},
-        superlative: {word: '', translation: '', useInPhrase: []},
-      }
-    ]
-  },
-  {
-    "word": "überhaupt",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "at all",
-          "anyhow",
-          "anyway",
-          "in general",
-          "after all"
-        ],
-        absoluteAdverb: true,
-        comparative: {word:'', translation: '', useInPhrase: []},
-        superlative: {word: '', translation: '', useInPhrase: []},
-      }
-    ]
-  },
 ]
 
-const mockDataPrepositions: IWord[] = [
+const mockDataPrepositions: { word: string, weight: number, classes: IClassPreposition[] }[] = [
   // {
   //   word: "durch",
   //   weight: 100,
@@ -542,22 +467,10 @@ const mockDataPrepositions: IWord[] = [
 ]
 
 const mockDataNouns: { word: string, weight: number, classes: IClassNoun[] }[] = [
-  // {
-  //   word: 'Abenteuer',
-  //   weight: 100,
-  //   classes: [{
-  //     class: 'noun',
-  //     article: 'das',
-  //     plural: 'Abenteuer',
-  //     translation: [
-  //       'adventure',
-  //     ]
-  //   }]
-  // },
 ]
 
 export const dataToBeAdded = [
-  //...mockDataOtherWords,
+  ...mockDataOtherWords,
   ...mockDataPrepositions,
   ...mockDataNouns
 ]

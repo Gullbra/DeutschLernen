@@ -1,6 +1,7 @@
 import { IWordclass } from "../../interfaces/wordsPhrasesGrammar.ts";
 import { IGameState } from "../../interfaces/dataStructures.ts";
-import { comparerß, inputProcessor, qResultMeaningUI, qResultSimpleUI, randomizeArrayElement, randomizeInt } from "../../util/util.ts";
+import { comparerß, inputProcessor, qResultMeaningUI } from "../../util/util.ts";
+import { randomizeInt } from "../../util/personalLibrary.ts"
 
 export abstract class QParentClass {
   constructor (protected gameState: IGameState, protected word: string, protected dataObject: IWordclass, protected dataIsValid: boolean) {}

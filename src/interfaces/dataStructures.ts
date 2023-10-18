@@ -2,10 +2,26 @@ import type { Interface as rlInterface} from 'node:readline/promises';
 import { DataHandler } from '../data/dataHandler.ts';
 import { IWord, IPhrase } from './wordsPhrasesGrammar.ts';
 
+
 export type TDataArray = IWord[] // (IWord | IPhrase)[]
+
 
 export interface IRawUserProfile {[key: string]: {[key: string]: number}}
 export type TUserProfile = Map<string, Map<string, number>>
+
+
+// * Possible change to user profile
+export interface INewRawUserProfile {
+  [key: string]: {
+    weight: number,
+    subQuestions: {[key: string]: number}
+  }
+}
+interface IQuestionProfile {
+  weight: number,
+  subQuestions: Map<string, number>
+}
+export type TNewUserProfile = Map<string, IQuestionProfile>
 
 
 export interface IGameState {
@@ -21,6 +37,12 @@ export interface IGameState {
     dataObject: IWord, // IWord | IPhrase,
     correct: boolean
   }[],
+}
+export interface IQuestionReturnObject {
+  correct?: boolean, 
+  error?: boolean, 
+  wClass?: string, 
+  typeOfQuestion?: string
 }
 
 

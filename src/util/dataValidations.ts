@@ -28,7 +28,8 @@ export const isValidWordClassNoun = (word: string, dataObject: IClassNoun): bool
   /[A-ZÄÖÜ]/.test(word[0]) && word.substring(1).toLocaleLowerCase() === word.substring(1) &&
   (dataObject.plural === 'no plural' || (/[A-ZÄÖÜ]/.test(dataObject.plural[0]) && dataObject.plural.substring(1).toLocaleLowerCase() === dataObject.plural.substring(1))) &&
   ['der', 'das', 'die'].includes(dataObject.article) &&
-  typeof dataObject.plural === 'string'
+  typeof dataObject.plural === 'string' &&
+  !!dataObject.specialDeclensions
 )
 
 export const isValidWordClassPreposition = (word: string, dataObject: IClassPreposition): boolean => (

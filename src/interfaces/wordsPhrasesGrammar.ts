@@ -8,12 +8,13 @@ export interface INounDeclension {
   nGeneral?: boolean,
   enGeneral?: boolean,
   nsGenitiv?: boolean,
-  sesGenetiv?: boolean
+  sesGenetiv?: boolean,
+  esGenetivForced?: boolean
 }
 export interface IClassNoun extends IWordclass {
   article: string,
   plural: string,
-  specialDeclensions?: INounDeclension
+  specialDeclensions: INounDeclension
 }
 
 
@@ -36,23 +37,24 @@ export interface IClassAdverb extends IWordclass, IComparativeAndSuperlative {
 }
 
 
-export interface IAdjectiveDeclensionOnCase {
-  exercisePhrase: string,
-  translation: string
-  suportNouns: { gender: string, noun: string, translation: string } []
-}
-export interface IAdjectiveDeclensionOnForm {
-  nominativ: IAdjectiveDeclensionOnCase,
-  akusativ: IAdjectiveDeclensionOnCase,
-  dativ: IAdjectiveDeclensionOnCase,
-  genetiv: IAdjectiveDeclensionOnCase,
-}
+// export interface IAdjectiveDeclensionOnCase {
+//   exercisePhrase: string,
+//   translation: string
+//   suportNouns: { gender: string, noun: string, translation: string } []
+// }
+// export interface IAdjectiveDeclensionOnForm {
+//   nominativ: IAdjectiveDeclensionOnCase,
+//   akusativ: IAdjectiveDeclensionOnCase,
+//   dativ: IAdjectiveDeclensionOnCase,
+//   genetiv: IAdjectiveDeclensionOnCase,
+// }
 export interface IClassAdjective extends IWordclass, IComparativeAndSuperlative {
-  hasRegularDeclension: boolean
-  declension?: {
-    definite: IAdjectiveDeclensionOnForm,
-    indefinite: IAdjectiveDeclensionOnForm,
-  }
+  // hasRegularDeclension: boolean
+  // declension?: {
+  //   definite: IAdjectiveDeclensionOnForm,
+  //   indefinite: IAdjectiveDeclensionOnForm,
+  // }
+  supportNouns: { article: string, noun: string, plural: string, translation: string } []
 }
 
 

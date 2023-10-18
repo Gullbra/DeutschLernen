@@ -1,7 +1,7 @@
 import { NounCaseConverter, IConvertedNoun } from '../game/gramarHandlers/nounCaseConverter.ts';
 import { expect } from 'chai';
 
-describe ("NounCaseConverter() tests:", () => {
+describe.only("NounCaseConverter() tests:", () => {
   describe("Validation testing:", () => {
     const testObject = new NounCaseConverter('der', "Mann", false)
 
@@ -187,6 +187,51 @@ describe ("NounCaseConverter() tests:", () => {
           ).to.eql({defArticle: 'des', indefArticle: 'eines', noun: 'Busses'} as IConvertedNoun)
         })
       })
+    })
+
+    describe("Uncovered unhandled cases", () => {
+      describe("der Schild", () => {
+        const unhandledCase = new NounCaseConverter('der', 'Schild', false)
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          genetiv: { defArticle: "des", noun: "Schildes", indefArticle: "eines"}
+        }
+
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
+
+      describe("das Böse", () => {
+        const unhandledCase = new NounCaseConverter('das', 'Böse', false, { nGeneral: true })
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          dativ: { defArticle: "dem", noun: "Bösen", indefArticle: "einem" },
+          genetiv: { defArticle: "des", noun: "Bösen", indefArticle: "eines" }
+        }
+        
+        it("dativ", () => expect(unhandledCase.convertToCase("dativ")).to.eql(expectedCase.dativ))
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
+      
+      describe("das Gebiet", () => {
+        const unhandledCase = new NounCaseConverter('das', 'Gebiet', false, { esGenetivForced: true })
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          genetiv: { defArticle: "des", noun: "Gebietes", indefArticle: "eines"}
+        }
+
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
+
+      describe("das Schiff", () => {
+        const unhandledCase = new NounCaseConverter('das', 'Schiff', false)
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          genetiv: { defArticle: "des", noun: "Schiffes", indefArticle: "eines"}
+        }
+
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
+      /*      
+      new NounCaseConverter('das', 'Schiff', false),
+
+      ['Schiff(area)',  {defArticle: 'des', indefArticle: 'eines', noun: 'Schiffes'}],
+      */
     })
   })
 })

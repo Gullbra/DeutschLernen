@@ -1,7 +1,231 @@
 [
   {
+    "word": "Wand",
+    "weight": 84,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Wände",
+        "article": "die",
+        "translation": [
+          "wall"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Abenteuer",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Abenteuer",
+        "translation": [
+          "adventure"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Müll",
+    "weight": 24,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "der",
+        "translation": [
+          "garbage",
+          "trash",
+          "junk",
+          "waste",
+          "rubbish"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Rede",
+    "weight": 67,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Reden",
+        "article": "die",
+        "translation": [
+          "talk",
+          "speech",
+          "address",
+          "rumor",
+          "rumour"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Wohlstand",
+    "weight": 92,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "no plural",
+        "translation": [
+          "prosperity",
+          "affluence",
+          "fortune"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Feuer",
+    "weight": 188,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Feuer",
+        "translation": [
+          "fire",
+          "firing",
+          "bonfire",
+          "blaze",
+          "shooting",
+          "mettle"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Tüte",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Tüten",
+        "article": "die",
+        "translation": [
+          "bag"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Empfänger",
+    "weight": 142,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Empfänger",
+        "article": "der",
+        "translation": [
+          "recipient",
+          "receiver"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Land",
+    "weight": 156,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Länder",
+        "translation": [
+          "land",
+          "state",
+          "ground",
+          "country"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Flügel",
+    "weight": 117,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Flügel",
+        "article": "der",
+        "translation": [
+          "wing",
+          "blade",
+          "piano",
+          "sail"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Berater",
+    "weight": 24,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Berater",
+        "article": "der",
+        "translation": [
+          "advisor",
+          "consultant",
+          "aide",
+          "counselor"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Verteidigung",
+    "weight": 60,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Verteidigungen",
+        "article": "die",
+        "translation": [
+          "defence",
+          "defense"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Untershied",
+    "weight": 114,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Unterschiede",
+        "article": "der",
+        "translation": [
+          "diffrence",
+          "distinction",
+          "differential",
+          "variation"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
     "word": "Bereich",
-    "weight": 136,
+    "weight": 77,
     "classes": [
       {
         "class": "noun",
@@ -18,27 +242,246 @@
           "department",
           "territory",
           "province"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
   {
-    "word": "Tüte",
-    "weight": 42,
+    "word": "Schnauze",
+    "weight": 32,
     "classes": [
       {
         "class": "noun",
-        "plural": "Tüten",
+        "article": "die",
+        "plural": "Schnauzen",
+        "translation": [
+          "snout",
+          "muzzle",
+          "spout"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Hafermilch",
+    "weight": 259,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "no plural",
+        "translation": [
+          "oat milk"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Hafer",
+    "weight": 174,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Haferflocken",
+        "translation": [
+          "oat",
+          "oats"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Lager",
+    "weight": 313,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Lager",
+        "translation": [
+          "camp",
+          "warehouse",
+          "store",
+          "bed",
+          "storeroom",
+          "lair"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Fresse",
+    "weight": 69,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Fressen",
+        "translation": [
+          "mouth",
+          "face",
+          "mug"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Schlagzeile",
+    "weight": 156,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schlagzeilen",
         "article": "die",
         "translation": [
-          "bag"
-        ]
+          "headline"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Schlagabtausch",
+    "weight": 207,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schlagabtausche",
+        "article": "der",
+        "translation": [
+          "exchange of blows",
+          "repartee"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Mitglied",
+    "weight": 190,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Mitglieder",
+        "translation": [
+          "member",
+          "fellow"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Hoffnung",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Hoffnungen",
+        "article": "die",
+        "translation": [
+          "hope"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Zutat",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Zutaten",
+        "translation": [
+          "ingredient"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Becher",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Becher",
+        "translation": [
+          "mug",
+          "cup",
+          "beaker",
+          "goblet"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Ausdruck",
+    "weight": 87,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Ausdrücke",
+        "article": "der",
+        "translation": [
+          "expression",
+          "term",
+          "phrase"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Anlass",
+    "weight": 156,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Anlässe",
+        "translation": [
+          "occasion",
+          "reason",
+          "cause"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Baustelle",
+    "weight": 113,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Baustellen",
+        "article": "die",
+        "translation": [
+          "construction site",
+          "building site",
+          "roadworks",
+          "construction zone"
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
   {
     "word": "Zitat",
-    "weight": 141,
+    "weight": 106,
     "classes": [
       {
         "class": "noun",
@@ -48,7 +491,144 @@
           "quote",
           "quotation",
           "citation"
-        ]
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Schild",
+    "weight": 65,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schilder",
+        "article": "das",
+        "translation": [
+          "sign",
+          "shield",
+          "plate",
+          "label",
+          "placard",
+          "badge",
+          "plaque",
+          "signpost",
+          "license plate",
+          "marker",
+          "numberplate"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Nachricht",
+    "weight": 117,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Nachrichten",
+        "translation": [
+          "news",
+          "message",
+          "information"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Böse",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "das",
+        "translation": [
+          "evil"
+        ],
+        "specialDeclensions": {
+          "nGeneral": true
+        }
+      }
+    ]
+  },
+  {
+    "word": "Mitteilung",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Mitteilungen",
+        "article": "die",
+        "translation": [
+          "notice",
+          "notification",
+          "communication",
+          "announcement",
+          "statement",
+          "information",
+          "memo",
+          "memorandum"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Beitrag",
+    "weight": 230,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Beiträge",
+        "article": "der",
+        "translation": [
+          "contribution",
+          "article",
+          "fee",
+          "input",
+          "premium"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Gebiet",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Gebieten",
+        "translation": [
+          "area",
+          "field",
+          "territory",
+          "region",
+          "zone"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Armut",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "no plural",
+        "translation": [
+          "poverty",
+          "destitution",
+          "poorness"
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -65,7 +645,8 @@
           "zipper",
           "zip fastener",
           "fiend"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -81,7 +662,8 @@
           "clothes",
           "stuff",
           "gear"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -101,36 +683,8 @@
           "wearer",
           "strap",
           "sponsor"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Wand",
-    "weight": 98,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Wände",
-        "article": "die",
-        "translation": [
-          "wall"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Schlagabtausch",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schlagabtausche",
-        "article": "der",
-        "translation": [
-          "exchange of blows",
-          "repartee"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -149,23 +703,8 @@
           "closure",
           "finish",
           "ending"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Wohlstand",
-    "weight": 64,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "no plural",
-        "translation": [
-          "prosperity",
-          "affluence",
-          "fortune"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -183,7 +722,8 @@
           "demon",
           "fiend",
           "deuce"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -204,7 +744,8 @@
           "battle",
           "disagreement",
           "discord"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -219,56 +760,8 @@
         "translation": [
           "gull",
           "seagull"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Schlagzeile",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schlagzeilen",
-        "article": "die",
-        "translation": [
-          "headline"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Nachricht",
-    "weight": 156,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Nachrichten",
-        "translation": [
-          "news",
-          "message",
-          "information"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Lager",
-    "weight": 113,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Lager",
-        "translation": [
-          "camp",
-          "warehouse",
-          "store",
-          "bed",
-          "storeroom",
-          "lair"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -286,59 +779,8 @@
           "liquor",
           "fluidity",
           "liquidity"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Mitglied",
-    "weight": 120,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Mitglieder",
-        "translation": [
-          "member",
-          "fellow"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Rede",
-    "weight": 119,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Reden",
-        "article": "die",
-        "translation": [
-          "talk",
-          "speech",
-          "address",
-          "rumor",
-          "rumour"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Feuer",
-    "weight": 150,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Feuer",
-        "translation": [
-          "fire",
-          "firing",
-          "bonfire",
-          "blaze",
-          "shooting",
-          "mettle"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -355,7 +797,8 @@
           "welcome",
           "salutation",
           "welcoming"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -373,46 +816,8 @@
           "connection",
           "correlation",
           "contact"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Hafer",
-    "weight": 74,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Haferflocken",
-        "translation": [
-          "oat",
-          "oats"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Schild",
-    "weight": 87,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schilder",
-        "article": "das",
-        "translation": [
-          "sign",
-          "shield",
-          "plate",
-          "label",
-          "placard",
-          "badge",
-          "plaque",
-          "signpost",
-          "license plate",
-          "marker",
-          "numberplate"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -427,71 +832,8 @@
         "translation": [
           "manhunt",
           "search"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Beitrag",
-    "weight": 306,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Beiträge",
-        "article": "der",
-        "translation": [
-          "contribution",
-          "article",
-          "fee",
-          "input",
-          "premium"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Ausdruck",
-    "weight": 116,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ausdrücke",
-        "article": "der",
-        "translation": [
-          "expression",
-          "term",
-          "phrase"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Hafermilch",
-    "weight": 245,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "no plural",
-        "translation": [
-          "oat milk"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Fresse",
-    "weight": 122,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Fressen",
-        "translation": [
-          "mouth",
-          "face",
-          "mug"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -507,7 +849,8 @@
           "ship",
           "vessel",
           "boat"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -524,7 +867,8 @@
           "meaning",
           "signification",
           "feeling"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -542,50 +886,8 @@
           "case",
           "pouch",
           "purse"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Verteidigung",
-    "weight": 141,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Verteidigungen",
-        "article": "die",
-        "translation": [
-          "defence",
-          "defense"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Hoffnung",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Hoffnungen",
-        "article": "die",
-        "translation": [
-          "hope"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Zutat",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Zutaten",
-        "translation": [
-          "ingredient"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -599,59 +901,8 @@
         "plural": "Löffel",
         "translation": [
           "spoon"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Untershied",
-    "weight": 152,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Unterschiede",
-        "article": "der",
-        "translation": [
-          "diffrence",
-          "distinction",
-          "differential",
-          "variation"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Müll",
-    "weight": 32,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": [
-          "garbage",
-          "trash",
-          "junk",
-          "waste",
-          "rubbish"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Flügel",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Flügel",
-        "article": "der",
-        "translation": [
-          "wing",
-          "blade",
-          "piano",
-          "sail"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -666,24 +917,8 @@
         "translation": [
           "bitch",
           "bastard"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Baustelle",
-    "weight": 150,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Baustellen",
-        "article": "die",
-        "translation": [
-          "construction site",
-          "building site",
-          "roadworks",
-          "construction zone"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -698,24 +933,8 @@
         "translation": [
           "nonsense",
           "tomfoolery"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Land",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Länder",
-        "translation": [
-          "land",
-          "state",
-          "ground",
-          "country"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -732,7 +951,8 @@
           "body",
           "panel",
           "board"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -746,7 +966,8 @@
         "plural": "no plural",
         "translation": [
           "fruit"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -760,7 +981,8 @@
         "article": "die",
         "translation": [
           "fact"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -775,7 +997,8 @@
         "translation": [
           "authority",
           "office"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -791,7 +1014,8 @@
           "traffic light",
           "light",
           "hanging lamp"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -806,39 +1030,8 @@
         "translation": [
           "success",
           "achievement"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Armut",
-    "weight": 75,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "no plural",
-        "translation": [
-          "poverty",
-          "destitution",
-          "poorness"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Anlass",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Anlässe",
-        "translation": [
-          "occasion",
-          "reason",
-          "cause"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -855,7 +1048,8 @@
           "mixture",
           "combination",
           "blend"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -871,7 +1065,8 @@
           "flake",
           "scale",
           "ball of lint"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -887,21 +1082,8 @@
           "notice",
           "notification",
           "advice note"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Böse",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "das",
-        "translation": [
-          "evil"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -915,7 +1097,8 @@
         "plural": "Bohnen",
         "translation": [
           "bean"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -934,7 +1117,8 @@
           "completion",
           "degree",
           "end"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -949,28 +1133,8 @@
         "translation": [
           "vegetables",
           "vegetable"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Mitteilung",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Mitteilungen",
-        "article": "die",
-        "translation": [
-          "notice",
-          "notification",
-          "communication",
-          "announcement",
-          "statement",
-          "information",
-          "memo",
-          "memorandum"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -988,7 +1152,8 @@
           "hazard",
           "threat",
           "peril"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -1008,39 +1173,8 @@
           "spirit",
           "disposition",
           "temper"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Gebiet",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Gebieten",
-        "translation": [
-          "area",
-          "field",
-          "territory",
-          "region",
-          "zone"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Abenteuer",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Abenteuer",
-        "translation": [
-          "adventure"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -1060,41 +1194,8 @@
           "destination",
           "end",
           "finishing line"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Becher",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Becher",
-        "translation": [
-          "mug",
-          "cup",
-          "beaker",
-          "goblet"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Berater",
-    "weight": 32,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Berater",
-        "article": "der",
-        "translation": [
-          "advisor",
-          "consultant",
-          "aide",
-          "counselor"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   },
@@ -1109,38 +1210,8 @@
         "translation": [
           "washing machine",
           "washer"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Empfänger",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Empfänger",
-        "article": "der",
-        "translation": [
-          "recipient",
-          "receiver"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Schnauze",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Schnauzen",
-        "translation": [
-          "snout",
-          "muzzle",
-          "spout"
-        ]
+        ],
+        "specialDeclensions": {}
       }
     ]
   }

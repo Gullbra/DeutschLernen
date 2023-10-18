@@ -1,13 +1,14 @@
 import { createInterface } from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
 import { DataHandler } from './../data/dataHandler.ts';
-import { IGameState } from "../interfaces/dataStructures.ts";
+import { IGameState, IQuestionReturnObject } from "../interfaces/dataStructures.ts";
 import { IClassAdverb, IClassNoun, IWord, IClassPreposition, IClassAdjective } from "../interfaces/wordsPhrasesGrammar.ts";
-import { inputProcessor, randomizeArrayElement, randomizeInt } from "../util/util.ts";
+import { inputProcessor } from "../util/util.ts";
+import { randomizeArrayElement, randomizeInt } from "../util/personalLibrary.ts"
 import { QWordClassNoun } from "./questions/qNouns.ts";
 import { QWordClassAdverb } from "./questions/qAdverbs.ts";
+import { QWordClassAdjective } from "./questions/qAdjectives.ts";
 // import { QWordClassPreposition } from "./questions/qPrepositions.ts";
-// import { QWordClassAdjective } from "./questions/qAdjectives.ts";
 
 export class Game { 
   private gameState: IGameState
@@ -42,9 +43,8 @@ export class Game {
       await this.gameState.lineReader.question(`invalid input`)
       return await this.setupSettings()
     }
-    const loadUser = terminalInput === 'y'
   
-    await this.setupGameState({ loadUser })
+    await this.setupGameState({ loadUser: terminalInput === 'y' })
   }
 
   private async setupGameState (optionObj?: any) {
@@ -124,33 +124,38 @@ export class Game {
   
     console.log(`${this.gameState.currentQuestionNumber})`)
 
-    switch (selectedWordClass.class) {
-      case 'noun':
-        return await this.handleResult(selectedDataobject, await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQnA());
-
-      case 'adverb':
-        return await this.handleResult(selectedDataobject, await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA());
-
-      // case 'preposition':
-      //   return await this.handleResult(selectedDataobject, await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQnA());
-
-      // case 'adjective':
-      //   return await this.handleResult(selectedDataobject, await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQnA());
-
-      // case 'verb':
-      //   return await this.handleResult(await questionVerb(this.gameState, workingWordOrPhrase, workingDataObject?.verb as IVerb));
-
-      // case 'phrase':
-      //   return await this.handleResult(await questionOther(this.gameState, workingWordOrPhrase, workingDataObject?.phrase as IAdverbAdjectivePhrase));
+    return await this.handleResult(
+      selectedDataobject, 
+      await (async (): Promise<IQuestionReturnObject> => {
+        switch (selectedWordClass.class) {
+          case 'noun':
+            return await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQnA();
     
-      default:
-        console.log(`Error: unhandled word/phrase class: "${selectedWordClass.class}"!`)
-        return await this.shutdown();
-    }
+          // case 'adverb':
+          //   await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA();
+    
+          // case 'adjective':
+          //   await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQnA();
+    
+          // case 'preposition':
+          //   await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQnA();
+    
+          // case 'verb':
+          //   throw new Error('Not implemented!')
+    
+          // case 'phrase':
+          //   throw new Error('Not implemented!')
+        
+          default:
+            console.log(`Error: unhandled word/phrase class: "${selectedWordClass.class}"!`)
+            return {error: true};
+        }
+      }) ()
+    );
   }
 
-  private async handleResult (dataObject: IWord, {correct, error, wClass, typeOfQuestion}: {correct: boolean, error: boolean, wClass?: string, typeOfQuestion?: string}) {
-    if (error) {
+  private async handleResult (dataObject: IWord, {correct, error, wClass, typeOfQuestion}: IQuestionReturnObject) {
+    if (error || correct === undefined) {
       if (this.gameState.correctedAnswers.length > 0)
         await this.handleSave()
       return await this.shutdown();

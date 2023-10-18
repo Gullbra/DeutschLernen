@@ -2,7 +2,7 @@ import { IClassAdverb } from "../../interfaces/wordsPhrasesGrammar.ts";
 import { IGameState } from "../../interfaces/dataStructures.ts";
 import { isValidWordClassAdverb } from "../../util/dataValidations.ts";
 import { QDegreeOfComparision } from "./aDegreesOfComparision.ts";
-import { randomizeInt } from "../../util/util.ts";
+import { randomizeInt } from "../../util/personalLibrary.ts"
 
 export class QWordClassAdverb extends QDegreeOfComparision {
   constructor (gameState: IGameState, word: string, protected dataObject: IClassAdverb) {

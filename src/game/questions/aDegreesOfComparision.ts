@@ -1,5 +1,6 @@
 import { IDegreeOfComparisonObject } from "../../interfaces/wordsPhrasesGrammar.ts"
-import { comparerß, inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts"
+import { comparerß, inputProcessor, qResultSimpleUI } from "../../util/util.ts"
+import { randomizeArrayElement } from "../../util/personalLibrary.ts"
 import { QParentClass } from "./aParentClass.ts"
 
 export abstract class QDegreeOfComparision extends QParentClass {

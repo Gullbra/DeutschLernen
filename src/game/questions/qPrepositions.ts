@@ -1,7 +1,8 @@
 import { isValidWordClassPreposition } from "../../util/dataValidations.ts";
 import { IGameState } from "../../interfaces/dataStructures.ts";
 import { IClassPreposition } from "../../interfaces/wordsPhrasesGrammar.ts";
-import { comparerß, inputProcessor, qResultSimpleUI, randomizeArrayElement } from "../../util/util.ts";
+import { comparerß, inputProcessor, qResultSimpleUI } from "../../util/util.ts";
+import { randomizeArrayElement } from "../../util/personalLibrary.ts"
 import { QParentClass } from "./aParentClass.ts";
 
 export class QWordClassPreposition extends QParentClass {
