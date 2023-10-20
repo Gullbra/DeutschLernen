@@ -1,5 +1,500 @@
 [
   {
+    "word": "Bereich",
+    "weight": 133,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Bereiche",
+        "article": "der",
+        "translation": [
+          "area",
+          "region",
+          "field",
+          "sector",
+          "zone",
+          "sphere",
+          "realm",
+          "department",
+          "territory",
+          "province"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 9027
+  },
+  {
+    "word": "Schlagabtausch",
+    "weight": 230,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schlagabtausche",
+        "article": "der",
+        "translation": [
+          "exchange of blows",
+          "repartee"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 15657
+  },
+  {
+    "word": "Mitglied",
+    "weight": 218,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Mitglieder",
+        "translation": [
+          "member",
+          "fellow"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 14790
+  },
+  {
+    "word": "Stimmung",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Stimmungen",
+        "article": "die",
+        "translation": [
+          "humor",
+          "mood",
+          "atmosphere",
+          "feeling",
+          "spirit",
+          "disposition",
+          "temper"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 2142
+  },
+  {
+    "word": "Angebot",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Angebote",
+        "specialDeclensions": {},
+        "translation": [
+          "offer",
+          "supply",
+          "range",
+          "quote",
+          "bid",
+          "proposal",
+          "invitation"
+        ]
+      }
+    ],
+    "modifiedWeight": 5100
+  },
+  {
+    "word": "Pech",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "no plural",
+        "specialDeclensions": {},
+        "translation": [
+          "bad luck",
+          "misfortune",
+          "pitch"
+        ]
+      }
+    ],
+    "modifiedWeight": 5100
+  },
+  {
+    "word": "Hafermilch",
+    "weight": 146,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "no plural",
+        "translation": [
+          "oat milk"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 9894
+  },
+  {
+    "word": "Baustelle",
+    "weight": 139,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Baustellen",
+        "article": "die",
+        "translation": [
+          "construction site",
+          "building site",
+          "roadworks",
+          "construction zone"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 9435
+  },
+  {
+    "word": "Ferne",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Fernen",
+        "specialDeclensions": {},
+        "translation": [
+          "distance",
+          "remotness",
+          "future",
+          "distant past"
+        ]
+      }
+    ],
+    "modifiedWeight": 5100
+  },
+  {
+    "word": "Ziel",
+    "weight": 24,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Ziele",
+        "article": "das",
+        "translation": [
+          "goal",
+          "target",
+          "objective",
+          "aim",
+          "destination",
+          "end",
+          "finishing line"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 1632
+  },
+  {
+    "word": "Waschmaschine",
+    "weight": 24,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Waschmaschinen",
+        "translation": [
+          "washing machine",
+          "washer"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 1632
+  },
+  {
+    "word": "Wohlstand",
+    "weight": 69,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "no plural",
+        "translation": [
+          "prosperity",
+          "affluence",
+          "fortune"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 4692
+  },
+  {
+    "word": "Zahlensystem",
+    "weight": 200,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Zahlensysteme",
+        "specialDeclensions": {},
+        "translation": [
+          "number system"
+        ]
+      }
+    ],
+    "modifiedWeight": 5100
+  },
+  {
+    "word": "Sinn",
+    "weight": 64,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Sinne",
+        "article": "der",
+        "translation": [
+          "sense",
+          "meaning",
+          "signification",
+          "feeling"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 4335
+  },
+  {
+    "word": "Beitrag",
+    "weight": 173,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Beiträge",
+        "article": "der",
+        "translation": [
+          "contribution",
+          "article",
+          "fee",
+          "input",
+          "premium"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 11730
+  },
+  {
+    "word": "Stufe",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Stufen",
+        "specialDeclensions": {},
+        "translation": [
+          "level",
+          "stage",
+          "step",
+          "phase",
+          "degree",
+          "grade",
+          "tier"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gewürz",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Gewürze",
+        "specialDeclensions": {},
+        "translation": [
+          "seasoning",
+          "spice",
+          "condiment",
+          "herb"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Hinweis",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Hinweise",
+        "specialDeclensions": {},
+        "translation": [
+          "notice",
+          "hint",
+          "reference",
+          "indication",
+          "clue",
+          "tip",
+          "lead",
+          "allusion"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Aufstieg",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Aufstiege",
+        "specialDeclensions": {},
+        "translation": [
+          "ascension",
+          "climb",
+          "rise",
+          "ascent",
+          "promotion",
+          "advancement"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Lohn",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Löhne",
+        "specialDeclensions": {},
+        "translation": [
+          "salary",
+          "wage",
+          "pay",
+          "wages",
+          "reward",
+          "hire",
+          "prize"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gehalt",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Gehälter",
+        "specialDeclensions": {},
+        "translation": [
+          "salary",
+          "content",
+          "pay",
+          "substance",
+          "stipend",
+          "salary package"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Haut",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Häute",
+        "specialDeclensions": {},
+        "translation": [
+          "skin",
+          "hide",
+          "pelt"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Zunge",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Zungen",
+        "specialDeclensions": {},
+        "translation": [
+          "tongue"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Nahrungsmittel",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Nahrungsmitteln",
+        "specialDeclensions": {},
+        "translation": [
+          "food",
+          "foodstuff",
+          "nutriment"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Deckel",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Deckel",
+        "specialDeclensions": {},
+        "translation": [
+          "lid",
+          "cover"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Gericht",
+    "weight": 100,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Gerichte",
+        "specialDeclensions": {},
+        "translation": [
+          "court",
+          "dish",
+          "judgement",
+          "judgment",
+          "trial",
+          "meal",
+          "forum"
+        ]
+      }
+    ]
+  },
+  {
     "word": "Empfänger",
     "weight": 80,
     "classes": [
@@ -15,22 +510,6 @@
       }
     ],
     "modifiedWeight": 5457
-  },
-  {
-    "word": "Hafermilch",
-    "weight": 194,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "no plural",
-        "translation": [
-          "oat milk"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 13209
   },
   {
     "word": "Schild",
@@ -204,26 +683,6 @@
     "modifiedWeight": 8874
   },
   {
-    "word": "Beitrag",
-    "weight": 230,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Beiträge",
-        "article": "der",
-        "translation": [
-          "contribution",
-          "article",
-          "fee",
-          "input",
-          "premium"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 6630
-  },
-  {
     "word": "Gremium",
     "weight": 132,
     "classes": [
@@ -335,42 +794,6 @@
     "modifiedWeight": 3009
   },
   {
-    "word": "Baustelle",
-    "weight": 185,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Baustellen",
-        "article": "die",
-        "translation": [
-          "construction site",
-          "building site",
-          "roadworks",
-          "construction zone"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 4335
-  },
-  {
-    "word": "Mitglied",
-    "weight": 290,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Mitglieder",
-        "translation": [
-          "member",
-          "fellow"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 9690
-  },
-  {
     "word": "Land",
     "weight": 256,
     "classes": [
@@ -439,30 +862,6 @@
     ]
   },
   {
-    "word": "Bereich",
-    "weight": 177,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Bereiche",
-        "article": "der",
-        "translation": [
-          "area",
-          "region",
-          "field",
-          "sector",
-          "zone",
-          "sphere",
-          "realm",
-          "department",
-          "territory",
-          "province"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
     "word": "Streit",
     "weight": 87,
     "classes": [
@@ -496,22 +895,6 @@
           "notice",
           "notification",
           "advice note"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Schlagabtausch",
-    "weight": 307,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schlagabtausche",
-        "article": "der",
-        "translation": [
-          "exchange of blows",
-          "repartee"
         ],
         "specialDeclensions": {}
       }
@@ -597,23 +980,6 @@
           "address",
           "rumor",
           "rumour"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Wohlstand",
-    "weight": 92,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "no plural",
-        "translation": [
-          "prosperity",
-          "affluence",
-          "fortune"
         ],
         "specialDeclensions": {}
       }
@@ -1010,24 +1376,6 @@
     ]
   },
   {
-    "word": "Sinn",
-    "weight": 85,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Sinne",
-        "article": "der",
-        "translation": [
-          "sense",
-          "meaning",
-          "signification",
-          "feeling"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
     "word": "Tasche",
     "weight": 32,
     "classes": [
@@ -1173,64 +1521,6 @@
           "hazard",
           "threat",
           "peril"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Stimmung",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Stimmungen",
-        "article": "die",
-        "translation": [
-          "humor",
-          "mood",
-          "atmosphere",
-          "feeling",
-          "spirit",
-          "disposition",
-          "temper"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Ziel",
-    "weight": 32,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Ziele",
-        "article": "das",
-        "translation": [
-          "goal",
-          "target",
-          "objective",
-          "aim",
-          "destination",
-          "end",
-          "finishing line"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Waschmaschine",
-    "weight": 32,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Waschmaschinen",
-        "translation": [
-          "washing machine",
-          "washer"
         ],
         "specialDeclensions": {}
       }

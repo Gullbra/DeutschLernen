@@ -245,6 +245,15 @@ describe.only("NounCaseConverter() tests:", () => {
 
         it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
       })
+
+      describe.only("das Angebot", () => {
+        const unhandledCase = new NounCaseConverter('das', 'Angebot', false)
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          genetiv: { defArticle: "des", noun: "Angebots", indefArticle: "eines"}
+        }
+
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
     })
   })
 })

@@ -77,7 +77,7 @@ export class NounCaseConverter {
       noun: this.nounNominativ,
     }
   
-    if(this.declensionObj && !this.plural) {
+    if(this.declensionObj && !!Object.keys(this.declensionObj).length && !this.plural) {
       if(this.declensionObj.nsGenitiv)
         returnObj.noun += 'ns'        
       if(this.declensionObj.sesGenetiv)
