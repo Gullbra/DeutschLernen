@@ -82,7 +82,7 @@ export class Game {
         : this.gameState.currentData.reduce(
             (sum, dataObj, index) => {
               const mWeight = dataObj.classes.reduce(
-                (prev: number, cl: IWordclass): number => Math.round(prev * (1 + minAndMax(this.gameState.userProfile?.get(cl.class)?.weight || 100, -50, 50))), 
+                (prev: number, cl: IWordclass): number => Math.round(prev * (1 + minAndMax(this.gameState.userProfile?.get(cl.class)?.weight || 100, -50, 50)/100)), 
                 dataObj.weight
               )
 
@@ -193,8 +193,10 @@ export class Game {
       return await this.shutdown();
     }
 
-    if(!!this.gameState.userProfile && wClass && typeOfQuestion)
+    if(!!this.gameState.userProfile && wClass && typeOfQuestion) {
+      delete dataObject.modifiedWeight
       this.updateUserProfile(wClass, typeOfQuestion, correct)
+    }
 
     dataObject.weight = this.weightHandler(dataObject.weight, correct)
     this.gameState.correctedAnswers.push({ dataObject, correct })

@@ -1,5 +1,170 @@
 [
   {
+    "word": "Klamotte",
+    "weight": 42,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Klamotten",
+        "article": "die",
+        "translation": [
+          "clothes",
+          "stuff",
+          "gear"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 84
+  },
+  {
+    "word": "Wand",
+    "weight": 47,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Wände",
+        "article": "die",
+        "translation": [
+          "wall"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 95
+  },
+  {
+    "word": "Schluss",
+    "weight": 48,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Schlüsse",
+        "translation": [
+          "endling",
+          "conclusion",
+          "closing",
+          "closure",
+          "finish",
+          "ending"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 96
+  },
+  {
+    "word": "Angebot",
+    "weight": 113,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Angebote",
+        "specialDeclensions": {},
+        "translation": [
+          "offer",
+          "supply",
+          "range",
+          "quote",
+          "bid",
+          "proposal",
+          "invitation"
+        ]
+      }
+    ],
+    "modifiedWeight": 225
+  },
+  {
+    "word": "Empfänger",
+    "weight": 60,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Empfänger",
+        "article": "der",
+        "translation": [
+          "recipient",
+          "receiver"
+        ],
+        "specialDeclensions": {}
+      }
+    ],
+    "modifiedWeight": 120
+  },
+  {
+    "word": "Hafer",
+    "weight": 206,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Haferflocken",
+        "translation": [
+          "oat",
+          "oats"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Gefahr",
+    "weight": 142,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Gefahren",
+        "translation": [
+          "danger",
+          "risk",
+          "hazard",
+          "threat",
+          "peril"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Lager",
+    "weight": 326,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Lager",
+        "translation": [
+          "camp",
+          "warehouse",
+          "store",
+          "bed",
+          "storeroom",
+          "lair"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Blödsinn",
+    "weight": 182,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "no plural",
+        "article": "der",
+        "translation": [
+          "nonsense",
+          "tomfoolery"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
     "word": "Bereich",
     "weight": 133,
     "classes": [
@@ -79,28 +244,6 @@
       }
     ],
     "modifiedWeight": 2142
-  },
-  {
-    "word": "Angebot",
-    "weight": 200,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Angebote",
-        "specialDeclensions": {},
-        "translation": [
-          "offer",
-          "supply",
-          "range",
-          "quote",
-          "bid",
-          "proposal",
-          "invitation"
-        ]
-      }
-    ],
-    "modifiedWeight": 5100
   },
   {
     "word": "Pech",
@@ -495,23 +638,6 @@
     ]
   },
   {
-    "word": "Empfänger",
-    "weight": 80,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Empfänger",
-        "article": "der",
-        "translation": [
-          "recipient",
-          "receiver"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 5457
-  },
-  {
     "word": "Schild",
     "weight": 37,
     "classes": [
@@ -596,27 +722,6 @@
     "modifiedWeight": 5406
   },
   {
-    "word": "Lager",
-    "weight": 435,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Lager",
-        "translation": [
-          "camp",
-          "warehouse",
-          "store",
-          "bed",
-          "storeroom",
-          "lair"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 17085
-  },
-  {
     "word": "Bohne",
     "weight": 24,
     "classes": [
@@ -631,56 +736,6 @@
       }
     ],
     "modifiedWeight": 1632
-  },
-  {
-    "word": "Wand",
-    "weight": 63,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Wände",
-        "article": "die",
-        "translation": [
-          "wall"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 4284
-  },
-  {
-    "word": "Blödsinn",
-    "weight": 242,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "no plural",
-        "article": "der",
-        "translation": [
-          "nonsense",
-          "tomfoolery"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 7242
-  },
-  {
-    "word": "Hafer",
-    "weight": 274,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Haferflocken",
-        "translation": [
-          "oat",
-          "oats"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 8874
   },
   {
     "word": "Gremium",
@@ -839,23 +894,6 @@
         "article": "die",
         "translation": [
           "headline"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Klamotte",
-    "weight": 56,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Klamotten",
-        "article": "die",
-        "translation": [
-          "clothes",
-          "stuff",
-          "gear"
         ],
         "specialDeclensions": {}
       }
@@ -1251,26 +1289,6 @@
     ]
   },
   {
-    "word": "Schluss",
-    "weight": 64,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Schlüsse",
-        "translation": [
-          "endling",
-          "conclusion",
-          "closing",
-          "closure",
-          "finish",
-          "ending"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
     "word": "Möwe",
     "weight": 83,
     "classes": [
@@ -1502,25 +1520,6 @@
         "translation": [
           "vegetables",
           "vegetable"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
-    "word": "Gefahr",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Gefahren",
-        "translation": [
-          "danger",
-          "risk",
-          "hazard",
-          "threat",
-          "peril"
         ],
         "specialDeclensions": {}
       }
