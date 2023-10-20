@@ -1,13 +1,19 @@
 {
   "noun": {
-    "meaning": 50,
-    "article": 206,
-    "plural": 182,
-    "case": 143
+    "subQuestions": {
+      "meaning": 81,
+      "article": 217,
+      "plural": 476,
+      "case": 184
+    },
+    "weight": 260
   },
   "adverb": {
-    "meaning": 111,
-    "degreesOfComparisionComperativ": 100,
-    "degreesOfComparisionSuperlativ": 100
+    "subQuestions": {
+      "meaning": 111,
+      "degreesOfComparisionComperativ": 100,
+      "degreesOfComparisionSuperlativ": 100
+    },
+    "weight": 100
   }
 }

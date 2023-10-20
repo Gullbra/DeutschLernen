@@ -227,11 +227,24 @@ describe.only("NounCaseConverter() tests:", () => {
 
         it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
       })
-      /*      
-      new NounCaseConverter('das', 'Schiff', false),
 
-      ['Schiff(area)',  {defArticle: 'des', indefArticle: 'eines', noun: 'Schiffes'}],
-      */
+      describe("der Blödsinn", () => {
+        const unhandledCase = new NounCaseConverter('der', 'Blödsinn', false)
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          genetiv: { defArticle: "des", noun: "Blödsinns", indefArticle: "eines"}
+        }
+
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
+
+      describe("das Lager", () => {
+        const unhandledCase = new NounCaseConverter('das', 'Lager', false)
+        const expectedCase: {[key:string]: IConvertedNoun} = {
+          genetiv: { defArticle: "des", noun: "Lagers", indefArticle: "eines"}
+        }
+
+        it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
+      })
     })
   })
 })

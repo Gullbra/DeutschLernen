@@ -91,7 +91,7 @@ export class NounCaseConverter {
     } else if(!this.plural && ['der', 'das'].includes(this.article)) {
       if (
         ['s', 'ß', 'x', 'z'].includes(this.nounNominativ[this.nounNominativ.length-1]) || 
-        returnObj.noun.split(/(au|äu|ie|ei)/i).map(part => part.split(/[aeiouü]/i)).flat().length === 2
+        returnObj.noun.split(/(au|äu|ie|ei)/i).map(part => part.split(/[aeiouüö]/i)).flat().length === 2
       ) {
         returnObj.noun += 'es'
       } else {

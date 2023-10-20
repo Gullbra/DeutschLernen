@@ -101,6 +101,7 @@ export interface IClassVerb extends IWordclass {
 export interface IWord {
   word: string,
   weight: number,
+  modifiedWeight?: number,
   classes: (IClassNoun | IClassVerb | IClassPreposition | IClassAdverb | IClassAdjective)[]
 }
 export interface IPhrase {}

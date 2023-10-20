@@ -44,8 +44,8 @@ export abstract class QParentClass {
     const [ questionTypes, questionWeights ] = (!!inputQuestionTypes && !!inputQuestionWeights)
       ? [inputQuestionTypes, inputQuestionWeights]
       : [ 
-          Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.keys() as IterableIterator<string>), 
-          Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.values() as IterableIterator<number>)
+          Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.subQuestions.keys() as IterableIterator<string>), 
+          Array.from(this.gameState.userProfile?.get(this.dataObject.class)?.subQuestions.values() as IterableIterator<number>)
         ]
 
     const randomInt = randomizeInt(questionWeights.reduce((sum, curr) => sum + curr, 0))

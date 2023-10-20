@@ -1,4 +1,5 @@
-import { TDataArray, IDataStorageMethods, TUserProfile, IRawUserProfile } from '../interfaces/dataStructures.ts';
+import { TDataArray, IDataStorageMethods, TUserProfile, IRawUserProfile, IQuestionProfile } from '../interfaces/dataStructures.ts';
+import { MapExpanded } from '../util/personalLibrary.ts';
 import { AcebaseMethods } from './methods/acebaseMethods.ts';
 import { JSONMethods } from './methods/jsonMethods.ts';
 
@@ -21,9 +22,11 @@ export class DataHandler {
       ))
       .catch(err => { console.log(`Error in data retrieval: ${err.message}. No data retrieved.`); return [] })    
   }
+
   async saveGameData (toBeChanged: TDataArray, userprofile?: TUserProfile) {
     return this.dataStorageMethods.updateData(toBeChanged).catch(err => console.log(`Error when updating data: ${err.message}. No data updated.`))
   }
+
   async insertNewData (newData: TDataArray) {
     return this.dataStorageMethods.insertData(newData).catch(err => console.log(`Error in data insertion: ${err.message}. No data inserted.`))
   }
@@ -32,31 +35,38 @@ export class DataHandler {
   async getUserProfile (): Promise<TUserProfile> {return this.dataStorageMethods.retrieveUser().then(data => this.constructUserProfile(data))}
   async saveUserProfile (data: TUserProfile) {return this.dataStorageMethods.updateUser(this.deconstructUserProfile(data))}
 
-  
+
+  private constructUserProfile (rawData: IRawUserProfile): TUserProfile {
+    const outerMap: TUserProfile = new MapExpanded()
+
+    for (const [outerKey, outerValue] of Object.entries(rawData)) {
+      outerMap.set(
+        outerKey, 
+        {
+          weight: outerValue.weight,
+          subQuestions: new MapExpanded(Object.entries(outerValue.subQuestions))
+        } 
+      ) 
+    }
+
+    return outerMap
+  }
+
   private deconstructUserProfile (data: TUserProfile): IRawUserProfile {
     const returnObject = {} as IRawUserProfile
 
-    data.forEach((innerMap, classN) => {
+    data.forEach((outerValue, classN) => {
       const innerObj: {[key: string]: number} = {}
-      innerMap.forEach((weight, type) => {
-        innerObj[type] = weight
-      })
-      returnObject[classN] = innerObj
+
+      outerValue.subQuestions.forEach((weight, type) => innerObj[type] = weight)
+
+      returnObject[classN] = {
+        subQuestions: innerObj,
+        weight: outerValue.weight
+      }
     })
 
     return returnObject
-  }
-  private constructUserProfile (rawData: IRawUserProfile): TUserProfile {
-    const outerMap: TUserProfile = new Map()
-
-    for (const [outerKey, outerValue] of Object.entries(rawData)) {
-      const innerMap = new Map<string, number>()
-      for (const [innerKey, innerValue] of Object.entries(outerValue))
-        innerMap.set(innerKey, innerValue)
-          
-      outerMap.set(outerKey, innerMap) 
-    }
-    return outerMap
   }
 
   

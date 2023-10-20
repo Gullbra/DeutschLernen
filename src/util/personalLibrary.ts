@@ -50,28 +50,23 @@ export const randomizeArrayElement = <T,>(arr: T[]): T => {
   return arr.length === 1 ? arr[0] : arr[randomizeArrayIndex(arr)]
 }
 
-/**
- * Creates and returns a Set from an array.
- * @param arr Array.
- */
-export const setFromArray = <T,>(arr: T[]): Set<T> => arr.reduce((prev, curr) => prev.add(curr), new Set<T>())
 
-/**
- * Creates and returns a Map from two arrays of the same size. Throws an error when the arrays aren't of the same size.
- * @param arrKeys Will be converted into Map-keys.
- * @param arrValues Will be converted into Map-values.
- */
-export const mapFromArrays = <T,U>(arrKeys: T[], arrValues: U[]): Map<T, U> => {
-  if(arrKeys.length !== arrValues.length)
-    throw new RangeError('Args for mapFromArrays(arrKeys, arrValues) must have the same length.')
+export class MapExpanded<K,V> extends Map<K,V> {
+  /** @returns a boolean indicating whether one or more elements in a specified iterable also exists in the Map as a key. */
+  hasAny(iterable: Iterable<K>): boolean {
+    for (let el of iterable)
+      if (super.has(el))
+        return true;
 
-  return arrKeys.reduce(
-    (prev, curr, index) => {
-      if((typeof curr === "object" && curr !== null) || typeof curr === 'function')
-        throw new TypeError("Setting an object or a function as a key in a Map will make it's value unreasonably cumbersome to retrieve.")
+    return false;
+  }
   
-      return prev.set(curr, arrValues[index])
-    }, 
-    new Map<T, U>()
-  )
+  /** @returns a boolean indicating whether all elements in a specified iterable also exists in the Map as a key. */
+  hasAll(iterable: Iterable<K>): boolean {
+    for (let el of iterable)
+      if (!super.has(el))
+        return false;
+
+    return true;
+  }
 }

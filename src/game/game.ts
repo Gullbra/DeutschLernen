@@ -1,8 +1,8 @@
 import { createInterface } from 'node:readline/promises';
 import { stdin, stdout } from 'node:process';
 import { DataHandler } from './../data/dataHandler.ts';
-import { IGameState, IQuestionReturnObject } from "../interfaces/dataStructures.ts";
-import { IClassAdverb, IClassNoun, IWord, IClassPreposition, IClassAdjective } from "../interfaces/wordsPhrasesGrammar.ts";
+import { IGameState, IQuestionProfile, IQuestionReturnObject } from "../interfaces/dataStructures.ts";
+import { IClassAdverb, IClassNoun, IWord, IClassPreposition, IClassAdjective, IWordclass } from "../interfaces/wordsPhrasesGrammar.ts";
 import { inputProcessor } from "../util/util.ts";
 import { randomizeArrayElement, randomizeInt } from "../util/personalLibrary.ts"
 import { QWordClassNoun } from "./questions/qNouns.ts";
@@ -28,6 +28,7 @@ export class Game {
     this.inclusiveFilters = inclusiveFilters
   }
 
+
   async startUp () {
     console.log("\n--------------------------")
     console.log("Deutch lernen, commandline")
@@ -35,6 +36,7 @@ export class Game {
   
     await this.setupSettings().catch(async (err) => { console.log(err.message); await this.shutdown() })
   }
+
 
   private async setupSettings (): Promise<void> {
     let terminalInput = inputProcessor(await this.gameState.lineReader.question(`Do you want to load a user profile? (y/n)  `)) 
@@ -47,25 +49,53 @@ export class Game {
     await this.setupGameState({ loadUser: terminalInput === 'y' })
   }
 
+
   private async setupGameState (optionObj?: any) {
     const promiseArray: Promise<any>[] = [
       this.gameState.dataHandler.getGameData(this.inclusiveFilters)
         .then(data => {
           this.gameState.fullData = data
           this.gameState.currentData = data.slice()
-          this.gameState.currentTotalWeight = data.reduce((sum, dataObj) => sum + dataObj.weight, 0)
         })
     ]
 
     if (!!optionObj?.loadUser) {
       const loadUserProfile = this.gameState.dataHandler.getUserProfile()
-        .then(data => this.gameState.userProfile = data)
+        .then(data => {
+          if (!data.hasAll(this.inclusiveFilters || ['adjective', 'noun', 'adverb', 'preposition'])){
+            throw Error('invalid userprofile. TODO: auto-set up when user profile is invalid.')
+          }
+
+          this.gameState.userProfile = data
+        })
+        
       promiseArray.push(loadUserProfile)
     }
 
-    await Promise.all(promiseArray)
+    const minAndMax = (value: number, minLimit: number, maxLimit: number): number => {
+      return  Math.min(Math.max(value, minLimit), maxLimit)
+    }
+
+    await Promise.all(promiseArray).then(() => {
+      this.gameState.currentTotalWeight = !this.gameState.userProfile 
+        ? this.gameState.currentData.reduce((sum, dataObj) => sum + dataObj.weight, 0)
+        : this.gameState.currentData.reduce(
+            (sum, dataObj, index) => {
+              const mWeight = dataObj.classes.reduce(
+                (prev: number, cl: IWordclass): number => Math.round(prev * (1 + minAndMax(this.gameState.userProfile?.get(cl.class)?.weight || 100, -50, 50))), 
+                dataObj.weight
+              )
+
+              this.gameState.currentData[index].modifiedWeight = mWeight
+              return sum + mWeight
+            }, 
+            0
+          )
+    })
+
     return await this.chooseNrOfQuestions()
   }
+
 
   private async chooseNrOfQuestions (): Promise<void> {
     if (this.gameState.currentData.length === 0) {
@@ -86,6 +116,7 @@ export class Game {
     await this.determineQuestion()
   }
 
+
   private async determineQuestion () {
     if (this.gameState.currentQuestionNumber === this.gameState.questionsToAnswer)
       return await this.resultAndRestart()
@@ -98,7 +129,7 @@ export class Game {
     const selectionNumber = randomizeInt(this.gameState.currentTotalWeight)
     const [selectedDataobject, selectedIndex] = (() => {
       for (let i = 0, sum = 0; i <= this.gameState.currentTotalWeight; i++) {
-        sum += this.gameState.currentData[i].weight
+        sum += this.gameState.currentData[i].modifiedWeight || this.gameState.currentData[i].weight
 
         if(sum >= selectionNumber)
           return [this.gameState.currentData[i], i]
@@ -120,7 +151,7 @@ export class Game {
 
     this.gameState.currentQuestionNumber += 1
     this.gameState.currentData.splice(selectedIndex, 1)
-    this.gameState.currentTotalWeight -= selectedDataobject.weight
+    this.gameState.currentTotalWeight -= selectedDataobject.modifiedWeight || selectedDataobject.weight
   
     console.log(`${this.gameState.currentQuestionNumber})`)
 
@@ -154,6 +185,7 @@ export class Game {
     );
   }
 
+
   private async handleResult (dataObject: IWord, {correct, error, wClass, typeOfQuestion}: IQuestionReturnObject) {
     if (error || correct === undefined) {
       if (this.gameState.correctedAnswers.length > 0)
@@ -170,6 +202,7 @@ export class Game {
     await this.determineQuestion()
   }
 
+
   private weightHandler (startingWeight: number, correct: boolean): number {
     if (correct) {
       return Math.max(10, Math.round(startingWeight * 0.75))
@@ -177,16 +210,28 @@ export class Game {
     return startingWeight + 100
   }
 
+
   private updateUserProfile (wordClass: string, typeOfQuestion: string, correct: boolean) {
-    if (!this.gameState?.userProfile?.has(wordClass) || !this.gameState.userProfile.get(wordClass)?.has(typeOfQuestion))
+    if (!this.gameState?.userProfile?.has(wordClass) || !this.gameState.userProfile.get(wordClass)?.subQuestions.has(typeOfQuestion))
       throw new Error (`No userprofile entry for "${wordClass}" "${typeOfQuestion}"`)
 
-    const newWeight = correct
-      ? Math.max(50, Math.round((this.gameState.userProfile.get(wordClass)?.get(typeOfQuestion) as number) * 0.9))
-      : Math.max(50, (this.gameState.userProfile.get(wordClass)?.get(typeOfQuestion) as number) + 50)
+    const newClassWeight = correct
+      ? Math.max(50, Math.round((this.gameState.userProfile.get(wordClass)?.weight as number) * 0.95))
+      : Math.max(50, (this.gameState.userProfile.get(wordClass)?.weight as number) + 20)
+    const newTypeWeight = correct
+      ? Math.max(50, Math.round((this.gameState.userProfile.get(wordClass)?.subQuestions.get(typeOfQuestion) as number) * 0.9))
+      : Math.max(50, (this.gameState.userProfile.get(wordClass)?.subQuestions.get(typeOfQuestion) as number) + 50)
 
-    this.gameState.userProfile.get(wordClass)?.set(typeOfQuestion, newWeight)
+    this.gameState.userProfile.set(
+      wordClass,
+      {
+        ...this.gameState.userProfile.get(wordClass) || {} as IQuestionProfile,
+        weight: newClassWeight
+      }
+    )
+    this.gameState.userProfile.get(wordClass)?.subQuestions.set(typeOfQuestion, newTypeWeight)
   }
+
 
   private async resultAndRestart (): Promise<void> {
     console.log(`All ${this.gameState.questionsToAnswer} done! Score: ${this.gameState.correctedAnswers.filter(el => el.correct).length}/${this.gameState.correctedAnswers.length}`)
@@ -216,6 +261,7 @@ export class Game {
         })() 
   }
 
+
   private async handleSave () {
     if(process.env.ENV_SAVING === 'no_save') 
       return console.log("No data saved due to \"ENV_SAVING='no_save'\"")
@@ -231,6 +277,7 @@ export class Game {
     return await Promise.all(promiseArray)
   }
 
+  
   private async shutdown () {
     console.log("\nShutting down...")
     this.gameState.lineReader.close()
