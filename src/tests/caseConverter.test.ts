@@ -1,7 +1,7 @@
 import { NounCaseConverter, IConvertedNoun } from '../game/gramarHandlers/nounCaseConverter.ts';
 import { expect } from 'chai';
 
-describe.only("NounCaseConverter() tests:", () => {
+describe("NounCaseConverter() tests:", () => {
   describe("Validation testing:", () => {
     const testObject = new NounCaseConverter('der', "Mann", false)
 
@@ -246,7 +246,7 @@ describe.only("NounCaseConverter() tests:", () => {
         it("genetiv", () => expect(unhandledCase.convertToCase("genetiv")).to.eql(expectedCase.genetiv))
       })
 
-      describe.only("das Angebot", () => {
+      describe("das Angebot", () => {
         const unhandledCase = new NounCaseConverter('das', 'Angebot', false)
         const expectedCase: {[key:string]: IConvertedNoun} = {
           genetiv: { defArticle: "des", noun: "Angebots", indefArticle: "eines"}

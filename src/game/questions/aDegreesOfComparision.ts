@@ -13,7 +13,7 @@ export abstract class QDegreeOfComparision extends QParentClass {
     const blankedPhrase = selectedPhrase.phrase.replace(degreeOfComparision.word, '_'.repeat(degreeOfComparision.word.length))
 
     const terminalInput = inputProcessor(await this.gameState.lineReader.question(
-      `Using the ${this.dataObject.class} "${this.word}", complete the phrase;\n\n\t"${blankedPhrase}",\n\nso that it means: "${selectedPhrase.translation}".\nYour answer: `
+      `Using the ${this.dataObject.class} "${this.word}", complete the phrase;\n\n\t"${blankedPhrase}",\n\nso that it means:\n\n\t"${selectedPhrase.translation}"\n\nYour answer: `
     ))
 
     const correctlyAnswered = (comparerß(terminalInput, degreeOfComparision.word.toLowerCase()) || comparerß(terminalInput, selectedPhrase.phrase.toLowerCase()))
