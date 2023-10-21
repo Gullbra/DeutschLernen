@@ -34,7 +34,7 @@ export class Game {
     console.log("Deutch lernen, commandline")
     console.log("--------------------------\n")
   
-    await this.setupSettings().catch(async (err) => { console.log(err.message); await this.shutdown() })
+    await this.setupSettings().catch(async (err) => { console.log("Error: startUp() catch: " + err.message); await this.shutdown() })
   }
 
 
@@ -62,9 +62,8 @@ export class Game {
     if (!!optionObj?.loadUser) {
       const loadUserProfile = this.gameState.dataHandler.getUserProfile()
         .then(data => {
-          if (!data.hasAll(this.inclusiveFilters || ['adjective', 'noun', 'adverb', 'preposition'])){
-            throw Error('invalid userprofile. TODO: auto-set up when user profile is invalid.')
-          }
+          if (!data.hasAll(this.inclusiveFilters || ['adjective', 'noun', 'adverb', 'preposition']))
+            throw Error('setupGameState(): invalid userprofile. TODO: auto-set up when user profile is invalid.');
 
           this.gameState.userProfile = data
         })
@@ -98,10 +97,8 @@ export class Game {
 
 
   private async chooseNrOfQuestions (): Promise<void> {
-    if (this.gameState.currentData.length === 0) {
-      console.log('No data found\n')
-      return await this.shutdown()
-    }
+    if (this.gameState.currentData.length === 0)
+      throw new Error("chooseNrOfQuestions(): No data found ");
 
     let terminalInput = Number(inputProcessor(await this.gameState.lineReader.question(`How many questions do want? (type a number, max ${this.gameState.currentData.length})  `))); 
   
@@ -117,14 +114,12 @@ export class Game {
   }
 
 
-  private async determineQuestion () {
+  private async determineQuestion(): Promise<void> {
     if (this.gameState.currentQuestionNumber === this.gameState.questionsToAnswer)
       return await this.resultAndRestart()
     
-    if (this.gameState.currentData.length === 0) {
-      console.log('No data found!\n')
-      return await this.shutdown()
-    }
+    if (this.gameState.currentData.length === 0)
+      throw new Error("determineQuestion(): No data found ");
     
     const selectionNumber = randomizeInt(this.gameState.currentTotalWeight)
     const [selectedDataobject, selectedIndex] = (() => {
@@ -137,15 +132,11 @@ export class Game {
       return [{} as IWord, -1]
     })()
 
-    if (selectedIndex === -1) {
-      console.log('Error in question choice based on weight')
-      return await this.shutdown()
-    }
+    if (selectedIndex === -1)
+      throw new Error("determineQuestion(): No data object, somehow, for randomized index ");
 
-    if (selectedDataobject.classes.length === 0) {
-      console.log(`Badly formated data: No word classes correspoding to word "${selectedDataobject.word}"`)
-      return await this.shutdown()
-    } 
+    if (selectedDataobject.classes.length === 0)
+      throw new Error(`determineQuestion(): No data classes in dataObject for ${selectedDataobject.word} `);
 
     const selectedWordClass = randomizeArrayElement(selectedDataobject.classes)
 
@@ -155,21 +146,21 @@ export class Game {
   
     console.log(`${this.gameState.currentQuestionNumber})`)
 
-    return await this.handleResult(
+    return this.handleResult(
       selectedDataobject, 
       await (async (): Promise<IQuestionReturnObject> => {
         switch (selectedWordClass.class) {
           case 'noun':
             return await new QWordClassNoun(this.gameState, selectedDataobject.word, selectedWordClass as IClassNoun).getQnA();
     
-          // case 'adverb':
-          //   await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA();
+          case 'adverb':
+            return await new QWordClassAdverb(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdverb).getQnA();
     
           // case 'adjective':
-          //   await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQnA();
+          //   return await new QWordClassAdjective(this.gameState, selectedDataobject.word, selectedWordClass as IClassAdjective).getQnA();
     
           // case 'preposition':
-          //   await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQnA();
+          //   return await new QWordClassPreposition(this.gameState, selectedDataobject.word, selectedWordClass as IClassPreposition).getQnA();
     
           // case 'verb':
           //   throw new Error('Not implemented!')
@@ -178,19 +169,17 @@ export class Game {
           //   throw new Error('Not implemented!')
         
           default:
-            console.log(`Error: unhandled word/phrase class: "${selectedWordClass.class}"!`)
-            return {error: true};
+            throw new Error(`determineQuestion() word-class-switch: unhandled word/phrase class: "${selectedWordClass.class}" for word "${selectedDataobject.word}"!`)
         }
-      }) ()
+      }) ().catch(err => {console.log("Error: determineQuestion() catch: " + err.message); return {error: true}})
     );
   }
 
 
   private async handleResult (dataObject: IWord, {correct, error, wClass, typeOfQuestion}: IQuestionReturnObject) {
     if (error || correct === undefined) {
-      if (this.gameState.correctedAnswers.length > 0)
-        await this.handleSave()
-      return await this.shutdown();
+      console.log("Skipping question...\n\n")
+      return await this.determineQuestion()
     }
 
     if(!!this.gameState.userProfile && wClass && typeOfQuestion) {
@@ -215,7 +204,7 @@ export class Game {
 
   private updateUserProfile (wordClass: string, typeOfQuestion: string, correct: boolean) {
     if (!this.gameState?.userProfile?.has(wordClass) || !this.gameState.userProfile.get(wordClass)?.subQuestions.has(typeOfQuestion))
-      throw new Error (`No userprofile entry for "${wordClass}" "${typeOfQuestion}"`)
+      throw new Error (`updateUserProfile(): No userprofile entry for "${wordClass}" "${typeOfQuestion} "`)
 
     const newClassWeight = correct
       ? Math.max(50, Math.round((this.gameState.userProfile.get(wordClass)?.weight as number) * 0.95))
@@ -267,6 +256,9 @@ export class Game {
   private async handleSave () {
     if(process.env.ENV_SAVING === 'no_save') 
       return console.log("No data saved due to \"ENV_SAVING='no_save'\"")
+
+    if (this.gameState.correctedAnswers.length === 0)
+      return console.log("No data to save")
     
     console.log('Saving...')
     const promiseArray = [
