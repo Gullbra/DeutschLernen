@@ -18,42 +18,14 @@ export interface IClassNoun extends IWordclass {
 }
 
 
-export interface IDegreeOfComparisonObject {
-  word: string,
-  translation: string,
-  useInPhrase: {
-    phrase: string,
-    translation: string
-  } []
-}
 export interface IComparativeAndSuperlative {
-  comparative: IDegreeOfComparisonObject,
-  superlative: IDegreeOfComparisonObject,
+  stem: string,
+  examplePhrases: { phrase: string, translation: string }[]
 }
-
-
 export interface IClassAdverb extends IWordclass, IComparativeAndSuperlative {
   absoluteAdverb: boolean
 }
-
-
-// export interface IAdjectiveDeclensionOnCase {
-//   exercisePhrase: string,
-//   translation: string
-//   suportNouns: { gender: string, noun: string, translation: string } []
-// }
-// export interface IAdjectiveDeclensionOnForm {
-//   nominativ: IAdjectiveDeclensionOnCase,
-//   akusativ: IAdjectiveDeclensionOnCase,
-//   dativ: IAdjectiveDeclensionOnCase,
-//   genetiv: IAdjectiveDeclensionOnCase,
-// }
 export interface IClassAdjective extends IWordclass, IComparativeAndSuperlative {
-  // hasRegularDeclension: boolean
-  // declension?: {
-  //   definite: IAdjectiveDeclensionOnForm,
-  //   indefinite: IAdjectiveDeclensionOnForm,
-  // }
   supportNouns: { article: string, noun: string, plural: string, translation: string } []
 }
 

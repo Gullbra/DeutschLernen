@@ -1,4 +1,4 @@
-import { IClassAdjective, IClassAdverb, IClassNoun, IClassPreposition, IComparativeAndSuperlative, IDegreeOfComparisonObject, IWordclass }  from "../interfaces/wordsPhrasesGrammar.ts"
+import { IClassAdjective, IClassAdverb, IClassNoun, IClassPreposition, IComparativeAndSuperlative, IWordclass }  from "../interfaces/wordsPhrasesGrammar.ts"
 
 // * Should return true if data is valid
 
@@ -9,18 +9,9 @@ const isValidWordClassGeneric = (word: string, dataObject: IWordclass): boolean 
   Array.isArray(dataObject.translation) && dataObject.translation.length > 0
 )
 
-const isValidDegreeOfComparision = (dataObject: IDegreeOfComparisonObject): boolean => (
-  typeof dataObject.word === 'string' && dataObject.word !== '' &&
-  typeof dataObject.translation === 'string' && dataObject.translation !== '' &&
-  Array.isArray(dataObject.useInPhrase) && dataObject.useInPhrase.length > 0
-)
-
 const isValidDegreesOfComparision = (dataObject: IComparativeAndSuperlative): boolean => (
-  typeof dataObject.comparative === 'object' && !Array.isArray(dataObject.comparative) && 
-  isValidDegreeOfComparision(dataObject.comparative)
-) && (
-  typeof dataObject.superlative === 'object' && !Array.isArray(dataObject.superlative) && 
-  isValidDegreeOfComparision(dataObject.superlative)
+  !!dataObject.stem && typeof dataObject.stem === 'string' && 
+  !!dataObject.examplePhrases && Array.isArray(dataObject.examplePhrases)
 )
 
 export const isValidWordClassNoun = (word: string, dataObject: IClassNoun): boolean => (

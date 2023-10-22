@@ -9,6 +9,9 @@ import { randomizeArrayElement, randomizeInt } from "../../util/personalLibrary.
 
 
 export class QWordClassAdjective extends QDegreeOfComparision {
+  protected questionDegreeOfComparision(degreeOfComparision: string): Promise<boolean> {
+    throw new Error("Method not implemented.");
+  }
   constructor (gameState: IGameState, word: string, protected dataObject: IClassAdjective) {
     super(gameState, word, dataObject, isValidWordClassAdjective(word, dataObject))
   }

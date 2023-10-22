@@ -1,5 +1,271 @@
 [
   {
+    "word": "Zahlensystem",
+    "weight": 150,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Zahlensysteme",
+        "specialDeclensions": {},
+        "translation": [
+          "number system"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Feuer",
+    "weight": 288,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Feuer",
+        "translation": [
+          "fire",
+          "firing",
+          "bonfire",
+          "blaze",
+          "shooting",
+          "mettle"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Becher",
+    "weight": 24,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Becher",
+        "translation": [
+          "mug",
+          "cup",
+          "beaker",
+          "goblet"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Haut",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Häute",
+        "specialDeclensions": {},
+        "translation": [
+          "skin",
+          "hide",
+          "pelt"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Mitteilung",
+    "weight": 32,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Mitteilungen",
+        "article": "die",
+        "translation": [
+          "notice",
+          "notification",
+          "communication",
+          "announcement",
+          "statement",
+          "information",
+          "memo",
+          "memorandum"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Zunge",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Zungen",
+        "specialDeclensions": {},
+        "translation": [
+          "tongue"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Mitglied",
+    "weight": 318,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Mitglieder",
+        "translation": [
+          "member",
+          "fellow"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Anlass",
+    "weight": 356,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Anlässe",
+        "translation": [
+          "occasion",
+          "reason",
+          "cause"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Hinweis",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "Hinweise",
+        "specialDeclensions": {},
+        "translation": [
+          "notice",
+          "hint",
+          "reference",
+          "indication",
+          "clue",
+          "tip",
+          "lead",
+          "allusion"
+        ]
+      }
+    ]
+  },
+  {
+    "word": "Fresse",
+    "weight": 52,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "die",
+        "plural": "Fressen",
+        "translation": [
+          "mouth",
+          "face",
+          "mug"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Beitrag",
+    "weight": 130,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Beiträge",
+        "article": "der",
+        "translation": [
+          "contribution",
+          "article",
+          "fee",
+          "input",
+          "premium"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Wohlstand",
+    "weight": 52,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "der",
+        "plural": "no plural",
+        "translation": [
+          "prosperity",
+          "affluence",
+          "fortune"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Zitat",
+    "weight": 155,
+    "classes": [
+      {
+        "class": "noun",
+        "article": "das",
+        "plural": "Zitate",
+        "translation": [
+          "quote",
+          "quotation",
+          "citation"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Schlagabtausch",
+    "weight": 173,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Schlagabtausche",
+        "article": "der",
+        "translation": [
+          "exchange of blows",
+          "repartee"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
+    "word": "Baustelle",
+    "weight": 104,
+    "classes": [
+      {
+        "class": "noun",
+        "plural": "Baustellen",
+        "article": "die",
+        "translation": [
+          "construction site",
+          "building site",
+          "roadworks",
+          "construction zone"
+        ],
+        "specialDeclensions": {}
+      }
+    ]
+  },
+  {
     "word": "Klamotte",
     "weight": 42,
     "classes": [
@@ -190,40 +456,6 @@
     "modifiedWeight": 9027
   },
   {
-    "word": "Schlagabtausch",
-    "weight": 230,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Schlagabtausche",
-        "article": "der",
-        "translation": [
-          "exchange of blows",
-          "repartee"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 15657
-  },
-  {
-    "word": "Mitglied",
-    "weight": 218,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Mitglieder",
-        "translation": [
-          "member",
-          "fellow"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 14790
-  },
-  {
     "word": "Stimmung",
     "weight": 32,
     "classes": [
@@ -278,25 +510,6 @@
       }
     ],
     "modifiedWeight": 9894
-  },
-  {
-    "word": "Baustelle",
-    "weight": 139,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Baustellen",
-        "article": "die",
-        "translation": [
-          "construction site",
-          "building site",
-          "roadworks",
-          "construction zone"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 9435
   },
   {
     "word": "Ferne",
@@ -357,40 +570,6 @@
     "modifiedWeight": 1632
   },
   {
-    "word": "Wohlstand",
-    "weight": 69,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "no plural",
-        "translation": [
-          "prosperity",
-          "affluence",
-          "fortune"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 4692
-  },
-  {
-    "word": "Zahlensystem",
-    "weight": 200,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Zahlensysteme",
-        "specialDeclensions": {},
-        "translation": [
-          "number system"
-        ]
-      }
-    ],
-    "modifiedWeight": 5100
-  },
-  {
     "word": "Sinn",
     "weight": 64,
     "classes": [
@@ -408,26 +587,6 @@
       }
     ],
     "modifiedWeight": 4335
-  },
-  {
-    "word": "Beitrag",
-    "weight": 173,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Beiträge",
-        "article": "der",
-        "translation": [
-          "contribution",
-          "article",
-          "fee",
-          "input",
-          "premium"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 11730
   },
   {
     "word": "Stufe",
@@ -464,28 +623,6 @@
           "spice",
           "condiment",
           "herb"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Hinweis",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Hinweise",
-        "specialDeclensions": {},
-        "translation": [
-          "notice",
-          "hint",
-          "reference",
-          "indication",
-          "clue",
-          "tip",
-          "lead",
-          "allusion"
         ]
       }
     ]
@@ -547,38 +684,6 @@
           "substance",
           "stipend",
           "salary package"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Haut",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Häute",
-        "specialDeclensions": {},
-        "translation": [
-          "skin",
-          "hide",
-          "pelt"
-        ]
-      }
-    ]
-  },
-  {
-    "word": "Zunge",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Zungen",
-        "specialDeclensions": {},
-        "translation": [
-          "tongue"
         ]
       }
     ]
@@ -704,24 +809,6 @@
     "modifiedWeight": 16014
   },
   {
-    "word": "Zitat",
-    "weight": 206,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Zitate",
-        "translation": [
-          "quote",
-          "quotation",
-          "citation"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 5406
-  },
-  {
     "word": "Bohne",
     "weight": 24,
     "classes": [
@@ -755,24 +842,6 @@
       }
     ],
     "modifiedWeight": 1632
-  },
-  {
-    "word": "Anlass",
-    "weight": 256,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Anlässe",
-        "translation": [
-          "occasion",
-          "reason",
-          "cause"
-        ],
-        "specialDeclensions": {}
-      }
-    ],
-    "modifiedWeight": 7956
   },
   {
     "word": "Miststück",
@@ -1024,26 +1093,6 @@
     ]
   },
   {
-    "word": "Feuer",
-    "weight": 188,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "das",
-        "plural": "Feuer",
-        "translation": [
-          "fire",
-          "firing",
-          "bonfire",
-          "blaze",
-          "shooting",
-          "mettle"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
     "word": "Tüte",
     "weight": 32,
     "classes": [
@@ -1110,23 +1159,6 @@
     ]
   },
   {
-    "word": "Fresse",
-    "weight": 69,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "die",
-        "plural": "Fressen",
-        "translation": [
-          "mouth",
-          "face",
-          "mug"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
     "word": "Hoffnung",
     "weight": 32,
     "classes": [
@@ -1157,24 +1189,6 @@
     ]
   },
   {
-    "word": "Becher",
-    "weight": 32,
-    "classes": [
-      {
-        "class": "noun",
-        "article": "der",
-        "plural": "Becher",
-        "translation": [
-          "mug",
-          "cup",
-          "beaker",
-          "goblet"
-        ],
-        "specialDeclensions": {}
-      }
-    ]
-  },
-  {
     "word": "Böse",
     "weight": 32,
     "classes": [
@@ -1188,28 +1202,6 @@
         "specialDeclensions": {
           "nGeneral": true
         }
-      }
-    ]
-  },
-  {
-    "word": "Mitteilung",
-    "weight": 42,
-    "classes": [
-      {
-        "class": "noun",
-        "plural": "Mitteilungen",
-        "article": "die",
-        "translation": [
-          "notice",
-          "notification",
-          "communication",
-          "announcement",
-          "statement",
-          "information",
-          "memo",
-          "memorandum"
-        ],
-        "specialDeclensions": {}
       }
     ]
   },
