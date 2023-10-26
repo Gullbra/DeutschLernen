@@ -1,14 +1,29 @@
-import React from 'react';
-import './styles/App.css';
-import { fecther } from './util/fetcher';
+import React, { FormEvent } from 'react';
+
+import './styles/base.css';
+
+import { MyForm } from './components/MyForm'
+
+// import { fecther } from './util/fetcher';
 
 function App() {
-  return (
-    <div className="App">
-      <h1>hey</h1>
+  const submitHandler = (event: FormEvent) => {
+    event.preventDefault()
+    console.log('click', event)
+  }
 
-      <button onClick={fecther}>click</button>
-    </div>
+  return (
+    <>
+      {/* <div className="App">
+        <h1>hey</h1>
+
+
+        <button onClick={fecther}>click</button>
+      </div> */}
+      <h1>Form below</h1>
+
+      <MyForm />
+    </>
   );
 }
 
