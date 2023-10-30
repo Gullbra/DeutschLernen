@@ -1,0 +1,8 @@
+:root {
+  --layout-header-height: 5rem
+}
+
+.site__layout__main{
+  width: 100%;
+  min-height: 100% - var(--layout-header-height);
+}

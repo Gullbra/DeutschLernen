@@ -1,0 +1,10 @@
+.view-Home__wrapper{
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}

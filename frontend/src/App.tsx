@@ -1,29 +1,15 @@
-import React, { FormEvent } from 'react';
+import React from 'react';
 
 import './styles/base.css';
-
-import { MyForm } from './components/MyForm'
-
-// import { fecther } from './util/fetcher';
+import { Layout } from './layout/Layout';
+import { HomeView } from './views/Home';
 
 function App() {
-  const submitHandler = (event: FormEvent) => {
-    event.preventDefault()
-    console.log('click', event)
-  }
 
   return (
-    <>
-      {/* <div className="App">
-        <h1>hey</h1>
-
-
-        <button onClick={fecther}>click</button>
-      </div> */}
-      <h1>Form below</h1>
-
-      <MyForm />
-    </>
+    <Layout>
+      <HomeView />
+    </Layout>
   );
 }
 
