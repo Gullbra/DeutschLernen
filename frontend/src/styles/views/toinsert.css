@@ -1,0 +1,19 @@
+.view-toInsert__wrapper {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.data-list__list-item {
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.--data-list-closed {
+  max-height: 0;
+}
