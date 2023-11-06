@@ -1,6 +1,6 @@
-import { INounDataObject } from "../interfaces/IWordclasses";
+import { IWord } from "../interfaces/wordsPhrasesGrammar";
 
-export const mockDataNouns: INounDataObject[] = [
+export const mockDataNouns: IWord[] = [
   {
     "word": "Haut",
     "weight": 175,

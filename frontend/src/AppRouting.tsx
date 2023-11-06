@@ -3,9 +3,9 @@ import { HomeView } from './views/Home'
 
 import { Routes, Route } from 'react-router-dom'
 import { ToInsert } from './views/ToInsert'
-import { AddWordView } from './views/AddWord'
-import { AddClassView } from './views/AddClass'
-import { OverViewView } from './views/OverVievView'
+import { AddWordView } from './views/ToInsertChildren/AddWord'
+import { AddClassView } from './views/ToInsertChildren/AddClass'
+import { OverViewView } from './views/ToInsertChildren/OverVievView'
 
 type TRoute = {
   path: string, 
@@ -32,10 +32,7 @@ export const AppRouting = ({}: IRoutingProps) => {
       children: [
         {
           path: "/ToInsert",
-          element: <div>Overview and send saved data</div>
-          //element: <OverViewView />
-          // needs useContext before impöementation
-
+          element: <OverViewView />
         },
         {
           path: "/ToInsert/AddWordView",

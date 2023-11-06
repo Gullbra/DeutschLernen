@@ -77,3 +77,5 @@ export interface IWord {
   classes: (IClassNoun | IClassVerb | IClassPreposition | IClassAdverb | IClassAdjective)[]
 }
 export interface IPhrase {}
+
+export type TUnknownWordClass = (IClassNoun | IClassAdjective | IClassAdverb | IClassPreposition)

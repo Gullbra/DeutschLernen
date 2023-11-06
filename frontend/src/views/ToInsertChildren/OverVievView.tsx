@@ -1,18 +1,18 @@
-import '../styles/views/toinsert.css'
-import { IToInsertProps } from '../interfaces/IProps'
-import { useEffect, useState } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { INounDataObject } from '../interfaces/IWordclasses'
-import { mockDataNouns as mockData } from '../util/mockData'
-import { IStateExpanded } from '../interfaces/IStates'
+import '../../styles/views/toinsert.css'
+import { useNavigate, useOutletContext } from 'react-router-dom'
+import { IOutletContext } from '../../interfaces/IStatesAndContexts'
+import { useState } from 'react'
 
-export const OverViewView = ({toBeInserted, expanded, setExpanded}: {toBeInserted: INounDataObject[]} & IStateExpanded) => {
+export const OverViewView = () => {
   const navigate = useNavigate()
+
+  const { wordsSaved } = useOutletContext() as IOutletContext
+  const [ expanded, setExpanded ] = useState<Set<string>>(new Set())
 
   return (
     <>
       <div className='view-toInsert-wrapper__data-list dev-border'>
-        {toBeInserted.map(dataObj => (
+        {wordsSaved.map(dataObj => (
           <div className='data-list__list-item dev-border' key={dataObj.word}
             onClick={() => setExpanded(prev => {
               const nSet = new Set(prev)
@@ -45,7 +45,7 @@ export const OverViewView = ({toBeInserted, expanded, setExpanded}: {toBeInserte
         ))}
       </div>
 
-      <button onClick={() => navigate('/ToInsert/NewData')}>
+      <button onClick={() => navigate('/ToInsert/AddWordView')}>
         add word
       </button>
       <button onClick={() => console.log('Not implemented')}>

@@ -1,32 +1,28 @@
 import '../styles/views/toinsert.css'
 import { IToInsertProps } from '../interfaces/IProps'
-import { useEffect, useState } from 'react'
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
-import { INounDataObject } from '../interfaces/IWordclasses'
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom'
 import { mockDataNouns as mockData } from '../util/mockData'
+import { IWord } from '../interfaces/wordsPhrasesGrammar'
+import { IOutletContext } from '../interfaces/IStatesAndContexts'
 
 export const ToInsert = ({}: IToInsertProps) => {  
-  const [ toBeInserted, setToBeInserted ] = useState<INounDataObject[]>(mockData)
-  const [ wordInEdit, setWordInEdit ] = useState({})
-  const [ expanded, setExpanded ] = useState<Set<string>>(new Set())
+  const [ wordsSaved, setWordsSaved ] = useState<IWord[]>(mockData)
+  const [ wordInEdit, setWordInEdit ] = useState<Partial<IWord> | null>(null)
+  const [ assignedWords, setAssignedWords ] = useState<Set<string>>(new Set(mockData.map(word => word.word)))
 
-  const navigate = useNavigate()
-  const currentUrl = useLocation().pathname
-
-  // useEffect(() => {
-  //   if(currentUrl === '/ToInsert')
-  //     navigate('/ToInsert/AddWordView')
-  // }, [])
-
-  console.log({'hey': <Outlet/>, 'bool': Boolean(<Outlet/>)})
+  const outletContext: IOutletContext = {
+    wordsSaved, setWordsSaved,
+    wordInEdit, setWordInEdit,
+    assignedWords, setAssignedWords
+  }
 
   return (
     <content-wrapper
       class = 'view-toInsert__wrapper dev-border' 
     >
-      <p>Hey</p>
-      <Outlet/>
-      {/* <OverViewView toBeInserted={toBeInserted} expanded={expanded} setExpanded={setExpanded}/> */}
+      <p>Hey this is the parent View</p>
+      <Outlet context={outletContext}/>
 
     </content-wrapper>
   )

@@ -1,27 +1,18 @@
 import React from 'react'
-
 import '../styles/components/MyForm.css'
-
 import { capitalizeWord } from '../util/capitalize';
+import { IWord } from '../interfaces/wordsPhrasesGrammar';
 
-interface IFormData {
-  name: string;
-  age: number;
-}
-
-export interface IWord {
-  word: string,
-  weight: number,
-}
-
-export const MyForm = (
-  //{ onSubmit }: FormProps
+export const WordForm = (
+  { wordInEdit, setWordInEdit, assignedWords }: 
+  { 
+    wordInEdit: IWord | null, 
+    setWordInEdit: React.Dispatch<React.SetStateAction<IWord | null>>,
+    assignedWords: Set<string>
+  } 
 ) => {
-  const [ formData, setFormData ] = React.useState<IFormData>({ name: '', age: 0 });
 
-  const onSubmit = (formData: IFormData) => {
-    console.log(formData)
-  }
+  const [ formData, setFormData ] = React.useState<IWord>(wordInEdit || { word: '', weight: 100, classes: [] });
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -30,21 +21,16 @@ export const MyForm = (
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    onSubmit(formData);
+    console.log(formData)
+    setWordInEdit(formData)
   }
 
   const elementsArr = [
     {
       type: "text",
-      name: "name",
-      value: formData.name
+      name: "word",
+      value: formData.word
     },
-    {
-      type: "number",
-      name: "age",
-      value: formData.age
-    }
-
   ]
 
   return (
@@ -57,7 +43,7 @@ export const MyForm = (
         </label>
       ))}
 
-      <button type="submit">Submit</button>
+      <button type="submit">Save</button>
     </form>
   );
 }
