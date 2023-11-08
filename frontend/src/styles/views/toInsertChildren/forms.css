@@ -1,0 +1,13 @@
+.form__label {
+  display: block;
+}
+
+.declention-section-header {
+  padding-top: 0.2rem;
+  padding-bottom: 0.3rem;
+}
+
+.form__label--checkbox {
+  display: block;
+  padding-left: 1rem;
+}
