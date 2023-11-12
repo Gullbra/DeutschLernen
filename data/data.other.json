@@ -1,7 +1,98 @@
 [
   {
+    "word": "wohl",
+    "weight": 141,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "probably",
+          "well",
+          "perhaps",
+          "surely",
+          "perhaps",
+          "no doubt"
+        ],
+        "absoluteAdverb": true,
+        "stem": "",
+        "examplePhrases": []
+      }
+    ]
+  },
+  {
+    "word": "bloß",
+    "weight": 56,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "just",
+          "merely",
+          "purely",
+          "only"
+        ],
+        "absoluteAdverb": true,
+        "stem": "bloß",
+        "examplePhrases": []
+      }
+    ]
+  },
+  {
+    "word": "überhaupt",
+    "weight": 142,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "at all",
+          "anyhow",
+          "anyway",
+          "in general",
+          "after all"
+        ],
+        "absoluteAdverb": true,
+        "stem": "",
+        "examplePhrases": []
+      }
+    ]
+  },
+  {
+    "word": "sogar",
+    "weight": 75,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "even"
+        ],
+        "absoluteAdverb": true,
+        "stem": "sogar",
+        "examplePhrases": []
+      }
+    ]
+  },
+  {
+    "word": "tatsächlich",
+    "weight": 131,
+    "classes": [
+      {
+        "class": "adverb",
+        "translation": [
+          "indeed",
+          "in fact",
+          "really",
+          "objectively",
+          "actually"
+        ],
+        "absoluteAdverb": true,
+        "stem": "tatsächlich",
+        "examplePhrases": []
+      }
+    ]
+  },
+  {
     "word": "wahrscheinlich",
-    "weight": 100,
+    "weight": 75,
     "classes": [
       {
         "class": "adverb",
@@ -26,58 +117,6 @@
             "translation": "That is @doc@ the best solution"
           }
         ]
-      }
-    ]
-  },
-  {
-    "word": "sogar",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "even"
-        ],
-        "absoluteAdverb": true,
-        "stem": "sogar",
-        "examplePhrases": []
-      }
-    ]
-  },
-  {
-    "word": "bloß",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "just",
-          "merely",
-          "purely",
-          "only"
-        ],
-        "absoluteAdverb": true,
-        "stem": "bloß",
-        "examplePhrases": []
-      }
-    ]
-  },
-  {
-    "word": "tatsächlich",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "indeed",
-          "in fact",
-          "really",
-          "objectively",
-          "actually"
-        ],
-        "absoluteAdverb": true,
-        "stem": "tatsächlich",
-        "examplePhrases": []
       }
     ]
   },
@@ -108,25 +147,6 @@
     ]
   },
   {
-    "word": "überhaupt",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "at all",
-          "anyhow",
-          "anyway",
-          "in general",
-          "after all"
-        ],
-        "absoluteAdverb": true,
-        "stem": "",
-        "examplePhrases": []
-      }
-    ]
-  },
-  {
     "word": "neidisch",
     "weight": 100,
     "classes": [
@@ -147,26 +167,6 @@
             "translation": "He looked @doc@ at the new car"
           }
         ]
-      }
-    ]
-  },
-  {
-    "word": "wohl",
-    "weight": 100,
-    "classes": [
-      {
-        "class": "adverb",
-        "translation": [
-          "probably",
-          "well",
-          "perhaps",
-          "surely",
-          "perhaps",
-          "no doubt"
-        ],
-        "absoluteAdverb": true,
-        "stem": "",
-        "examplePhrases": []
       }
     ]
   }

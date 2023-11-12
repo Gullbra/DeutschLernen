@@ -1,0 +1,28 @@
+{
+  "name": "deutschlernen",
+  "version": "1.0.0",
+  "description": "Just a little thing to help me expand my german vocabulary.",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "cd game && npm start",  
+    "dev": "npm run dev-no-save",
+    "add-new-data": "cross-env ADD_DATA=add_data ts-node --esm src/index.ts",
+
+    "dev-will-save": "cross-env ENV_SAVING=will_save ts-node --esm src/index.ts",
+    "dev-no-save": "cross-env ENV_SAVING=no_save ts-node --esm src/index.ts",
+
+    "test": "npm run testing-with-mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gullbra/DeutschLernen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Gullbra/DeutschLernen/issues"
+  },
+  "homepage": "https://github.com/Gullbra/DeutschLernen#readme"
+}

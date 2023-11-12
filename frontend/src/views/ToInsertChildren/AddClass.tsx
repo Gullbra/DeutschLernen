@@ -1,7 +1,7 @@
 import { useNavigate, useOutletContext } from "react-router-dom"
 import { IOutletContext } from "../../interfaces/IStatesAndContexts"
 import { useEffect, useState } from "react"
-import { IClassNoun, INounDeclension, TUnknownWordClass } from "../../interfaces/wordsPhrasesGrammar"
+import { IClassNoun } from "../../interfaces/wordsPhrasesGrammar"
 import { capitalizeWord } from "../../util/capitalize"
 
 import '../../styles/views/toInsertChildren/forms.css'
@@ -10,7 +10,7 @@ export const AddClassView = () => {
   const navigate = useNavigate()
 
   const { wordInEdit, setWordInEdit, setWordsSaved } = useOutletContext() as IOutletContext
-  const [ wordClassType, setWordClassType ] = useState<string>('noun')
+  const [ wordClassType, setWordClassType ] = useState<string>('')
   const [ formData, setFormData ] = useState<IClassNoun>({
     class: '',
     translation: [],
@@ -29,10 +29,11 @@ export const AddClassView = () => {
   useEffect(() => {
     if(!wordInEdit)
       navigate('/ToInsert')
+    // eslint-disable-next-line
   }, [])
 
 
-  const formInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const formInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
 
     if (name === 'translation') {
@@ -47,7 +48,7 @@ export const AddClassView = () => {
   const formSubmit = (event: React.FormEvent<HTMLFormElement>)  => {
     event.preventDefault();
 
-    console.log('Click - form submit', formData)
+    setWordInEdit({...wordInEdit, classes: [...wordInEdit?.classes || [], {...formData, class: wordClassType} ]})
   }
 
 
@@ -68,6 +69,7 @@ export const AddClassView = () => {
     const { word, weight, classes } = wordInEdit
 
     setWordsSaved(prev => [...prev, { word, weight, classes }])
+    navigate('/ToInsert')
   }
 
   
@@ -82,11 +84,15 @@ export const AddClassView = () => {
       </div>
 
 
-      <select name="wordClassType" id="wordClassType" onChange={event => setWordClassType(event.target.value)}>
-        <option value="noun">Noun</option>
-        <option value="adverb">Adverb</option>
-        <option value="adjective">Adjective</option>
-        <option value="preposition">Preposition</option>
+      <select name="wordClassType" id="wordClassType" defaultValue='default'
+        onChange={event => setWordClassType(event.target.value)}
+      >
+        <option value="default">Select a word class to add</option>
+        {["noun", "adverb", "adjective", "preposition"]
+          .filter(wordClassStr => !wordInEdit?.classes?.some(wordClassObj => wordClassObj.class === wordClassStr))
+          .map(wordClassStr => (
+            <option key={wordClassStr} value={wordClassStr}>{capitalizeWord(wordClassStr)}</option>
+          ))}
       </select>
 
 
@@ -109,14 +115,9 @@ export const AddClassView = () => {
 
 const FormInputsNoun = (
   { formData, formInputChange, setFormData }: 
-  { formData: IClassNoun, formInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void, setFormData: React.Dispatch<React.SetStateAction<IClassNoun>> }
+  { formData: IClassNoun, formInputChange: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void, setFormData: React.Dispatch<React.SetStateAction<IClassNoun>> }
 ) => {
   const elementsArr = [
-    {
-      type: "text",
-      name: "article",
-      value: formData.article
-    },
     {
       type: "text",
       name: "plural",
@@ -141,7 +142,7 @@ const FormInputsNoun = (
 
     for (const [key, value] of Object.entries(formData.specialDeclensions)) {
       elArr.push(
-        <label className='form__label--checkbox'>
+        <label key={key} className='form__label--checkbox'>
           <input type='checkbox' name={key} checked={value} onChange={formDeclInputChange}/>  
           {key +': '}
         </label>
@@ -154,10 +155,20 @@ const FormInputsNoun = (
 
   return (
     <>
+      <label className='form__label'>
+        {'Article: '}
+        <select name="article" value={formData.article} onChange={formInputChange}>
+          <option value="">Select an article</option>
+          {['der', 'das', 'die'].map(article => (
+            <option key={article + article} value={article}>{article}</option>
+          ))}
+        </select>  
+      </label>
+
       {elementsArr.map(el => (
-        <label className='form__label'>
+        <label key={el.name + el.value} className='form__label'>
           {capitalizeWord(el.name) +': '}
-          <input key={el.name} type={el.type} name={el.name} value={el.value} onChange={formInputChange}/>  
+          <input type={el.type} name={el.name} value={el.value} onChange={formInputChange}/>  
         </label>
       ))}
 

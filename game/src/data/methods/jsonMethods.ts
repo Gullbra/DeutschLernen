@@ -158,7 +158,10 @@ export class JSONMethods implements IDataStorageMethods {
     return this.jsonWriter("userprofile", updatedUser)
   }
 
-  private jsonReader = async (fileName: string): Promise<(TDataArray | IRawUserProfile)> => fs.promises.readFile(path.join(process.cwd(), 'data', `data.${fileName}.json`)).then(data => JSON.parse(data.toString()))
+  private jsonReader = async (fileName: string): Promise<(TDataArray | IRawUserProfile)> => fs
+    .promises
+    .readFile(path.join(process.cwd(), '..', 'data', `data.${fileName}.json`))
+    .then(data => JSON.parse(data.toString()))
 
-  private jsonWriter = async (fileName: string, data: (TDataArray | IRawUserProfile)): Promise<void> => fs.promises.writeFile(path.join(process.cwd(), 'data', `data.${fileName}.json`), JSON.stringify(data, null, 2))
+  private jsonWriter = async (fileName: string, data: (TDataArray | IRawUserProfile)): Promise<void> => fs.promises.writeFile(path.join(process.cwd(), '..' ,'data', `data.${fileName}.json`), JSON.stringify(data, null, 2))
 }

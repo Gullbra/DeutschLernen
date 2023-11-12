@@ -5,7 +5,7 @@ import { dataToBeAdded } from './data/mockData.ts';
 (!!process.env.ADD_DATA && process.env.ADD_DATA === 'add_data')
   ? new DataHandler().insertNewData(dataToBeAdded)
   : new Game([
-      //'noun', 
+      'noun', 
       'adverb',
       //'adjective'
       //'preposition',
