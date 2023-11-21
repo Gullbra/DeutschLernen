@@ -4,17 +4,17 @@
   "description": "Just a little thing to help me expand my german vocabulary.",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node --esm src/index.ts",
+    "start": "npm run cli",
     "test": "mocha -r chai/register-expect src/tests/*.test.ts",
 
     "build": "npm run transpile && npm run fe-build",
-    "transpile": "echo ts-transple",
-    "fe-build": "echo react-build",
+    "transpile": "tsc",
+    "fe-build": "cd frontend && npm run build && cd ..",
 
-    "cli": "echo cli",
-    "webb": "echo concurrently server, webb",
+    "cli": "ts-node --esm src/index.ts",
+    "webb": "concurrently \"npm run server\" \"npm run frontend\"",
     "server": "nodemon src/server/app.ts",
-    "frontend": "echo frontend"
+    "frontend": "cd frontend && npm run frontend cd .."
   },
   "repository": {
     "type": "git",
@@ -38,6 +38,7 @@
     "@types/mocha": "^10.0.1",
     "@types/nodemon": "^1.19.5",
     "chai": "^4.3.8",
+    "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.1",
