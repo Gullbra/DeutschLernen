@@ -2,7 +2,7 @@ import { DegreesOfComparison } from "../game/gramarHandlers/degreesOfComparison"
 import { expect } from 'chai';
 
 
-describe.only("DegreesOfComparison() tests:", () => {
+describe("DegreesOfComparison() tests:", () => {
   const testCases = [
     { stem: "schnell", positive: "schnell", comparative: "schneller", superlative: "am schnellsten" },
     { stem: "läng", positive: "lange", comparative: "länger", superlative: "am längsten" },

@@ -6,11 +6,9 @@
   "scripts": {
     "start": "npm run cli",
     "test": "mocha -r chai/register-expect src/tests/*.test.ts",
-
     "build": "npm run transpile && npm run fe-build",
     "transpile": "tsc",
     "fe-build": "cd frontend && npm run build && cd ..",
-
     "cli": "ts-node --esm src/index.ts",
     "webb": "concurrently \"npm run server\" \"npm run frontend\"",
     "server": "nodemon src/server/app.ts",
@@ -29,7 +27,10 @@
   "homepage": "https://github.com/Gullbra/DeutschLernen#readme",
   "dependencies": {
     "cross-env": "^7.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "graphql": "^16.8.1",
+    "graphql-http": "^1.22.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/chai": "^4.3.6",
@@ -37,6 +38,7 @@
     "@types/express": "^4.17.21",
     "@types/mocha": "^10.0.1",
     "@types/nodemon": "^1.19.5",
+    "@types/uuid": "^9.0.7",
     "chai": "^4.3.8",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",

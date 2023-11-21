@@ -31,7 +31,7 @@ export class DataHandler {
     return this.dataStorageMethods.insertData(newData).catch(err => console.log(`Error in data insertion: ${err.message}. No data inserted.`))
   }
 
-
+  async getJSONUserProfile(): Promise<IRawUserProfile> {return this.dataStorageMethods.retrieveUser()}
   async getUserProfile (): Promise<TUserProfile> {return this.dataStorageMethods.retrieveUser().then(data => this.constructUserProfile(data))}
   async saveUserProfile (data: TUserProfile) {return this.dataStorageMethods.updateUser(this.deconstructUserProfile(data))}
 
