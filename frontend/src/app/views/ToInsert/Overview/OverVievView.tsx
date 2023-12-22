@@ -1,7 +1,8 @@
-import '../../styles/views/toinsert.css'
-import { useNavigate, useOutletContext } from 'react-router-dom'
-import { IOutletContext } from '../../interfaces/IStatesAndContexts'
 import { useState } from 'react'
+import { useNavigate, useOutletContext } from 'react-router-dom'
+
+import { IOutletContext } from '../../../../interfaces/IStatesAndContexts'
+
 
 export const OverViewView = () => {
   const navigate = useNavigate()

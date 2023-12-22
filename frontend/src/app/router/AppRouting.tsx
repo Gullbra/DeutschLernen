@@ -1,11 +1,11 @@
-import { IRoutingProps } from './interfaces/IProps'
-import { HomeView } from './views/Home'
+import { IRoutingProps } from '../../interfaces/IProps'
+import { HomeView } from '../views/Home/Home'
 
 import { Routes, Route } from 'react-router-dom'
-import { ToInsert } from './views/ToInsert'
-import { AddWordView } from './views/ToInsertChildren/AddWord'
-import { AddClassView } from './views/ToInsertChildren/AddClass'
-import { OverViewView } from './views/ToInsertChildren/OverVievView'
+import { ToInsert } from '../views/ToInsert/ToInsert'
+import { AddWordView } from '../views/ToInsert/AddWord/AddWord'
+import { AddClassView } from '../views/ToInsert/AddClass/AddClass'
+import { OverViewView } from '../views/ToInsert/Overview/OverVievView'
 
 type TRoute = {
   path: string, 
@@ -16,7 +16,7 @@ type TRoute = {
   } []
 }[]
 
-export const AppRouting = ({}: IRoutingProps) => {
+export const AppRouting = ({serverRunning}: IRoutingProps) => {
   const routesArray: TRoute = [
     {
       path: "*",
@@ -24,7 +24,7 @@ export const AppRouting = ({}: IRoutingProps) => {
     },
     {
       path: "/",
-      element: <HomeView/>
+      element: <HomeView serverRunning={serverRunning}/>
     },
     {
       path: "/ToInsert",

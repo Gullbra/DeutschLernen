@@ -1,4 +1,4 @@
-import { IWord } from "../interfaces/wordsPhrasesGrammar";
+import { IWord } from "../interfaces/IWordsPhrasesGrammar";
 
 export const mockDataNouns: IWord[] = [
   {

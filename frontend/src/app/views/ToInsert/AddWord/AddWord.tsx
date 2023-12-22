@@ -1,7 +1,7 @@
 import { useNavigate, useOutletContext } from "react-router-dom"
-import { IOutletContext } from "../../interfaces/IStatesAndContexts"
+import { IOutletContext } from "../../../../interfaces/IStatesAndContexts"
 import { useState } from "react";
-import { IWord } from "../../interfaces/wordsPhrasesGrammar";
+import { IWord } from "../../../../interfaces/IWordsPhrasesGrammar";
 
 export const AddWordView = () => {
   const navigate = useNavigate()

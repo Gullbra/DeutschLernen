@@ -1,6 +1,6 @@
-import { ILayoutProps } from '../interfaces/IProps'
+import { ILayoutProps } from '../../interfaces/IProps'
 import { Header } from './Header'
-import '../styles/layout/layout.css'
+import './layout.css'
 
 export const Layout = ({ children }: ILayoutProps) => (
   <>

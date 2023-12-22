@@ -1,7 +1,7 @@
 import React from 'react'
 import '../styles/components/MyForm.css'
-import { capitalizeWord } from '../util/capitalize';
-import { IWord } from '../interfaces/wordsPhrasesGrammar';
+import { capitalizeWord } from '../../util/personalLib/capitalization';
+import { IWord } from '../../interfaces/IWordsPhrasesGrammar';
 
 export const WordForm = (
   { wordInEdit, setWordInEdit, assignedWords }: 

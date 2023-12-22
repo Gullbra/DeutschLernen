@@ -1,0 +1,18 @@
+.site__layout__header{
+  padding-left: 2rem; padding-right: 3rem;
+
+  width: 100%; height: var(--layout-header-height);
+
+  display: flex; flex-direction: row;
+  justify-content: space-between; align-items: center;
+
+  background-color: beige;
+}
+
+.site__layout__nav-bar {
+
+  font-size: 0.8rem;
+  display: flex; flex-direction: row;
+  /* justify-content: space-between; align-items: center; */
+  gap: 1.5rem;
+}

@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+
+button {
+  padding: 0.5rem;
+  outline: none;
+  border: 1px solid black;
+  background-color: transparent;
+  cursor: pointer;
+}
+button:hover {
+  color: rgba(0, 0, 0, 0.500);
+  border: 1px solid rgba(0, 0, 0, 0.500);
+}
+
+a {
+  cursor: pointer;
+}
+
+.dev-border {
+  border: 1px solid black;
+}

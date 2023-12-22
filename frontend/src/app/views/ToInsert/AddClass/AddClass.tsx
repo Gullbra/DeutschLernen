@@ -1,10 +1,8 @@
 import { useNavigate, useOutletContext } from "react-router-dom"
-import { IOutletContext } from "../../interfaces/IStatesAndContexts"
+import { IOutletContext } from "../../../../interfaces/IStatesAndContexts"
 import { useEffect, useState } from "react"
-import { IClassNoun } from "../../interfaces/wordsPhrasesGrammar"
-import { capitalizeWord } from "../../util/capitalize"
-
-import '../../styles/views/toInsertChildren/forms.css'
+import { IClassNoun } from "../../../../interfaces/IWordsPhrasesGrammar"
+import { capitalizeWord } from "../../../../util/personalLib/capitalization"
 
 export const AddClassView = () => {
   const navigate = useNavigate()

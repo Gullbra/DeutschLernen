@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+
+import reportWebVitals from './reportWebVitals';
+import App from './app/App';
+
+
+import { GraphQLClient, ClientContext } from 'graphql-hooks'
+
+const gqlClient = new GraphQLClient({
+  url: `${process.env.REACT_APP_BE_DOMAIN}/api/v1/graphql`
+})
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -10,7 +18,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ClientContext.Provider value={gqlClient}>
+        <App />
+      </ClientContext.Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

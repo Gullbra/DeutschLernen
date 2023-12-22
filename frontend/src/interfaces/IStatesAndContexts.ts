@@ -1,4 +1,4 @@
-import { IWord } from "./wordsPhrasesGrammar";
+import { IWord } from "./IWordsPhrasesGrammar";
 
 export interface IStateWordsSaved {
   wordsSaved: IWord[],
