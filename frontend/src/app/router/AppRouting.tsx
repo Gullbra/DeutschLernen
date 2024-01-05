@@ -6,6 +6,7 @@ import { ToInsert } from '../views/ToInsert/ToInsert'
 import { AddWordView } from '../views/ToInsert/AddWord/AddWord'
 import { AddClassView } from '../views/ToInsert/AddClass/AddClass'
 import { OverViewView } from '../views/ToInsert/Overview/OverVievView'
+import { NounForm } from '../views/ToInsert/AddClass/components/NounForm'
 
 type TRoute = {
   path: string, 
@@ -25,6 +26,10 @@ export const AppRouting = ({serverRunning}: IRoutingProps) => {
     {
       path: "/",
       element: <HomeView serverRunning={serverRunning}/>
+    },
+    {
+      path: "/currentTest",
+      element: <NounForm />
     },
     {
       path: "/ToInsert",

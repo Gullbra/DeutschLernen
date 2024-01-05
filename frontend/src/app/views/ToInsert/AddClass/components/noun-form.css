@@ -1,0 +1,26 @@
+.word-class-form-element {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  gap: 2rem;
+
+  width: 500px;
+}
+
+.wc-form-element__section {
+  padding: 0.5rem;
+}
+
+.--noun__plural-and-article-section {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  row-gap: 0.5rem;
+  column-gap: 1rem;
+
+  padding-left: 4rem; padding-right: 4rem;
+
+}
+
+.--noun__plural-input {
+  display: block;
+}
