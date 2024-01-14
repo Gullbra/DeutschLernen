@@ -7,7 +7,7 @@ import { capitalizeWord } from "../../../../util/personalLib/capitalization"
 export const AddClassView = () => {
   const navigate = useNavigate()
 
-  const { wordInEdit, setWordInEdit, setWordsSaved } = useOutletContext() as IOutletContext
+  const { wordInEdit, setWordInEdit, setSessionWordData } = useOutletContext() as IOutletContext
   const [ wordClassType, setWordClassType ] = useState<string>('')
   const [ formData, setFormData ] = useState<IClassNoun>({
     class: '',
@@ -66,7 +66,7 @@ export const AddClassView = () => {
     /** Workaround for TypeScript bug in typechecking */
     const { word, weight, classes } = wordInEdit
 
-    setWordsSaved(prev => [...prev, { word, weight, classes }])
+    setSessionWordData(prev => [...prev, { word, weight, classes }])
     navigate('/ToInsert')
   }
 

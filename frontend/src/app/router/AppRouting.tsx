@@ -27,10 +27,10 @@ export const AppRouting = ({serverRunning}: IRoutingProps) => {
       path: "/",
       element: <HomeView serverRunning={serverRunning}/>
     },
-    {
-      path: "/currentTest",
-      element: <NounForm />
-    },
+    // {
+    //   path: "/currentTest",
+    //   element: <NounForm />
+    // },
     {
       path: "/ToInsert",
       element: <ToInsert/>,

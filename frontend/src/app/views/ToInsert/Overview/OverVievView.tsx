@@ -2,59 +2,99 @@ import { useState } from 'react'
 import { useNavigate, useOutletContext } from 'react-router-dom'
 
 import { IOutletContext } from '../../../../interfaces/IStatesAndContexts'
+import { IClassNoun } from '../../../../interfaces/IWordsPhrasesGrammar'
 
 
 export const OverViewView = () => {
   const navigate = useNavigate()
 
-  const { wordsSaved } = useOutletContext() as IOutletContext
+  const { sessionWordData } = useOutletContext() as IOutletContext
   const [ expanded, setExpanded ] = useState<Set<string>>(new Set())
+
+  const toggleExpanded = (word: string) => {
+    const nSet = new Set(expanded)
+
+    nSet.has(word)
+      ? nSet.delete(word)
+      : nSet.add(word)
+
+    setExpanded(nSet)
+  }
 
   return (
     <>
-      <div className='view-toInsert-wrapper__data-list dev-border'>
-        {wordsSaved.map(dataObj => (
-          <div className='data-list__list-item dev-border' key={dataObj.word}
-            onClick={() => setExpanded(prev => {
-              const nSet = new Set(prev)
+      <div className='view-toInsert-wrapper__data-list'
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems:"center",
+          gap: "1rem",
+          paddingLeft: "0.5rem",
+          paddingRight: "0.5rem"
+        }}
+      >
+        <h3>Session Stored Data</h3>
 
-              nSet.has(dataObj.word)
-                ? nSet.delete(dataObj.word)
-                : nSet.add(dataObj.word)
+        <div>
+          {sessionWordData.map(dataObj => (
+            <div key={dataObj.word}>
+              <h4
+                onClick={() => toggleExpanded(dataObj.word)}
+                style={{ cursor: "pointer" }}
+              >{`${dataObj.word} ${expanded.has(dataObj.word) ? "-": "+"}`}</h4>
 
-              return nSet
-            })}
-          >
-            {dataObj.word}
-            <div className={expanded.has(dataObj.word) ? '--data-list-open': '--data-list-closed'}>
-              {dataObj.classes.map(wordClass => (
-                <div key={wordClass.class}>{
-    `
-    word class: ${wordClass.class}
-    ${(() => {
-    let desc = ''
-    for(const [key, value] of Object.entries(wordClass)) {
-    desc += `${key}: ${value}\n`
-    }
-    return desc
-    })()}
-    `
-                }</div>
-              ))}
+              {expanded.has(dataObj.word) && (
+                <div key={`expanded: ${dataObj.word}`}
+                  style={{
+                    paddingTop: "0.5rem",
+                    paddingBottom: "1rem",
+                    paddingLeft: "0.6rem"
+                  }}  
+                >
+                  {dataObj.classes.map(wClass => (
+                    <div key={dataObj.word + wClass.class}>
+                      {wClass.class === "noun" && (<DisplayWCNoun 
+                        classObj={wClass as IClassNoun} 
+                        expandToggle={() => toggleExpanded(`${dataObj.word}: ${wClass.class}`)}
+                        isExpanded={expanded.has(`${dataObj.word}: ${wClass.class}`)}
+                      />)}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
-      <button onClick={() => navigate('/ToInsert/AddWordView')}>
-        add word
-      </button>
-      <button onClick={() => console.log('Not implemented')}>
-        send in data
-      </button>
-      <button onClick={() => console.log('Not implemented')}>
-        return without sending
-      </button>
+      <div className='' style={{display: "flex", flexDirection: "row", gap: "0.5rem"}}>
+        <button onClick={() => navigate('/ToInsert/AddWordView')}>
+          {"Add New Word"}
+        </button>
+        <button onClick={() => console.log('Not implemented')}>
+          {"Send Data to Backend (Not Implemented)"}
+        </button>
+        <button onClick={() => console.log('Not implemented"')}>
+          {"Leave Session Without Saving (Not implemented)"}
+        </button>
+      </div>
+    </>
+  )
+}
+
+
+const DisplayWCNoun = ({classObj, expandToggle, isExpanded}: {classObj: IClassNoun, expandToggle: () => void, isExpanded: boolean}) => {
+  return(
+    <>
+      <h5 style={{cursor: "pointer"}} onClick={() => expandToggle()}>{`Noun ${isExpanded ? "-": "+"}`}</h5>
+
+      {isExpanded && (
+        <div style={{paddingLeft: "0.4rem", marginTop: "0.3rem"}}>
+          <p>{`Article: ${classObj.article}`}</p>
+          <p>{`Plural: ${classObj.plural}`}</p>
+          <p>{`Translation: ${classObj.translation.join(", ")}`}</p>
+        </div>
+      )}
     </>
   )
 }

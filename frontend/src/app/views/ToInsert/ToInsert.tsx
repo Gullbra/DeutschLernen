@@ -14,10 +14,9 @@ import { mockDataNouns as mockData } from '../../../util/mockData'
 
 
 export const ToInsert = ({}: IToInsertProps) => {  
-  const [ wordsSaved, setWordsSaved ] = useState<IWord[]>(mockData)
+  const [ sessionWordData, setSessionWordData ] = useState<IWord[]>(mockData)
   const [ wordInEdit, setWordInEdit ] = useState<Partial<IWord> | null>(null)
   const [ assignedWords, setAssignedWords ] = useState<Set<string>>(new Set(mockData.map(word => word.word)))
-  //const [ wordsInDb, setWordsInDb ] = useState<Set<string>>(new Set())
 
   const { loading, error, data } = useQuery(`
     {
@@ -32,7 +31,6 @@ export const ToInsert = ({}: IToInsertProps) => {
   // if (loading) return 'Loading...'
   // if (error) return 'Something Bad Happened'
 
-  console.log(assignedWords)
 
   useEffect (() => {
     if(!error && !loading) {
@@ -55,16 +53,16 @@ export const ToInsert = ({}: IToInsertProps) => {
   // }, [wordsInDb])
 
   const outletContext: IOutletContext = {
-    wordsSaved, setWordsSaved,
+    sessionWordData, setSessionWordData,
     wordInEdit, setWordInEdit,
     assignedWords, setAssignedWords
   }
 
   return (
     <content-wrapper
-      class = 'view-toInsert__wrapper dev-border' 
+      class = 'view-toInsert__wrapper' 
     >
-      <p>Hey this is the parent View</p>
+      <h2>Insert New Words in Database</h2>
       <Outlet context={outletContext}/>
 
     </content-wrapper>

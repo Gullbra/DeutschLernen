@@ -1,8 +1,8 @@
 import { IWord } from "./IWordsPhrasesGrammar";
 
 export interface IStateWordsSaved {
-  wordsSaved: IWord[],
-  setWordsSaved: React.Dispatch<React.SetStateAction<IWord[]>>
+  sessionWordData: IWord[],
+  setSessionWordData: React.Dispatch<React.SetStateAction<IWord[]>>
 } 
 
 export interface IStateExpandedListItems {
