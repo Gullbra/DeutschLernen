@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { IClassNoun } from "../../../../../interfaces/IWordsPhrasesGrammar";
-//import { Layout } from "../../../../layout/Layout";
 
 import './noun-form.css'
 
-export const NounForm = () => {
+export const NounForm = (
+  //props: { setParentState: React.Dispatch<React.SetStateAction<IClassNoun[]>> }
+) => {
   const [ formData, setFormData ] = useState<Omit<IClassNoun, "translation"> & {translation: Set<string>}>({
-    class: '',
+    class: 'noun',
     translation: new Set(["these", "words", "are", "mock", "values", "one really long translation here"]),
     article: '',
     plural: '',
@@ -21,54 +22,45 @@ export const NounForm = () => {
   const [ workingTrans, setWorkingTrans ] = useState<string>("")
 
 
-  const formInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const { name, value } = event.target;
-
-    if (name === 'translation') {
-      //setFormData({ ...formData, [name]: value.split(',') })
-      return
-    }
-
-    setFormData({ ...formData, [name]: value });
-  }
-
-  const formDeclInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, checked } = event.target;
-    setFormData({ ...formData, specialDeclensions: {...formData.specialDeclensions, [name]: checked }});
-  }
+  const handleFormInputChange = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => setFormData({ ...formData, [event.target.name]: event.target.value });
   
-  const formSubmit = (event: React.FormEvent<HTMLFormElement>)  => {
+  const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>)  => {
     event.preventDefault();
 
-    console.log("click!", formData)
+    const wordClass: IClassNoun = {
+      ...formData,
+      translation: Array.from(formData.translation)
+    }
 
-    //setWordInEdit({...wordInEdit, classes: [...wordInEdit?.classes || [], {...formData, class: wordClassType} ]})
+    //props.setParentState(prev => [...prev, wordClass])
   }
 
-  const articleChoiceSelected = {
-    backgroundColor: "beige"
-  }
-
-  const articleChoiceUnselected = {
-    backgroundColor: "white"
-  }
+  const articleChoiceSelected = { backgroundColor: "beige" }
+  const articleChoiceUnselected = { backgroundColor: "white" }
 
   return(
-    <content-wrapper class='view-toInsert__wrapper dev-border'>
-      <p className="dev-border"
-        style={{marginTop: "2rem", marginBottom: "2rem", padding: "0.5rem"}}
-      >
-        Hey this will be the parent view. It will show already saved data and give an option to change it.
-      </p>
+    // <content-wrapper class='view-toInsert__wrapper dev-border'>
+    //   <p className="dev-border"
+    //     style={{marginTop: "2rem", marginBottom: "2rem", padding: "0.5rem"}}
+    //   >
+    //     Hey this will be the parent view. It will show already saved data and give an option to change it.
+    //   </p>
 
-      <form className="dev-border word-class-form-element" onSubmit={formSubmit}>
-        <section className="wc-form-element__section --noun__plural-and-article-section dev-border">
-          <label className='form__label' htmlFor="plural">Plural:</label>
-          <input type="text" id="plural" name="plural" value={formData.plural} onChange={formInputChange}/>  
+      <form className="dev-border word-class-form-element" onSubmit={handleFormSubmit}>
+        <section className="wc-form-element__section --noun__plural-and-article-section">
+          <div className="--grid-element-wrapper">
+            <label className='form__label' htmlFor="plural">Plural:</label>
+          </div>
 
-          <label className='form__label'>Article:</label> 
+          <div className="--grid-element-wrapper">
+            <input type="text" id="plural" name="plural" value={formData.plural} onChange={handleFormInputChange} style={{width: "100%", padding: "0.2rem 0.3rem"}}/>  
+          </div>
 
-          <div style={{ display: "flex", justifyContent: "space-between", flexGrow: "1" }}>
+          <div className="--grid-element-wrapper">
+            <label className='form__label'>Article:</label> 
+          </div>
+
+          <div className="--grid-element-wrapper" style={{ display: "flex", justifyContent: "space-between", flexGrow: "1" }}>
             <button
               type="button"
               onClick={() => setFormData({...formData, article: "der"})} 
@@ -82,11 +74,6 @@ export const NounForm = () => {
               onClick={() => setFormData({...formData, article: "die"})} 
               style={formData.article === "die" ? articleChoiceSelected : articleChoiceUnselected}>die</button>
           </div>
-          {/* 
-
-
-
-          */}
         </section>
 
         <section 
@@ -154,10 +141,62 @@ export const NounForm = () => {
           </div>
         </section>
 
+        <section className="wc-form-element__section"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "1.5rem"
+          }}
+        >
+          <h4>Special Declensions</h4>
+
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+
+            }}
+          >
+            <button
+              style={formData.specialDeclensions.nGeneral ? articleChoiceSelected : articleChoiceUnselected}
+              type="button" 
+              onClick={() => setFormData(prev => {return {...prev, specialDeclensions: {...prev.specialDeclensions, nGeneral: !prev.specialDeclensions.nGeneral}}})}
+            >{"test: n-general"}</button>
+            <button
+              style={formData.specialDeclensions.enGeneral ? articleChoiceSelected : articleChoiceUnselected}
+              type="button" 
+              onClick={() => setFormData(prev => {return {...prev, specialDeclensions: {...prev.specialDeclensions, enGeneral: !prev.specialDeclensions.enGeneral}}})}
+            >{"test: en-general"}</button>
+            <button
+              style={formData.specialDeclensions.nsGenitiv ? articleChoiceSelected : articleChoiceUnselected}
+              type="button" 
+              onClick={() => setFormData(prev => {return {...prev, specialDeclensions: {...prev.specialDeclensions, nsGenitiv: !prev.specialDeclensions.nsGenitiv}}})}
+            >{"test: ns-genetiv"}</button>
+            <button
+              style={formData.specialDeclensions.sesGenetiv ? articleChoiceSelected : articleChoiceUnselected}
+              type="button" 
+              onClick={() => setFormData(prev => {return {...prev, specialDeclensions: {...prev.specialDeclensions, sesGenetiv: !prev.specialDeclensions.sesGenetiv}}})}
+            >{"test: sesGenetiv"}</button>
+            <button
+              style={formData.specialDeclensions.esGenetivForced ? articleChoiceSelected : articleChoiceUnselected}
+              type="button" 
+              onClick={() => setFormData(prev => {return {...prev, specialDeclensions: {...prev.specialDeclensions, esGenetivForced: !prev.specialDeclensions.esGenetivForced}}})}
+            >{"test: esGenetivForced"}</button>
+          </div>
+
+          {/**
+           * draggable and droppable
+           * https://dndkit.com/
+           */}
+          
+        </section>
+
+
         <section className="wc-form-element__section">
           <button type="submit">SaveClass</button>
         </section>
       </form>
-    </content-wrapper>
+    // </content-wrapper>
   )
 }
